@@ -41,7 +41,8 @@
                                 <label>Book Id</label>
                                 <div class="form-group center">
                                     <div class="input-group">
-                                        <asp:TextBox class="form-control" ID="BookIdTxtBx" placeholder="Book Id" runat="server"></asp:TextBox><asp:LinkButton ID="searchLBtn" CssClass="btn btn-primary" runat="server"><i class="fas fa-search"></i></asp:LinkButton>
+                                        <asp:TextBox class="form-control" ID="BookIdTxtBx" placeholder="Book Id" runat="server"></asp:TextBox>
+                                        <asp:LinkButton ID="searchLBtn" CssClass="btn btn-primary" runat="server" OnClick="searchLBtn_Click"><i class="fas fa-search"></i></asp:LinkButton>
                                     </div>
                                 </div>
                                 <br />
@@ -195,13 +196,13 @@
 
                         <div class="row">
                             <div class="col-4">
-                                <asp:Button ID="savePBtn" class="btn btn-success w-100" runat="server" Text="Add" />
+                                <asp:Button ID="savePBtn" class="btn btn-success w-100" runat="server" Text="Add" OnClick="savePBtn_Click" />
                             </div>
                             <div class="col-4">
-                                <asp:Button ID="updatePBtn" class="btn btn-warning w-100" runat="server" Text="Update" />
+                                <asp:Button ID="updatePBtn" class="btn btn-warning w-100" runat="server" Text="Update" OnClick="updatePBtn_Click" />
                             </div>
                             <div class="col-4">
-                                <asp:Button ID="deletePBtn" class="btn btn-danger w-100" runat="server" Text="Delete" />
+                                <asp:Button ID="deletePBtn" class="btn btn-danger w-100" runat="server" Text="Delete" OnClick="deletePBtn_Click" />
                             </div>
                         </div>
                     </div>
@@ -234,7 +235,27 @@
 
                         <div class="row">
                             <div class="col center">
-                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server">
+                                
+                                    <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:eLibraryDBConnectionString %>" SelectCommand="SELECT * FROM [InventoryDetails]"></asp:SqlDataSource>--%>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:eLibraryDBConnectionString %>" SelectCommand="SELECT * FROM [InventoryDetails]"></asp:SqlDataSource>
+                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="BookId" DataSourceID="SqlDataSource1">
+                                    <Columns>
+                                        <asp:BoundField DataField="BookId" HeaderText="BookId" ReadOnly="True" SortExpression="BookId" />
+                                        <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
+                                        <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
+                                        <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
+                                        <asp:BoundField DataField="PublisherName" HeaderText="PublisherName" SortExpression="PublisherName" />
+                                        <asp:BoundField DataField="PublishDate" HeaderText="PublishDate" SortExpression="PublishDate" />
+                                        <asp:BoundField DataField="Language" HeaderText="Language" SortExpression="Language" />
+                                        <asp:BoundField DataField="Edition" HeaderText="Edition" SortExpression="Edition" />
+                                        <asp:BoundField DataField="UnitPrice" HeaderText="UnitPrice" SortExpression="UnitPrice" />
+                                        <asp:BoundField DataField="NumberOfPages" HeaderText="NumberOfPages" SortExpression="NumberOfPages" />
+                                        <asp:BoundField DataField="BookDescription" HeaderText="BookDescription" SortExpression="BookDescription" />
+                                        <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
+                                        <asp:BoundField DataField="QtyAvailable" HeaderText="QtyAvailable" SortExpression="QtyAvailable" />
+                                        <asp:BoundField DataField="QtyCheckedOut" HeaderText="QtyCheckedOut" SortExpression="QtyCheckedOut" />
+                                        <asp:BoundField DataField="BookImgLink" HeaderText="BookImgLink" SortExpression="BookImgLink" />
+                                    </Columns>
                                 </asp:GridView>
                             </div>
                         </div>

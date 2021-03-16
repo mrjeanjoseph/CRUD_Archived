@@ -10,10 +10,10 @@ namespace Bookstore.Web
     public partial class Site1 : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
-        {/*
+        {
             try
             {
-                if (Session["role"].Equals("user"))
+                if (Session["role"].ToString() == "user")
                 {
                     logoutLBtn.Visible = true;
                     helloUserLBtn.Visible = true;
@@ -69,7 +69,7 @@ namespace Bookstore.Web
             catch (Exception ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
-            }*/
+            }
         }
 
         protected void AdminLoginLBtn_Click(object sender, EventArgs e)
