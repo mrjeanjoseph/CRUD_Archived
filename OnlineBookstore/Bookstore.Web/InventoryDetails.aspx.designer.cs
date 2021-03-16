@@ -60,13 +60,13 @@ namespace Bookstore.Web
         protected global::System.Web.UI.WebControls.DropDownList languageDDL;
 
         /// <summary>
-        /// publisherDDL control.
+        /// publisherNameDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList publisherDDL;
+        protected global::System.Web.UI.WebControls.DropDownList publisherNameDDL;
 
         /// <summary>
         /// authorNameDDL control.

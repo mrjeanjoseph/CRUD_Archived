@@ -58,6 +58,15 @@ namespace Bookstore.Web
                 authorNameDDL.DataSource = dt;
                 authorNameDDL.DataValueField = "AuthorName";
                 authorNameDDL.DataBind();
+
+                cmd = new SqlCommand("SELECT PublisherName FROM PublisherDetails;", con);
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+
+                publisherNameDDL.DataSource = dt;
+                publisherNameDDL.DataValueField = "PublisherName";
+                publisherNameDDL.DataBind();
             }
             catch (Exception ex)
             {

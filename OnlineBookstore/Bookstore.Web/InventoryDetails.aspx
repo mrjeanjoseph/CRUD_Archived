@@ -74,7 +74,7 @@
 
                                 <label>Publisher Name</label>
                                 <div class="form-group center">
-                                    <asp:DropDownList class="form-control" ID="publisherDDL" runat="server">
+                                    <asp:DropDownList class="form-control" ID="publisherNameDDL" runat="server">
                                         <asp:ListItem Text="Publisher1" Value="Publisher1" />
                                         <asp:ListItem Text="Publisher2" Value="Publisher2" />
                                     </asp:DropDownList>
