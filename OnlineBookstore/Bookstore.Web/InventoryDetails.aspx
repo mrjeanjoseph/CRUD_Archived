@@ -1,6 +1,21 @@
 ﻿<%@ Page Title="Book Details" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="InventoryDetails.aspx.cs" Inherits="Bookstore.Web.booksinventory" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgview').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
 
@@ -18,7 +33,7 @@
 
                         <div class="row">
                             <div class="col center">
-                                <img width="100" src="img/bunchofBook.png" />
+                                <img id="imgview"  height="150" width="100" src="InventoryBooks/powerofnow.jpg" />
                             </div>
                         </div>
 
@@ -31,7 +46,7 @@
 
                         <div class="row">
                             <div class="col center">
-                                <asp:FileUpload class="form-control" ID="FileUpload1" runat="server" />
+                                <asp:FileUpload onchange="readURL(this);" class="form-control" ID="FileUpload1" runat="server" />
                                 <br />
                             </div>
                         </div>
@@ -41,8 +56,8 @@
                                 <label>Book Id</label>
                                 <div class="form-group center">
                                     <div class="input-group">
-                                        <asp:TextBox class="form-control" ID="BookIdTxtBx" placeholder="Book Id" runat="server"></asp:TextBox>
-                                        <asp:LinkButton ID="searchLBtn" CssClass="btn btn-primary" runat="server" OnClick="searchLBtn_Click"><i class="fas fa-search"></i></asp:LinkButton>
+                                        <asp:TextBox class="form-control" ID="bookIdTxtBx" placeholder="Book Id" runat="server"></asp:TextBox>
+                                        <asp:LinkButton ID="searchBooksLBtn" CssClass="btn btn-primary" runat="server" OnClick="SearchBooksLBtn_Click"><i class="fas fa-search"></i></asp:LinkButton>
                                     </div>
                                 </div>
                                 <br />
@@ -196,13 +211,13 @@
 
                         <div class="row">
                             <div class="col-4">
-                                <asp:Button ID="savePBtn" class="btn btn-success w-100" runat="server" Text="Add" OnClick="savePBtn_Click" />
+                                <asp:Button ID="addBooksPBtn" class="btn btn-success w-100" runat="server" Text="Add" OnClick="AddBooksPBtn_Click" />
                             </div>
                             <div class="col-4">
-                                <asp:Button ID="updatePBtn" class="btn btn-warning w-100" runat="server" Text="Update" OnClick="updatePBtn_Click" />
+                                <asp:Button ID="updateBooksPBtn" class="btn btn-warning w-100" runat="server" Text="Update" OnClick="UpdateBooksPBtn_Click" />
                             </div>
                             <div class="col-4">
-                                <asp:Button ID="deletePBtn" class="btn btn-danger w-100" runat="server" Text="Delete" OnClick="deletePBtn_Click" />
+                                <asp:Button ID="deleteBooksPBtn" class="btn btn-danger w-100" runat="server" Text="Delete" OnClick="DeleteBooksPBtn_Click" />
                             </div>
                         </div>
                     </div>

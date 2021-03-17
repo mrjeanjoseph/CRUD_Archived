@@ -4,7 +4,11 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+            $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
+                "scrollY": "200px",
+                "scrollCollapse": true,
+                "paging": false
+            } );
         });
     </script>
 

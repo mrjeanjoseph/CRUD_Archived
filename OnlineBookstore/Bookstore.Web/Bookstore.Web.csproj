@@ -71,6 +71,7 @@
     <Content Include="img\sili.png" />
     <Content Include="AdminUserDetails.aspx" />
     <Content Include="AdminAuthorDetails.aspx" />
+    <Content Include="InventoryBooks\powerofnow.jpg" />
     <Content Include="InventoryDetails.aspx" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.min.js" />

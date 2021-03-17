@@ -24,22 +24,22 @@ namespace Bookstore.Web
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
 
         /// <summary>
-        /// BookIdTxtBx control.
+        /// bookIdTxtBx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox BookIdTxtBx;
+        protected global::System.Web.UI.WebControls.TextBox bookIdTxtBx;
 
         /// <summary>
-        /// searchLBtn control.
+        /// searchBooksLBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton searchLBtn;
+        protected global::System.Web.UI.WebControls.LinkButton searchBooksLBtn;
 
         /// <summary>
         /// bookNameTxtBx control.
@@ -159,31 +159,31 @@ namespace Bookstore.Web
         protected global::System.Web.UI.WebControls.TextBox addressTxtBx2;
 
         /// <summary>
-        /// savePBtn control.
+        /// addBooksPBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button savePBtn;
+        protected global::System.Web.UI.WebControls.Button addBooksPBtn;
 
         /// <summary>
-        /// updatePBtn control.
+        /// updateBooksPBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button updatePBtn;
+        protected global::System.Web.UI.WebControls.Button updateBooksPBtn;
 
         /// <summary>
-        /// deletePBtn control.
+        /// deleteBooksPBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deletePBtn;
+        protected global::System.Web.UI.WebControls.Button deleteBooksPBtn;
 
         /// <summary>
         /// SqlDataSource1 control.

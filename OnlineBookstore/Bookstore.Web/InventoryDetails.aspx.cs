@@ -20,22 +20,29 @@ namespace Bookstore.Web
             FillValues();
         }
 
-        protected void searchLBtn_Click(object sender, EventArgs e)
+        protected void SearchBooksLBtn_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected void savePBtn_Click(object sender, EventArgs e)
+        protected void AddBooksPBtn_Click(object sender, EventArgs e)
+        {
+            if (CheckBookExists())
+            {
+                Response.Write("<script>alert('This book Id already exist. Please try a different id.');</script>");
+            }
+            else
+            {
+                AddNewBooks();
+            }
+        }
+
+        protected void UpdateBooksPBtn_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected void updatePBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void deletePBtn_Click(object sender, EventArgs e)
+        protected void DeleteBooksPBtn_Click(object sender, EventArgs e)
         {
 
         }
@@ -78,6 +85,40 @@ namespace Bookstore.Web
         {
 
         }
+
+        //User Defined functions
+        bool CheckBookExists()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                SqlCommand cmd = new SqlCommand("SELECT * from InventoryDetail where BookId = '" + bookIdTxtBx.Text.Trim() + "' OR BookName = '" + bookNameTxtBx.Text.Trim() +"';", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                return false;
+            }
+        }
+
 
     }
 }
