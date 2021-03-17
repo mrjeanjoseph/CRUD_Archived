@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -81,28 +82,52 @@ namespace Bookstore.Web
             }
         } //User Defined functions
 
+
         void GetNewBooks()
         {
-            SqlConnection con = new SqlConnection(strcon);
-            if (con.State == ConnectionState.Closed)
+            try
             {
-                con.Open();
+                string genres = "";
+                foreach (int item in genreLBx.GetSelectedIndices())
+                {
+                    genres += genreLBx.Items[item] + "\n"; // inside of the double quotes should be a comma - let's see what happens.
+                }
+                genres = genres.Remove(genres.Length - 1);
+
+
+                string filePath = "~/InventoryBooks/book1.png";
+                string fileName = Path.GetFileName(uploadBooks.PostedFile.FileName);
+
+
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO InventoryDetails (BookId, BookName, Genre, AuthorName, PublisherName, PublishedDate, Language, Edition, UnitPrice, NumberOfPages, BookDescription, Quantity, QtyAvailable, QtyCheckedOut, BookImgLink) values (@BookId, @BookName, @Genre, @AuthorName, @PublisherName, @PublishedDate, @Language, @Edition, @UnitPrice, @NumberOfPages, @BookDescription, @Quantity, @QtyAvailable, @QtyCheckedOut, @bookImgLink)", con);
+
+                cmd.Parameters.AddWithValue("@BookId", bookIdTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@BookName", bookNameTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@Genre", genres);
+                cmd.Parameters.AddWithValue("@AuthorName", authorNameDDL.SelectedItem.Value);
+                cmd.Parameters.AddWithValue("@PublisherName", publisherNameDDL.SelectedItem.Value);
+
+                cmd.Parameters.AddWithValue("@PublishedDate", publishedDateBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@Language", languageDDL.SelectedItem.Value);
+                cmd.Parameters.AddWithValue("@Edition", editionTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@UnitPrice", priceTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@NumberOfPages", numOfPages.Text.Trim());
+
+                cmd.Parameters.AddWithValue("@BookDescription", descriptionTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@Quantity", QtyTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@QtyAvailable", availableTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@QtyCheckedOut", checkedOutTxtBx.Text.Trim());
             }
-
-            SqlCommand cmd = new SqlCommand("INSERT INTO InventoryDetails (BookId, BookName, Genre, AuthorName, PublisherName, PublishedDate, Language, Edition, UnitPrice, NumberOfPages, BookDescription, Quantity, QtyAvailable, QtyCheckedOut, BookImgLink) values (@bookId, @bookName, @genre, @authorName, @publisherName, @publishedDate, @language, @edition, @unitPrice, @numberOfPages, @bookDescription, @quantity, @qtyAvailable, @qtyCheckedOut, @bookImgLink)", con);
-
-            cmd.Parameters.AddWithValue("bookId", bookIdTxtBx.Text.Trim());
-            cmd.Parameters.AddWithValue("bookName", bookNameTxtBx.Text.Trim());
-
-            cmd.Parameters.AddWithValue("authorName", authorNameDDL.SelectedItem.Value);
-            cmd.Parameters.AddWithValue("publisherName", publisherNameDDL.SelectedItem.Value);
-
-            cmd.Parameters.AddWithValue("publishedDate", publishedDateBx.Text.Trim());
-            cmd.Parameters.AddWithValue("language", languageDDL.SelectedItem.Value);
-
-            cmd.Parameters.AddWithValue("edition", editionTxtBx.Text.Trim());
-            cmd.Parameters.AddWithValue("unitPrice", languageDDL.Text.Trim());
-
+            catch (Exception ex)
+            {
+                throw;
+            }
         } //User Defined functions
 
         

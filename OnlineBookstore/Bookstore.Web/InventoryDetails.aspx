@@ -33,7 +33,7 @@
 
                         <div class="row">
                             <div class="col center">
-                                <img id="imgview"  height="150" width="100" src="InventoryBooks/powerofnow.jpg" />
+                                <img id="imgview"  height="150" width="100" src="InventoryBooks/book1.png" />
                             </div>
                         </div>
 
@@ -46,7 +46,7 @@
 
                         <div class="row">
                             <div class="col center">
-                                <asp:FileUpload onchange="readURL(this);" class="form-control" ID="FileUpload1" runat="server" />
+                                <asp:FileUpload onchange="readURL(this);" class="form-control" ID="uploadBooks" runat="server" />
                                 <br />
                             </div>
                         </div>
@@ -115,9 +115,9 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label>Publisher Date</label>
+                                <label>Genre</label>
                                 <div class="form-group center">
-                                    <asp:ListBox ID="ListBox1" class="form-control" runat="server" SelectionMode="Multiple" Rows="4">
+                                    <asp:ListBox ID="genreLBx" class="form-control" runat="server" SelectionMode="Multiple" Rows="4">
                                         <asp:ListItem Text="Adventure" Value="Adventure" />
                                         <asp:ListItem Text="Motivation" Value="Motivation" />
                                         <asp:ListItem Text="Self-help" Value="Self-help" />
@@ -202,7 +202,7 @@
                                 <label>Book Description</label>
                                 <div class="form-group center">
                                     <div class="input-group">
-                                        <asp:TextBox class="form-control" ID="addressTxtBx2" placeholder="Description here!" runat="server" ReadOnly="True" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="descriptionTxtBx" placeholder="Description here!" runat="server" ReadOnly="True" TextMode="MultiLine" Rows="3"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br />
