@@ -78,6 +78,7 @@
                                 <label>Language</label>
                                 <div class="form-group center">
                                     <asp:DropDownList class="form-control" ID="languageDDL" runat="server">
+                                        <asp:ListItem Text="--Select--" Value="--Select--" />
                                         <asp:ListItem Text="English" Value="English" />
                                         <asp:ListItem Text="Creole" Value="Creole" />
                                         <asp:ListItem Text="French" Value="French" />
@@ -90,8 +91,7 @@
                                 <label>Publisher Name</label>
                                 <div class="form-group center">
                                     <asp:DropDownList class="form-control" ID="publisherNameDDL" runat="server">
-                                        <asp:ListItem Text="Publisher1" Value="Publisher1" />
-                                        <asp:ListItem Text="Publisher2" Value="Publisher2" />
+                                        <asp:ListItem Text="--Select--" Value="--Select--" Selected="True" />
                                     </asp:DropDownList>
                                 </div>
                                 <br />
@@ -101,8 +101,7 @@
                                 <label>Author Name</label>
                                 <div class="form-group center">
                                     <asp:DropDownList class="form-control" ID="authorNameDDL" runat="server">
-                                        <asp:ListItem Text="Author1" Value="Author1" />
-                                        <asp:ListItem Text="Author2" Value="Author2" />
+                                        <asp:ListItem Text="--Select--" Value="--Select--" />
                                     </asp:DropDownList>
                                 </div>
                                 <br />
