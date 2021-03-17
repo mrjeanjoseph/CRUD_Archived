@@ -109,7 +109,7 @@
 
                                 <label>Publisher Date</label>
                                 <div class="form-group center">
-                                    <asp:TextBox class="form-control" ID="publisherDateTxtBx" runat="server" TextMode="Date"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="publishedDateBx" runat="server" TextMode="Date"></asp:TextBox>
                                 </div>
                                 <br />
                             </div>

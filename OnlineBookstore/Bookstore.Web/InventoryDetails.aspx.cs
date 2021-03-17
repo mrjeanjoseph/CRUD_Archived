@@ -33,7 +33,7 @@ namespace Bookstore.Web
             }
             else
             {
-                AddNewBooks();
+                GetNewBooks();
             }
         }
 
@@ -47,7 +47,7 @@ namespace Bookstore.Web
 
         }
 
-        //User Defined functions
+        
         private void FillValues()
         {
             try
@@ -79,14 +79,33 @@ namespace Bookstore.Web
             {
                                 
             }
-        }
+        } //User Defined functions
 
-        void AddNewBooks()
+        void GetNewBooks()
         {
+            SqlConnection con = new SqlConnection(strcon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
 
-        }
+            SqlCommand cmd = new SqlCommand("INSERT INTO InventoryDetails (BookId, BookName, Genre, AuthorName, PublisherName, PublishedDate, Language, Edition, UnitPrice, NumberOfPages, BookDescription, Quantity, QtyAvailable, QtyCheckedOut, BookImgLink) values (@bookId, @bookName, @genre, @authorName, @publisherName, @publishedDate, @language, @edition, @unitPrice, @numberOfPages, @bookDescription, @quantity, @qtyAvailable, @qtyCheckedOut, @bookImgLink)", con);
 
-        //User Defined functions
+            cmd.Parameters.AddWithValue("bookId", bookIdTxtBx.Text.Trim());
+            cmd.Parameters.AddWithValue("bookName", bookNameTxtBx.Text.Trim());
+
+            cmd.Parameters.AddWithValue("authorName", authorNameDDL.SelectedItem.Value);
+            cmd.Parameters.AddWithValue("publisherName", publisherNameDDL.SelectedItem.Value);
+
+            cmd.Parameters.AddWithValue("publishedDate", publishedDateBx.Text.Trim());
+            cmd.Parameters.AddWithValue("language", languageDDL.SelectedItem.Value);
+
+            cmd.Parameters.AddWithValue("edition", editionTxtBx.Text.Trim());
+            cmd.Parameters.AddWithValue("unitPrice", languageDDL.Text.Trim());
+
+        } //User Defined functions
+
+        
         bool CheckBookExists()
         {
             try
@@ -97,7 +116,7 @@ namespace Bookstore.Web
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("SELECT * from InventoryDetail where BookId = '" + bookIdTxtBx.Text.Trim() + "' OR BookName = '" + bookNameTxtBx.Text.Trim() +"';", con);
+                SqlCommand cmd = new SqlCommand("SELECT * from InventoryDetails where BookId = '" + bookIdTxtBx.Text.Trim() + "' OR BookName = '" + bookNameTxtBx.Text.Trim() +"';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -117,8 +136,6 @@ namespace Bookstore.Web
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
                 return false;
             }
-        }
-
-
+        } //User Defined functions
     }
 }
