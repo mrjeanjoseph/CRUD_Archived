@@ -48,7 +48,7 @@ namespace Bookstore.Web
 
         }
 
-        
+
         private void FillValues()
         {
             try
@@ -78,7 +78,7 @@ namespace Bookstore.Web
             }
             catch (Exception ex)
             {
-                                
+
             }
         } //User Defined functions
 
@@ -95,9 +95,10 @@ namespace Bookstore.Web
                 genres = genres.Remove(genres.Length - 1);
 
 
-                string filePath = "~/InventoryBooks/book1.png";
-                string fileName = Path.GetFileName(uploadBooks.PostedFile.FileName);
-
+                string filePath = "~/InventoryBooks/book1.png",
+                fileName = Path.GetFileName(uploadBooks.PostedFile.FileName);
+                uploadBooks.SaveAs(Server.MapPath("inventoryBooks" + fileName));
+                filePath = "~/inventoryBooks/" + fileName;
 
                 SqlConnection con = new SqlConnection(strcon);
                 if (con.State == ConnectionState.Closed)
@@ -105,7 +106,7 @@ namespace Bookstore.Web
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO InventoryDetails (BookId, BookName, Genre, AuthorName, PublisherName, PublishedDate, Language, Edition, UnitPrice, NumberOfPages, BookDescription, Quantity, QtyAvailable, QtyCheckedOut, BookImgLink) values (@BookId, @BookName, @Genre, @AuthorName, @PublisherName, @PublishedDate, @Language, @Edition, @UnitPrice, @NumberOfPages, @BookDescription, @Quantity, @QtyAvailable, @QtyCheckedOut, @bookImgLink)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO InventoryDetails (BookId, BookName, Genre, AuthorName, PublisherName, PublishedDate, Language, Edition, UnitPrice, NumberOfPages, BookDescription, Quantity, QtyAvailable, QtyCheckedOut, BookImgLink) values (@BookId, @BookName, @Genre, @AuthorName, @PublisherName, @PublishedDate, @Language, @Edition, @UnitPrice, @NumberOfPages, @BookDescription, @Quantity, @QtyAvailable, @QtyCheckedOut, @BookImgLink)", con);
 
                 cmd.Parameters.AddWithValue("@BookId", bookIdTxtBx.Text.Trim());
                 cmd.Parameters.AddWithValue("@BookName", bookNameTxtBx.Text.Trim());
@@ -123,14 +124,21 @@ namespace Bookstore.Web
                 cmd.Parameters.AddWithValue("@Quantity", QtyTxtBx.Text.Trim());
                 cmd.Parameters.AddWithValue("@QtyAvailable", availableTxtBx.Text.Trim());
                 cmd.Parameters.AddWithValue("@QtyCheckedOut", checkedOutTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@BookImgLink", filePath);
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+                Response.Write("<script>alert('Book detail added successfully.');</script>");
+                GridView1.DataBind();
+
             }
             catch (Exception ex)
             {
-                throw;
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         } //User Defined functions
 
-        
+
         bool CheckBookExists()
         {
             try
@@ -141,7 +149,7 @@ namespace Bookstore.Web
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("SELECT * from InventoryDetails where BookId = '" + bookIdTxtBx.Text.Trim() + "' OR BookName = '" + bookNameTxtBx.Text.Trim() +"';", con);
+                SqlCommand cmd = new SqlCommand("SELECT * from InventoryDetails where BookId = '" + bookIdTxtBx.Text.Trim() + "' OR BookName = '" + bookNameTxtBx.Text.Trim() + "';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);

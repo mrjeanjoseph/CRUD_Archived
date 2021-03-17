@@ -142,7 +142,7 @@
                                 <label>Edition</label>
                                 <div class="form-group center">
                                     <div class="input-group">
-                                        <asp:TextBox class="form-control" ID="editionTxtBx" placeholder="Edition" runat="server" ReadOnly="True"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="editionTxtBx" placeholder="Edition" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br />
@@ -151,7 +151,7 @@
                                 <label>Unit Price</label>
                                 <div class="form-group center">
                                     <div class="input-group">
-                                        <asp:TextBox class="form-control" ID="priceTxtBx" placeholder="0" runat="server" SelectionMode="Single" TextMode="Number" ReadOnly="True"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="priceTxtBx" placeholder="0" runat="server" SelectionMode="Single" TextMode="Number"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br />
@@ -160,7 +160,7 @@
                                 <label>No. of Pages</label>
                                 <div class="form-group center">
                                     <div class="input-group">
-                                        <asp:TextBox class="form-control" ID="numOfPages" placeholder="0" runat="server" ReadOnly="True" TextMode="Number"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="numOfPages" placeholder="0" runat="server" TextMode="Number"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br />
@@ -172,7 +172,7 @@
                                 <label>Total Quantity</label>
                                 <div class="form-group center">
                                     <div class="input-group">
-                                        <asp:TextBox class="form-control" ID="QtyTxtBx" placeholder="0" runat="server" TextMode="Number" ReadOnly="True"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="QtyTxtBx" placeholder="0" runat="server" TextMode="Number"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br />
@@ -202,7 +202,7 @@
                                 <label>Book Description</label>
                                 <div class="form-group center">
                                     <div class="input-group">
-                                        <asp:TextBox class="form-control" ID="descriptionTxtBx" placeholder="Description here!" runat="server" ReadOnly="True" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="descriptionTxtBx" placeholder="Description here!" runat="server" TextMode="MultiLine" Rows="4"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br />
