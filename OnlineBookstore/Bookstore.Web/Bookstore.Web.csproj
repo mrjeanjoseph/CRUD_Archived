@@ -72,6 +72,7 @@
     <Content Include="AdminUserDetails.aspx" />
     <Content Include="AdminAuthorDetails.aspx" />
     <Content Include="InventoryBooks\book1.png" />
+    <Content Include="InventoryBooks\book2.png" />
     <Content Include="InventoryDetails.aspx" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.min.js" />

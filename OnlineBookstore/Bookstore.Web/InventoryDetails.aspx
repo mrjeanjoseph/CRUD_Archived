@@ -33,7 +33,7 @@
 
                         <div class="row">
                             <div class="col center">
-                                <img id="imgview"  height="150" width="100" src="InventoryBooks/book1.png" />
+                                <img id="imgview"  height="150" width="100" src="InventoryBooks/book2.png" />
                             </div>
                         </div>
 
@@ -250,26 +250,24 @@
 
                         <div class="row">
                             <div class="col center">
-                                
-                                    <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:eLibraryDBConnectionString %>" SelectCommand="SELECT * FROM [InventoryDetails]"></asp:SqlDataSource>--%>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:eLibraryDBConnectionString %>" SelectCommand="SELECT * FROM [InventoryDetails]"></asp:SqlDataSource>
-                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="BookId" DataSourceID="SqlDataSource1">
+                                <asp:GridView class="table table-striped table-bordered" ID="inventoryDetailGV" runat="server" AutoGenerateColumns="False" DataKeyNames="BookId" DataSourceID="SqlDataSource1">
                                     <Columns>
-                                        <asp:BoundField DataField="BookId" HeaderText="BookId" ReadOnly="True" SortExpression="BookId" />
-                                        <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
+                                        <asp:BoundField DataField="BookId" HeaderText="Id" ReadOnly="True" SortExpression="BookId" />
+                                        <asp:BoundField DataField="BookName" HeaderText="Book Name" SortExpression="BookName" />
                                         <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
-                                        <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
-                                        <asp:BoundField DataField="PublisherName" HeaderText="PublisherName" SortExpression="PublisherName" />
-                                        <asp:BoundField DataField="PublishDate" HeaderText="PublishDate" SortExpression="PublishDate" />
+                                        <asp:BoundField DataField="AuthorName" HeaderText="Author Name" SortExpression="AuthorName" />
+                                        <asp:BoundField DataField="PublisherName" HeaderText="Publisher Name" SortExpression="PublisherName" />
+                                        <asp:BoundField DataField="PublishedDate" HeaderText="Published Date" SortExpression="PublishedDate" />
                                         <asp:BoundField DataField="Language" HeaderText="Language" SortExpression="Language" />
                                         <asp:BoundField DataField="Edition" HeaderText="Edition" SortExpression="Edition" />
-                                        <asp:BoundField DataField="UnitPrice" HeaderText="UnitPrice" SortExpression="UnitPrice" />
-                                        <asp:BoundField DataField="NumberOfPages" HeaderText="NumberOfPages" SortExpression="NumberOfPages" />
-                                        <asp:BoundField DataField="BookDescription" HeaderText="BookDescription" SortExpression="BookDescription" />
+                                        <asp:BoundField DataField="UnitPrice" HeaderText="Price" SortExpression="UnitPrice" />
+                                        <asp:BoundField DataField="NumberOfPages" HeaderText="# of Pages" SortExpression="NumberOfPages" />
+                                        <asp:BoundField DataField="BookDescription" HeaderText="Description" SortExpression="BookDescription" />
                                         <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
-                                        <asp:BoundField DataField="QtyAvailable" HeaderText="QtyAvailable" SortExpression="QtyAvailable" />
-                                        <asp:BoundField DataField="QtyCheckedOut" HeaderText="QtyCheckedOut" SortExpression="QtyCheckedOut" />
-                                        <asp:BoundField DataField="BookImgLink" HeaderText="BookImgLink" SortExpression="BookImgLink" />
+                                        <asp:BoundField DataField="QtyAvailable" HeaderText="Qty Available" SortExpression="QtyAvailable" />
+                                        <asp:BoundField DataField="QtyCheckedOut" HeaderText="Qty Checked out" SortExpression="QtyCheckedOut" />
+                                        <asp:BoundField DataField="BookImgLink" HeaderText="Book Img" SortExpression="BookImgLink" />
                                     </Columns>
                                 </asp:GridView>
                             </div>

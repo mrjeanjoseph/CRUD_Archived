@@ -17,7 +17,7 @@ namespace Bookstore.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            GridView1.DataBind();
+            inventoryDetailGV.DataBind();
             FillValues();
         }
 
@@ -97,7 +97,7 @@ namespace Bookstore.Web
 
                 string filePath = "~/InventoryBooks/book1.png",
                 fileName = Path.GetFileName(uploadBooks.PostedFile.FileName);
-                uploadBooks.SaveAs(Server.MapPath("inventoryBooks" + fileName));
+                uploadBooks.SaveAs(Server.MapPath("inventoryBooks/" + fileName));
                 filePath = "~/inventoryBooks/" + fileName;
 
                 SqlConnection con = new SqlConnection(strcon);
@@ -122,14 +122,14 @@ namespace Bookstore.Web
 
                 cmd.Parameters.AddWithValue("@BookDescription", descriptionTxtBx.Text.Trim());
                 cmd.Parameters.AddWithValue("@Quantity", QtyTxtBx.Text.Trim());
-                cmd.Parameters.AddWithValue("@QtyAvailable", availableTxtBx.Text.Trim());
-                cmd.Parameters.AddWithValue("@QtyCheckedOut", checkedOutTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@QtyAvailable", QtyTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@QtyCheckedOut", "0");
                 cmd.Parameters.AddWithValue("@BookImgLink", filePath);
 
                 cmd.ExecuteNonQuery();
                 con.Close();
                 Response.Write("<script>alert('Book detail added successfully.');</script>");
-                GridView1.DataBind();
+                inventoryDetailGV.DataBind();
 
             }
             catch (Exception ex)
