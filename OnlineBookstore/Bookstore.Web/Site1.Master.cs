@@ -14,7 +14,7 @@ namespace Bookstore.Web
             //Response.AppendHeader("Refresh", "10");
             try
             {
-                if (Session["role"].ToString() == "user")
+                if (Session["ROLE"].Equals("user"))
                 {
                     logoutLBtn.Visible = true;
                     helloUserLBtn.Visible = true;
@@ -32,7 +32,7 @@ namespace Bookstore.Web
                     //userDetailsLBtn.Visible = false;
                 }
 
-                else if (Session["role"].Equals("admin"))
+                else if (Session["ROLE"].Equals("admin"))
                 {
                     logoutLBtn.Visible = true;
                     helloUserLBtn.Visible = true;
@@ -51,7 +51,7 @@ namespace Bookstore.Web
                     userDetailsLBtn.Visible = true;
                 }
 
-                else
+                else if (Session["ROLE"].Equals(""))
                 {
                     userSignUpLBtn.Visible = true;
                     userLoginLBtn.Visible = true;
@@ -129,15 +129,6 @@ namespace Bookstore.Web
             userLoginLBtn.Visible = true;
             adminLoginLBtn.Visible = true;
             viewBooksLBtn.Visible = true;
-
-            //logoutLBtn.Visible = false;
-            //helloUserLBtn.Visible = false;
-
-            //authorDetailsLBtn.Visible = false;
-            //publisherDetailsLBtn.Visible = false;
-            //inventoryDetailsLBtn.Visible = false;
-            //inventoryDetailsLBtn.Visible = false;
-            //userDetailsLBtn.Visible = false;
 
             Response.Redirect("Homepage.aspx");
         }

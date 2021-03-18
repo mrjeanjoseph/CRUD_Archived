@@ -36,9 +36,9 @@ namespace Bookstore.Web
                     while (readDB.Read())
                     {
                         Response.Write("<script>alert('Login Successfull!');</script>");
-                        Session["Username"] = readDB.GetValue(0).ToString();
+                        //Session["Username"] = readDB.GetValue(0).ToString();
                         Session["FullName"] = readDB.GetValue(1).ToString();
-                        Session["role"] = "user";
+                        Session["ROLE"] = "user";
                         Session["AccountStatus"] = readDB.GetValue(11).ToString();
                     }
                     Response.Redirect("Homepage.aspx");
