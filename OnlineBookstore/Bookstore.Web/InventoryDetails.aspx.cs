@@ -78,7 +78,7 @@ namespace Bookstore.Web
             }
             catch (Exception ex)
             {
-
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         } //User Defined functions
 
@@ -94,11 +94,12 @@ namespace Bookstore.Web
                 }
                 genres = genres.Remove(genres.Length - 1);
 
-
-                string filePath = "~/InventoryBooks/book1.png",
+                //There's an issue with this code. It's adding the details but not the file itself.
+                string filePath = "~/inventoryBooks/book1.png",
                 fileName = Path.GetFileName(uploadBooks.PostedFile.FileName);
                 uploadBooks.SaveAs(Server.MapPath("inventoryBooks/" + fileName));
                 filePath = "~/inventoryBooks/" + fileName;
+                //============DEBUG=========================
 
                 SqlConnection con = new SqlConnection(strcon);
                 if (con.State == ConnectionState.Closed)
