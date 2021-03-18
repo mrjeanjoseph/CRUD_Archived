@@ -253,20 +253,6 @@
                                 <asp:GridView class="table table-striped table-bordered" ID="inventoryDetailGV" runat="server" AutoGenerateColumns="False" DataKeyNames="BookId" DataSourceID="SqlDataSource1">
                                     <Columns>
                                         <asp:BoundField DataField="BookId" HeaderText="Id" ReadOnly="True" SortExpression="BookId" />
-                                        <asp:BoundField DataField="BookName" HeaderText="Book Name" SortExpression="BookName" />
-                                        <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
-                                        <asp:BoundField DataField="AuthorName" HeaderText="Author Name" SortExpression="AuthorName" />
-                                        <asp:BoundField DataField="PublisherName" HeaderText="Publisher Name" SortExpression="PublisherName" />
-                                        <asp:BoundField DataField="PublishedDate" HeaderText="Published Date" SortExpression="PublishedDate" />
-                                        <asp:BoundField DataField="Language" HeaderText="Language" SortExpression="Language" />
-                                        <asp:BoundField DataField="Edition" HeaderText="Edition" SortExpression="Edition" />
-                                        <asp:BoundField DataField="UnitPrice" HeaderText="Price" SortExpression="UnitPrice" />
-                                        <asp:BoundField DataField="NumberOfPages" HeaderText="# of Pages" SortExpression="NumberOfPages" />
-                                        <asp:BoundField DataField="BookDescription" HeaderText="Description" SortExpression="BookDescription" />
-                                        <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
-                                        <asp:BoundField DataField="QtyAvailable" HeaderText="Qty Available" SortExpression="QtyAvailable" />
-                                        <asp:BoundField DataField="QtyCheckedOut" HeaderText="Qty Checked out" SortExpression="QtyCheckedOut" />
-                                        <asp:BoundField DataField="BookImgLink" HeaderText="Book Img" SortExpression="BookImgLink" />
                                     </Columns>
                                 </asp:GridView>
                             </div>
