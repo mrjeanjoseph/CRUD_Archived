@@ -171,5 +171,10 @@ namespace Bookstore.Web
                 return false;
             }
         } //User Defined functions
+
+        protected void inventoryDetailGV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

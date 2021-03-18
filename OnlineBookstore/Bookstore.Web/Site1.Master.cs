@@ -11,6 +11,7 @@ namespace Bookstore.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Response.AppendHeader("Refresh", "10");
             try
             {
                 if (Session["role"].ToString() == "user")
