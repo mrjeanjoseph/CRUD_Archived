@@ -184,6 +184,7 @@ namespace Bookstore.Web
                 {
                     con.Open();
                 }
+
                 SqlCommand cmd = new SqlCommand("SELECT * FROM InventoryDetails WHERE BookId='"+ bookIdTxtBx.Text.Trim()+ "';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -192,21 +193,34 @@ namespace Bookstore.Web
                 if (dt.Rows.Count>=1)
                 {
                     bookNameTxtBx.Text = dt.Rows[0]["BookName"].ToString();
-                    bookNameTxtBx.Text = dt.Rows[0]["PublishedDate"].ToString();
+                    publishedDateBx.Text = dt.Rows[0]["PublishedDate"].ToString();
 
                     languageDDL.SelectedValue = dt.Rows[0]["Language"].ToString().Trim();
                     authorNameDDL.SelectedValue = dt.Rows[0]["AuthorName"].ToString().Trim();
                     publisherNameDDL.SelectedValue = dt.Rows[0]["PublisherName"].ToString().Trim();
-                }
 
+                    genreLBx.ClearSelection();
+                    string[] genre = dt.Rows[0]["Genre"].ToString().Trim().Split(' ');
+                    for (int i = 0; i < genre.Length; i++)
+                    {
+                        for (int j = 0; j < genreLBx.Items.Count; j++)
+                        {
+                            if (genreLBx.Items[j].ToString() == genre[i])
+                            {
+                                genreLBx.Items[j].Selected = true;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Response.Write("<script>alert('Book Id entered is invalid');</script>");
+                }
             }
             catch (Exception ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
-
         }
-
-
     }
 }
