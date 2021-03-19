@@ -55,18 +55,18 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-3">
+                        <div class="row"> <%--Found a bug here - there is an issue here with the button stacking--%>
+                            <div class="col-md-4">
                                 <label>Book Id</label>
-                                <div class="form-group center">
+                                <div class="form-group">
                                     <div class="input-group">
                                         <asp:TextBox class="form-control" ID="bookIdTxtBx" placeholder="Book Id" runat="server"></asp:TextBox>
-                                        <asp:LinkButton ID="searchBooksLBtn" CssClass="btn btn-primary" runat="server" OnClick="SearchBooksLBtn_Click"><i class="fas fa-search"></i></asp:LinkButton>
+                                        <asp:Button ID="searchBooksBtn" class=" form-control btn btn-primary" runat="server" Text="Sedarch" OnClick="SearchBooksBtn_Click" />
                                     </div>
                                 </div>
                                 <br />
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-8">
                                 <label>Book Name</label>
                                 <div class="form-group center">
                                     <div class="input-group">
@@ -252,7 +252,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col center">
+                            <div>
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:eLibraryDBConnectionString %>" SelectCommand="SELECT * FROM [InventoryDetails]"></asp:SqlDataSource>
                                 <asp:GridView class="table table-striped table-bordered" ID="inventoryDetailGV" runat="server" AutoGenerateColumns="False" DataKeyNames="BookId" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="inventoryDetailGV_SelectedIndexChanged">
                                     <Columns>

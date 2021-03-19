@@ -21,11 +21,6 @@ namespace Bookstore.Web
             FillValues();
         }
 
-        protected void SearchBooksLBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void AddBooksPBtn_Click(object sender, EventArgs e)
         {
             if (CheckBookExists())
@@ -48,6 +43,14 @@ namespace Bookstore.Web
 
         }
 
+        protected void SearchBooksBtn_Click(object sender, EventArgs e)
+        {
+            GetBookById();
+        }
+        protected void inventoryDetailGV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void FillValues()
         {
@@ -172,9 +175,38 @@ namespace Bookstore.Web
             }
         } //User Defined functions
 
-        protected void inventoryDetailGV_SelectedIndexChanged(object sender, EventArgs e)
+        void GetBookById()
         {
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("SELECT * FROM InventoryDetails WHERE BookId='"+ bookIdTxtBx.Text.Trim()+ "';", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count>=1)
+                {
+                    bookNameTxtBx.Text = dt.Rows[0]["BookName"].ToString();
+                    bookNameTxtBx.Text = dt.Rows[0]["PublishedDate"].ToString();
+
+                    languageDDL.SelectedValue = dt.Rows[0]["Language"].ToString().Trim();
+                    authorNameDDL.SelectedValue = dt.Rows[0]["AuthorName"].ToString().Trim();
+                    publisherNameDDL.SelectedValue = dt.Rows[0]["PublisherName"].ToString().Trim();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+            }
 
         }
+
+
     }
 }
