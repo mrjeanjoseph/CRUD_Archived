@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Data;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Bookstore.Web
 {
@@ -37,7 +32,7 @@ namespace Bookstore.Web
 
         protected void UpdateBooksPBtn_Click(object sender, EventArgs e)
         {
-
+            UpdateBooksById();
         }
 
         protected void DeleteBooksPBtn_Click(object sender, EventArgs e)
@@ -49,11 +44,100 @@ namespace Bookstore.Web
         {
             GetBookById();
         }
+
         protected void inventoryDetailGV_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
+        //User Defined functions
+        private void UpdateBooksById()
+        {
+            if (CheckBookExists())
+            {
+                try
+                {
+                    int quantity = Convert.ToInt32(QtyTxtBx.Text.Trim());
+                    int qtyAvailable = Convert.ToInt32(availableTxtBx.Text.Trim());
+                    if (global_quantity == quantity)
+                    {
+                        //Nothing happens here!
+                    }
+                    else
+                    {
+                        if (quantity < global_checkedout)
+                        {
+                            Response.Write("<script>alert('Quantity available cannot be less than quantity checked out.');</script>");
+                            return;
+                        }
+                        else
+                        {
+                            qtyAvailable = quantity - global_checkedout;
+                            checkedOutTxtBx.Text = "" + qtyAvailable;
+                        }
+                    }
+
+                    string genres = "";
+                    foreach (int listOfGenres in genreLBx.GetSelectedIndices())
+                    {
+                        genres += genreLBx.Items[listOfGenres] + "\n";
+                    }
+                    genres = genres.Remove(genres.Length - 1);
+
+                    string filePath = "~/inventoryBooks/book1.png",
+                            fileName = Path.GetFileName(bookImgUpld.PostedFile.FileName);
+                    if (fileName == "" || fileName == null)
+                    {
+                        filePath = global_filepath;
+                    }
+                    else
+                    {
+                        bookImgUpld.SaveAs(Server.MapPath("inventoryBooks/" + fileName));
+                        filePath = "~/inventoryBooks/" + fileName;
+                    }
+
+
+                    SqlConnection con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    SqlCommand cmd = new SqlCommand("UPDATE InventoryDetails SET BookName = @BookName, Genre = @Genre, AuthorName = @AuthorName, PublisherName = @PublisherName, PublishedDate = @PublishedDate, Language = @Language, Edition = @Edition, UnitPrice = @UnitPrice, NumberOfPages = @NumberOfPages, BookDescription = @BookDescription, Quantity = @Quantity, QtyAvailable = @QtyAvailable, QtyCheckedOut = @QtyCheckedOut, BookImgLink = @BookImgLink = '" + bookIdTxtBx.Text.Trim() + "'", con);
+
+                    cmd.Parameters.AddWithValue("BookName", bookIdTxtBx.Text.Trim());
+
+                    cmd.Parameters.AddWithValue("AuthorName", authorNameDDL.SelectedValue.Trim());
+                    cmd.Parameters.AddWithValue("PublisherName", publisherNameDDL.SelectedValue.Trim());
+                    cmd.Parameters.AddWithValue("Language", languageDDL.SelectedValue.Trim());
+
+                    cmd.Parameters.AddWithValue("Edition", editionTxtBx.Text.Trim());
+                    cmd.Parameters.AddWithValue("UnitPrice", priceTxtBx.Text.Trim());
+                    cmd.Parameters.AddWithValue("NumberOfPages", numOfPages.Text.Trim());
+                    cmd.Parameters.AddWithValue("BookDescription", descriptionTxtBx.Text.Trim());
+
+                    cmd.Parameters.AddWithValue("Quantity", quantity.ToString()); ;
+                    cmd.Parameters.AddWithValue("QtyAvailable", qtyAvailable.ToString());
+
+                    cmd.Parameters.AddWithValue("Genre", genres);
+                    cmd.Parameters.AddWithValue("BookImgLink", filePath);
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    inventoryDetailGV.DataBind();
+                    Response.Write("<script>alert('Member status updated');</script>");
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert('" + ex.Message + "');</script>");
+                }
+            }
+            else
+            {
+                Response.Write("<script>alert('ID Feild cannot be blank.');</script>");
+            }
+
+        }
         private void FillValues()
         {
             try
@@ -85,10 +169,8 @@ namespace Bookstore.Web
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
-        } //User Defined functions
-
-
-        void GetNewBooks()
+        }
+        private void GetNewBooks()
         {
             try
             {
@@ -99,12 +181,10 @@ namespace Bookstore.Web
                 }
                 genres = genres.Remove(genres.Length - 1);
 
-                //There's an issue with this code. It's adding the details but not the file itself.
                 string filePath = "~/inventoryBooks/book1.png",
-                fileName = Path.GetFileName(uploadBooks.PostedFile.FileName);
-                uploadBooks.SaveAs(Server.MapPath("inventoryBooks/" + fileName));
+                fileName = Path.GetFileName(bookImgUpld.PostedFile.FileName);
+                bookImgUpld.SaveAs(Server.MapPath("inventoryBooks/" + fileName));
                 filePath = "~/inventoryBooks/" + fileName;
-                //============DEBUG=========================
 
                 SqlConnection con = new SqlConnection(strcon);
                 if (con.State == ConnectionState.Closed)
@@ -142,10 +222,8 @@ namespace Bookstore.Web
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
-        } //User Defined functions
-
-
-        bool CheckBookExists()
+        }
+        private bool CheckBookExists()
         {
             try
             {
@@ -175,9 +253,8 @@ namespace Bookstore.Web
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
                 return false;
             }
-        } //User Defined functions
-
-        void GetBookById()
+        } // reference duplication
+        private void GetBookById()
         {
             try
             {
@@ -187,12 +264,12 @@ namespace Bookstore.Web
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM InventoryDetails WHERE BookId='"+ bookIdTxtBx.Text.Trim()+ "';", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM InventoryDetails WHERE BookId='" + bookIdTxtBx.Text.Trim() + "';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                if (dt.Rows.Count>=1)
+                if (dt.Rows.Count >= 1)
                 {
                     bookNameTxtBx.Text = dt.Rows[0]["BookName"].ToString();
 

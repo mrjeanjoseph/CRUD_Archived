@@ -50,7 +50,7 @@
 
                         <div class="row">
                             <div class="col center">
-                                <asp:FileUpload onchange="readURL(this);" class="form-control" ID="uploadBooks" runat="server" />
+                                <asp:FileUpload onchange="readURL(this);" class="form-control" ID="bookImgUpld" runat="server" />
                                 <br />
                             </div>
                         </div>

@@ -15,13 +15,13 @@ namespace Bookstore.Web
     {
 
         /// <summary>
-        /// uploadBooks control.
+        /// bookImgUpld control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload uploadBooks;
+        protected global::System.Web.UI.WebControls.FileUpload bookImgUpld;
 
         /// <summary>
         /// bookIdTxtBx control.
