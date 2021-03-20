@@ -53,27 +53,33 @@ namespace Bookstore.Web
 
         private void DeleteUserById()
         {
-            try
+            if (CheckUserExists())
             {
-                SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
+                try
                 {
-                    con.Open();
+                    SqlConnection con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    SqlCommand cmd = new SqlCommand("DELETE UserDetails WHERE Username = '" + userIdTxtBx.Text.Trim() + "'", con);
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    Response.Write("<script>alert('User Detail Deleted successfully.');</script>");
+                    ClearForm();
+                    GridView1.DataBind();
                 }
-
-                SqlCommand cmd = new SqlCommand("DELETE UserDetails WHERE Username = '" + userIdTxtBx.Text.Trim() + "'", con);
-
-                cmd.ExecuteNonQuery();
-                con.Close();
-                Response.Write("<script>alert('User Detail Deleted successfully.');</script>");
-                ClearForm();
-                GridView1.DataBind();
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert('" + ex.Message + "');</script>");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                Response.Write("<script>alert('Invalid user Id');</script>");
             }
-
         }
 
         private void GetUserById() // User defined function

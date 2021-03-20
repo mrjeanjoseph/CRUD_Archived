@@ -41,7 +41,7 @@ namespace Bookstore.Web
 
         protected void DeleteBooksPBtn_Click(object sender, EventArgs e)
         {
-
+            DeleteBooksById();
         }
 
         protected void SearchBooksBtn_Click(object sender, EventArgs e)
@@ -55,7 +55,38 @@ namespace Bookstore.Web
         }
 
         //User Defined functions
-        private void UpdateBooksById() // There's a  bug here - unable to update within the page.
+
+        private void DeleteBooksById()
+        {
+            if (CheckBookExists())
+            {
+                try
+                {
+                    SqlConnection con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    SqlCommand cmd = new SqlCommand("DELETE InventoryDetails WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    Response.Write("<script>alert('Book details deleted successfully.');</script>");
+                    inventoryDetailGV.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert('" + ex.Message + "');</script>");
+                }
+            }
+            else
+            {
+                Response.Write("<script>alert('Invalid user Id');</script>");
+            }
+
+        }
+        private void UpdateBooksById() 
         {
             if (CheckBookExists())
             {
@@ -110,7 +141,7 @@ namespace Bookstore.Web
                         con.Open();
                     }
 
-                    SqlCommand cmd = new SqlCommand("UPDATE InventoryDetails SET BookName = @BookName, Genre = @Genre, AuthorName = @AuthorName, PublisherName = @PublisherName, PublishedDate = @PublishedDate, Language = @Language, Edition = @Edition, UnitPrice = @UnitPrice, NumberOfPages = @NumberOfPages, BookDescription = @BookDescription, Quantity = @Quantity, QtyAvailable = @QtyAvailable, BookImgLink = @BookImgLink = '" + bookIdTxtBx.Text.Trim() + "'", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE InventoryDetails SET BookName = @BookName, Genre = @Genre, AuthorName = @AuthorName, PublisherName = @PublisherName, PublishedDate = @PublishedDate, Language = @Language, Edition = @Edition, UnitPrice = @UnitPrice, NumberOfPages = @NumberOfPages, BookDescription = @BookDescription, Quantity = @Quantity, QtyAvailable = @QtyAvailable, BookImgLink = @BookImgLink WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
 
                     cmd.Parameters.AddWithValue("BookName", bookNameTxtBx.Text.Trim());
                     cmd.Parameters.AddWithValue("Genre", genres);
@@ -261,7 +292,7 @@ namespace Bookstore.Web
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
                 return false;
             }
-        } // reference duplication
+        }
         private void GetBookById()
         {
             try
