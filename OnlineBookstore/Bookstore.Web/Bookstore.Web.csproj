@@ -1756,8 +1756,8 @@
     <Content Include="UserLogin.aspx" />
     <Content Include="UserProfile.aspx" />
     <Content Include="UserSignup.aspx" />
+    <Content Include="ViewBooks_PublicView.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminLogin.aspx.cs">
@@ -1838,12 +1838,12 @@
     <Compile Include="UserSignup.aspx.designer.cs">
       <DependentUpon>UserSignup.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="ViewBooks_PublicView.aspx.cs">
+      <DependentUpon>ViewBooks_PublicView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="ViewBooks_PublicView.aspx.designer.cs">
+      <DependentUpon>ViewBooks_PublicView.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
