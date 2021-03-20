@@ -13,7 +13,9 @@ namespace Bookstore.Web
 {
     public partial class booksinventory : System.Web.UI.Page
     {
-        readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        private static readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        private static string global_filepath;
+        private static int global_quantity, global_avalaible, global_checkedout;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -219,6 +221,12 @@ namespace Bookstore.Web
                     availableTxtBx.Text = dt.Rows[0]["QtyAvailable"].ToString().Trim();
                     checkedOutTxtBx.Text = "" + (Convert.ToInt32(dt.Rows[0]["Quantity"].ToString()) -
                         Convert.ToInt32(dt.Rows[0]["QtyAvailable"].ToString()));
+                    descriptionTxtBx.Text = dt.Rows[0]["BookDescription"].ToString().Trim();
+
+                    global_quantity = Convert.ToInt32(dt.Rows[0]["Quantity"].ToString().Trim());
+                    global_avalaible = Convert.ToInt32(dt.Rows[0]["QtyAvailable"].ToString().Trim());
+                    global_checkedout = global_avalaible - global_quantity;
+                    global_filepath = dt.Rows[0]["BookImgLink"].ToString();
 
                 }
                 else
