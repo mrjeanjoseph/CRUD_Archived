@@ -193,14 +193,14 @@ namespace Bookstore.Web
                 if (dt.Rows.Count>=1)
                 {
                     bookNameTxtBx.Text = dt.Rows[0]["BookName"].ToString();
-                    publishedDateBx.Text = dt.Rows[0]["PublishedDate"].ToString();
 
                     languageDDL.SelectedValue = dt.Rows[0]["Language"].ToString().Trim();
                     authorNameDDL.SelectedValue = dt.Rows[0]["AuthorName"].ToString().Trim();
                     publisherNameDDL.SelectedValue = dt.Rows[0]["PublisherName"].ToString().Trim();
+                    publishedDateBx.Text = dt.Rows[0]["PublishedDate"].ToString();
 
                     genreLBx.ClearSelection();
-                    string[] genre = dt.Rows[0]["Genre"].ToString().Trim().Split(' ');
+                    string[] genre = dt.Rows[0]["Genre"].ToString().Trim().Split('\n');
                     for (int i = 0; i < genre.Length; i++)
                     {
                         for (int j = 0; j < genreLBx.Items.Count; j++)
@@ -211,6 +211,15 @@ namespace Bookstore.Web
                             }
                         }
                     }
+
+                    editionTxtBx.Text = dt.Rows[0]["Edition"].ToString().Trim();
+                    priceTxtBx.Text = dt.Rows[0]["UnitPrice"].ToString().Trim();
+                    numOfPages.Text = dt.Rows[0]["NumberOfPages"].ToString().Trim();
+                    QtyTxtBx.Text = dt.Rows[0]["Quantity"].ToString().Trim();
+                    availableTxtBx.Text = dt.Rows[0]["QtyAvailable"].ToString().Trim();
+                    checkedOutTxtBx.Text = "" + (Convert.ToInt32(dt.Rows[0]["Quantity"].ToString()) -
+                        Convert.ToInt32(dt.Rows[0]["QtyAvailable"].ToString()));
+
                 }
                 else
                 {
