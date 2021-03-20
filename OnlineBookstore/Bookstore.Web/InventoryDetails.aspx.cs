@@ -14,8 +14,12 @@ namespace Bookstore.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                FillValues();
+            }
+
             inventoryDetailGV.DataBind();
-            FillValues();
         }
 
         protected void AddBooksPBtn_Click(object sender, EventArgs e)
@@ -51,12 +55,13 @@ namespace Bookstore.Web
         }
 
         //User Defined functions
-        private void UpdateBooksById()
+        private void UpdateBooksById() // There's a  bug here - unable to update within the page.
         {
             if (CheckBookExists())
             {
                 try
                 {
+                    //calc qty checkedout
                     int quantity = Convert.ToInt32(QtyTxtBx.Text.Trim());
                     int qtyAvailable = Convert.ToInt32(availableTxtBx.Text.Trim());
                     if (global_quantity == quantity)
@@ -77,6 +82,7 @@ namespace Bookstore.Web
                         }
                     }
 
+                    // load multiselect list of genres
                     string genres = "";
                     foreach (int listOfGenres in genreLBx.GetSelectedIndices())
                     {
@@ -84,6 +90,7 @@ namespace Bookstore.Web
                     }
                     genres = genres.Remove(genres.Length - 1);
 
+                    // to update the image file
                     string filePath = "~/inventoryBooks/book1.png",
                             fileName = Path.GetFileName(bookImgUpld.PostedFile.FileName);
                     if (fileName == "" || fileName == null)
@@ -103,14 +110,16 @@ namespace Bookstore.Web
                         con.Open();
                     }
 
-                    SqlCommand cmd = new SqlCommand("UPDATE InventoryDetails SET BookName = @BookName, Genre = @Genre, AuthorName = @AuthorName, PublisherName = @PublisherName, PublishedDate = @PublishedDate, Language = @Language, Edition = @Edition, UnitPrice = @UnitPrice, NumberOfPages = @NumberOfPages, BookDescription = @BookDescription, Quantity = @Quantity, QtyAvailable = @QtyAvailable, QtyCheckedOut = @QtyCheckedOut, BookImgLink = @BookImgLink = '" + bookIdTxtBx.Text.Trim() + "'", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE InventoryDetails SET BookName = @BookName, Genre = @Genre, AuthorName = @AuthorName, PublisherName = @PublisherName, PublishedDate = @PublishedDate, Language = @Language, Edition = @Edition, UnitPrice = @UnitPrice, NumberOfPages = @NumberOfPages, BookDescription = @BookDescription, Quantity = @Quantity, QtyAvailable = @QtyAvailable, BookImgLink = @BookImgLink = '" + bookIdTxtBx.Text.Trim() + "'", con);
 
-                    cmd.Parameters.AddWithValue("BookName", bookIdTxtBx.Text.Trim());
+                    cmd.Parameters.AddWithValue("BookName", bookNameTxtBx.Text.Trim());
+                    cmd.Parameters.AddWithValue("Genre", genres);
 
                     cmd.Parameters.AddWithValue("AuthorName", authorNameDDL.SelectedValue.Trim());
                     cmd.Parameters.AddWithValue("PublisherName", publisherNameDDL.SelectedValue.Trim());
-                    cmd.Parameters.AddWithValue("Language", languageDDL.SelectedValue.Trim());
+                    cmd.Parameters.AddWithValue("PublishedDate", publishedDateBx.Text.Trim());
 
+                    cmd.Parameters.AddWithValue("Language", languageDDL.SelectedValue.Trim());
                     cmd.Parameters.AddWithValue("Edition", editionTxtBx.Text.Trim());
                     cmd.Parameters.AddWithValue("UnitPrice", priceTxtBx.Text.Trim());
                     cmd.Parameters.AddWithValue("NumberOfPages", numOfPages.Text.Trim());
@@ -119,13 +128,12 @@ namespace Bookstore.Web
                     cmd.Parameters.AddWithValue("Quantity", quantity.ToString()); ;
                     cmd.Parameters.AddWithValue("QtyAvailable", qtyAvailable.ToString());
 
-                    cmd.Parameters.AddWithValue("Genre", genres);
                     cmd.Parameters.AddWithValue("BookImgLink", filePath);
 
                     cmd.ExecuteNonQuery();
                     con.Close();
                     inventoryDetailGV.DataBind();
-                    Response.Write("<script>alert('Member status updated');</script>");
+                    Response.Write("<script>alert('Book details updated successfully.');</script>");
                 }
                 catch (Exception ex)
                 {
@@ -134,7 +142,7 @@ namespace Bookstore.Web
             }
             else
             {
-                Response.Write("<script>alert('ID Feild cannot be blank.');</script>");
+                Response.Write("<script>alert('ID entered is invalid.');</script>");
             }
 
         }
