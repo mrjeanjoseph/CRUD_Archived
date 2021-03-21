@@ -123,7 +123,7 @@
 
                         <div class="row">
                             <div class="col center">
-                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="UserName" DataSourceID="SqlDataSource1">
+                                <asp:GridView class="table table-striped table-bordered" ID="BookStatusGV" runat="server" AutoGenerateColumns="False" DataKeyNames="UserName" DataSourceID="SqlDataSource1">
                                     <Columns>
                                         <asp:BoundField DataField="UserName" HeaderText="Borrower Id" ReadOnly="True" SortExpression="UserName"></asp:BoundField>
                                         <asp:BoundField DataField="FullName" HeaderText="Borrower Name" SortExpression="FullName"></asp:BoundField>

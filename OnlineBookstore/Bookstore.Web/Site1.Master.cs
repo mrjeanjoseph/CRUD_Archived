@@ -95,7 +95,7 @@ namespace Bookstore.Web
 
         protected void BookDetailsLBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AdminBookDetails.aspx");
+            Response.Redirect("AdminBookStatus.aspx");
         }
 
         protected void UserDetailsLBtn_Click(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace Bookstore.Web
 
         protected void ViewBooksLBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AdminBookDetails.aspx");
+            Response.Redirect("ViewBooks.aspx");
         }
 
         protected void UserLoginLBtn_Click(object sender, EventArgs e)

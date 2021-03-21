@@ -16,12 +16,12 @@ namespace Bookstore.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            BookStatusGV.DataBind();
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
-
+            SearchBooksByNameAndId();
         }
 
         protected void IssuedBtn_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace Bookstore.Web
         }
 
         //Custom User Defined Functions
-        private void GetBooksByNameAndId()
+        private void SearchBooksByNameAndId()
         {
             try
             {
@@ -44,7 +44,7 @@ namespace Bookstore.Web
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("SELECT BookName from BookStatus where BookId = '" + bookIdTxtBx.Text.Trim() + "';", con);
+                SqlCommand cmd = new SqlCommand("SELECT BookName from InventoryDetails where BookId = '" + bookIdTxtBx.Text.Trim() + "';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
