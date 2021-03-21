@@ -30,7 +30,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="container" runat="server">
         <div>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="Homepage.aspx">
@@ -77,6 +77,7 @@
 
         <%--Main Content Placeholder--%>
         <div>
+
             <asp:ContentPlaceHolder ID="body" runat="server">
             </asp:ContentPlaceHolder>
         </div>
@@ -86,8 +87,8 @@
 
         <%--Footer Area--%>
         <footer>
-            <div id="footer1" class="container-fluid">
-                <div class="row">
+            <div class="row">
+                <div class="col-md-6 footer">
                     <div class="col-xs-12 col-ms-12 col-md-12 text-center">
                         <p>
                             <asp:LinkButton CssClass="footerlinks" ID="adminLoginLBtn" runat="server" OnClick="AdminLoginLBtn_Click">Admin Login</asp:LinkButton>
@@ -97,11 +98,8 @@
                             <asp:LinkButton CssClass="footerlinks" ID="inventoryDetailsLBtn" runat="server" OnClick="InventoryDetailsLBtn_Click" Visible="False">Inventory</asp:LinkButton>
                             <asp:LinkButton CssClass="footerlinks" ID="bookDetailsLBtn" runat="server" OnClick="BookDetailsLBtn_Click" Visible="False">Book Issuing</asp:LinkButton>
                         </p>
+                        <hr />
                     </div>
-                </div>
-            </div>
-            <div id="footer2" class="container-fluid">
-                <div class="row">
                     <div class="col-xs-12 col-ms-12 col-md-12 text-center">
                         <p>&copy All right reserved. <a class="footerlinks" href="Homepage.aspx" target="_blank">DVC Enterprises LLC</a></p>
                     </div>
