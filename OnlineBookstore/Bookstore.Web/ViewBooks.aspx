@@ -1,17 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ViewBooks.aspx.cs" Inherits="Bookstore.Web.ViewBooks" %>
+﻿<%@ Page Title="Inventory Book Lists" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ViewBooks.aspx.cs" Inherits="Bookstore.Web.ViewBooks" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
-
         $(document).ready(function () {
             $(".table").prepend($("<thead></thead>").append($(this).find
                 ("tr:first"))).dataTable();
         });
     </script>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-
     <div class="container">
         <div class="row">
             <div class="col center">
@@ -88,8 +85,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
 </asp:Content>

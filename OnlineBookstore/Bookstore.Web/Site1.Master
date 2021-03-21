@@ -30,8 +30,8 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="container" runat="server">
-        <div>
+    <form runat="server">
+        <div id="container">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="Homepage.aspx">
                     <img src="img/book.png" width="30" height="30" />
@@ -76,8 +76,7 @@
         </div>
 
         <%--Main Content Placeholder--%>
-        <div>
-
+        <div class="pages">
             <asp:ContentPlaceHolder ID="body" runat="server">
             </asp:ContentPlaceHolder>
         </div>
@@ -98,7 +97,6 @@
                             <asp:LinkButton CssClass="footerlinks" ID="inventoryDetailsLBtn" runat="server" OnClick="InventoryDetailsLBtn_Click" Visible="False">Inventory</asp:LinkButton>
                             <asp:LinkButton CssClass="footerlinks" ID="bookDetailsLBtn" runat="server" OnClick="BookDetailsLBtn_Click" Visible="False">Book Issuing</asp:LinkButton>
                         </p>
-                        <hr />
                     </div>
                     <div class="col-xs-12 col-ms-12 col-md-12 text-center">
                         <p>&copy All right reserved. <a class="footerlinks" href="Homepage.aspx" target="_blank">DVC Enterprises LLC</a></p>

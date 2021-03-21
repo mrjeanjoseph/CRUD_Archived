@@ -1751,7 +1751,7 @@
     <Content Include="img\img6.png" />
     <Content Include="img\publisherIcon.png" />
     <Content Include="img\userIcon.png" />
-    <Content Include="AdminBookDetails.aspx" />
+    <Content Include="AdminBookStatus.aspx" />
     <Content Include="AdminPublisherDetails.aspx" />
     <Content Include="UserLogin.aspx" />
     <Content Include="UserProfile.aspx" />
@@ -1795,12 +1795,12 @@
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminBookDetails.aspx.cs">
-      <DependentUpon>AdminBookDetails.aspx</DependentUpon>
+    <Compile Include="AdminBookStatus.aspx.cs">
+      <DependentUpon>AdminBookStatus.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminBookDetails.aspx.designer.cs">
-      <DependentUpon>AdminBookDetails.aspx</DependentUpon>
+    <Compile Include="AdminBookStatus.aspx.designer.cs">
+      <DependentUpon>AdminBookStatus.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdminPublisherDetails.aspx.cs">
