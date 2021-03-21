@@ -24,10 +24,14 @@ namespace Bookstore.Web
             SearchBooksByNameAndId();
         }
 
-        protected void IssuedBtn_Click(object sender, EventArgs e)
+        protected void CheckOutBtn_Click(object sender, EventArgs e)
         {
-
+            if (CheckIfBookExist() && CheckIfMemberExist())
+            {
+                CheckOutBooks();
+            }
         }
+
 
         protected void ReturnBtn_Click(object sender, EventArgs e)
         {
@@ -35,6 +39,40 @@ namespace Bookstore.Web
         }
 
         //Custom User Defined Functions
+        private void CheckOutBooks()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("INSERT INTO BookStatus (MemberId, MemberName, BookId, BookName, CheckedOutDate, DueDate) values (@MemberId, @MemberName, @BookId, @BookName, @CheckedOutDate, @DueDate)", con);
+
+                cmd.Parameters.AddWithValue("@MemberId", memberIdTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@MemberName", memberNameTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@BookId", bookIdTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@BookName", bookNameTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@CheckedOutDate", checkedOutDateTxtBx.Text.Trim());
+                cmd.Parameters.AddWithValue("@DueDate", dueDateTxtBx.Text.Trim());
+                cmd.ExecuteNonQuery();
+
+                cmd = new SqlCommand("UPDATE InventoryDetails SET QtyAvailable = QtyAvailable - 1 WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+                Response.Write("<script>alert('Book checked out successffully');</script>");
+
+                BookStatusGV.DataBind();
+                ClearForm();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         private void SearchBooksByNameAndId()
         {
             try
@@ -76,6 +114,71 @@ namespace Bookstore.Web
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
+        }
+        private bool CheckIfBookExist()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("SELECT * from InventoryDetails WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "' AND QtyAvailable > 0", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        private bool CheckIfMemberExist()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("SELECT * from UserDetail WHERE Username = '" + memberIdTxtBx.Text.Trim() + "';", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        private void ClearForm()
+        {
+            memberIdTxtBx.Text = "";
+            memberNameTxtBx.Text = "";
+            bookNameTxtBx.Text = "";
+            bookIdTxtBx.Text = "";
+            checkedOutDateTxtBx.Text = "";
+            dueDateTxtBx.Text = "";
         }
 
     }

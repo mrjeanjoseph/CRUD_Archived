@@ -60,31 +60,31 @@ namespace Bookstore.Web
         protected global::System.Web.UI.WebControls.TextBox bookNameTxtBx;
 
         /// <summary>
-        /// startDateTxtBx control.
+        /// checkedOutDateTxtBx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox startDateTxtBx;
+        protected global::System.Web.UI.WebControls.TextBox checkedOutDateTxtBx;
 
         /// <summary>
-        /// endDateTxtBx control.
+        /// dueDateTxtBx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox endDateTxtBx;
+        protected global::System.Web.UI.WebControls.TextBox dueDateTxtBx;
 
         /// <summary>
-        /// issuedBtn control.
+        /// checkOutBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button issuedBtn;
+        protected global::System.Web.UI.WebControls.Button checkOutBtn;
 
         /// <summary>
         /// returnBtn control.

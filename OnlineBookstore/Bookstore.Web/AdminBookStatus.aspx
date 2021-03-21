@@ -72,14 +72,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group center">
-                                    <asp:TextBox class="form-control" ID="startDateTxtBx" placeholder="Start Date" runat="server" TextMode="Date"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="checkedOutDateTxtBx" placeholder="Checkout Date" runat="server" TextMode="Date"></asp:TextBox>
                                 </div>
                                 <br />
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group center">
                                     <div class="input-group">
-                                        <asp:TextBox class="form-control" ID="endDateTxtBx" placeholder="End Date" runat="server" TextMode="Date"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="dueDateTxtBx" placeholder="Due Date" runat="server" TextMode="Date"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br />
@@ -88,7 +88,7 @@
 
                         <div class="row mr-auto">
                             <div class="col center">
-                                <asp:Button ID="issuedBtn" class="btn btn-success w-75" runat="server" Text="Issued" OnClick="IssuedBtn_Click" />
+                                <asp:Button ID="checkOutBtn" class="btn btn-success w-75" runat="server" Text="Check Out" OnClick="CheckOutBtn_Click" />
                             </div>
                             <div class="col center">
                                 <asp:Button ID="returnBtn" class="btn btn-success w-75" runat="server" Text="Return" OnClick="ReturnBtn_Click" />
