@@ -13,7 +13,6 @@ namespace Bookstore.Web
     public partial class issuedbooks : System.Web.UI.Page
     {
         readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             //BookStatusGV.DataBind();
@@ -27,9 +26,16 @@ namespace Bookstore.Web
         protected void CheckOutBtn_Click(object sender, EventArgs e)
         {
 
-            if (CheckIfBookExist() && CheckIfMemberExist()) // 
+            if (CheckIfBookExist() && CheckIfMemberExist()) // There's a bug here somewhere!
             {
-                CheckOutBooks();
+                if (MemberDuplicateBooks())
+                {
+                    Response.Write("<script>alert('This member already checked out this book!');</script>");
+                }
+                else
+                {
+                    CheckOutBooks();
+                }
             }
             else
             {
@@ -117,7 +123,7 @@ namespace Bookstore.Web
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
-        bool CheckIfBookExist()
+        private bool CheckIfBookExist()
         {
             try
             {
@@ -146,7 +152,7 @@ namespace Bookstore.Web
                 return false;
             }
         }
-        bool CheckIfMemberExist()
+        private bool CheckIfMemberExist()
         {
             try
             {
@@ -175,6 +181,35 @@ namespace Bookstore.Web
                 return false;
             }
         }
+        private bool MemberDuplicateBooks()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("SELECT * FROM BookStatus WHERE Username = '" + memberIdTxtBx.Text.Trim() + "' AND BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                return false;
+            }
+        }
         private void ClearForm()
         {
             memberIdTxtBx.Text = "";
@@ -183,6 +218,6 @@ namespace Bookstore.Web
             bookIdTxtBx.Text = "";
             checkedOutDateTxtBx.Text = "";
             dueDateTxtBx.Text = "";
-        } 
+        }
     }
 }
