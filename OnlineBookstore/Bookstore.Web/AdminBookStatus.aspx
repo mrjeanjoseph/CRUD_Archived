@@ -120,17 +120,16 @@
                                 <hr />
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col center">
                                 <asp:GridView class="table table-striped table-bordered" ID="BookStatusGV" runat="server" AutoGenerateColumns="False" DataKeyNames="MemberId" DataSourceID="SqlDataSource1">
                                     <Columns>
-                                        <asp:BoundField DataField="MemberId" HeaderText="MemberId" ReadOnly="True" SortExpression="MemberId"></asp:BoundField>
-                                        <asp:BoundField DataField="MemberName" HeaderText="MemberName" SortExpression="MemberName"></asp:BoundField>
-                                        <asp:BoundField DataField="BookId" HeaderText="BookId" SortExpression="BookId"></asp:BoundField>
-                                        <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName"></asp:BoundField>
-                                        <asp:BoundField DataField="CheckedOutDate" HeaderText="CheckedOutDate" SortExpression="CheckedOutDate"></asp:BoundField>
-                                        <asp:BoundField DataField="DueDate" HeaderText="DueDate" SortExpression="DueDate"></asp:BoundField>
+                                        <asp:BoundField DataField="MemberId" HeaderText="Member Id" ReadOnly="True" SortExpression="MemberId"></asp:BoundField>
+                                        <asp:BoundField DataField="MemberName" HeaderText="Member Name" SortExpression="MemberName"></asp:BoundField>
+                                        <asp:BoundField DataField="BookId" HeaderText="Book Id" SortExpression="BookId"></asp:BoundField>
+                                        <asp:BoundField DataField="BookName" HeaderText="Book Name" SortExpression="BookName"></asp:BoundField>
+                                        <asp:BoundField DataField="CheckedOutDate" HeaderText="Check Out Date" SortExpression="CheckedOutDate"></asp:BoundField>
+                                        <asp:BoundField DataField="DueDate" HeaderText="Due Date" SortExpression="DueDate"></asp:BoundField>
                                     </Columns>
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:eLibraryDBConnectionString %>' SelectCommand="SELECT * FROM [BookStatus]"></asp:SqlDataSource>

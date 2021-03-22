@@ -30,8 +30,11 @@ namespace Bookstore.Web
             {
                 CheckOutBooks();
             }
+            else
+            {
+                Response.Write("<script>alert('An error has occured. Please try again!');</script>");
+            }
         }
-
 
         protected void ReturnBtn_Click(object sender, EventArgs e)
         {
@@ -61,11 +64,10 @@ namespace Bookstore.Web
                 cmd = new SqlCommand("UPDATE InventoryDetails SET (QtyAvailable = QtyAvailable - 1), (QtyCheckedOut = QtyCheckedOut + 1) WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
                 cmd.ExecuteNonQuery();
 
-                con.Close();
                 Response.Write("<script>alert('Book checked out successffully');</script>");
-
                 BookStatusGV.DataBind();
-                ClearForm();
+                con.Close();
+                
             }
             catch (Exception ex)
             {
