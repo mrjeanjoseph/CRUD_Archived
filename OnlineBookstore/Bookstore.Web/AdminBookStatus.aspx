@@ -1,6 +1,17 @@
 ﻿<%@ Page Title="Book Checkout Status" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="AdminBookStatus.aspx.cs" Inherits="Bookstore.Web.issuedbooks" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
+                "scrollY": "200px",
+                "scrollCollapse": true,
+                "paging": false
+            } );
+        });
+        </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
 
@@ -122,6 +133,7 @@
                         </div>
                         <div class="row">
                             <div class="col center">
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:eLibraryDBConnectionString %>' SelectCommand="SELECT * FROM [BookStatus]"></asp:SqlDataSource>
                                 <asp:GridView class="table table-striped table-bordered" ID="BookStatusGV" runat="server" AutoGenerateColumns="False" DataKeyNames="MemberId" DataSourceID="SqlDataSource1">
                                     <Columns>
                                         <asp:BoundField DataField="MemberId" HeaderText="Member Id" ReadOnly="True" SortExpression="MemberId"></asp:BoundField>
@@ -132,7 +144,6 @@
                                         <asp:BoundField DataField="DueDate" HeaderText="Due Date" SortExpression="DueDate"></asp:BoundField>
                                     </Columns>
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:eLibraryDBConnectionString %>' SelectCommand="SELECT * FROM [BookStatus]"></asp:SqlDataSource>
                             </div>
                         </div>
                     </div>

@@ -16,7 +16,7 @@ namespace Bookstore.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //BookStatusGV.DataBind();
+            BookStatusGV.DataBind();
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -26,6 +26,7 @@ namespace Bookstore.Web
 
         protected void CheckOutBtn_Click(object sender, EventArgs e)
         {
+
             if (CheckIfBookExist() && CheckIfMemberExist())
             {
                 CheckOutBooks();
@@ -61,13 +62,13 @@ namespace Bookstore.Web
                 cmd.Parameters.AddWithValue("@DueDate", dueDateTxtBx.Text.Trim());
                 cmd.ExecuteNonQuery();
 
-                cmd = new SqlCommand("UPDATE InventoryDetails SET (QtyAvailable = QtyAvailable - 1), (QtyCheckedOut = QtyCheckedOut + 1) WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
+                cmd = new SqlCommand("UPDATE InventoryDetails SET QtyAvailable = QtyAvailable - 1 WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
                 cmd.ExecuteNonQuery();
 
+                con.Close();
                 Response.Write("<script>alert('Book checked out successffully');</script>");
                 BookStatusGV.DataBind();
-                con.Close();
-                
+                //ClearForm();
             }
             catch (Exception ex)
             {
@@ -153,7 +154,7 @@ namespace Bookstore.Web
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("SELECT * from UserDetails WHERE Username = '" + memberIdTxtBx.Text.Trim() + "';", con);
+                SqlCommand cmd = new SqlCommand("SELECT FullName FROM UserDetails WHERE Username = '" + memberIdTxtBx.Text.Trim() + "'", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
