@@ -16,7 +16,7 @@ namespace Bookstore.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            BookStatusGV.DataBind();
+            //BookStatusGV.DataBind();
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace Bookstore.Web
                 cmd.Parameters.AddWithValue("@DueDate", dueDateTxtBx.Text.Trim());
                 cmd.ExecuteNonQuery();
 
-                cmd = new SqlCommand("UPDATE InventoryDetails SET (QtyAvailable = QtyAvailable - 1) AND (QtyCheckedOut = QtyCheckedOut + 1) WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
+                cmd = new SqlCommand("UPDATE InventoryDetails SET (QtyAvailable = QtyAvailable - 1), (QtyCheckedOut = QtyCheckedOut + 1) WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
                 cmd.ExecuteNonQuery();
 
                 con.Close();
@@ -67,10 +67,9 @@ namespace Bookstore.Web
                 BookStatusGV.DataBind();
                 ClearForm();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
         private void SearchBooksByNameAndId()
