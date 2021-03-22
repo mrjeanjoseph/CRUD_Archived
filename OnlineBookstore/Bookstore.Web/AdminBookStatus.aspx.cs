@@ -58,7 +58,7 @@ namespace Bookstore.Web
                 cmd.Parameters.AddWithValue("@DueDate", dueDateTxtBx.Text.Trim());
                 cmd.ExecuteNonQuery();
 
-                cmd = new SqlCommand("UPDATE InventoryDetails SET QtyAvailable = QtyAvailable - 1 WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
+                cmd = new SqlCommand("UPDATE InventoryDetails SET (QtyAvailable = QtyAvailable - 1) AND (QtyCheckedOut = QtyCheckedOut + 1) WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
                 cmd.ExecuteNonQuery();
 
                 con.Close();
@@ -152,7 +152,7 @@ namespace Bookstore.Web
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("SELECT * from UserDetail WHERE Username = '" + memberIdTxtBx.Text.Trim() + "';", con);
+                SqlCommand cmd = new SqlCommand("SELECT * from UserDetails WHERE Username = '" + memberIdTxtBx.Text.Trim() + "';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -179,7 +179,6 @@ namespace Bookstore.Web
             bookIdTxtBx.Text = "";
             checkedOutDateTxtBx.Text = "";
             dueDateTxtBx.Text = "";
-        }
-
+        } 
     }
 }
