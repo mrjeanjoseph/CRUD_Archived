@@ -10,7 +10,7 @@ namespace Bookstore.Web
         readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //BookStatusGV.DataBind();
+            BookStatusGV.DataBind();
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -185,7 +185,7 @@ namespace Bookstore.Web
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("SELECT * FROM BookStatus WHERE Username = '" + memberIdTxtBx.Text.Trim() + "' AND BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM BookStatus WHERE MemberId = '" + memberIdTxtBx.Text.Trim() + "' AND BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -202,7 +202,7 @@ namespace Bookstore.Web
             catch (Exception ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
-                return false;
+                return true;
             }
         }
         private void ClearForm()
