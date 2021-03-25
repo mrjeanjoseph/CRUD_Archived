@@ -1,11 +1,22 @@
 ﻿<%@ Page Title="User Profile" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="UserProfile.aspx.cs" Inherits="Bookstore.Web.Userprofile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
+                "scrollY": "200px",
+                "scrollCollapse": true,
+                "paging": false
+            });
+        });
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
 
 
-    <div class="container-fluid"> 
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-5">
                 <div class="card">
@@ -89,6 +100,7 @@
                                         <asp:ListItem Text="--Select--" Value="select" />
                                         <asp:ListItem Text="Haiti" Value="LAS" />
                                         <asp:ListItem Text="North Carolina" Value="NC" />
+                                        <asp:ListItem Text="North Dakota" Value="NA" />
                                         <asp:ListItem Text="South Carolina" Value="SC" />
                                         <asp:ListItem Text="Virginia" Value="VA" />
                                         <asp:ListItem Text="Florida" Value="FL" />
@@ -153,7 +165,7 @@
                         <div class="row">
                             <div class="col-8 mx-auto center">
                                 <div class="form-group">
-                                    <asp:Button ID="updateBtn" class="btn btn-success w-100" runat="server" Text="Update" />
+                                    <asp:Button ID="updateBtn" class="btn btn-success w-100" runat="server" Text="Update" OnClick="UpdateBtn_Click" />
                                 </div>
                                 <br />
                             </div>
@@ -189,13 +201,15 @@
 
                         <div class="row">
                             <div class="col center">
-                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server">
+                                <asp:GridView class="table table-striped table-bordered" ID="UserDetailsGV" runat="server" OnRowDataBound="UserDetailsGV_RowDataBound">
                                 </asp:GridView>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:eLibraryDBConnectionString %>' SelectCommand="SELECT * FROM [UserDetails]"></asp:SqlDataSource>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div><br />
+            </div>
+            <br />
         </div>
     </div>
 

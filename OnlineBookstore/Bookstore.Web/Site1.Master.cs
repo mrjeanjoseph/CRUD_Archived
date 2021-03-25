@@ -17,7 +17,7 @@ namespace Bookstore.Web
                 {
                     logoutLBtn.Visible = true;
                     greetUserLBtn.Visible = true;
-                    greetUserLBtn.Text = $"Hello { Session["FullName"].ToString().Length - 5 }";
+                    greetUserLBtn.Text = $"Hello { Session["FullName"] }";
                     viewBooksLBtn.Visible = true;
 
                     //userSignUpLBtn.Visible = false;
