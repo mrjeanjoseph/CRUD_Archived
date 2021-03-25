@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace Bookstore.Web
 {
-    public partial class authorlogin : System.Web.UI.Page
+    public partial class authorlogin : Page
     {
         readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
@@ -30,7 +30,41 @@ namespace Bookstore.Web
                 AddNewAuthor();
             }
         }
-        private void AddNewAuthor() // User defined function
+
+        protected void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            if (CheckAuthorExists())
+            {
+                UpdateAuthorDetail();
+            }
+            else
+            {
+                Response.Write("<script>alert('Author Detail does not exist');</script>");
+                ClearForm();
+            }
+        }
+
+        protected void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            if (CheckAuthorExists())
+            {
+                DeleteAuthorDetail();
+            }
+            else
+            {
+                Response.Write("<script>alert('Author Detail has been deleted');</script>");
+                ClearForm();
+            }
+        }
+
+        protected void SearchBtn_Click(object sender, EventArgs e)
+        {
+            SearchAuthorById(); // Add some validation here
+        }
+
+
+        //User Defined Function
+        private void AddNewAuthor()
         {
             try
             {
@@ -58,19 +92,7 @@ namespace Bookstore.Web
 
         }
 
-        protected void UpdateBtn_Click(object sender, EventArgs e)
-        {
-            if (CheckAuthorExists())
-            {
-                UpdateAuthorDetail();
-            }
-            else
-            {
-                Response.Write("<script>alert('Author Detail does not exist');</script>");
-                ClearForm();
-            }
-        }
-        private void UpdateAuthorDetail() // User Defined function
+        private void UpdateAuthorDetail()
         {
             try
             {
@@ -96,19 +118,7 @@ namespace Bookstore.Web
             }
         }
 
-        protected void DeleteBtn_Click(object sender, EventArgs e)
-        {
-            if (CheckAuthorExists())
-            {
-                DeleteAuthorDetail();
-            }
-            else
-            {
-                Response.Write("<script>alert('Author Detail has been deleted');</script>");
-                ClearForm();
-            }
-        }
-        private void DeleteAuthorDetail() // User Defined Function
+        private void DeleteAuthorDetail()
         {
             try
             {
@@ -132,11 +142,7 @@ namespace Bookstore.Web
             }
         }
 
-        protected void SearchBtn_Click(object sender, EventArgs e)
-        {
-            SearchAuthorById();
-        }
-        private void SearchAuthorById() // User defined function
+        private void SearchAuthorById()
         {
             try
             {
@@ -197,6 +203,7 @@ namespace Bookstore.Web
                 return false;
             }
         }
+
         private void ClearForm()
         {
             authorNameTxtBx.Text = "";

@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Web.UI.WebControls;
 
+// There's bunch of errors when loading the page - FIND THEM
+
 namespace Bookstore.Web
 {
     public partial class issuedbooks : System.Web.UI.Page
