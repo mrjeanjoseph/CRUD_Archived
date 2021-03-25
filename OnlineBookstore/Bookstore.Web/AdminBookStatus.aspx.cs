@@ -2,6 +2,8 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Web.UI.WebControls;
 
 namespace Bookstore.Web
 {
@@ -260,6 +262,27 @@ namespace Bookstore.Web
             bookIdTxtBx.Text = "";
             checkedOutDateTxtBx.Text = "";
             dueDateTxtBx.Text = "";
+        }
+
+        protected void BookStatusGV_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    DateTime dt = Convert.ToDateTime(e.Row.Cells[5].Text);
+                    DateTime today = DateTime.Today;
+                    if (today > dt)
+                    {
+                        e.Row.BackColor = Color.Red;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+            }
         }
     }
 }

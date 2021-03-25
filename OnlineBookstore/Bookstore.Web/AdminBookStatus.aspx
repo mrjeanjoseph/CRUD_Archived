@@ -134,7 +134,7 @@
                         <div class="row">
                             <div class="col center">
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:eLibraryDBConnectionString %>' SelectCommand="SELECT * FROM [BookStatus]"></asp:SqlDataSource>
-                                <asp:GridView class="table table-striped table-bordered" ID="BookStatusGV" runat="server" AutoGenerateColumns="False" DataKeyNames="MemberId" DataSourceID="SqlDataSource1">
+                                <asp:GridView class="table table-striped table-bordered" ID="BookStatusGV" runat="server" AutoGenerateColumns="False" DataKeyNames="MemberId" DataSourceID="SqlDataSource1" OnRowDataBound="BookStatusGV_RowDataBound">
                                     <Columns>
                                         <asp:BoundField DataField="MemberId" HeaderText="Member Id" ReadOnly="True" SortExpression="MemberId"></asp:BoundField>
                                         <asp:BoundField DataField="MemberName" HeaderText="Member Name" SortExpression="MemberName"></asp:BoundField>
