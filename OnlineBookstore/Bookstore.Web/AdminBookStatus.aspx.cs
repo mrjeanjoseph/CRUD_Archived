@@ -40,10 +40,55 @@ namespace Bookstore.Web
 
         protected void ReturnBtn_Click(object sender, EventArgs e)
         {
-
+            if (CheckIfBookExist() && CheckIfMemberExist()) // There's a bug here somewhere!
+            {
+                if (MemberDuplicateBooks())
+                {
+                    CheckOutBooks();
+                }
+                else
+                {
+                    Response.Write("<script>alert('This book does not exist!');</script>");                    
+                }
+            }
+            else
+            {
+                Response.Write("<script>alert('An error has occured. Please try again!');</script>");
+            }
         }
 
+
         //Custom User Defined Functions
+        private void ReturnBooks()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                SqlCommand cmd = new SqlCommand("DELETE FROM BookStatus WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "' AND MemberId ='" + bookNameTxtBx.Text.Trim() + "'", con);
+
+                int result = cmd.ExecuteNonQuery();
+                con.Close();
+                if (result > 0)
+                {
+                    cmd = new SqlCommand("UPDATE BookStatus SET QtyAvailable = QtyAvailable WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                    Response.Write("<script>alert('Book returned successfully');</script>");
+                    BookStatusGV.DataBind();
+                }
+            } 
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         private void CheckOutBooks()
         {
             try
