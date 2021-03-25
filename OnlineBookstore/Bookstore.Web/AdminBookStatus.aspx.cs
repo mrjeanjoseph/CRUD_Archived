@@ -44,7 +44,7 @@ namespace Bookstore.Web
             {
                 if (MemberDuplicateBooks())
                 {
-                    CheckOutBooks();
+                    ReturnBooks();
                 }
                 else
                 {
@@ -72,7 +72,7 @@ namespace Bookstore.Web
                 SqlCommand cmd = new SqlCommand("DELETE FROM BookStatus WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "' AND MemberId ='" + bookNameTxtBx.Text.Trim() + "'", con);
 
                 int result = cmd.ExecuteNonQuery();
-                con.Close();
+                
                 if (result > 0)
                 {
                     cmd = new SqlCommand("UPDATE BookStatus SET QtyAvailable = QtyAvailable WHERE BookId = '" + bookIdTxtBx.Text.Trim() + "'", con);
@@ -81,6 +81,8 @@ namespace Bookstore.Web
 
                     Response.Write("<script>alert('Book returned successfully');</script>");
                     BookStatusGV.DataBind();
+
+                    con.Close();
                 }
             } 
             catch (Exception)
