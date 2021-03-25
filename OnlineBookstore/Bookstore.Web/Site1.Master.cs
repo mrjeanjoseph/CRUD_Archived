@@ -10,15 +10,14 @@ namespace Bookstore.Web
     public partial class Site1 : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-            //Response.AppendHeader("Refresh", "10");
+        {            
             try
             {
                 if (Session["ROLE"].Equals("user"))
                 {
                     logoutLBtn.Visible = true;
                     helloUserLBtn.Visible = true;
-                    helloUserLBtn.Text = $"Hello { Session["FullName"] }";
+                    helloUserLBtn.Text = $"Hello { Session["FullName"].ToString().Length - 5 }";
                     viewBooksLBtn.Visible = true;
 
                     //userSignUpLBtn.Visible = false;
@@ -69,8 +68,10 @@ namespace Bookstore.Web
             }
             catch (Exception ex)
             {
-                //Response.Write("<script>alert('" + ex.Message + "');</script>");
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                Response.Redirect("Homepage.aspx");
             }
+            //Response.AppendHeader("Refresh", "10");
         }
 
         protected void AdminLoginLBtn_Click(object sender, EventArgs e)
