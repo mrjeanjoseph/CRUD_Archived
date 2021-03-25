@@ -203,7 +203,7 @@
                             <div class="col center">
                                 <asp:GridView class="table table-striped table-bordered" ID="UserDetailsGV" runat="server" OnRowDataBound="UserDetailsGV_RowDataBound">
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:eLibraryDBConnectionString %>' SelectCommand="SELECT * FROM [UserDetails]"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:eLibraryDBConnectionString %>' SelectCommand="SELECT * FROM [BookStatus]"></asp:SqlDataSource>
                             </div>
                         </div>
                     </div>

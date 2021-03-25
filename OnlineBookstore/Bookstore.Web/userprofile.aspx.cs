@@ -19,10 +19,10 @@ namespace Bookstore.Web
         {
             try
             {
-                if (Session["Username"].ToString() == "" || Session["Username"] == null)
+                if (Session["FullName"].ToString() == "" || Session["FullName"] == null)
                 {
                     Response.Write("<script>alert('Session expired. Please login again');</script>");
-                    Response.Redirect("UserProfile.aspx");
+                    //Response.Redirect("UserProfile.aspx");
                 }
                 else
                 {
@@ -32,7 +32,7 @@ namespace Bookstore.Web
             catch (Exception)
             {
                 Response.Write("<script>alert('Session expired. Please login again');</script>");
-                Response.Redirect("UserProfile.aspx");
+                //Response.Redirect("UserProfile.aspx");
             }
         }
 
@@ -67,8 +67,11 @@ namespace Bookstore.Web
             }
 
         }
+
+        
         protected void UserDetailsGV_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            // MORE BUGS HERE - DO NOT WRITE BUGS, WRITE CUB
             try
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
@@ -82,11 +85,12 @@ namespace Bookstore.Web
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                Response.Write("<script>alert('Error from the Gridview - Adding color');</script>");
             }
 
         }
+        
     }
 }
