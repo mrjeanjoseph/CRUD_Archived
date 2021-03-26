@@ -14,7 +14,6 @@ namespace Bookstore.Web
     public partial class Userprofile : System.Web.UI.Page
     {
         readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -22,7 +21,7 @@ namespace Bookstore.Web
                 if (Session["FullName"].ToString() == "" || Session["FullName"] == null)
                 {
                     Response.Write("<script>alert('Session expired. Please login again');</script>");
-                    //Response.Redirect("UserProfile.aspx");
+                    //Response.Redirect("UserLogin.aspx");
                 }
                 else
                 {
@@ -32,7 +31,7 @@ namespace Bookstore.Web
             catch (Exception)
             {
                 Response.Write("<script>alert('Session expired. Please login again');</script>");
-                //Response.Redirect("UserProfile.aspx");
+                Response.Redirect("UserLogin.aspx");
             }
         }
 
@@ -53,7 +52,7 @@ namespace Bookstore.Web
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM UserDetails where FullName = '" + Session["FullName"].ToString() + "';", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM BookStatus WHERE MemberName = '" + Session["FullName"].ToString() + "';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -63,7 +62,8 @@ namespace Bookstore.Web
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                Response.Write("<script>alert('Getting user date Error!');</script>");
+                //Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }        
         protected void UserDetailsGV_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -80,13 +80,13 @@ namespace Bookstore.Web
                         e.Row.BackColor = Color.Red;
                     }
                 }
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Response.Write("<script>alert('Error from the UserDetailsGV_RowDataBound');</script>");
+                //Response.Write("<script>alert('" + ex.Message + "');</script>");
+                //Response.Redirect("UserLogin.aspx");
             }
-
         }        
     }
 }
