@@ -31,7 +31,7 @@
                             <div class="col center">
                                 <h3>Your Profile</h3>
                                 <span>Account Status</span>
-                                <asp:Label class="badge rounded-pill bg-info text-dark" ID="Label1" runat="server" Text="Your Status"></asp:Label>
+                                <asp:Label class="badge rounded-pill bg-info text-dark" ID="accountStatusLbl" runat="server" Text="Your Status"></asp:Label>
                             </div>
                         </div>
 
@@ -96,7 +96,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group center">
-                                    <asp:DropDownList class="form-control" ID="DropDownList1" runat="server">
+                                    <asp:DropDownList class="form-control" ID="stateDDL" runat="server">
                                         <asp:ListItem Text="--Select--" Value="select" />
                                         <asp:ListItem Text="Haiti" Value="LAS" />
                                         <asp:ListItem Text="North Carolina" Value="NC" />
