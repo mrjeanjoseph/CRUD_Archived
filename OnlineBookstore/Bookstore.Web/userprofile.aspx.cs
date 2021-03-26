@@ -38,7 +38,7 @@ namespace Bookstore.Web
 
         protected void UpdateBtn_Click(object sender, EventArgs e)
         {
-
+            
         }
 
 
@@ -65,10 +65,7 @@ namespace Bookstore.Web
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
-
-        }
-
-        
+        }        
         protected void UserDetailsGV_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             // MORE BUGS HERE - DO NOT WRITE BUGS, WRITE CUB
@@ -87,10 +84,9 @@ namespace Bookstore.Web
             }
             catch (Exception)
             {
-                Response.Write("<script>alert('Error from the Gridview - Adding color');</script>");
+                Response.Write("<script>alert('Error from the UserDetailsGV_RowDataBound');</script>");
             }
 
-        }
-        
+        }        
     }
 }
