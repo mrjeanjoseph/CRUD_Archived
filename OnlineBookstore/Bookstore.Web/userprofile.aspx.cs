@@ -16,13 +16,13 @@ namespace Bookstore.Web
     {
         readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
-        {
+        { // Issue resolved with page load
             try
             {
                 if (Session["Username"].ToString() == "" || Session["Username"] == null)
                 {
                     Response.Write("<script>alert('Session expired. Please login again');</script>");
-                    //Response.Redirect("UserLogin.aspx");
+                    Response.Redirect("UserLogin.aspx");
                 }
                 else
                 {
@@ -35,10 +35,10 @@ namespace Bookstore.Web
             }
             catch (Exception)
             {
-                Response.Write("<script>alert('Error with PageLoad');</script>"); // When this error is prompted, it redirects to a blank page
-                //Response.Redirect("UserLogin.aspx");
+                Response.Redirect("UserLogin.aspx");
             }
         }
+
         protected void UpdateBtn_Click(object sender, EventArgs e)
         {
             if (Session["Username"].ToString() == "" || Session["Username"] == null)
@@ -50,7 +50,7 @@ namespace Bookstore.Web
             {
                 UpdateUserDetails();
             }
-        }
+        } // There's a bug here - somewhere
 
         //User Defined Function
         private void UpdateUserDetails()

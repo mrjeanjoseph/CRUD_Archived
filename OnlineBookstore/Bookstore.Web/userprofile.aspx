@@ -132,7 +132,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group center">
-                                    <span class="badge rounded-pill bg-success">Please Create a username and password</span>
+                                    <span class="badge rounded-pill bg-success">Want to create a new password?</span>
                                 </div>
                                 <br />
                             </div>
@@ -148,7 +148,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group center">
-                                    <asp:TextBox class="form-control" ID="currentPassTxtBx" placeholder="Current Password"
+                                    <asp:TextBox class="form-control" ID="currentPassTxtBx" placeholder=""
                                         runat="server" TextMode="Password" ReadOnly="True"></asp:TextBox>
                                 </div>
                                 <br />
@@ -156,7 +156,7 @@
                             <div class="col-md-4">
                                 <div class="form-group center">
                                     <asp:TextBox class="form-control" ID="newPassTxtBx" placeholder="New Password"
-                                        runat="server" TextMode="Password" ReadOnly="True"></asp:TextBox>
+                                        runat="server" TextMode="Password"></asp:TextBox>
                                 </div>
                                 <br />
                             </div>
