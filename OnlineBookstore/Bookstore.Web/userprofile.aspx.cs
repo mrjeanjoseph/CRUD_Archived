@@ -28,7 +28,7 @@ namespace Bookstore.Web
                     GetBooksDetails();
                     if (!Page.IsPostBack)
                     {
-                        GetUserDetails();
+                        LoadUserDetails();
                     }
                 }
             }
@@ -41,13 +41,17 @@ namespace Bookstore.Web
 
         protected void UpdateBtn_Click(object sender, EventArgs e)
         {
-            
+            UpdateUserDetails();
         }
 
 
         //User Defined Function
 
-        private void GetUserDetails()
+        private void UpdateUserDetails()
+        {
+            string passwordReset = "";
+        }
+        private void LoadUserDetails()
         {
             try
             {
