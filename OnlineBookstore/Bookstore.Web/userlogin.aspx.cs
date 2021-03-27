@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace Bookstore.Web
 {
-    public partial class Userlogin : System.Web.UI.Page
+    public partial class Userlogin : Page
     {
         readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
@@ -35,8 +35,8 @@ namespace Bookstore.Web
                 {
                     while (readDB.Read())
                     {
-                        Response.Write("<script>alert('Login Successfull!');</script>");
-                        //Session["Username"] = readDB.GetValue(0).ToString();
+                        //Response.Write("<script>alert('Login Successfull!');</script>");
+                        Session["Username"] = readDB.GetValue(0).ToString();
                         Session["FullName"] = readDB.GetValue(1).ToString();
                         Session["ROLE"] = "user";
                         Session["AccountStatus"] = readDB.GetValue(11).ToString();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -18,7 +19,7 @@ namespace Bookstore.Web
         {
             try
             {
-                if (Session["FullName"].ToString() == "" || Session["FullName"] == null)
+                if (Session["Username"].ToString() == "" || Session["Username"] == null)
                 {
                     Response.Write("<script>alert('Session expired. Please login again');</script>");
                     //Response.Redirect("UserLogin.aspx");
@@ -34,13 +35,13 @@ namespace Bookstore.Web
             }
             catch (Exception)
             {
-                Response.Write("<script>alert('Session expired. Please login again');</script>");
-                Response.Redirect("UserLogin.aspx");
+                Response.Write("<script>alert('Error with PageLoad');</script>"); // When this error is prompted, it redirects to a blank page
+                //Response.Redirect("UserLogin.aspx");
             }
         }
         protected void UpdateBtn_Click(object sender, EventArgs e)
         {
-            if (Session["FullName"].ToString() == "" || Session["FullName"] == null)
+            if (Session["Username"].ToString() == "" || Session["Username"] == null)
             {
                 Response.Write("<script>alert('Session expired. Please login again');</script>");
                 //Response.Redirect("UserLogin.aspx");
@@ -72,13 +73,13 @@ namespace Bookstore.Web
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("UPDATE UserDetails SET FullName=@FullName, BirthDate=@BirthDate, ContactNumber=@ContactNumber, Email=@Email, StreetAddress1=@StreetAddress1, StreetAddress2=@StreetAddress2, City=@City, State=@State, ZipCode=@ZipCode, AccountStatus=@AccountStatus, Password=@currentPass WHERE Username = '"+ Session["Username"].ToString().ToString() +"'", con);
+                SqlCommand cmd = new SqlCommand("UPDATE UserDetails SET FullName=@FullName, BirthDate=@BirthDate, ContactNumber=@ContactNumber, Email=@Email, StreetAddress1=@StreetAddress1, StreetAddress2=@StreetAddress2, City=@City, State=@State, ZipCode=@ZipCode, AccountStatus=@AccountStatus, Password=@currentPass WHERE Username = '" + Session["Username"].ToString().ToString() + "'", con);
 
                 cmd.Parameters.AddWithValue("@FullName", fullNameTxtBx.Text.Trim().ToString());
                 cmd.Parameters.AddWithValue("@BirthDate", birthDateTxtBx.Text.Trim().ToString());
                 cmd.Parameters.AddWithValue("@ContactNumber", phoneNumberTxtBx.Text.Trim().ToString());
                 cmd.Parameters.AddWithValue("@Email", emailTxtBx.Text.Trim().ToString());
-                
+
                 cmd.Parameters.AddWithValue("@StreetAddress1", addressTxtBx1.Text.Trim().ToString());
                 cmd.Parameters.AddWithValue("@StreetAddress2", addressTxtBx2.Text.Trim().ToString());
                 cmd.Parameters.AddWithValue("@City", cityTxtBx.Text.Trim().ToString());
@@ -173,13 +174,13 @@ namespace Bookstore.Web
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM BookStatus WHERE MemberName = '" + Session["FullName"].ToString() + "';", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM BookStatus WHERE MemberId = '" + Session["Username"].ToString() + "';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                UserDetailsGV.DataSource = dt;
-                UserDetailsGV.DataBind();
+                //UserDetailsGV.DataSource = dt;
+                //UserDetailsGV.DataBind();
             }
             catch (Exception ex)
             {
@@ -187,27 +188,26 @@ namespace Bookstore.Web
                 //Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
-        private void UserDetailsGV_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            // MORE BUGS HERE - DO NOT WRITE BUGS, WRITE CUB
-            try
-            {
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    DateTime dt = Convert.ToDateTime(e.Row.Cells[5].Text);
-                    DateTime today = DateTime.Today;
-                    if (today > dt)
-                    {
-                        e.Row.BackColor = Color.Red;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Response.Write("<script>alert('Error from the UserDetailsGV_RowDataBound');</script>");
-                //Response.Write("<script>alert('" + ex.Message + "');</script>");
-                Response.Redirect("UserLogin.aspx");
-            }
-        }        
+        //private void UserDetailsGV_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.Row.RowType == DataControlRowType.DataRow)
+        //        {
+        //            DateTime dt = Convert.ToDateTime(e.Row.Cells[5].Text);
+        //            DateTime today = DateTime.Today;
+        //            if (today > dt)
+        //            {
+        //                e.Row.BackColor = Color.Red;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Response.Write("<script>alert('Error from the UserDetailsGV_RowDataBound');</script>");
+        //        //Response.Write("<script>alert('" + ex.Message + "');</script>");
+        //        Response.Redirect("UserLogin.aspx");
+        //    }
+        //}
     }
 }
