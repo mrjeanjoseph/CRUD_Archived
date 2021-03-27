@@ -23,10 +23,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-md-5">
-                <div class="card">
+            <div class="col-lg-5">
+                <div class="card card" style="max-width: 50rem;">
                     <div class="card-body">
 
                         <div class="row">
@@ -228,9 +228,8 @@
                 </div>
                 <br />
             </div>
-            <div class="col-md-7">
-
-                <div class="card">
+            <div class="col-lg-7">
+                <div class="card card" style="max-width: 50rem;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col center">
