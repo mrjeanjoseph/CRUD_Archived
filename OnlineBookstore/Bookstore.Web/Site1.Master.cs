@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Bookstore.Web
 {
-    public partial class Site1 : System.Web.UI.MasterPage
+    public partial class Site1 : MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {            
@@ -20,15 +20,15 @@ namespace Bookstore.Web
                     greetUserLBtn.Text = $"Hello { Session["FullName"] }";
                     viewBooksLBtn.Visible = true;
 
-                    //userSignUpLBtn.Visible = false;
-                    //userLoginLBtn.Visible = false;
+                    userSignUpLBtn.Visible = false;
+                    userLoginLBtn.Visible = false;
 
-                    //adminLoginLBtn.Visible = false;
-                    //authorDetailsLBtn.Visible = false;
-                    //publisherDetailsLBtn.Visible = false;
-                    //inventoryDetailsLBtn.Visible = false;
-                    //bookDetailsLBtn.Visible = false;
-                    //userDetailsLBtn.Visible = false;
+                    adminLoginLBtn.Visible = false;
+                    authorDetailsLBtn.Visible = false;
+                    publisherDetailsLBtn.Visible = false;
+                    inventoryDetailsLBtn.Visible = false;
+                    bookDetailsLBtn.Visible = false;
+                    userDetailsLBtn.Visible = false;
                 }
 
                 else if (Session["ROLE"].Equals("admin"))
@@ -36,12 +36,13 @@ namespace Bookstore.Web
                     logoutLBtn.Visible = true;
                     greetUserLBtn.Visible = true;
                     greetUserLBtn.Text = $"Hello Admin"; // add a time stamp here!
+                    greetUserLBtn.Enabled = false;
                     viewBooksLBtn.Visible = true;
 
 
-                    //userSignUpLBtn.Visible = false;
-                    //userLoginLBtn.Visible = false;
-                    //adminLoginLBtn.Visible = false;
+                    userSignUpLBtn.Visible = false;
+                    userLoginLBtn.Visible = false;
+                    adminLoginLBtn.Visible = false;
 
                     authorDetailsLBtn.Visible = true;
                     publisherDetailsLBtn.Visible = true;
