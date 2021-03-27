@@ -148,14 +148,14 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group center">
-                                    <asp:TextBox class="form-control" ID="passwordTxtBx" placeholder="Current Password"
+                                    <asp:TextBox class="form-control" ID="currentPassTxtBx" placeholder="Current Password"
                                         runat="server" TextMode="Password" ReadOnly="True"></asp:TextBox>
                                 </div>
                                 <br />
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group center">
-                                    <asp:TextBox class="form-control" ID="confirmPassTxtBx" placeholder="New Password"
+                                    <asp:TextBox class="form-control" ID="newPassTxtBx" placeholder="New Password"
                                         runat="server" TextMode="Password" ReadOnly="True"></asp:TextBox>
                                 </div>
                                 <br />

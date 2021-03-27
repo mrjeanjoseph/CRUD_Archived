@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace Bookstore.Web
 {
-    public partial class Userprofile : System.Web.UI.Page
+    public partial class Userprofile : Page
     {
         readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace Bookstore.Web
                     GetBooksDetails();
                     if (!Page.IsPostBack)
                     {
-                        LoadUserDetails();
+                        LoadUserDetails(); // There's a bug here
                     }
                 }
             }
@@ -49,7 +49,57 @@ namespace Bookstore.Web
 
         private void UpdateUserDetails()
         {
-            string passwordReset = "";
+            string newPassw;
+            if (newPassTxtBx.Text.Trim() == "")
+            {
+                newPassw = currentPassTxtBx.Text.Trim();
+            }
+            else
+            {
+                newPassw = newPassTxtBx.Text.Trim();
+            }
+
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                SqlCommand cmd = new SqlCommand("UPDATE UserDetails SET FullName=@FullName, BirthDate=@BirthDate, ContactNumber=@ContactNumber, Email=@Email, StreetAddress1=@StreetAddress1, StreetAddress2=@StreetAddress2, City=@City, State=@State, ZipCode=@ZipCode, AccountStatus=@AccountStatus, Password=@currentPass WHERE Username = '"+ Session["Username"].ToString().ToString() +"'", con);
+
+                cmd.Parameters.AddWithValue("@FullName", fullNameTxtBx.Text.Trim().ToString());
+                cmd.Parameters.AddWithValue("@BirthDate", birthDateTxtBx.Text.Trim().ToString());
+                cmd.Parameters.AddWithValue("@ContactNumber", phoneNumberTxtBx.Text.Trim().ToString());
+                cmd.Parameters.AddWithValue("@Email", emailTxtBx.Text.Trim().ToString());
+                
+                cmd.Parameters.AddWithValue("@StreetAddress1", addressTxtBx1.Text.Trim().ToString());
+                cmd.Parameters.AddWithValue("@StreetAddress2", addressTxtBx2.Text.Trim().ToString());
+                cmd.Parameters.AddWithValue("@City", cityTxtBx.Text.Trim().ToString());
+                cmd.Parameters.AddWithValue("@State", stateDDL.SelectedItem.Value);
+                cmd.Parameters.AddWithValue("@ZipCode", zipcodeTxtBx.Text.Trim().ToString());
+
+                cmd.Parameters.AddWithValue("@AccountStatus", "Pending");
+                cmd.Parameters.AddWithValue("@Password", newPassw);
+
+                int result = cmd.ExecuteNonQuery();
+                con.Close();
+                if (result > 0)
+                {
+                    Response.Write("<script>alert('User Details loaded successfully.');</script>");
+                    LoadUserDetails();
+                    GetBooksDetails();
+                }
+                else
+                {
+                    Response.Write("<script>alert('Error in the ExecuteNonQuery command');</script>");
+                }
+            }
+            catch (Exception)
+            {
+                Response.Write("<script>alert('UpdateUserDetails Method Error');</script>");
+            }
         }
         private void LoadUserDetails()
         {
@@ -76,9 +126,11 @@ namespace Bookstore.Web
                 cityTxtBx.Text = dt.Rows[0]["City"].ToString().Trim();
                 zipcodeTxtBx.Text = dt.Rows[0]["ZipCode"].ToString().Trim();
 
+                //Maybe you're loading too much information into that grid
+
                 userNameTxtBx.Text = dt.Rows[0]["Username"].ToString().Trim();
-                passwordTxtBx.Text = dt.Rows[0]["Password"].ToString().Trim();
-                confirmPassTxtBx.Text = dt.Rows[0]["ConfirmPass"].ToString().Trim();
+                currentPassTxtBx.Text = dt.Rows[0]["Password"].ToString().Trim();
+                newPassTxtBx.Text = dt.Rows[0]["ConfirmPass"].ToString().Trim();
 
                 accountStatusLbl.Text = dt.Rows[0]["AccountStatus"].ToString().Trim();
 

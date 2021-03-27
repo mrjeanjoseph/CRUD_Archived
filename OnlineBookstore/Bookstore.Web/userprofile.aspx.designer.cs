@@ -114,22 +114,22 @@ namespace Bookstore.Web
         protected global::System.Web.UI.WebControls.TextBox userNameTxtBx;
 
         /// <summary>
-        /// passwordTxtBx control.
+        /// currentPassTxtBx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwordTxtBx;
+        protected global::System.Web.UI.WebControls.TextBox currentPassTxtBx;
 
         /// <summary>
-        /// confirmPassTxtBx control.
+        /// newPassTxtBx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox confirmPassTxtBx;
+        protected global::System.Web.UI.WebControls.TextBox newPassTxtBx;
 
         /// <summary>
         /// updateBtn control.
