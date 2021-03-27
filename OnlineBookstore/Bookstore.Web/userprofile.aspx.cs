@@ -38,15 +38,20 @@ namespace Bookstore.Web
                 Response.Redirect("UserLogin.aspx");
             }
         }
-
         protected void UpdateBtn_Click(object sender, EventArgs e)
         {
-            UpdateUserDetails();
+            if (Session["FullName"].ToString() == "" || Session["FullName"] == null)
+            {
+                Response.Write("<script>alert('Session expired. Please login again');</script>");
+                //Response.Redirect("UserLogin.aspx");
+            }
+            else
+            {
+                UpdateUserDetails();
+            }
         }
 
-
         //User Defined Function
-
         private void UpdateUserDetails()
         {
             string newPassw;
@@ -199,9 +204,9 @@ namespace Bookstore.Web
             }
             catch (Exception ex)
             {
-                //Response.Write("<script>alert('Error from the UserDetailsGV_RowDataBound');</script>");
+                Response.Write("<script>alert('Error from the UserDetailsGV_RowDataBound');</script>");
                 //Response.Write("<script>alert('" + ex.Message + "');</script>");
-                //Response.Redirect("UserLogin.aspx");
+                Response.Redirect("UserLogin.aspx");
             }
         }        
     }
