@@ -38,7 +38,6 @@ namespace Bookstore.Web
                 Response.Redirect("UserLogin.aspx");
             }
         }
-
         protected void UpdateBtn_Click(object sender, EventArgs e)
         {
             if (Session["Username"].ToString() == "" || Session["Username"] == null)
@@ -179,8 +178,8 @@ namespace Bookstore.Web
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                //UserDetailsGV.DataSource = dt;
-                //UserDetailsGV.DataBind();
+                UserDetailsGridView.DataSource = dt;
+                UserDetailsGridView.DataBind();
             }
             catch (Exception ex)
             {
@@ -188,26 +187,26 @@ namespace Bookstore.Web
                 //Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
-        //private void UserDetailsGV_RowDataBound(object sender, GridViewRowEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (e.Row.RowType == DataControlRowType.DataRow)
-        //        {
-        //            DateTime dt = Convert.ToDateTime(e.Row.Cells[5].Text);
-        //            DateTime today = DateTime.Today;
-        //            if (today > dt)
-        //            {
-        //                e.Row.BackColor = Color.Red;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Response.Write("<script>alert('Error from the UserDetailsGV_RowDataBound');</script>");
-        //        //Response.Write("<script>alert('" + ex.Message + "');</script>");
-        //        Response.Redirect("UserLogin.aspx");
-        //    }
-        //}
+        protected void UserDetailsGV_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    DateTime today = DateTime.Today,
+                    dt = Convert.ToDateTime(e.Row.Cells[5].Text);
+                    if (today > dt)
+                    {
+                        e.Row.BackColor = Color.Red;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Response.Write("<script>alert('Error from the UserDetailsGV_RowDataBound');</script>");
+                //Response.Write("<script>alert('" + ex.Message + "');</script>");
+                Response.Redirect("UserLogin.aspx");
+            }
+        }
     }
 }

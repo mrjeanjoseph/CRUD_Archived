@@ -18,7 +18,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-lg-5">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -201,17 +201,17 @@
 
                         <div class="row">
                             <div class="col center">
-<%--                                <asp:GridView class="table table-striped table-bordered" ID="UserDetailsGV" runat="server" OnRowDataBound="UserDetailsGV_RowDataBound" AutoGenerateColumns="False" DataKeyNames="MemberId" DataSourceID="SqlDataSource1">
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:eLibraryDBConnectionString %>' SelectCommand="SELECT * FROM [BookStatus]"></asp:SqlDataSource>
+                                <asp:GridView class="table table-striped table-bordered" ID="UserDetailsGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="MemberId" OnRowDataBound="UserDetailsGV_RowDataBound">
                                     <Columns>
-                                        <asp:BoundField DataField="MemberId" HeaderText="Id" ReadOnly="True" SortExpression="MemberId"></asp:BoundField>
-                                        <asp:BoundField DataField="MemberName" HeaderText="Member Name" SortExpression="MemberName"></asp:BoundField>
+                                        <asp:BoundField DataField="MemberId" HeaderText="User Id" ReadOnly="True" SortExpression="MemberId"></asp:BoundField>
+                                        <asp:BoundField DataField="MemberName" HeaderText="Name" SortExpression="MemberName"></asp:BoundField>
                                         <asp:BoundField DataField="BookId" HeaderText="Book Id" SortExpression="BookId"></asp:BoundField>
                                         <asp:BoundField DataField="BookName" HeaderText="Book Name" SortExpression="BookName"></asp:BoundField>
                                         <asp:BoundField DataField="CheckedOutDate" HeaderText="Checked Out Date" SortExpression="CheckedOutDate"></asp:BoundField>
                                         <asp:BoundField DataField="DueDate" HeaderText="Due Date" SortExpression="DueDate"></asp:BoundField>
                                     </Columns>
-                                </asp:GridView>--%>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:eLibraryDBConnectionString %>' SelectCommand="SELECT * FROM [BookStatus]"></asp:SqlDataSource>
+                                </asp:GridView>
                             </div>
                         </div>
                     </div>
