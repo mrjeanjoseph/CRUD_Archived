@@ -13,7 +13,7 @@ namespace Bookstore.Web
         {            
             try
             {
-                if (Session["ROLE"].Equals("user"))
+                if (Session["UserLogin"] != null || Session["UserLogin"].Equals(""))
                 {
                     logoutLBtn.Visible = true;
                     greetUserLBtn.Visible = true;
@@ -31,7 +31,7 @@ namespace Bookstore.Web
                     userDetailsLBtn.Visible = false;
                 }
 
-                else if (Session["ROLE"].Equals("admin"))
+                else if (Session["AdminLogin"] != null || Session["AdminLogin"].Equals(""))
                 {
                     logoutLBtn.Visible = true;
                     greetUserLBtn.Visible = true;
@@ -51,23 +51,23 @@ namespace Bookstore.Web
                     userDetailsLBtn.Visible = true;
                 }
 
-                else if (Session["ROLE"].Equals(""))
+                else
                 {
                     userSignUpLBtn.Visible = true;
                     userLoginLBtn.Visible = true;
                     adminLoginLBtn.Visible = true;
                     viewBooksLBtn.Visible = true;
 
-                    //logoutLBtn.Visible = false;
-                    //helloUserLBtn.Visible = false;
-                    //authorDetailsLBtn.Visible = false;
-                    //publisherDetailsLBtn.Visible = false;
-                    //inventoryDetailsLBtn.Visible = false;
-                    //bookDetailsLBtn.Visible = false;
-                    //userDetailsLBtn.Visible = false;
+                    logoutLBtn.Visible = false;
+                    greetUserLBtn.Visible = false;
+                    authorDetailsLBtn.Visible = false;
+                    publisherDetailsLBtn.Visible = false;
+                    inventoryDetailsLBtn.Visible = false;
+                    bookDetailsLBtn.Visible = false;
+                    userDetailsLBtn.Visible = false;
                 }
             }
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
