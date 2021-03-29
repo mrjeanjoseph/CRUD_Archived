@@ -59,10 +59,10 @@
                             <asp:LinkButton CssClass="nav-link" ID="viewBooksLBtn" runat="server" OnClick="ViewBooksLBtn_Click">View Books</asp:LinkButton>
                         </li>
                         <li class="nav-item active">
-                            <asp:LinkButton CssClass="nav-link" ID="userLoginLBtn" runat="server" OnClick="UserLoginLBtn_Click">User Login</asp:LinkButton>
+                            <asp:LinkButton CssClass="nav-link" ID="userLoginLBtn" runat="server" OnClick="UserLoginLBtn_Click" Visible="True">User Login</asp:LinkButton>
                         </li>
                         <li class="nav-item active">
-                            <asp:LinkButton CssClass="nav-link" ID="userSignUpLBtn" runat="server" OnClick="UserSignUpLBtn_Click">Sign Up</asp:LinkButton>
+                            <asp:LinkButton CssClass="nav-link" ID="userSignUpLBtn" runat="server" OnClick="UserSignUpLBtn_Click" Visible="True">Sign Up</asp:LinkButton>
                         </li>
                         <li class="nav-item active">
                             <asp:LinkButton CssClass="nav-link" ID="logoutLBtn" runat="server" Visible="False" OnClick="LogoutLBtn_Click">Logout</asp:LinkButton>
