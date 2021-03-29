@@ -13,7 +13,7 @@ namespace Bookstore.Web
         {            
             try
             {
-                if (Session["UserLogin"] != null || Session["UserLogin"].Equals(""))
+                if (Session["UserLogin"] != null /*|| Session["UserLogin"].Equals("")*/)
                 {
                     logoutLBtn.Visible = true;
                     greetUserLBtn.Visible = true;
@@ -31,7 +31,7 @@ namespace Bookstore.Web
                     userDetailsLBtn.Visible = false;
                 }
 
-                else if (Session["AdminLogin"] != null || Session["AdminLogin"].Equals(""))
+                else if (Session["AdminLogin"] != null /*|| Session["AdminLogin"].Equals("")*/)
                 {
                     logoutLBtn.Visible = true;
                     greetUserLBtn.Visible = true;
