@@ -37,7 +37,7 @@ namespace Bookstore.Web
                     {
                         Response.Write("<script>alert('Login Successfull!');</script>");
 
-                        Session["ROLE"] = userNameTxtBx.Text.Trim();
+                        Session["UserLogedIn"] = userNameTxtBx.Text.Trim();
                         Session["Username"] = readDB.GetValue(0).ToString();
                         Session["FullName"] = readDB.GetValue(1).ToString();
                         Session["AccountStatus"] = readDB.GetValue(11).ToString();
