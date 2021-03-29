@@ -13,7 +13,7 @@ namespace Bookstore.Web
         {            
             try
             {
-                if (Session["UserLogedIn"] != null /*|| Session["UserLogin"] == string.IsNullOrEmpty()*/)
+                if (Session["UserLogedIn"] != null ) // Read it again and understand the logic
                 {
                     logoutLBtn.Visible = true;
                     greetUserLBtn.Visible = true;
@@ -31,14 +31,11 @@ namespace Bookstore.Web
                     userDetailsLBtn.Visible = false;
                 }
 
-                else if (Session["AdminLogin"] != null /*|| Session["AdminLogin"].ToString() != ""*/)
+                else if (Session["AdminLogin"] != null) // Read it again and understand the logic
                 {
                     logoutLBtn.Visible = true;
                     greetUserLBtn.Visible = true;
-                    greetUserLBtn.Text = $"Hello Admin"; // add a time stamp here!
-                    greetUserLBtn.Enabled = false;
-                    viewBooksLBtn.Visible = true;
-
+                    greetUserLBtn.Text = "Hello Admin";
 
                     userSignUpLBtn.Visible = false;
                     userLoginLBtn.Visible = false;
@@ -51,15 +48,15 @@ namespace Bookstore.Web
                     userDetailsLBtn.Visible = true;
                 }
 
-                else if (Session["UserLogedIn"] == null)
+                else if (Session["AdminLogin"] == null && Session["UserLogedIn"] == null)
                 {
                     userSignUpLBtn.Visible = true;
                     userLoginLBtn.Visible = true;
                     adminLoginLBtn.Visible = true;
-                    viewBooksLBtn.Visible = true;
 
                     logoutLBtn.Visible = false;
                     greetUserLBtn.Visible = false;
+                    greetUserLBtn.Text = "";
                     authorDetailsLBtn.Visible = false;
                     publisherDetailsLBtn.Visible = false;
                     inventoryDetailsLBtn.Visible = false;
@@ -121,15 +118,25 @@ namespace Bookstore.Web
 
         protected void LogoutLBtn_Click(object sender, EventArgs e)
         {
+            Session["UserLogedIn"] = "";
+            Session["AdminLogin"] = "";
             Session["Username"] = "";
-            Session["FullName"] = "";
+            //Session["FullName"] = "";
             Session["AccountStatus"] = "";
-            Session["role"] = "";
+
+            greetUserLBtn.Text = $"";
 
             userSignUpLBtn.Visible = true;
             userLoginLBtn.Visible = true;
             adminLoginLBtn.Visible = true;
-            viewBooksLBtn.Visible = true;
+            logoutLBtn.Visible = false;
+
+            greetUserLBtn.Visible = false;
+            authorDetailsLBtn.Visible = false;
+            publisherDetailsLBtn.Visible = false;
+            inventoryDetailsLBtn.Visible = false;
+            bookDetailsLBtn.Visible = false;
+            userDetailsLBtn.Visible = false;
 
             Response.Redirect("Homepage.aspx");
         }

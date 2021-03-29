@@ -56,4 +56,3 @@ C:\Users\Computer\source\repos\1 - GITHUB PROJECTS\1 - CodingAllDayEveryday\Onli
 C:\Users\Computer\source\repos\1 - GITHUB PROJECTS\1 - CodingAllDayEveryday\OnlineBookstore\Bookstore.Web\obj\Debug\Bookstore.Web.csproj.CopyComplete
 C:\Users\Computer\source\repos\1 - GITHUB PROJECTS\1 - CodingAllDayEveryday\OnlineBookstore\Bookstore.Web\obj\Debug\Bookstore.Web.dll
 C:\Users\Computer\source\repos\1 - GITHUB PROJECTS\1 - CodingAllDayEveryday\OnlineBookstore\Bookstore.Web\obj\Debug\Bookstore.Web.pdb
-C:\Users\Computer\source\repos\1 - GITHUB PROJECTS\1 - CodingAllDayEveryday\OnlineBookstore\Bookstore.Web\obj\Debug\Bookstore.Web.csprojAssemblyReference.cache

@@ -34,12 +34,12 @@ namespace Bookstore.Web
                 {
                     while (readDB.Read())
                     {
-                        Response.Write("<script>alert('Login Successfull!');</script>");
 
                         Session["AdminLogin"] = adminIdTxtBx.Text.Trim();
                         Session["Username"] = readDB.GetValue(0).ToString();
                     }
                     Response.Redirect("Homepage.aspx");
+                    Response.Write("<script>alert('Login Successfull!');</script>");
                 }
                 else
                 {
