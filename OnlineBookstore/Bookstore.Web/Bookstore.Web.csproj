@@ -70,7 +70,7 @@
     <Content Include="AdminLogin.aspx" />
     <Content Include="img\sili.png" />
     <Content Include="AdminUserDetails.aspx" />
-    <Content Include="AdminAuthorDetails.aspx" />
+    <Content Include="pages\AdminAuthorDetails.aspx" />
     <Content Include="InventoryBooks\book1.png" />
     <Content Include="InventoryBooks\book2.png" />
     <Content Include="InventoryDetails.aspx" />
@@ -1775,11 +1775,11 @@
     <Compile Include="AdminUserDetails.aspx.designer.cs">
       <DependentUpon>AdminUserDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminAuthorDetails.aspx.cs">
+    <Compile Include="pages\AdminAuthorDetails.aspx.cs">
       <DependentUpon>AdminAuthorDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminAuthorDetails.aspx.designer.cs">
+    <Compile Include="pages\AdminAuthorDetails.aspx.designer.cs">
       <DependentUpon>AdminAuthorDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="InventoryDetails.aspx.cs">
