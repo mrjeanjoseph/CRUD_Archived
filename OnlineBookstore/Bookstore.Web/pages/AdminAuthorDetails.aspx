@@ -29,7 +29,7 @@
 
                         <div class="row">
                             <div class="col center">
-                                <img width="100" src="img/authorIcon.png" />
+                                <img width="100" src="../img/authorIcon.png" />
                             </div>
                         </div>
 
@@ -71,9 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="homepage.aspx"><< Back to Home</a>
                 </div>
-                <br />
             </div>
 
             <div class="col-md-7">
@@ -82,7 +80,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col center">
-                                <img width="75" src="img/authorListIcon.png" />
+                                <img width="75" src="../img/authorListIcon.png" />
                             </div>
                         </div>
 

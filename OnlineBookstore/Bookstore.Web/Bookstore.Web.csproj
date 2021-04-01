@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminLogin.aspx" />
+    <Content Include="bootstrap\js\Script.js" />
     <Content Include="img\sili.png" />
     <Content Include="AdminUserDetails.aspx" />
     <Content Include="pages\AdminAuthorDetails.aspx" />
