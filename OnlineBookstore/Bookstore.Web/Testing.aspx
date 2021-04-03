@@ -2,48 +2,64 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-        <script type="text/javascript">
-
-            $(document).ready(function () {
-                $(".toast").toast("show")
-            });
-        </script>
 
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="container">
-        <div class="row center">
-            <div class="col-lg-5">
-                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <img src="..." class="rounded me-2" alt="...">
-                        <strong class="me-auto">Bootstrap</strong>
-                        <small class="text-muted">11 mins ago</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div class="toast-body">
-                        Hello, world! This is a toast message.
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <div class="card border-dark mb-1" style="max-width: 35rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
+            <div class="row">
+            <div class="col-md-6 mx-auto">
 
-                        <div>
-                            User Name:-<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                            <br />
-                            Password  :-<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                            <br />
-                            <asp:Button ID="SubmitNowBtn" runat="server" Text="Submit" OnClick="SubmitNowBtn_Click" />
-                            <asp:Button ID="RestoreBtn" runat="server" Text="Restore" OnClick="RestoreBtn_Click" />
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col center">
+                                <img width="100" src="img/userIcon.png" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col center">
+                                <h3>User Login</h3>
+                                <hr />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col center">
+                                <a>Don't have an account?</a><br />
+                                <p>
+                                    <asp:LinkButton ID="userSignupBtn" runat="server">Register here</asp:LinkButton>
+                                </p>                                
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group center">
+                                    <asp:TextBox CssClass="form-control" ID="userNameTxtBx" placeholder="Username"
+                                        runat="server"></asp:TextBox>
+                                </div>
+                                <br />
+                                <div class="form-group center">
+                                    <asp:TextBox CssClass="form-control" ID="passwordTxtBx" placeholder="Password"
+                                        runat="server" TextMode="Password"></asp:TextBox>
+                                </div>
+                                <br />
+                                <div class="center">
+                                    <div class="form-group">
+                                        <asp:Button ID="userLoginLBtn" class="btn btn-success w-50 btn-lg" runat="server" Text="Login" />
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <a href="Homepage.aspx"><< Back to Home</a>
                 </div>
+                <br />
+
             </div>
         </div>
-    </div>
 
 </asp:Content>
