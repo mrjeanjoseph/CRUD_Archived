@@ -11,9 +11,10 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col center">
-                                <img width="100" src="img/userIcon.png" />
-                            </div>
+                        <div class="col center">
+<%--                            <img width="100" src="img/userIcon.png" />--%>
+                              <i class="fas fa-user-circle fa-7x"></i> <!-- uses solid style -->
+                        </div>
                         </div>
 
                         <div class="row">
@@ -46,7 +47,7 @@
                                 </div>
                                 <br />
                                 <div class="center">
-                                    <div class="form-group">
+                                    <div class="form-group center">
                                         <asp:Button ID="userLoginLBtn" class="btn btn-success w-50 btn-lg" runat="server" Text="Login" OnClick="UserLoginLBtn_Click" />
                                     </div>
                                     <br />

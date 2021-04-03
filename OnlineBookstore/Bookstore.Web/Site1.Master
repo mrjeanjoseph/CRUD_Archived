@@ -31,7 +31,7 @@
 </head>
 <body>
     <form runat="server">
-        <div class="container border">
+        <div class="container" id="myNavbar">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="Homepage.aspx">
                     <img src="../img/book.png" width="30" height="30" />
@@ -76,13 +76,13 @@
         </div>
 
         <%--Main Content Placeholder--%>
+
         <div class="pages">
             <asp:ContentPlaceHolder ID="body" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
         <%--Main Content Placeholder--%>
-
-
 
         <%--Footer Area--%>
         <footer>
