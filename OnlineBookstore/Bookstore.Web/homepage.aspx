@@ -4,7 +4,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="container">
+    <div class="container-fluid">
 
         <section>
             <img src="img/home-bg.jpg" class="img-fluid" />

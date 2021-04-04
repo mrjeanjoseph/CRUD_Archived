@@ -31,7 +31,7 @@
 </head>
 <body>
     <form runat="server">
-        <div class="container" id="myNavbar">
+        <div class="container-fluid" id="myNavbar">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="Homepage.aspx">
                     <img src="../img/book.png" width="30" height="30" />
