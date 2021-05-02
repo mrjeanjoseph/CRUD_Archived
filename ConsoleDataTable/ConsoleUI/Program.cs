@@ -4,26 +4,6 @@ using System.Linq;
 
 namespace ConsoleUI
 {
-    public static class ConsoleDataFormatter
-    {
-        private const int tableWidth = 90;
-        public static void LineSeparator()
-        {
-            Console.WriteLine(new string ('-', tableWidth));
-        }
-
-        public static void PrintRow(params string[] columns)
-        {
-            int columnWidth = (tableWidth - columns.Length) / columns.Length;
-
-            string row = columns.Aggregate("|", (separator, columnText) => separator + GetCenterAllignedText(columnText, columnWidth) + separator);
-        }
-
-        private static string GetCenterAllignedText(string columnText, int columnWidth)
-        {
-            //Found this piece of text online. Let's see what it does!
-        }
-    }
     class Program
     {
         static void Main(string[] args)
