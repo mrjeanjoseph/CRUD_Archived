@@ -19,21 +19,15 @@ namespace ConsoleUI
 
             var distinctOrders = orders.GroupBy(o => o.CustomerName).Select(o => o.First());
 
+            DataTableFormatter.LineSeparator();
+            DataTableFormatter.PrintRow("Customer Name","Item","Price","Quantity");
+            DataTableFormatter.LineSeparator();
+
             foreach (Order name in distinctOrders)
             {
-                Console.WriteLine(name.CustomerName);
-                Console.WriteLine(string.Format("\t{0, -20} {1, -20} {2, -20} {3, 0}", "Item", "Price", "Quantity", "Total"));
-
-                for (int i = 0; i < orders.Count; i++)
-                {
-                    if (name.CustomerName == orders[i].CustomerName)
-                    {
-                        Console.WriteLine(orders[i].ToString());
-                    }
-                }
-
-                Console.WriteLine();
+                Console.WriteLine(name.CustomerName, name.Item, name.Price, name.Quantity);
             }
+            DataTableFormatter.LineSeparator();
             Console.ReadLine();
         }
     }

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ConsoleUI
 {
-    public static class ConsoleDataFormatter
+    public static class DataTableFormatter
     {
         private const int tableWidth = 90;
         public static void LineSeparator()
@@ -14,8 +14,11 @@ namespace ConsoleUI
         public static void PrintRow(params string[] columns)
         {
             int columnWidth = (tableWidth - columns.Length) / columns.Length;
+            const string bar = "|";
 
-            string row = columns.Aggregate("|", (separator, columnText) => separator + GetCenterAllignedText(columnText, columnWidth) + separator);
+            string row = columns.Aggregate(bar, (separator, columnText) => separator + GetCenterAllignedText(columnText, columnWidth) + bar);
+
+            Console.WriteLine(row);
         }
 
         private static string GetCenterAllignedText(string columnText, int columnWidth)
