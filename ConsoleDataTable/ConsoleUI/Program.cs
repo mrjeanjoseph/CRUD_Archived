@@ -21,7 +21,7 @@ namespace ConsoleUI
 
         private static string GetCenterAllignedText(string columnText, int columnWidth)
         {
-            throw new NotImplementedException();
+            //Found this piece of text online. Let's see what it does!
         }
     }
     class Program
