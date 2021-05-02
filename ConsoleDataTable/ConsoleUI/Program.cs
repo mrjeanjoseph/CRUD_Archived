@@ -10,17 +10,19 @@ namespace ConsoleUI
         {
             List<Order> orders = new List<Order>
             {
-                new Order("Acme Hardware", "Mouse", 25, 3),
-                new Order("Acme Hardware", "Keyboard", 45, 2),
-                new Order("Falls Realty", "Macbook", 800, 2),
-                new Order("Julie’s Morning Diner", "iPad", 525, 1),
-                new Order("Julie’s Morning Diner", "Credit Card Reader", 45, 1),
+                new Order("Saint's Place", "PC Tower", 725, 8),
+                new Order("Acme Software", "Adobel", 25, 3),
+                new Order("Lupa's PC Repair", "Keyboard", 78, 3),
+                new Order("Jean Realty", "Macbook", 2100, 2),
+                new Order("Dev Flights", "Slim Drones", 5800, 2),
+                new Order("Code All Day", "Youtube Videos", 525, 1),
+                new Order("Morning Coder", "Square Reader", 45, 1),
             };
 
             var distinctOrders = orders.GroupBy(o => o.CustomerName).Select(o => o.First());
 
-            DataTableFormatter.LineSeparator();
-            DataTableFormatter.PrintRow("Customer Name","Item","Price","Quantity");
+            //DataTableFormatter.LineSeparator();
+            DataTableFormatter.PrintRow("Customer Name","Item","Price","Quantity", "Total");
             DataTableFormatter.LineSeparator();
 
             //foreach (Order name in orders)
@@ -30,17 +32,17 @@ namespace ConsoleUI
 
             foreach (Order name in distinctOrders)
             {
-                DataTableFormatter.PrintRow(name.CustomerName);
+                //DataTableFormatter.PrintRow(name.CustomerName);
 
                 for (int i = 0; i < orders.Count; i++)
                 {
                     if (name.CustomerName == orders[i].CustomerName)
                     {
-                        DataTableFormatter.PrintRow(name.Item, name.Price.ToString(), name.Quantity.ToString());
+                        DataTableFormatter.PrintRow(name.CustomerName, name.Item, name.Price.ToString(), name.Quantity.ToString(), (name.Price * name.Quantity).ToString());
                     }
                 }
             }
-            DataTableFormatter.LineSeparator();
+            //DataTableFormatter.LineSeparator();
             Console.ReadLine();
         }
     }
