@@ -23,15 +23,20 @@ namespace ConsoleUI
             DataTableFormatter.PrintRow("Customer Name","Item","Price","Quantity");
             DataTableFormatter.LineSeparator();
 
+            //foreach (Order name in orders)
+            //{
+            //    DataTableFormatter.PrintRow(name.CustomerName, name.Item, name.Price.ToString(), name.Quantity.ToString());
+            //}
+
             foreach (Order name in distinctOrders)
             {
-                Console.WriteLine(name.CustomerName);
+                DataTableFormatter.PrintRow(name.CustomerName);
 
                 for (int i = 0; i < orders.Count; i++)
                 {
                     if (name.CustomerName == orders[i].CustomerName)
                     {
-                        Console.WriteLine(name.Item, name.Price, name.Quantity);
+                        DataTableFormatter.PrintRow(name.Item, name.Price.ToString(), name.Quantity.ToString());
                     }
                 }
             }
