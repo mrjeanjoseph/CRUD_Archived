@@ -25,7 +25,15 @@ namespace ConsoleUI
 
             foreach (Order name in distinctOrders)
             {
-                Console.WriteLine(name.CustomerName, name.Item, name.Price, name.Quantity);
+                Console.WriteLine(name.CustomerName);
+
+                for (int i = 0; i < orders.Count; i++)
+                {
+                    if (name.CustomerName == orders[i].CustomerName)
+                    {
+                        Console.WriteLine(name.Item, name.Price, name.Quantity);
+                    }
+                }
             }
             DataTableFormatter.LineSeparator();
             Console.ReadLine();
