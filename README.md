@@ -1,6 +1,6 @@
 # Objectives
 
-##Code all day
-##Test projects
-##Project helpers
-##All the rest
+## Code all day
+## Test projects
+## Project helpers
+## All the rest

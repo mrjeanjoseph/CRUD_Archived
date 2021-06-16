@@ -73,6 +73,7 @@ namespace HotelAppLibray.Data
             _db.SaveData("dbo.spBookings_CheckIn", new { Id = bookingId }, connectionStringName, true);
         }
 
+        //getting room by id
         public RoomTypeModel GetRoomTypeById(int id)
         {
             return _db.LoadData<RoomTypeModel, dynamic>("dbo.spRoomTypes_GetById",

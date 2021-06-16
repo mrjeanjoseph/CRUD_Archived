@@ -7,14 +7,11 @@ using System.Windows;
 
 namespace HotelApp.Desktop
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         public static ServiceProvider serviceProvider;
 
-        protected override void OnStartup(StartupEventArgs e) // this is initialized instead of launching from the xmal file.
+        protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 

@@ -1,15 +1,13 @@
 ﻿using HotelAppLibray.Data;
 using HotelAppLibray.Models;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace HotelApp.Desktop
 {
-    /// <summary>
-    /// Interaction logic for SearchGuestsForm.xaml
-    /// </summary>
+
     public partial class SearchGuestsForm : Window
     {
         private readonly IDatabaseData db;
@@ -28,8 +26,8 @@ namespace HotelApp.Desktop
 
         private void CheckInButton_Click(object sender, RoutedEventArgs e)
         {
-            var checkInForm = App.serviceProvider.GetService<CheckinForm>();
-            var model = (BookingFullModel)((Button)e.Source).DataContext;
+            CheckinForm checkInForm = App.serviceProvider.GetService<CheckinForm>();
+            BookingFullModel model = (BookingFullModel)((Button)e.Source).DataContext;
 
             checkInForm.PopulateCheckInInfo(model);
             checkInForm.Show();

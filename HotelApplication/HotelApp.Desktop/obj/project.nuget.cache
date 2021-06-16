@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9RhBlK4uxPRkFq6SyLN81XB95tAC+L6L6nnv9Ir1pqMYgfikh23TruRSRUKqGxzMwqsE2+qYoEraVKHtq6YLNw==",
+  "dgSpecHash": "6B4kYqN33PnyLgLwYLQoup4PtxBiZ0RWEsybypE6MyxOx2+4JGAmvJbfY9j40a0V3k83N7rddebWiO3qDXycNA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Computer\\source\\repos\\1 - GITHUB PROJECTS\\1 - CodingAllDayEveryday\\HotelApplication\\HotelApp.Desktop\\HotelApp.Desktop.csproj",
+  "projectFilePath": "C:\\Users\\Computer\\Desktop\\CodeAllDay\\HotelApplication\\HotelApp.Desktop\\HotelApp.Desktop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Computer\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\Computer\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.3\\microsoft.entityframeworkcore.5.0.3.nupkg.sha512",

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace HotelAppLibray.Data
 {
+    //generated the interface to work accross multiple models
     public interface IDatabaseData
     {
         void BookGuest(string firstName, string lastName, DateTime startDate, DateTime endDate, int roomTypeId);
