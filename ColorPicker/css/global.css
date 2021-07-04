@@ -139,3 +139,7 @@ main{
     display: grid;
     place-items: center;
 }
+
+.container{
+    text-align: center;
+}
