@@ -42,11 +42,13 @@ nav{
 .social-icons{
     display: none;
 }
+/* By default Hide all links */
 .links{
     height: 0;
     overflow: hidden;
     transition: var(--transition);
 }
+/* show all links now */
 .show-links{
     height: 10rem;
 }
