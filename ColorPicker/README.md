@@ -1,1 +1,1 @@
-# Color Picker Application
+# Bunch JavaScript Applications
