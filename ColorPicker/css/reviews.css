@@ -8,5 +8,18 @@ main{
     margin-bottom: 4rem;
 }
 .underline{
-    height: 0.25rem;
+    height: 0.5rem;
+    width: 5rem;
+    background: var(--clr-primary-5);
+    margin-left: auto;
+    margin-right: auto;
+}
+.container{
+    width: 80vw;
+    max-width: var(--fixed-width);
+}
+.review{
+    background: var(--clr-white);
+    padding: 1.5rem 2rem;
+    
 }
