@@ -20,3 +20,4 @@ navToggle.addEventListener("click", function() {
     // This one liner can be resolved using this one liner.
     links.classList.toggle("show-links");
 });
+
