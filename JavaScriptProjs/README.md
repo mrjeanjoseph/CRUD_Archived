@@ -2,4 +2,4 @@
 
 Special thanks to John Smilga's [javascript-basic-projects](https://github.com/john-smilga/javascript-basic-projects)
 
-recreating these projects multiple times increased my JavaScript's skills.
+recreating these projects multiple times to increase my JavaScript's skills.
