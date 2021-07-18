@@ -3,6 +3,8 @@ const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 
+const TodoTask = require("./models/TodoTask");
+
 dotenv.config();
 
 app.use("/static", express.static("public"));
