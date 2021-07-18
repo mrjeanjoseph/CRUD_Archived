@@ -6,10 +6,10 @@
     body {
     height: 100%;
     width: 75%;
-    background: #e27442;
+    background: #00471b;
     }
     .todo-container {
-    color: white;
+    color: whitesmoke;
     position: absolute;
     top:50%;
     left: 50%;
@@ -38,7 +38,7 @@
     font-family: 'Candal', sans-serif;
     }
     .todo-header button {
-    color: white;
+    color: whitesmoke;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -71,7 +71,7 @@
     font-family: 'Candal', sans-serif;
     }
     .todo-list-item button {
-    color: white;
+    color: whitesmoke;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -80,7 +80,7 @@
     background-color: rgb(51, 212, 100);
     }
     .todo-list-item .cancel {
-    color: white;
+    color: whitesmoke;
     text-decoration: none;
     border: none;
     border-radius: 5px;
