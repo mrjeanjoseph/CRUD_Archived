@@ -10,22 +10,24 @@ window.addEventListener("load", () => {
             lon = longLatResult.coords.longitude;
             lat = longLatResult.coords.latitude;
 
-            // let apiKey = '8f886488638f4ae9b49d7a6c1c840c2f';
-            const proxy = "https://cors-anywhere.herokuapp.com/";
-            // const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${ lat }&lon=${ lon }&appid=${ apiKey }`;
-            const apiurl2 = `${ proxy }https://api.darksky.net/forecast/fd9d9c6418c23d94745b836767721ad1${lat},${lon}`;
+            let apiKey = '8f886488638f4ae9b49d7a6c1c840c2f';
+            // const proxy = "https://cors-anywhere.herokuapp.com/";
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${ lat }&lon=${ lon }&appid=${ apiKey }`;
 
-
-           fetch(apiurl2)
+           fetch(apiUrl)
                 .then(response => {
                     return response.json();
                 })
                 .then(data => {
-                    console.log(data);
-                     const { temperature, summary } = data.currently;
+                     const { temp } = data.main;
+                     const { description } = data.weather[2].description;
+
+                     temperatureDegree.textContent = temp;
+                     temperatureDescription.textContent = data.weather[2];
+                     console.log(description);
+
+                     locationTimezone.textContent = data.name;
                 });
-                // temperatureDegree.textContent = temperature;
-                // temperatureDescription.textContent = summary;
         });
     }
 });
