@@ -1,6 +1,7 @@
 # Objectives
 
-While (alive == true)
+While (alive)
 {
-	code allday * everyday;
+	Master Web Development * allday everyday;
 }
+
