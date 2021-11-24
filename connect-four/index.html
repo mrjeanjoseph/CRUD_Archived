@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect-Four</title>
+    <!-- same file styling -->
+    <style>
+        .grid {
+            border: 1px solid;
+            display: flex;
+            flex-wrap: wrap;
+            height: 120px;
+            width: 140px;
+        }
+
+        .grid div {
+            height: 20px;
+            width: 20px;
+        }
+
+        .player-one {
+            background-color: red;
+            border-radius: 10px;
+        }
+
+        .player-two {
+            background-color: blue;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>The Current player is: Player <span id="current-player"></span></h3>
+    <h4 id="result"></h4>
+
+    <div class="grid">
+        <!-- eventually, will need to javascript the divs in -->
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+    </div>
+
+    <!-- same file scripting -->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const squares = document.querySelectorAll('.grid div');
+            const result = document.querySelector('#result');
+            const displayCurrentPlayer = document.querySelector('#current-player');
+            let currentPlayer = 1;
+
+            for (var i = 0, len = squares.length; i < len; i++)
+
+                (function (index) {
+                    //add an onclick to each square in the grid
+                    squares[i].onclick = function () {
+                        //if the square below the current square is taken, go to the top of it.
+                        if (squares[index + 7].classList.contains('taken')) {
+                            if (currentPlayer === 1) {
+                                squares[index].classList.add('taken');
+                                squares[index].classList.add('player-one');
+                                //change the Player
+                                currentPlayer = 2;
+                                displayCurrentPlayer.innerHTML = currentPlayer;
+                            } else if (currentPlayer === 2) {
+                                squares[index].classList.add('taken');
+                                squares[index].classList.add('player-two');
+                                //change the Player
+                                currentPlayer = 1;
+                                displayCurrentPlayer.innerHTML = currentPlayer;
+                            }
+                            //If the square below your current square is not taken, 
+                        } else alert("Can't go here.")                        
+                    }
+                })(i);
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
