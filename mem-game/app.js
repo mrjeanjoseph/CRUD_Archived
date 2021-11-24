@@ -54,9 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     ]
 
+    cardArray.sort(() => 0.5 - Math.random());
+
     const grid = document.querySelector('.grid');
+    const resultDisplay = document.querySelector('#result');
     var cardsChosen = [];
     var cardsChosenId = [];
+    var cardsWon = [];
 
     //Create the
     function createBoard() {
@@ -69,13 +73,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    //Check for matches
+    function checkForMatch() {
+        var cards = document.querySelectorAll('img');
+        const optionOneId = cardsChosenId[0];
+        const optionTwoId = cardsChosenId[1];
+        if(cardsChosen[0] === cardsChosen[1]){
+            alert('You found a match.');;
+            cards[optionOneId].setAttribute('src','images/sorry.gif');
+            cards[optionTwoId].setAttribute('src','images/sorry.gif');
+            cardsWon.push(cardsChosen);
+        } else {
+            alert('Sorry, try again.');;
+            cards[optionOneId].setAttribute('src','images/blank.png');
+            cards[optionTwoId].setAttribute('src','images/blank.png');
+        }
+        cardsChosen = [];
+        cardsChosenId = [];
+        resultDisplay.textContent = cardsWon.length;
+        if(cardsWon.length === cardArray.length/2) {
+            resultDisplay.textContent = "Congratulation! You've won.";
+        }
+    }
+
     function flipCard() {
         var cardId = this.getAttribute('data-id');
         cardsChosen.push(cardArray[cardId].name);
         cardsChosenId.push(cardId);
         this.setAttribute('src', cardArray[cardId].img);
         if (cardsChosen.length === 2) {
-            setTimeout.apply(checkForMatch, 500)
+            setTimeout(checkForMatch, 500);
         }
     }
     createBoard();

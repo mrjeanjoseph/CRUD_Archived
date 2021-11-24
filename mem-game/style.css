@@ -8,3 +8,8 @@ html, body{
     width: 400px;
     border-bottom: 3px solid green;
 }
+
+img{
+    width: 100px;
+    height: 100px;
+}
