@@ -4,13 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- styling inserted here -->
     <title>Whack-a-Mole</title>
     <style>
+        .square{
+            width: 200px;
+            height: 200px;
+            border-style: solid;
+            border-color: blue;
+        }
+
+        .grid{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            width: 500px;
+            height: 500px;
+        }
+        .mole{
+            background-image: url(./a-mole.png);
+            background-size: cover;
+        }
 
     </style>
 </head>
 <body>
+    <h1>Whack a Mole!</h1>
+
+    <h2>Your Score: </h2>
+    <h3 id="score"></h3>
+
+    <h2>Seconds left: <span id="time-left">60</span></h2>
     
-    <!-- Script files here -->
+
+    <div class="grid">
+        <div class="square" id="1"></div>
+        <div class="square" id="2"></div>
+        <div class="square" id="3"></div>
+        <div class="square" id="4"></div>
+        <div class="square" id="5"></div>
+        <div class="square" id="6"></div>
+        <div class="square" id="7"></div>
+        <div class="square" id="8"></div>
+        <div class="square" id="9"></div>
+    </div>
+    
+    <!-- Script inserted here -->
+    <script>
+
+    </script>
 </body>
 </html>
