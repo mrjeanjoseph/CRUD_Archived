@@ -1,5 +1,39 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    insert_divs = function () {
+        var parent = document.getElementsByClassName("panel-body")[0];
+        var installments = ['Installment 1', 'Installment 2', 'Installment 3', 'Installment 4', 'Installment 5'];
+
+        installments.forEach(function (e) {
+
+            var sp = document.createElement('span');
+            var img = document.createElement('img');
+            var installment = document.createElement('div');
+
+            var span_text = document.createTextNode(e);
+            sp.appendChild(span_text);
+
+            img.setAttribute('src', 'https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_cancel_48px-128.png')
+            installment.classList.add('panel-more1');
+
+            installment.appendChild(img);
+            installment.appendChild(sp);
+
+            parent.appendChild(installment);
+
+        });
+
+
+
+    }
+
+    window.onload = insert_divs
+
+
+
+
+
     const squares = document.querySelectorAll('.grid div');
     const scoreDisplay = document.querySelector('span');
     const startBtn = document.querySelector('.start');
@@ -16,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let interval = 0;
 
     //To start and restart the game
-    function startGame(){
+    function startGame() {
         currentSnake.forEach(index => squares[index].classList.remove('snake'));
         squares[appleIndex].classList.remove('apple');
         clearInterval(interval);
@@ -25,16 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
         direction = 1;
         scoreDisplay.innerText = score;
         intervalTime = 1000;
-        currentSnake = [2,1,0];
+        currentSnake = [2, 1, 0];
         currentIndex = 0;
         currentSnake.forEach(index => squares[index].classList.add('snake'));
         interval = setInterval(moveOutcomes, intervalTime);
     }
 
     //functions that deals with the move outcome of the snake 
-    function moveOutcomes(){
+    function moveOutcomes() {
 
-        if(
+        if (
             (currentSnake[0] + width >= (width * width) && direction === width) ||
             (currentSnake[0] % width === width - 1 && direction === 1) ||
             (currentSnake[0] % width === 0 && direction === -1) ||
@@ -48,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         squares[tail].classList.remove('snake');
         currentSnake.unshift(currentSnake[0] + direction);
 
-        if(squares[currentSnake[0]].classList.contains('apple')){
+        if (squares[currentSnake[0]].classList.contains('apple')) {
             squares[currentSnake[0]].classList.remove('apple');
             squares[tail].classList.add('snake');
             currentSnake.push(tail);
@@ -63,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function randomApple() {
-        do{
+        do {
             appleIndex = Math.floor(Math.random() * squares.length)
         } while (squares[appleIndex].classList.contains('snake'));
         squares[appleIndex].classList.add('apple');
@@ -84,5 +118,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('keyup', control);
-    startBtn.addEventListener('click',startGame);
+    startBtn.addEventListener('click', startGame);
 })
