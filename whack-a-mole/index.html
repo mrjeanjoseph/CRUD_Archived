@@ -5,31 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- styling inserted here -->
-    <title>Whack-a-Mole</title>
-    <style>
-        .square{
-            width: 200px;
-            height: 200px;
-            border-style: solid;
-            border-color: blue;
-        }
-
-        .grid{
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: center;
-            /* width: 500px;
-            height: 500px; */
-        }
-        .mole{
-            background-image: url(./a-mole.png);
-            background-size: cover;
-        }
-
-    </style>
+    <title>Whack-A-Mole</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Whack a Mole!</h1>
+    <h1>Whack a Mole Game</h1>
 
     <h2>Your Score: </h2>
     <h3 id="score"></h3>
@@ -50,54 +30,6 @@
     </div>
     
     <!-- Script inserted here -->
-    <script>
-        const square = document.querySelectorAll('.square');
-        const mole = document.querySelectorAll('.mole');
-        const timeLeft = document.querySelector('#time-left');
-        let score = document.querySelector('#score');
-
-        let result = 0;
-        let currentTime = timeLeft.textContent;
-
-        function randomSquare(){
-            square.forEach(className =>{
-                className.classList.remove('mole');
-            });
-            let randomPosition = square[Math.floor(Math.random() * 9)];
-            randomPosition.classList.add('mole');
-
-            //assign the id of the random position to hit position for us to use later
-            hitPosition = randomPosition.id;
-        }
-
-        square.forEach(id => {
-            id.addEventListener('mouseup',()=>{
-                if(id.id === hitPosition){
-                    result = result + 1;
-                    score.textContent = result;
-                }
-            });
-        });
-
-        function moveMole() {
-            let timerId = null;
-            timerId = setInterval(randomSquare, 250);
-        }
-        moveMole();
-
-        function countDown(){
-            currentTime--;
-            timeLeft.textContent = currentTime;
-
-            if(currentTime === 0){
-                clearInterval(timerId);
-                alert("GAVE OVER! Your final score is " + result);
-            }
-        }
-
-        let timerId = setInterval(countDown, 1000);
-
-
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
