@@ -1,1 +1,0 @@
-pure JS doto list application
