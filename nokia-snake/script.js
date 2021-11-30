@@ -23,17 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
             parent.appendChild(installment);
 
         });
-
-
-
     }
 
     window.onload = insert_divs
-
-
-
-
-
     const squares = document.querySelectorAll('.grid div');
     const scoreDisplay = document.querySelector('span');
     const startBtn = document.querySelector('.start');
@@ -67,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //functions that deals with the move outcome of the snake 
     function moveOutcomes() {
-
         if (
             (currentSnake[0] + width >= (width * width) && direction === width) ||
             (currentSnake[0] % width === width - 1 && direction === 1) ||
