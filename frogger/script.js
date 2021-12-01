@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const squres = document.querySelectorAll('.grid div');
+    const squares = document.querySelectorAll('.grid div');
     const timeLeft = document.querySelector('#time-left');
     const result = document.querySelector('#result');
     const startBtn = document.querySelector('#button');
@@ -8,7 +8,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerId;
 
     //redender frog on starting block
-    squres[currentIndex].classList.add('frog');
+    squares[currentIndex].classList.add('frog');
 
-    //A function that will move the frong
+    //A function that will move the frog
+    function moveFrog(e){
+        squares[currentIndex].classList.remove('frog');
+        switch(e.keyCode) {
+            case 37:
+                if(currentIndex % width !==0) currentIndex -=1;
+                break;
+            case 38:
+                if(currentIndex -width >= 0) currentIndex -= width;
+                break;
+            case 39:
+                if(currentIndex % width < width -1) currentIndex +=1;
+                break;
+            case 40:
+                if(currentIndex + width < width * width) currentIndex += width;
+                break;
+        }
+        squares[currentIndex].classList.add('frog');
+        lo
+    }
 });
