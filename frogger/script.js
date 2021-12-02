@@ -3,11 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeLeft = ocument.querySelectorAll('#time-left');
     const result = document.querySelectorAll('#result');
     const startBtn = document.querySelectorAll('#button');
+
     //init the obstacles
     const carsLeft = document.querySelectorAll('.car-left');
     const carsRight = document.querySelectorAll('.car-right');
     const logsLeft = document.querySelectorAll('.log-left');
     const logsRight = document.querySelectorAll('.log-right');
+    
     //env access
     const width = 9;
     let currentTime = 20;
@@ -160,5 +162,40 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(timerId)
         document.removeEventListener('keyup',moveFrog);
     }
+
+    //Move frog left on log
+    function moveWithLogLeft(){
+        if(currentIndex >=27 && currentIndex < 35) {
+            squares[currentIndex].classList.remove('frog');
+            currentIndex += 1;
+            squares[currentIndex].classList.add('frog')
+        }
+    }
+    //Move frog right on log as well
+    function moveWithLogRight(){
+        if(currentIndex > 18 && currentIndex <= 26) {
+            squares[currentIndex].classList.remove('frog');
+            currentIndex -= 1;
+            squares[currentIndex].classList.add('frog')
+        }
+    }
+
+    //calling all the functions
+    function movePieces(){
+        currentIndex--;
+        timeLeft.textContent = currentIndex;
+        autoMoveCars();
+        autoMoveLogs();
+        moveWithLogLeft();
+        moveWithLogRight();
+    }
+
+    startBtn.addEventListener('click',()=>{
+        if(timerId){
+            clearInterval(timerId)
+        } else {
+            document.addEventListener('keyup',moveFrog)
+        }
+    });
     
 })

@@ -15,9 +15,6 @@
 .ending-block{
     background-color: red;
 }
-.frog{
-    background-color: green;
-}
 
 /* Obsticles */
 .c1{
@@ -33,4 +30,8 @@
 
 .l4,.l5{
     background-color: lightblue;
+}
+
+.frog{
+    background-color: green;
 }
