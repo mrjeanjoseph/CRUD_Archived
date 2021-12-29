@@ -44,3 +44,26 @@ window.addEventListener("scroll", function(){
 
 });
 
+//select links
+const scrollLinks = document.querySelectorAll(".scroll-link");
+
+scrollLinks.forEach(function(link) {
+    link.addEventListener("click", function(e){
+        e.preventDefault();
+
+        const id = e.currentTarget.getAttribute("href");
+        // console.log(id)
+        const element = document.querySelector(id);
+        // console.log(element);
+
+        //Calculate the height
+        const navHeight = navbar.getBoundingClientRect().height;
+        const containerHeight = links
+
+        let position = element.offsetTop;
+        // console.log(position);
+
+        window.scrollTo({top:0,top:position});
+        linksContainer.style.height = 0;
+    })
+})
