@@ -95,7 +95,7 @@ function editItem(e) {
     grocery.value = editElement.innerHTML;
     editFlag = true;
     editId = element.dataset.id;
-    submitBtn.textContent = 'edit'
+    submitBtn.textContent = 'edit';
 
     displayAlert("Item is being edited", "danger");
 }
@@ -107,7 +107,7 @@ function addToLocalStorage(id, value) {
     const grocery = { id: id, value: value }; // this can shorten like this {id, value}
     // console.log(grocery);
     let items = getLocalStorage();
-    console.log(items)
+    // console.log(items)
     items.push(grocery);
     localStorage.setItem("list", JSON.stringify(items));
     // console.log(items);
@@ -141,7 +141,7 @@ function editLocalStorage(id, value) {
 
 function loadItemsFromLocalStorage() {
     let items = getLocalStorage();
-    if (items.lenght > 0) {
+    if (items.length > 0) {
         items.forEach(function (item) {
             createListItem(item.id, item.value)
         });
