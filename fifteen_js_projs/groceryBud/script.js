@@ -11,7 +11,8 @@ let editElement;
 let editFlag = false;
 let editId = "";
 
-form.addEventListener("submit", addItem);
+form.addEventListener("submit", addItem); //Submitting the form
+clearBtn.addEventListener("click", clearItems);
 
 function addItem(e) {
     e.preventDefault();
@@ -20,14 +21,14 @@ function addItem(e) {
     const id = new Date().getTime().toString();
     // console.log(id)
     // console.log(value)
-    if (value !== "" && editFlag === false) {
+    if (value && !editFlag) {
         // console.log("Adding items");
         const element = document.createElement("article");
         element.classList.add("grocery-item"); // adding the class
         const attr = document.createAttribute("data-id"); // adding the id attr
         attr.value = id;
         element.setAttributeNode(attr);
-        element.innerTHML = `
+        element.innerHTML = `
         <p class="title">${value}</p>
         <div class="btn-container">
             <button type="button" class="edit-btn">
@@ -68,5 +69,23 @@ function addToLocalStorage(id, value) {
 }
 
 function setBackToDefault() {
-    console.log("added to local storage")
+    // console.log("added to local storage");
+    grocery.value = "";
+    editFlag = false;
+    editId = "";
+    submitBtn.textContent = "submit";
+}
+
+function clearItems() { //Clearing the item list
+    const items = document.querySelectorAll(".grocery-item");
+    
+    if(items.length > 0) {
+        items.forEach(function(item) {
+            list.removeChild(item)
+        });
+    }
+    container.classList.remove("show-container");
+    displayAlert("Item list has been cleared", "danger");
+    setBackToDefault();
+    localStorage.removeItem("list")
 }
