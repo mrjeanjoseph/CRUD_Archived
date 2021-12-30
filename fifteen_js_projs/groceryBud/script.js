@@ -19,14 +19,16 @@ function addItem(e) {
     const value = grocery.value;
     const id = new Date().getTime().toString();
     // console.log(id)
+    // console.log(value)
     if (value !== "" && editFlag === false) {
         // console.log("Adding items");
         const element = document.createElement("article");
-        const attr = document.createAttribute("data-id");
+        element.classList.add("grocery-item"); // adding the class
+        const attr = document.createAttribute("data-id"); // adding the id attr
         attr.value = id;
-        element.setAttribute(attr);
+        element.setAttributeNode(attr);
         element.innerTHML = `
-        <p class="title"></p>
+        <p class="title">${value}</p>
         <div class="btn-container">
             <button type="button" class="edit-btn">
                 <i class="fas fa-edit"></i>
@@ -34,8 +36,13 @@ function addItem(e) {
             <button type="button" class="delete-btn">
                 <i class="fas fa-trash"></i>
             </button>
-        </div>
-        `;
+        </div>`;
+        list.appendChild(element); // this is to append the html items above
+        displayAlert("Item added to the list", "success"); // on success display message
+        container.classList.add("show-container") // make container visible on success
+
+        addToLocalStorage(id, value); // This will save our data in local mem
+        setBackToDefault(); //This will clear out local mem
     } else if (value !== "" && editFlag === true) {
         console.log("editing");
     } else {
@@ -46,7 +53,7 @@ function addItem(e) {
     }
 }
 
-function displayAlert(text, action) {
+function displayAlert(text, action) { // turn alert into a function to avoid duplicate
     alert.textContent = text;
     alert.classList.add(`alert-${action}`);
     //only display alert message for short period of time.
@@ -54,4 +61,12 @@ function displayAlert(text, action) {
         alert.textContent = "";
         alert.classList.remove(`alert-${action}`);
     }, 3000)
+}
+
+function addToLocalStorage(id, value) {
+    console.log("back to default")
+}
+
+function setBackToDefault() {
+    console.log("added to local storage")
 }
