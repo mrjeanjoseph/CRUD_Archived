@@ -38,6 +38,12 @@ function addItem(e) {
                 <i class="fas fa-trash"></i>
             </button>
         </div>`;
+
+        const deleteBtn = element.querySelector(".delete-btn");//access the delete class inside the element
+        const editBtn = element.querySelector(".edit-btn");//access the edit class inside the element
+
+        deleteBtn.addEventListener("click", deleteItem);
+        editBtn.addEventListener("click", editItem);
         list.appendChild(element); // this is to append the html items above
         displayAlert("Item added to the list", "success"); // on success display message
         container.classList.add("show-container") // make container visible on success
@@ -78,9 +84,9 @@ function setBackToDefault() {
 
 function clearItems() { //Clearing the item list
     const items = document.querySelectorAll(".grocery-item");
-    
-    if(items.length > 0) {
-        items.forEach(function(item) {
+
+    if (items.length > 0) {
+        items.forEach(function (item) {
             list.removeChild(item)
         });
     }
@@ -88,4 +94,11 @@ function clearItems() { //Clearing the item list
     displayAlert("Item list has been cleared", "danger");
     setBackToDefault();
     localStorage.removeItem("list")
+}
+
+function deleteItem(){
+    
+}
+function editItem(){
+    displayAlert("Item has been edited", "warning");
 }
