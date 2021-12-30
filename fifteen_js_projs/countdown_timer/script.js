@@ -7,7 +7,13 @@ const items = document.querySelectorAll(".deadline-format h4");
 
 // console.log(items);
 
-let futureDate = new Date(2021, 11, 29, 20, 15);
+let tempDate = new Date();
+let tempYear = tempDate.getFullYear();
+let tempMonth = tempDate.getMonth();
+let tempDay = tempDate.getDate();
+
+// let futureDate = new Date(2022, 0, 9, 20, 15);
+const futureDate = new Date(tempYear, tempMonth, tempDay + 1, 11, 30, 0);
 // let futureDate = new Date();
 // console.log(futureDate);
 
