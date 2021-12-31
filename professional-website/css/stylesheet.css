@@ -15,9 +15,14 @@ p{
     color: #6c757d;
 }
 
-body {
-    background-color: #000;
+.r-p{
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
+
+/* body {
+    background-color: #000;
+} */
 
 nav.r-nav{
     background: transparent;
@@ -115,3 +120,27 @@ header{
 .content-box p{
     color: #fff;
 }
+
+.about li a {
+    color: #000;
+    display: inline-block;
+    height:100px;
+    width: 100px;
+    font-size: 50px;
+    /* border: 2px solid #000000;
+    border-radius: 50%;
+    line-height: 100px; */
+    transition: all 0.5s;
+    text-align: center;
+}
+
+.about li a:hover{
+    color: #8b8686;
+}
+
+.exp-class .progress{
+    height:10px;
+    border-radius: 20px;
+    font-size: 10px;
+}
+
