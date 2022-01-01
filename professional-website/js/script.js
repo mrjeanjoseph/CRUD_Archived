@@ -15,8 +15,8 @@ function getTyped() {
     var typed = new Typed(".element", {
         strings: ["Jean-Joseph", "a fullstack developer", "an entrepreneur"],
         smartBackspace: true,
-        typeSpeed:50,
-        backSpeed:200,
+        typeSpeed:200,
+        backSpeed:50,
         loop:true,
         loopCount:Infinity,
         startDelay:1000
@@ -52,7 +52,7 @@ $(document).ready(function() {
     //This will place the scroll position back to the last stop
     var scrollpos = localStorage.getItem('scrollpos');
     if (scrollpos) window.scrollTo(0, scrollpos);  
-    //getTyped();
+    getTyped();
 });
 
 //This will place the scroll position back to the last stop
