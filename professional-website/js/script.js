@@ -23,13 +23,27 @@ function getTyped() {
     });
 }
 
+function setProgressBar(){
+    var p = document.querySelectorAll(".progress-bar");
+
+    p[0].setAttribute("style", "width:98%;transition:10s all");
+    p[1].setAttribute("style", "width:95%;transition:1.9s all");
+    p[2].setAttribute("style", "width:85%;transition:2.5s all");
+    p[3].setAttribute("style", "width:77%;transition:3.5s all");
+    p[4].setAttribute("style", "width:69%;transition:5.9s all");
+}
 
 $(document).ready(function() {
     stickyNavbar();
-    //getTyped(); 
-    $(this).scrollTop(0);
+    setProgressBar();
+
+    //This will place the scroll position back to the last stop
+    var scrollpos = localStorage.getItem('scrollpos');
+    if (scrollpos) window.scrollTo(0, scrollpos);  
+    //getTyped();
 });
 
-onpageLoad = function(e) {
-    e.preventDefault();
-} 
+//This will place the scroll position back to the last stop
+window.onbeforeunload = function(e) {
+    localStorage.setItem('scrollpos', window.scrollY);
+};  
