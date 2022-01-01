@@ -182,3 +182,9 @@ header {
     margin: 15px auto;
     background: #E65F78;
 }
+
+.r-btn{
+    padding: 5px 20px;
+    background-color: #EE8683 !important;
+    color: #fff !important;
+}
