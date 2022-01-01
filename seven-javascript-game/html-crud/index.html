@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML - Crud</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>HTML with Basic JS CRUD</h1>
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onformSubmit();" autocomplete="off">
+                    <div>
+                        <label>Full Name</label>
+                        <input type="text" name="fullName" id="fullName">
+                    </div>
+                    <div>
+                        <label>Emp Code</label>
+                        <input type="number" name="empCode" id="empCode">
+                    </div>
+                    <div>
+                        <label>Salary</label>
+                        <input type="number" name="salary" id="salary">
+                    </div>
+                    <div>
+                        <label>City</label>
+                        <input type="text" name="city" id="city">
+                    </div>
+                    <div class="form-action-buttons">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <table class="list" id="employeeList">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Employee Code</th>
+                            <th>Salary</th>
+                            <th>City</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- Script file added here -->
+</body>
+</html>
