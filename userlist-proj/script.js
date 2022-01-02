@@ -28,19 +28,6 @@ class UI {
         });
     }
 
-    // static createHeader() {
-    //     const headerElement = document.querySelector("#hearder-element");
-
-    //     const hearderRow = document.createElement('tr');
-    //     hearderRow.innerHTML = `
-    //     <th scope="col">ID</th>
-    //     <th scope="col">Name</th>
-    //     <th scope="col">Location</th>
-    //     <th scope="col"></th>
-    //     `;
-    //     headerElement.appendChild(hearderRow);
-    // }
-
     static addUserToList(user) {
         const list = document.querySelector("#user-list");
         const row = document.createElement('tr');
@@ -68,7 +55,18 @@ class UI {
     }
 
     static showNotification(message, className) {
-        
+        const div = document.createElement('div');
+        div.className = `alert alert-${className}`;
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector('.container-fluid');
+        const form = document.querySelector("#user-form");
+        container.insertBefore(div, form);
+
+        //remove timeout after two seconds.
+        const alert = document.querySelector(".alert");
+        setTimeout(function () {
+            alert.remove()
+        }, 2000);
     }
 }
 // Event to display users
@@ -77,20 +75,19 @@ document.addEventListener("DOMContentLoaded", UI.displayUsers);
 // Event to add a new user
 document.querySelector("#user-form").addEventListener("submit", function (e) {
     e.preventDefault();
+    const id = document.querySelector("#id").value;
+    const name = document.querySelector("#name").value;
+    const location = document.querySelector("#location").value;
 
     if (id === "" || name === "" || location === "") {
-        alert("Please fill out the form prior to submitting")
+        UI.showNotification("Please fill out the form prior to submitting!", "warning");
     } else {
-
-        const id = document.querySelector("#id").value;
-        const name = document.querySelector("#name").value;
-        const location = document.querySelector("#location").value;
-
         //instentiate user form
         const user = new User(id, name, location);
 
         // add user to table
         UI.addUserToList(user);
+        UI.showNotification("User has been added successfully", "success");
         UI.clearFields();
     }
 
@@ -100,4 +97,8 @@ document.querySelector("#user-form").addEventListener("submit", function (e) {
 document.querySelector("#user-list").addEventListener("click", function (e) {
     // console.log(e.target)
     UI.deleteUser(e.target);
+    UI.showNotification("User has been deleted successfully", "danger");
 })
+
+//storing data in browser memory while browsing
+class 
