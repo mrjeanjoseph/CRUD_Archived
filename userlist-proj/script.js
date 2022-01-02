@@ -1,2 +1,2 @@
 // Making sure this works properly
-// alert("Hello JavaScript")
+alert("Hello JavaScript")
