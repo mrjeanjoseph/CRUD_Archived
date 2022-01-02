@@ -9,7 +9,7 @@ class User {
 
 // UI classes
 class UI {
-    static displayUsers(){
+    static displayUsers() {
         const storedUsers = [
             {
                 id: 1,
@@ -23,7 +23,7 @@ class UI {
             },
         ];
         const users = storedUsers;
-        users.forEach(function(user) {
+        users.forEach(function (user) {
             UI.addUserToList(user)
         });
     }
@@ -49,28 +49,55 @@ class UI {
         <td>${user.id}</td>
         <td>${user.name}</td>
         <td>${user.location}</td>
-        <td><a href="#" class="btn btn-danger btn-sm delete">x</a></td>
+        <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
         `;
-        
+
         list.appendChild(row);
+    }
+
+    static clearFields() {
+        document.querySelector("#id").value = '';
+        document.querySelector("#name").value = '';
+        document.querySelector("#location").value = '';
+    }
+
+    static deleteUser(element) {
+        if (element.classList.contains("delete")) {
+            element.parentElement.parentElement.remove()
+        }
+    }
+
+    static showNotification(message, className) {
+        
     }
 }
 // Event to display users
 document.addEventListener("DOMContentLoaded", UI.displayUsers);
 
 // Event to add a new user
-document.querySelector("#user-form").addEventListener("submit", function(e) {
+document.querySelector("#user-form").addEventListener("submit", function (e) {
     e.preventDefault();
-    
-    const id = document.querySelector("#id").value;
-    const name = document.querySelector("#name").value;
-    const location = document.querySelector("#location").value;
 
-    //instentiate user form
-    const user = new User(id, name, location);
-    
-    // add user to table
-    UI.addUserToList(user);
+    if (id === "" || name === "" || location === "") {
+        alert("Please fill out the form prior to submitting")
+    } else {
+
+        const id = document.querySelector("#id").value;
+        const name = document.querySelector("#name").value;
+        const location = document.querySelector("#location").value;
+
+        //instentiate user form
+        const user = new User(id, name, location);
+
+        // add user to table
+        UI.addUserToList(user);
+        UI.clearFields();
+    }
+
 });
 
 // Event to remove user
+document.querySelector("#user-list").addEventListener("click", function (e) {
+    // console.log(e.target)
+    UI.deleteUser(e.target);
+})
