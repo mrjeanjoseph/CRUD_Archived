@@ -24,14 +24,6 @@ function getTyped() {
 }
 
 function setProgressBar(){
-
-    //Waypoint is not working
-    // var waypoint = new Waypoint({
-    //     element: document.getElementById('exp-id'),
-    //     handler: function() {
-
-    //     }
-    // })
     var p = document.querySelectorAll(".progress-bar");
 
     p[0].setAttribute("style", "width:98%;transition:10s all");
@@ -44,6 +36,7 @@ function setProgressBar(){
 $(document).ready(function() {
     stickyNavbar();
     setProgressBar();
+    getTyped();
 
     localStorage.setItem('skillsSection', 300);
     var scrollToSkills = localStorage.getItem('skillsSection');
@@ -52,7 +45,6 @@ $(document).ready(function() {
     //This will place the scroll position back to the last stop
     var scrollpos = localStorage.getItem('scrollpos');
     if (scrollpos) window.scrollTo(0, scrollpos);  
-    getTyped();
 });
 
 //This will place the scroll position back to the last stop
