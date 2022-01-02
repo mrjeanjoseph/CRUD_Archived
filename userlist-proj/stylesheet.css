@@ -1,0 +1,9 @@
+.container-form {
+    margin-top: 100px;
+    width: 50rem;
+    border: 3px solid grey;
+}
+
+.form-group{
+    margin-bottom: 15px;
+}
