@@ -10,19 +10,21 @@ class User {
 // UI classes
 class UI {
     static displayUsers() {
-        const storedUsers = [
-            {
-                id: 1,
-                name: "Veleenah",
-                location: "Florence, Italy",
-            },
-            {
-                id: 2,
-                name: "Devereaux",
-                location: "Paris, France",
-            },
-        ];
-        const users = storedUsers;
+        // const storedUsers = [
+        //     {
+        //         id: 1,
+        //         name: "Veleenah",
+        //         location: "Florence, Italy",
+        //     },
+        //     {
+        //         id: 2,
+        //         name: "Devereaux",
+        //         location: "Paris, France",
+        //     },
+        // ];        
+        // const users = storedUsers;
+
+        const users = BrowserStorage.getUser();
         users.forEach(function (user) {
             UI.addUserToList(user)
         });
@@ -87,6 +89,8 @@ document.querySelector("#user-form").addEventListener("submit", function (e) {
 
         // add user to table
         UI.addUserToList(user);
+
+        BrowserStorage.addUser(user)
         UI.showNotification("User has been added successfully", "success");
         UI.clearFields();
     }
@@ -98,7 +102,35 @@ document.querySelector("#user-list").addEventListener("click", function (e) {
     // console.log(e.target)
     UI.deleteUser(e.target);
     UI.showNotification("User has been deleted successfully", "danger");
+    const getUserId = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+    console.log(getUserId);
+    BrowserStorage.removeUser(getUserId)
 })
 
 //storing data in browser memory while browsing
-class 
+class BrowserStorage{
+    static getUser(){
+        let users;
+        if(localStorage.getItem('users') === null){
+            users = [];
+        } else {
+            users = JSON.parse(localStorage.getItem('users'));
+        }
+        return users;
+    }
+    static addUser(user){
+        const users = BrowserStorage.getUser();
+        users.push(user);
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+    static removeUser(id){
+        const users = BrowserStorage.getUser();
+        
+        users.forEach(function(user, index) {
+            if(user.id === id) {
+                users.splice(index, 1);
+            }
+        });
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+}
