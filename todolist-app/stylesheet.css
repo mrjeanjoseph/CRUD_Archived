@@ -1,18 +1,33 @@
-#container{
+#container {
     width: 75%;
-    height: 450px;
+    height: 650px;
     margin: 55px auto;
     border: 5px solid #34495e;
 }
 
-h2{
+h2 {
     color: #34495e;
     text-align: center;
 }
 
-#projects{
+#projects {
     width: 90%;
     height: 85%;
     margin: 0px auto;
 }
 
+ol li {
+    border: 1px solid #2c3e50;
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+ol li:hover {
+    background: rgba(0, 0, 255);
+}
+
+#btnAddProject {
+    margin-left: 75%;
+    margin-bottom: 15px;
+}
