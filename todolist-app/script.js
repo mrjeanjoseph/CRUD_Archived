@@ -13,7 +13,9 @@ $(document).ready(function () {
                     var activeTab = $("#projects").tabs("option","active");
                     // alert(activeTab);
                     var title = $(`#main > li:nth-child(${(activeTab + 1)}) > a`).attr("href");
-                    alert(title);
+                    // alert(title);
+                    $("#projects" + title).append(`<li><input type="checkbox">${$("#new-task").val()}</li>`);
+                    // alert(check)
                     $(this).val("");
                     $(this).dialog("close");
                 },
@@ -32,12 +34,13 @@ $(document).ready(function () {
             buttons: {
                 "Add new project": function () {
                     var projectName = $("#new-project").val();
-                    $(`<li><a href="#${projectName}">${projectName}</a></li>`)
+                    var replaceName = projectName.split(" ").join("_");
+                    $(`<li><a href="#${replaceName}">${projectName}</a></li>`)
                         .appendTo("#main");
                     $("#projects").tabs("refresh");
 
 
-                    $(`<ol id="${projectName}"></ol>`).appendTo("#projects");
+                    $(`<ol id="${replaceName}"></ol>`).appendTo("#projects").sortable();
                     var tabCount = $("#projects .ui-tabs-nav li").length;
                     $("#projects").tabs("option", "active", tabCount - 1);
                     $(this).val("");
