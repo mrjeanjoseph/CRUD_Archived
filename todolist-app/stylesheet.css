@@ -24,5 +24,18 @@ ol li {
 }
 
 ol li:hover{
-    background-color: #dff9fb;
+    background-color: #007fff;
+    color: white;
+}
+
+#btnAddProject{
+    margin-left: 500px;
+    margin-bottom: 10px;
+    background-color: #007fff;
+    color: whitesmoke;
+    font-size: 18px;
+}
+
+#project-dialog{
+    display: none;
 }
