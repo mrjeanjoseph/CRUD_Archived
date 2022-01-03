@@ -1,4 +1,18 @@
-
-div{
-    background-color: pink;
+#container{
+    width: 75%;
+    height: 450px;
+    margin: 55px auto;
+    border: 5px solid #34495e;
 }
+
+h2{
+    color: #34495e;
+    text-align: center;
+}
+
+#projects{
+    width: 90%;
+    height: 85%;
+    margin: 0px auto;
+}
+
