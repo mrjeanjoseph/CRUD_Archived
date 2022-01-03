@@ -8,9 +8,16 @@ $(document).ready(function() {
             resizable:false,
             modal:true,
             buttons:{
-                "Add new project": function() {},
+                "Add new project": function() {
+                    var projectName = $("#new-project").val();
+                    $(`<li><a href="#${projectName}">${projectName}</a></li>`)
+                    .appendTo("#main");
+                    $("#projects").tabs("refresh");
+                    $(this).val("");
+                    $(this).dialog("close");
+                },
                 "Cancel":function(){
-                    // $(this).val("");
+                    $(this).val("");
                     $(this).dialog("close");
                 },    
             }
