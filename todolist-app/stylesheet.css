@@ -12,7 +12,7 @@ h2 {
 
 #projects {
     width: 90%;
-    height: 85%;
+    height: 50%;
     margin: 0px auto;
 }
 
@@ -39,4 +39,10 @@ ol li:hover {
 .ui-dialog-buttonset button[type="button"]{
     background-color: #3c40c6 !important;
     color: white;
+}
+
+#btnAddTask {
+    margin-left: 75%;
+    margin-top: 15px;
+    margin-right: 25px;
 }
