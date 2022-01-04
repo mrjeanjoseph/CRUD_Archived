@@ -1,6 +1,7 @@
 $(document).ready(function () {
     createToDoUI();
     addProject();
+    addTask();
 })
 
 function createToDoUI() {
@@ -22,12 +23,12 @@ function addProject() {
                     var projectName = $("#new-project").val();
                     $(`<li><a href="#${projectName}">${projectName}</a></li>`)
                         .appendTo("#main");
+                    $("#projects").tabs("refresh");
 
                     $(`<ol id=${projectName}></ol>`).appendTo("#projects");
                     var tabCount = $("#projects .ui-tabs-nav li").length;
                     $("#projects").tabs("option", "active", tabCount - 1);
 
-                    $("#projects").tabs("refresh");
                     $("#new-project").val("");
                     $(this).dialog("close");
                 },
@@ -39,4 +40,8 @@ function addProject() {
             }
         })
     });
+}
+
+function addTask() {
+    $("#btnAddTask").button();
 }

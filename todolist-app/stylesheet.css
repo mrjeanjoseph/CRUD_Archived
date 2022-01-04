@@ -23,19 +23,27 @@ ol li {
     margin-bottom: 5px;
 }
 
-ol li:hover{
+ol li:hover {
     background-color: #007fff;
     color: white;
 }
 
-#btnAddProject{
+#btnAddProject {
     margin-left: 500px;
     margin-bottom: 10px;
     background-color: #007fff;
     color: whitesmoke;
-    font-size: 18px;
+    font-size: 14px;
 }
 
-#project-dialog{
+#btnAddTask {
+    margin-left: 530px;
+    margin-top: 15px;
+    background-color: #007fff;
+    color: whitesmoke;
+    font-size: 14px;
+}
+
+#project-dialog, #task-dialog {
     display: none;
 }
