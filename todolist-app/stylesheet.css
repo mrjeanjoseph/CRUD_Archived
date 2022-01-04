@@ -47,3 +47,8 @@ ol li:hover {
 #project-dialog, #task-dialog {
     display: none;
 }
+
+.ui-icon-close{
+    transform: scale(1.5);
+    cursor: pointer;
+}

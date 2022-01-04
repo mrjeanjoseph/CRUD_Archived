@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("input[type=checkbox]").removeAttr("checked");
+    $("input[type=checkbox]").removeAttr("checked");   
     createToDoUI(),
         addProject(),
         addTask();
@@ -24,7 +24,10 @@ function addProject() {
                 "Add new project": function () {
                     var projectName = $("#new-project").val();
                     var replacedName = projectName.split(" ").join("_");
-                    $(`<li><a href="#${replacedName}">${projectName}</a></li>`)
+                    $(`<li>
+                        <a href="#${replacedName}">${projectName}</a>
+                            <span class="ui-icon ui-icon-close"></span>
+                        </li>`)
                         .appendTo("#main");
                     $(`<ol id=${replacedName}></ol>`).appendTo("#projects").sortable();
 
@@ -79,5 +82,14 @@ function removeCompletedTask() {
         $(this).closest("li").slideUp(function () {
             $(this).remove();
         });
+    });
+
+    $("#projects").on("click", "span.ui-icon-close", function() {
+        var index = $(this).closest("li").index();
+        var id = $(`#main li:eq(${ index }) a`).attr("href");
+        $(`#main li:eq(${ index })`).remove();
+        $(id).remove();
+        $("#projects").tabs("refresh");
+
     })
 }
