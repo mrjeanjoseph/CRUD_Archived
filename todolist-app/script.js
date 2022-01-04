@@ -1,7 +1,9 @@
 $(document).ready(function () {
+    $("input[type=checkbox]").removeAttr("checked");
     createToDoUI(),
         addProject(),
         addTask();
+    removeCompletedTask();
 })
 
 function createToDoUI() {
@@ -70,4 +72,12 @@ function addTask() {
             }
         });
     });
+}
+
+function removeCompletedTask() {
+    $("#projects").on("click", "input[type=checkbox]", function () {
+        $(this).closest("li").slideUp(function () {
+            $(this).remove();
+        });
+    })
 }
