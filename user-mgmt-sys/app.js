@@ -39,9 +39,8 @@ pool.getConnection(function(err, connection){
     console.log('Connected as ID' + connection.threadId);
 });
 
-app.get('', function(req, res) {
-    res.render('home');
-});
+const routes = require("./server/routes/user")
+app.use('/', routes);
 
 
 app.listen(port, function () {
