@@ -32,7 +32,7 @@ exports.view = function (req, res) {
 exports.find = function (req, res) {
     pool.getConnection(function (err, connection) {
         if (err) throw err;
-        console.log('Connected as ID' + connection.threadId);
+        console.log(`Connected as ID: ${ connection.threadId}`);
 
         let searchTerm = req.body.search;
         // console.log(searchTerm);
@@ -51,6 +51,19 @@ exports.find = function (req, res) {
 }
 
 
-exports.find = function (req, res) {
-    res.render('add-user');
+exports.form = function (req, res) {
+    //res.render('add-user');
+    pool.getConnection(function (err, connection) {
+        if(err) throw err;
+        console.log(`Connected as ID: ${ connection.threadId}`);
+
+        connection.query(function (err,rows){
+            if(!err) {
+                res.render("add-user", {rows});
+            } else {
+                console.log(err);
+            }
+            console.log("The data from user table \n", rows)
+        });
+    });
 }
