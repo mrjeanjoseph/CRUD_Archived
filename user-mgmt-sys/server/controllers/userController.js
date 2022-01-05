@@ -49,3 +49,8 @@ exports.find = function (req, res) {
         });
     });
 }
+
+
+exports.find = function (req, res) {
+    res.render('add-user');
+}
