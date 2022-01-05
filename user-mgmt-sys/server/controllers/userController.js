@@ -15,7 +15,7 @@ const pool = mysql.createPool({
 exports.view = function (req, res) {
     pool.getConnection(function (err, connection) {
         if (err) throw err;
-        console.log('Connected as ID' + connection.threadId);
+        console.log(`Connected as ID: ${ connection.threadId}`);
         connection.query('SELECT * FROM user', function (err, rows) {
             connection.release();
             if (!err) {
@@ -50,8 +50,13 @@ exports.find = function (req, res) {
     });
 }
 
+exports.form = function(req, res) {
+    res.render("add-user");
+}
 
-exports.form = function (req, res) {
+
+exports.create = function (req, res) {
+    const { first_name, last_name, email, phone, comments } = req.body;
     //res.render('add-user');
     pool.getConnection(function (err, connection) {
         if(err) throw err;
