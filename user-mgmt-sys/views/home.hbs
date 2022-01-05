@@ -1,7 +1,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">ID</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Email</th>
@@ -10,23 +10,19 @@
         </tr>
     </thead>
     <tbody>
+        {{#each rows}}
         <tr>
-            <th scope="row">1</th>
-            <td>Devereaux</td>
-            <td>Jean-Joseph</td>
-            <td>djeanjoseph@dvc.com</td>
-            <td>919-911-9111</td>
+            <th scope="row">{{this.Id}}</th>
+            <td>{{this.first_name}}</td>
+            <td>{{this.last_name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.phone}}</td>
             <td>
-                <a href="#" type="button" class="btn btn-light btn-small">
-                    <i class="bi bi-eye"></i>
-                </a>
-                <a href="#" type="button" class="btn btn-light btn-small">
-                    <i class="bi bi-pencil"></i>
-                </a>
-                <a href="#" type="button" class="btn btn-light btn-small">
-                    <i class="bi bi-person-x"></i>
-                </a>
+                <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-check"> View</i></a>
+                <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"> Edit</i></a>
+                <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"> Delete</i></a>
             </td>
         </tr>
+        {{/each}}
     </tbody>
 </table>
