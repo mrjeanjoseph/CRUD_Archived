@@ -15,11 +15,11 @@ const pool = mysql.createPool({
 exports.view = function (req, res) {
     pool.getConnection(function (err, connection) {
         if (err) throw err;
-        console.log('Connected as ID' + connection.threadId);        
-        connection.query('SELECT * FROM user', function (err, rows) {            
+        console.log('Connected as ID' + connection.threadId);
+        connection.query('SELECT * FROM user', function (err, rows) {
             connection.release();
-            if(!err){
-                res.render('home', {rows});
+            if (!err) {
+                res.render('home', { rows });
             } else {
                 console.log(err);
             }
@@ -29,7 +29,7 @@ exports.view = function (req, res) {
 };
 
 //find user by search
-exports.find = function(req, res) {
+exports.find = function (req, res) {
     pool.getConnection(function (err, connection) {
         if (err) throw err;
         console.log('Connected as ID' + connection.threadId);
@@ -37,10 +37,11 @@ exports.find = function(req, res) {
         let searchTerm = req.body.search;
         // console.log(searchTerm);
 
-        connection.query('SELECT * FROM user WHERE first_name LIKE ?', [`%${searchTerm}%`], function (err, rows) {            
+        connection.query('SELECT * FROM user WHERE first_name LIKE ?', [`%${searchTerm}%`], function (err, rows) {
+            //This peice of code is not filtering like it is supposed to.
             connection.release();
-            if(!err){
-                res.render('home', {rows});
+            if (!err) {
+                res.render('home', { rows });
             } else {
                 console.log(err);
             }
