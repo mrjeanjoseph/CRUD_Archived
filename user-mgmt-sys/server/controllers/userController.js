@@ -128,3 +128,20 @@ exports.update = function (req, res) {
         });
     });
 }
+
+// Delete a user
+exports.delete = function (req, res) {
+    pool.getConnection(function (err, connection) {
+        if (err) throw err;
+        console.log(`Connected as ID: ${connection.threadId}`);
+        connection.query('SELECT * FROM user WHERE id = ?',[req.params.id], function (err, rows) {
+            connection.release();
+            if (!err) {
+                res.render('home', { rows });
+            } else {
+                console.log(err);
+            }
+            console.log("Data from db\n", rows);
+        });
+    });
+}
