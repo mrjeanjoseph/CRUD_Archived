@@ -70,7 +70,7 @@ exports.create = function (req, res) {
                 connection.release();
                 if (!err) {
                     // res.render("add-user");
-                    res.render('add-user', { alert: 'User added successfully.' });
+                    res.render('add-user', { rows, alert: `${first_name} has been added successfully` });
                 } else {
                     res.render('add-user', { alert: 'User not added.' });
                     console.log(err);
