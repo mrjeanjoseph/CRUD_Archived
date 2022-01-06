@@ -62,9 +62,12 @@ exports.create = function (req, res) {
         if(err) throw err;
         console.log(`Connected as ID: ${ connection.threadId}`);
 
-        connection.query(function (err,rows){
+        connection.query(`INSERT INTO user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ?`,
+            [first_name, last_name, email, phone, comments],
+            function (err,rows){
+                connection.release();
             if(!err) {
-                res.render("add-user", {rows});
+                res.render("add-user");
             } else {
                 console.log(err);
             }
