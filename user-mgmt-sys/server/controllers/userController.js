@@ -84,7 +84,7 @@ exports.editUser = function (req, res) {
     pool.getConnection(function (err, connection) {
         if (err) throw err;
         console.log(`Connected as ID: ${connection.threadId}`);
-        connection.query('SELECT * FROM user WHERE id = ?',[req.params.id], function (err, rows) {
+        connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], function (err, rows) {
             connection.release();
             if (!err) {
                 res.render('edit-user', { rows });
@@ -104,44 +104,60 @@ exports.update = function (req, res) {
         console.log(`Connected as ID: ${connection.threadId}`);
 
         connection.query('UPDATE user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ? WHERE id = ?',
-        [first_name, last_name, email, phone, comments, req.params.id], function (err, rows) {
-            connection.release();
-            if (!err) {
-                pool.getConnection(function (err, connection) {
-                    if (err) throw err;
-                    console.log(`Connected as ID: ${connection.threadId}`);
-                    connection.query('SELECT * FROM user WHERE id = ?',[req.params.id], function (err, rows) {
-                        connection.release();
-                        if (!err) {
-                            res.render('edit-user', { rows, alert: `${first_name} has been updated.` });
-                        } else {
-                            console.log(err);
-                        }
-                        console.log("Data from db\n", rows);
+            [first_name, last_name, email, phone, comments, req.params.id], function (err, rows) {
+                connection.release();
+                if (!err) {
+                    pool.getConnection(function (err, connection) {
+                        if (err) throw err;
+                        console.log(`Connected as ID: ${connection.threadId}`);
+                        connection.query('SELECT * FROM user WHERE id = ?',
+                            [req.params.id],
+                            function (err, rows) {
+                                connection.release();
+                                if (!err) {
+                                    res.render('edit-user', { rows, alert: `${first_name} has been updated.` });
+                                } else {
+                                    console.log(err);
+                                }
+                                console.log("Data from db\n", rows);
+                            });
                     });
-                });
 
-            } else {
-                console.log(err);
-            }
-            console.log("Data from db\n", rows);
-        });
+                } else {
+                    console.log(err);
+                }
+                console.log("Data from db\n", rows);
+            });
     });
 }
 
 // Delete a user
 exports.delete = function (req, res) {
+    // pool.getConnection(function (err, connection) {
+    //     if (err) throw err;
+    //     console.log(`Connected as ID: ${connection.threadId}`);
+    //     connection.query('DELETE FROM user WHERE id = ?', [req.params.id], function (err, rows) {
+    //         connection.release();
+    //         if (!err) {
+    //             res.redirect('/');
+    //         } else {
+    //             console.log(err);
+    //         }
+    //         console.log("Data from db\n", rows);
+    //     });
+    // });
+
     pool.getConnection(function (err, connection) {
         if (err) throw err;
-        console.log(`Connected as ID: ${connection.threadId}`);
-        connection.query('SELECT * FROM user WHERE id = ?',[req.params.id], function (err, rows) {
-            connection.release();
-            if (!err) {
-                res.render('home', { rows });
-            } else {
-                console.log(err);
-            }
-            console.log("Data from db\n", rows);
-        });
-    });
+        connection.query('UPDATE user SET status = ? WHERE id = ?',
+            ['removed', req.params.id],
+            function (err, rows) {
+                if (!err) {
+                    res.redirect('/');
+                } else {
+                    console.log(err);
+                }
+                console.log('Data has been deleted: \n', rows);
+            })
+    })
 }
