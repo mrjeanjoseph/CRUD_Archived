@@ -16,10 +16,11 @@ exports.view = function (req, res) {
     pool.getConnection(function (err, connection) {
         if (err) throw err;
         console.log(`Connected as ID: ${connection.threadId}`);
-        connection.query('SELECT * FROM user', function (err, rows) {
+        connection.query('SELECT * FROM user WHERE status = "active"', function (err, rows) {
             connection.release();
             if (!err) {
-                res.render('home', { rows });
+                let removedUser = req.query.removed;
+                res.render('home', { rows, removedUser });
             } else {
                 console.log(err);
             }
@@ -153,11 +154,29 @@ exports.delete = function (req, res) {
             ['removed', req.params.id],
             function (err, rows) {
                 if (!err) {
-                    res.redirect('/');
+                    // let removedUser = encodedURIComponent("User successfully removed");
+                    // res.redirect('/?removed=' + removedUser);
+                   res.redirect('/');
                 } else {
                     console.log(err);
                 }
                 console.log('Data has been deleted: \n', rows);
-            })
-    })
+            });
+    });
 }
+
+exports.viewUser = function (req, res) {
+    pool.getConnection(function (err, connection) {
+        if (err) throw err;
+        console.log(`Connected as ID: ${connection.threadId}`);
+        connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], function (err, rows) {
+            connection.release();
+            if (!err) {
+                res.render('view-user', { rows });
+            } else {
+                console.log(err);
+            }
+            console.log("Data from db\n", rows);
+        });
+    });
+};

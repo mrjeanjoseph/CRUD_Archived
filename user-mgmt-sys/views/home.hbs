@@ -1,3 +1,10 @@
+{{#if removedUser}}
+<div class="col-9 alert alert-success alert-dismissible fade show" role="alert">
+    User has been removed
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
 <div class="row">
     <div class="col-6"><h1>Users</h1></div>
     <div class="col-6 d-flex justify-content-end">
@@ -25,7 +32,7 @@
             <td>{{this.email}}</td>
             <td>{{this.phone}}</td>
             <td>
-                <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-check"> View</i></a>
+                <a href="/viewuser/{{this.Id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-check"> View</i></a>
                 <a href="/edituser/{{this.Id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"> Edit</i></a>
                 <a href="/{{this.Id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"> Delete</i></a>
             </td>
