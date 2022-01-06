@@ -81,5 +81,50 @@ exports.create = function (req, res) {
 }
 
 exports.editUser = function (req, res) {
-    res.render("edit-user");
+    pool.getConnection(function (err, connection) {
+        if (err) throw err;
+        console.log(`Connected as ID: ${connection.threadId}`);
+        connection.query('SELECT * FROM user WHERE id = ?',[req.params.id], function (err, rows) {
+            connection.release();
+            if (!err) {
+                res.render('edit-user', { rows });
+            } else {
+                console.log(err);
+            }
+            console.log("Data from db\n", rows);
+        });
+    });
+}
+
+exports.update = function (req, res) {
+    const { first_name, last_name, email, phone, comments } = req.body;
+
+    pool.getConnection(function (err, connection) {
+        if (err) throw err;
+        console.log(`Connected as ID: ${connection.threadId}`);
+
+        connection.query('UPDATE user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ? WHERE id = ?',
+        [first_name, last_name, email, phone, comments, req.params.id], function (err, rows) {
+            connection.release();
+            if (!err) {
+                pool.getConnection(function (err, connection) {
+                    if (err) throw err;
+                    console.log(`Connected as ID: ${connection.threadId}`);
+                    connection.query('SELECT * FROM user WHERE id = ?',[req.params.id], function (err, rows) {
+                        connection.release();
+                        if (!err) {
+                            res.render('edit-user', { rows, alert: `${first_name} has been updated.` });
+                        } else {
+                            console.log(err);
+                        }
+                        console.log("Data from db\n", rows);
+                    });
+                });
+
+            } else {
+                console.log(err);
+            }
+            console.log("Data from db\n", rows);
+        });
+    });
 }
