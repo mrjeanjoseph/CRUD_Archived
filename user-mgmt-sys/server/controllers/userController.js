@@ -15,7 +15,7 @@ const pool = mysql.createPool({
 exports.view = function (req, res) {
     pool.getConnection(function (err, connection) {
         if (err) throw err;
-        console.log(`Connected as ID: ${ connection.threadId}`);
+        console.log(`Connected as ID: ${connection.threadId}`);
         connection.query('SELECT * FROM user', function (err, rows) {
             connection.release();
             if (!err) {
@@ -32,25 +32,27 @@ exports.view = function (req, res) {
 exports.find = function (req, res) {
     pool.getConnection(function (err, connection) {
         if (err) throw err;
-        console.log(`Connected as ID: ${ connection.threadId}`);
+        console.log(`Connected as ID: ${connection.threadId}`);
 
         let searchTerm = req.body.search;
         // console.log(searchTerm);
 
-        connection.query('SELECT * FROM user WHERE first_name LIKE ?', [`%${searchTerm}%`], function (err, rows) {
-            //This peice of code is not filtering like it is supposed to.
-            connection.release();
-            if (!err) {
-                res.render('home', { rows });
-            } else {
-                console.log(err);
-            }
-            console.log("Data from db\n", rows);
-        });
+        connection.query('SELECT * FROM user WHERE first_name LIKE ? OR last_name LIKE ?',
+            [`%${searchTerm}%`, `%${searchTerm}%`],
+            function (err, rows) {
+                //This peice of code is not filtering like it is supposed to.
+                connection.release();
+                if (!err) {
+                    res.render('home', { rows });
+                } else {
+                    console.log(err);
+                }
+                console.log("Data from db\n", rows);
+            });
     });
 }
 
-exports.form = function(req, res) {
+exports.form = function (req, res) {
     res.render("add-user");
 }
 
@@ -59,19 +61,25 @@ exports.create = function (req, res) {
     const { first_name, last_name, email, phone, comments } = req.body;
     //res.render('add-user');
     pool.getConnection(function (err, connection) {
-        if(err) throw err;
-        console.log(`Connected as ID: ${ connection.threadId}`);
+        if (err) throw err;
+        console.log(`Connected as ID: ${connection.threadId}`);
 
-        connection.query(`INSERT INTO user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ?`,
+        connection.query('INSERT INTO user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ?',
             [first_name, last_name, email, phone, comments],
-            function (err,rows){
+            function (err, rows) {
                 connection.release();
-            if(!err) {
-                res.render("add-user");
-            } else {
-                console.log(err);
-            }
-            console.log("The data from user table \n", rows)
-        });
+                if (!err) {
+                    // res.render("add-user");
+                    res.render('add-user', { alert: 'User added successfully.' });
+                } else {
+                    res.render('add-user', { alert: 'User not added.' });
+                    console.log(err);
+                }
+                console.log("The data from user table \n", rows)
+            });
     });
+}
+
+exports.editUser = function (req, res) {
+    res.render("edit-user");
 }
