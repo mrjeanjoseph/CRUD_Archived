@@ -1,7 +1,26 @@
 {
     "hero": {
-        "header":"Manje Byen <br> e pase yon bon jounen",
-        "subtext":"Nan restoran ki toujou la pou ou an, wap jwen manje ki fresh nan tout peyi ya e ou menm ak tout fanmi ou ap renmen li anpil.",
-        "bg_image":"/images/barista.jpg"
+        "header": "Manje Byen <br> e pase yon bon jounen",
+        "subtext": "Nan restoran ki toujou la pou ou an, wap jwen manje ki fresh nan tout peyi ya e ou menm ak tout fanmi ou ap renmen li anpil.",
+        "bg_image": "https://media-cldnry.s-nbcnews.com/image/upload/newscms/2020_51/1653495/top-chef-ron-duprat-nc-inline-201217.jpg"
+    },
+    "about": {
+        "header": "Nou kontan ou vin vizite Kiskeya Restoran",
+        "subtext":"Pork belly pancetta andouille shank. Bacon shank pork belly andouille meatloaf kielbasa hamburger short ribs pork loin beef ribs jerky short loin fatback flank. Corned beef landjaeger venison bresaola shankle. Pork belly buffalo biltong hamburger leberkas boudin, pig corned beef short ribs tongue tail pork prosciutto. Doner ham hock pancetta strip steak ground round cow. Brisket hams e le tail jowl porchetta.",
+        "bg_image":"https://media-cdn.tripadvisor.com/media/photo-p/14/2d/81/67/our-indoor-and-alfresco.jpg",
+        "images":[
+            {
+                "image":"https://www.ediblebrooklyn.com/wp-content/uploads/sites/2/2014/09/kreyolflavor.jpg",
+                "caption":"Legime avek lobster"
+            },
+            {
+                "image":"https://media-cdn.tripadvisor.com/media/photo-s/16/7c/41/51/img-20190216-115356-301.jpg",
+                "caption":"bannan peze akev pikliz"
+            },
+            {
+                "image":"https://media-cdn.tripadvisor.com/media/photo-s/0f/62/77/73/20170525-141538-largejpg.jpg",
+                "caption":"diri avek griyo"
+            }
+        ]
     }
 }
