@@ -8,13 +8,6 @@ $(document).ready(() => {
     });
 });
 
-//`http://www.omdbapi.com?s=${searchText}`
-//"http://www.omdbapi.com?s=+searchText"
-//`http://www.omdbapi.com/?t=home`
-//http://www.omdbapi.com/?i=tt3896198&apikey=93974bd3
-//http://www.omdbapi.com/?apikey=[93974bd3]&s=${searchText}
-//
-
 function getMovies(searchText) {
      axios.get(`http://www.omdbapi.com/?s=${searchText}&apikey=93974bd3`)
      .then(function(res) {
