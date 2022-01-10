@@ -1,9 +1,0 @@
-{
-    "title": "kafe Kiskeya ou Boyo",
-    "deskripsyon": "Nou apresye ou menm avek fanmi/zanmi'w vinn dine nan restaurant sa a. Mwen swete nou jwen yon bon ekperyans.",
-    "hours": [
-        {"days":"Mon-Fri","time":"6am to 10pm"},
-        {"days":"Saturday","time":"7am to 11pm"},
-        {"days":"Sunday","time":"7am to 9pm"}
-    ]
-}
