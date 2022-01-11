@@ -13,17 +13,35 @@ $(document).ready(function() {
                 url: `https://api.github.com/users/${username}/repos`,
                 data:{
                     client_id:'97817cfae14c918a7627',
-                    client_secret:'f88366bf476335eb9a9dd0e4343477464693f7cf'
+                    client_secret:'f88366bf476335eb9a9dd0e4343477464693f7cf',
+                    sort:'created: asc',
+                    per_page: 5
                 }
             }).done(function(repos) {
-
+                $.each(repos, function(index, repo){
+                    $("#repos").append(`
+                            <div class="row p-3 mb-2 bg-secondary text-dark">
+                                <div class="col-md-7">
+                                    <strong>${repo.name}</strong>: ${repo.description}
+                                </div>
+                                <div class="col-md-3">                                
+                                    <span class="badge rounded-pill bg-success">Forks: ${repo.forks_count}</span>
+                                    <span class="badge rounded-pill bg-info text-dark">Watchers: ${repo.watchers_count}</span>
+                                    <span class="badge rounded-pill bg-primary">Stars: ${repo.stargazers_count}</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="${repo.html_url}" target="_blank" class="btn btn-dark">View Page</a>
+                                </div>
+                            </div>
+                    `);
+                });
             });
             $("#profile").html(`
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">${user.name}</h3>
+            <div class="card border-primary">
+                <div class="card-header">
+                    <h3 class="card-title">${user.name}</h3>
                 </div>
-                <div class="panel-body">
+                <div class="card-body text-secondary">
                     <div class="row">
                         <div class="col-md-3">
                             <img class="thumbnail avatar" src="${user.avatar_url}">
@@ -47,8 +65,10 @@ $(document).ready(function() {
                 </div>
             </div>
 
-            <h3 class="page-header">Latest Repos</h3>
-            <div id="repos"></div>
+            <div class="card border-success">
+                <h3 class="card-header bg-transparent border-success">Latest Repos</h3>
+                <div class="card-body container" id="repos"></div>
+            </div>
             `)
         });
     });
