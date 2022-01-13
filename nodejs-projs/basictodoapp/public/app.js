@@ -6,7 +6,7 @@ $.ajax({
     // }
 }).then(function (data) {
     // console.log("std - success", data);
-    const count = 0;
+    
     for (const id in data) {
         //count++;
         if (id === "nextid") return "";
@@ -19,17 +19,21 @@ $.ajax({
                 <p>${data[id].content}</p>
             </div>
         `);
-
-        $("body").append("Hello")
     }
 })
 
 $("#add-items").click(function (e) {
     e.preventDefault();
-    const getTitle = $("#add-title").val();
-    const getContent = $("#add-content").val();
-
-    console.log({ getTitle, getContent })
+    const title = $("#add-title").val();
+    const content = $("#add-content").val();
+    // console.log({ getTitle, getContent })
+    $.ajax({
+        type: 'POST',
+        url: '/api/todos',
+        data: { title, content }
+    }).then(function (response) {
+        console.log(response);
+    })
 
     $("#add-title").val("");
     $("#add-content").val("");

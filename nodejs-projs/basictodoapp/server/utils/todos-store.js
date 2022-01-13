@@ -38,4 +38,4 @@ module.exports = {
     GetTodos: getTodos,
     UpdateTodo: updateTodo,
     DeleteTodo: deleteTodo
-}
+};
