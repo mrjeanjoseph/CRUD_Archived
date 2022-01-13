@@ -34,25 +34,31 @@ function fetchAndDisplay() {
     $.ajax({
         type: 'GET',
         url: "api/todos",
-        // success: function(data){
-        //     console.log("success", data)
-        // }
-    }).then(function (data) {
-        //$("#todo-container").empty();
-        // console.log("std - success", data);
-        
-        for (const id in data) {
-            //count++;
-            if (id === "nextid") return "";
-            // console.log(data[id].title)
-            // console.log(count);
-    
-            $("#todo-container").append(`
-                <div>
-                    <h3>${data[id].title}</h3>
-                    <p>${data[id].content}</p>
-                </div>
-            `);
+        success: function (data) {
+            for (const id in data) {
+                if (id === "nextid") return "";
+
+                const deleteBtn = $('<button>Delete Item</button>').click(function(){
+                    console.log(id)
+                })
+
+                const appendTitleAndContent = $(`
+                    <div>
+                        <h3>${parseInt(id) + 1}: ${data[id].title}</h3>
+                        <p>${data[id].content}</p>
+                    </div>
+                `);
+                appendTitleAndContent.appendTo("#todo-container")
+                deleteBtn.appendTo("h3")
+                // .append(deleteBtn);
+
+            }
         }
     })
+    //.then(function (data) {
+    //$("#todo-container").empty();
+    // console.log("std - success", data);
+
+
+    //})
 }
