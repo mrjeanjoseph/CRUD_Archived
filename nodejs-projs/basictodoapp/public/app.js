@@ -11,7 +11,10 @@ $("#myAppContainer").on({
             url: '/api/todos',
             data: { title, content },
             success: function (response) {
+                // notice I am using the success function to get response back.
                 console.log(response);
+                $("#todo-container").empty();
+                fetchAndDisplay();
             }
         })
         // .then(function (response) {
@@ -35,6 +38,7 @@ function fetchAndDisplay() {
         //     console.log("success", data)
         // }
     }).then(function (data) {
+        //$("#todo-container").empty();
         // console.log("std - success", data);
         
         for (const id in data) {
@@ -43,7 +47,7 @@ function fetchAndDisplay() {
             // console.log(data[id].title)
             // console.log(count);
     
-            $("body").append(`
+            $("#todo-container").append(`
                 <div>
                     <h3>${data[id].title}</h3>
                     <p>${data[id].content}</p>
