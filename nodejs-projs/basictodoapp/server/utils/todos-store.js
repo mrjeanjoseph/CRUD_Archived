@@ -5,10 +5,6 @@ if(fs.existsSync("todos.json")){
     todos = JSON.parse(fs.readFileSync("todos.json"));
 }
 
-const writeTodos = function(){
-    fs.writeFileSync("todos.json", JSON.stringify(todos));
-}
-
 const getTodos = function() {
     return Object.assign({}, todos);
 }
@@ -30,6 +26,12 @@ const updateTodo = function(id, todo){
 const deleteTodo = function(id) {
     delete todos[id];
     writeTodos();
+}
+
+
+
+const writeTodos = function(){
+    fs.writeFileSync("todos.json", JSON.stringify(todos));
 }
 
 module.exports = {
