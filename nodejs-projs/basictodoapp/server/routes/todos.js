@@ -27,7 +27,7 @@ router.post("/", function(request, response) { //There's an issue here I think
 //POST http://localhost:2022/api/todos/123
 // { title: string, content: string }
 router.put("/:id", function(request, response) {
-    const id = req.params.id;
+    const id = request.params.id;
     const editedTodo = req.body;
     TodoStore.UpdateTodo(id, editedTodo);
     response.json({msg: `todo id ${id} has been edited`});
@@ -35,7 +35,7 @@ router.put("/:id", function(request, response) {
 
 //DELETE http://localhost:2022/api/todos/
 router.delete("/:id", function(request, response) {
-    const id = req.params.id;
+    const id = request.params.id;
     TodoStore.DeleteTodo(id);
     response.json({msg: `todo id ${id} has been deleted`});
 });

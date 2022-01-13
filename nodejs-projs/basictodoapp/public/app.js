@@ -35,12 +35,16 @@ function fetchAndDisplay() {
         type: 'GET',
         url: "api/todos",
         success: function (data) {
+            $("#todo-container").empty();
             for (const id in data) {
+                console.log("NextId" + data.nextid)
                 if (id === "nextid") return "";
+                if (id === null) data.nextid = 0
 
-                const deleteBtn = $('<button>Delete Item</button>').click(function(){
-                    console.log(id)
-                })
+                const deleteBtn = $('<button>Delete Item</button>').click(function () {
+                    deleteTodos(id);
+                });
+
 
                 const appendTitleAndContent = $(`
                     <div>
@@ -49,16 +53,23 @@ function fetchAndDisplay() {
                     </div>
                 `);
                 appendTitleAndContent.appendTo("#todo-container")
-                deleteBtn.appendTo("h3")
-                // .append(deleteBtn);
+                    // deleteBtn.appendTo("h3")
+                    .append(deleteBtn);
 
             }
         }
     })
-    //.then(function (data) {
-    //$("#todo-container").empty();
-    // console.log("std - success", data);
+}
 
+function deleteTodos(id) {
 
-    //})
+    $.ajax({
+        type: 'DELETE',
+        url: `/api/todos/${id}`,
+        success: function (data) {
+            console.log(data);
+            fetchAndDisplay();
+        }
+    })
+
 }
