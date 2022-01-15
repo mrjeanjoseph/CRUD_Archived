@@ -1,0 +1,23 @@
+{
+  "name": "secure-calendar",
+  "version": "1.0.0",
+  "description": "secure calendar",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "node.js",
+    "sql"
+  ],
+  "author": "Frednel Jean-Joseph",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^19.2.0",
+    "dotenv": "^12.0.3"
+  },
+  "devDependencies": {
+    "eslint-config-reverentgeek": "^3.1.2"
+  }
+}
