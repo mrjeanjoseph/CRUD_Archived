@@ -26,6 +26,7 @@ const client = async function(server, config) {
                 console.log("Geyen yon ere!" + err);
                 await closePool();
             });
+            return pool; // caught up error here 
         } catch (err) {
             console.log("Genyen yon ere! " + err);
             pool = null;
@@ -36,7 +37,7 @@ const client = async function(server, config) {
         events: await events.register({
             sql, getConnection
         })
-    }
+    };
 };
 
 module.exports = client;

@@ -10,9 +10,9 @@ const register = async function ({ sql, getConnection }) {
         const request = await cnx.request();
         request.input("userId", sql.VarChar(50), userId);
         return request.query(sqlQueries.getEvents);
-    }
+    };
 
     return { getEvents };
-}
+};
 
 module.exports = { register };
