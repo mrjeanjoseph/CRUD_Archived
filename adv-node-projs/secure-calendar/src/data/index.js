@@ -29,8 +29,8 @@ const client = async function(server, config ) {
             });
             return pool;
         } catch (error) {
-            pool = null;
             console.log( error );
+            pool = null;
         }
     };
 
