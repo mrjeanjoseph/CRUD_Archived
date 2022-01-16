@@ -16,9 +16,7 @@ const startServer = async function(){
         console.log(`Server is listening at http://${config.host}:${config.port}`);
 
     } catch (error) {
-
         console.log("Error starting up the server", error);
-        
     }
 };
 

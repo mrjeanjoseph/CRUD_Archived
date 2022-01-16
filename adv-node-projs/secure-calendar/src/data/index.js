@@ -23,7 +23,7 @@ const client = async function(server, config ) {
                 return pool;
             }
             pool = await sql.connect( config );
-            pool.on("error", function( error ) {
+            pool.on("error", async function( error ) {
                 console.log(error);
                 await closePool();
             });

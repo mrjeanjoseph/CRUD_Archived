@@ -2,7 +2,7 @@
 "use strict";
 
 const fs = require("fs-extra");
-const { join } = require(" path ");
+const { join } = require("path");
 
 const loadSqlQueries = async function (folderName) {
     const filePath = join(process.cwd(), "src", "data", folderName);
