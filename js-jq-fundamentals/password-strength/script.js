@@ -24,10 +24,12 @@ function updateStrengthMeter() {
 
 function calculatePasswordStrength(password) {
     const weaknesses = [];
-    weaknesses.push(lengthWeakness(password));
-    weaknesses.push(numberWeakness(password));
     weaknesses.push(lowercaseWeakness(password));
     weaknesses.push(uppercaseWeakness(password));
+    weaknesses.push(lengthWeakness(password));
+    weaknesses.push(numberWeakness(password));
+    weaknesses.push(specialCharWeakness(password));
+    weaknesses.push(repeatCharWeakness(password));
     return weaknesses;
 };
 
@@ -57,28 +59,45 @@ function lowercaseWeakness(password) {
 }
 
 function uppercaseWeakness(password) {
-    return characterTypeWeakness(password, /[A-Z]/g, 'lowercase');
+    return characterTypeWeakness(password, /[A-Z]/g, 'uppercase');
 }
 
 function numberWeakness(password) {
     return characterTypeWeakness(password, /[0-9]/g, 'numeric');
 }
 
+function specialCharWeakness(password) {
+    /* /[^0-9a-zA-Z]/s This is checking for anything not upper, lower and number */
+    return characterTypeWeakness(password, /[^0-9a-zA-Z\s]/g, 'special');
+}
+
 
 function characterTypeWeakness(password, regex, type) {
     const matches = password.match(regex) || [];
 
-    if (matches.length === 0) {
+    if (matches.length <= 1) {
         return {
             message: `You need at lease two ${type} characters.`,
             deduction: 20
         }
     }
 
-    if (matches.length <= 2) {
+    if (matches.length === 2) {
         return {
             message: `Your password could use more ${type} characters`,
             deduction: 5
         }
     }
+}
+
+function repeatCharWeakness(password) {
+    const matches = password.match(/(.)\1/g) || [];
+
+    if(matches.length > 0){
+        return {
+            message: 'You have repeat characters',
+            deduction: matches.length * 5
+        }
+    }
+
 }
