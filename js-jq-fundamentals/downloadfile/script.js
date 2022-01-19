@@ -44,7 +44,6 @@ const getReport = async function () {
     const csvData = objectToCsv(data);
     // console.log(csvData);
     download(csvData);
-
 };
 
 (function () {
