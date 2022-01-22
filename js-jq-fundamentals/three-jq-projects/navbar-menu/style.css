@@ -1,0 +1,70 @@
+body {
+    background: #fff;
+    font-family: sans-serif;
+    margin: 0px;
+}
+
+#mainmenu {
+    background: #2ecc71;
+    height: 75px;
+    text-align: center;
+}
+
+p {
+    font-size: 40px;
+    color: #34495e;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    cursor: pointer;
+}
+
+ul li a {
+    color: #34495e;
+    width: 100%;
+    line-height: 60px;
+    text-decoration: none;
+}
+
+.selected {
+    margin-top: 15px;
+    height: 60px;
+}
+
+ul li.selected {
+    background: #34495e;
+
+}
+
+ul li.selected a {
+    color: #ffffff;
+}
+
+@media (min-width: 200px) and (max-width: 600px) {
+    #mainmenu ul {
+        display: none;
+    }
+
+    #mainmenu select {
+        width: 90%;
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 600px) {
+    #mainmenu select {
+        display: none;
+    }
+
+    #mainmenu ul {
+        margin-top: 0px;
+    }
+}
