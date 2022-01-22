@@ -14,5 +14,5 @@ app.use("/api", eventRoutes.routes)
 
 app.listen(config.port, function() {
     // console.log(`Server is listening on http://${ config.host}:${ config.port }`);
-    console.log(`Server is listening on ${ config.url }`);
+    console.log(`Server is listening on ${ config.port }`);
 });
