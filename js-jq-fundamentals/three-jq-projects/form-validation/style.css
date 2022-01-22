@@ -2,7 +2,7 @@ form{
     font-family: sans-serif;
     font-size: 10px;
     padding: 50px;
-    background: #70a1ff;
+    background: #cf6a87;
     max-width: 400px;
     margin: 100px auto 0;
 }
@@ -33,4 +33,11 @@ input{
     border: none;
     border-radius: 5px;
     margin-top: 4px;
+}
+
+input[type="submit"]{
+    background: #546de5;
+    color:whitesmoke;
+    font-size: 2em;
+    height:40px;
 }
