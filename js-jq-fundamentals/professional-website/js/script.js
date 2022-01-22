@@ -30,7 +30,7 @@ function setProgressBar(){
     p[1].setAttribute("style", "width:95%;transition:1.9s all");
     p[2].setAttribute("style", "width:85%;transition:2.5s all");
     p[3].setAttribute("style", "width:77%;transition:3.5s all");
-    p[4].setAttribute("style", "width:69%;transition:5.9s all");
+    p[4].setAttribute("style", "width:49%;transition:5.9s all");
 }
 
 $(document).ready(function() {
