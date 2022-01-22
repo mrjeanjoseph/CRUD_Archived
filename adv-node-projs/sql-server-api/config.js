@@ -32,7 +32,7 @@ module.exports = {
         user: SQL_USER,
         password: SQL_PASSWORD,
         options: {
-            encrypt: sql.encrypt,
+            encrypt: sqlEncrypt,
             enableArithAbort: true
         }
     }
