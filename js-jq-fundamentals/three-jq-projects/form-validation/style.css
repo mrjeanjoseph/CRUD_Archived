@@ -41,4 +41,5 @@ input[type="submit"]{
     color:whitesmoke;
     font-size: 2em;
     height:40px;
+    cursor: pointer;
 }
