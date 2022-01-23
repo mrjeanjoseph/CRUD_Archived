@@ -17,4 +17,6 @@ const getEvents = async function(){
     }
 }
 
-module.exports = { getEvents }
+module.exports = { 
+    getEvents 
+}
