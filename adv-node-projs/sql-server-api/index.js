@@ -10,9 +10,10 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use("/api", eventRoutes.routes)
+app.use("/api", eventRoutes.routes);
+//Unable to connect to db error persists
 
 app.listen(config.port, function() {
     // console.log(`Server is listening on http://${ config.host}:${ config.port }`);
-    console.log(`Server is listening on ${ config.port }`);
+    console.log(`Server is listening on ${ config.url }`); 
 });
