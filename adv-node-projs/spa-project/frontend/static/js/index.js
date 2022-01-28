@@ -12,8 +12,10 @@ const getParams = function(match) {
     .map(function(result) {
         result[1];
     });
-    console.log(Array.from(match.route.path.matchAll(/:(\w+)/g)));
-    return {};
+
+    return Object.fromEntries(keys.map( function (key, i){
+        return [key, values[i]]
+    }))
 }
 
 const navigateTo = function (url) {
@@ -26,6 +28,7 @@ const router = async function () {
     const routes = [
         { path: "/", view: dashboard },
         { path: "/posts", view: postsview },
+        { path: "/posts/id", view: postsview },
         { path: "/settings", view: settings },
         // { path: "/", view: function () { console.log("Viewing Dashboard") } },
         // { path: "/posts", view: function () { console.log("Viewing Posts") } },
