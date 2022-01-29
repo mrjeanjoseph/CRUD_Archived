@@ -1,11 +1,24 @@
 import dashboard from './views/dashboard.js';
 import postsview from './views/postsview.js';
 import settingsview from './views/settingsview.js';
+import viewingpost from './views/viewingpost.js';
 
-const pathToRegex = function (path) {
+const pathToRegex = path => // Must use ES6 for this one.
     new RegExp("^" + path.replace(/\//g, "\\/")
         .replace(/:\w+/g, "(.+)") + "$");
+
+const getParams = match => {
+    const values = match.result.slice(1);
+    const keys = Array.from(match.route.path.matchAll(/:(\w+)/g))
+        .map(result => result[1]);
+
+    // console.log(Array.from(match.route.path.matchAll(/:(\w+)/g)))
+    // return {};
+    return Object.fromEntries(keys.map((key, i) => {
+        return [key, values[i]];
+    }));
 }
+
 
 const navigateTo = function (url) {
     history.pushState(null, null, url);
@@ -14,10 +27,11 @@ const navigateTo = function (url) {
 
 const router = async function () {
     console.log(pathToRegex("/posts/:id"));
+    // /posts/:id/
     const routes = [
         { path: "/", view: dashboard },
         { path: "/posts", view: postsview },
-        // {path: "/posts", view: viewpost},
+        { path: "/posts/:id", view: viewingpost },
         { path: "/settings", view: settingsview },
     ];
 
@@ -25,24 +39,25 @@ const router = async function () {
     const potentialMatches = routes.map(function (route) {
         return {
             route: route,
-            isMatch: location.pathname === route.path
+            result: location.pathname.match(pathToRegex(route.path))
         };
     });
 
-    let match = potentialMatches.find(potentialMatch => potentialMatch.isMatch);
+    let match = potentialMatches.find(potentialMatch => potentialMatch.result !== null);
 
     //If not aviable, then default to root display
     if (!match) {
         match = {
             route: routes[0],
-            isMatch: true
-        }
-    }
+            // isMatch: true
+            result: [location.pathname]
+        };
+    };
 
     // console.log(potentialMatches);
     // console.log(match.route.view());
 
-    const view = new match.route.view();
+    const view = new match.route.view(getParams(match));
 
     document.querySelector("#app").innerHTML = await view.getHtml();
 };
