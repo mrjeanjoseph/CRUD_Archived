@@ -2,23 +2,16 @@ import dashboard from './views/dashboard.js';
 import postsview from './views/postsview.js';
 import settingsview from './views/settingsview.js';
 
-const pathToRegex = function (path) {
-    new RegExp("^" + path.replace(/\//g, "\\/")
-        .replace(/:\w+/g, "(.+)") + "$");
-}
-
 const navigateTo = function (url) {
     history.pushState(null, null, url);
     router();
 }
 
 const router = async function () {
-    console.log(pathToRegex("/posts/:id"));
     const routes = [
-        { path: "/", view: dashboard },
-        { path: "/posts", view: postsview },
-        // {path: "/posts", view: viewpost},
-        { path: "/settings", view: settingsview },
+        {path: "/", view: dashboard},
+        {path: "/posts", view: postsview},
+        {path: "/settings", view: settingsview},
     ];
 
     //Test each route for potential match
