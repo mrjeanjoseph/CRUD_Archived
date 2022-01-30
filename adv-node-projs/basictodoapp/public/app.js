@@ -58,8 +58,8 @@ function fetchAndDisplay() {
 
             }
         }
-    })
-}
+    });
+};
 
 function deleteTodos(id) {
 
@@ -70,6 +70,5 @@ function deleteTodos(id) {
             console.log(data);
             fetchAndDisplay();
         }
-    })
-
-}
+    });
+};
