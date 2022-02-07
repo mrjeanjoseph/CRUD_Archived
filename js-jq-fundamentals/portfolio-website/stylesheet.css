@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Kumbh Sans', sans-serif;
+
 }
 .navbar{
     background: #2C3A47;
@@ -217,19 +218,50 @@
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
 }
-
 .main__content p {
     margin-top: 1rem;
     font-size: 2rem;
     font-weight: 700;
     text-transform: capitalize;
+    color: #ecf0f1;
 }
-
 .main__btn{
     font-size: 1rem;
-    background-color: linear-gradient(to top, #3B3B98 0%,  #9AECDB 100%);
+    background-image: linear-gradient(to top, #9AECDB 0%,  #3B3B98 100%);
     padding: 14px 32px;
     border: none;
     border-radius: 7px;
-    
+    color: #ecf0f1;
+    margin-top: 2rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s;
+    outline: none;
+}
+.main__btn a {
+    position: relative;
+    z-index: 2;
+    color: #ecf0f1;
+    text-decoration: none;
+}
+.main__btn:after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-image: linear-gradient(to top, #3B3B98 0%, #9AECDB 100%);
+    transition: all 0.35s;
+    border-radius: 5px;
+}
+.main__btn:hover:after{
+    width: 100%;
+}
+.main__img--container{
+    text-align: center;
+}
+#main__img{
+    height: 80%;
+    width: 80%
 }
