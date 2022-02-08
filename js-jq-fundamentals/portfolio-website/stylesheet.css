@@ -95,6 +95,7 @@
     color: #ff7979;
     transition: all 0.3s ease;
 }
+
 @media screen and (max-width: 960px) {
     .navbar__container{
         display: flex;
@@ -316,6 +317,13 @@
 /* Services Section */
 .services{
     background: #2C3A47;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+.services h1{
+    background:  #6D214F 0%;
     background-image: linear-gradient(
         to right,
         #6D214F 0%,
@@ -337,4 +345,48 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+.services__card {
+    margin: 1rem;
+    height: 525px;
+    width: 400px;
+    border-radius: 4px;
+    background-image: linear-gradient(
+        to bottom, 
+        rgba(0,0,0,0) 0%, 
+        rgba(17, 17, 17, 0.6) 100%),
+        url("https://helios-i.mashable.com/imagery/articles/03ZRTZo2yhVoicryNszORem/hero-image.fill.size_1200x1200.v1611615871.png");
+    background-size: cover;
+    position: relative;
+    color: #ecf0f1;
+}
+.services__card:nth-child(2){
+    background-image: linear-gradient(
+        to bottom, 
+        rgba(0,0,0,0) 0%, 
+        rgba(17, 17, 17, 0.6) 100%),
+        url("https://images.techhive.com/images/article/2017/03/thinkstockphotos-510486456-100713191-large.jpg?auto=webp&quality=85,70");
+}
+.services h2{
+    position: absolute;
+    top: 350px;
+    left:30px;
+}
+.services__card p{
+    position: absolute;
+    top: 400px;
+    left: 30px;
+}
+.services__card button{
+    color: #ecf0f1;
+    padding: 10px 25px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: #FEA47F;
+    position: absolute;
+    top:440px;
+    left: 30px;
+    font-size: 1rem;
+    cursor: pointer;
 }

@@ -6,5 +6,10 @@ menu.addEventListener("click", function() {
     menuLinks.classList.toggle("active");
 });
 
+window.onbeforeunload = function(e) {
+    e.preventDefault();
+    localStorage.setItem('scrollpos', window.scrollY);
+};  
+
 
 // alert(document.body.clientWidth);
