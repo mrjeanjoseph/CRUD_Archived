@@ -7,4 +7,4 @@ menu.addEventListener("click", function() {
 });
 
 
-alert(document.body.clientWidth);
+// alert(document.body.clientWidth);

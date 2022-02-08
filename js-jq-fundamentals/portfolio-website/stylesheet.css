@@ -312,3 +312,29 @@
         margin: 2.5rem 0;
     }
 }
+
+/* Services Section */
+.services{
+    background: #2C3A47;
+    background-image: linear-gradient(
+        to right,
+        #6D214F 0%,
+        #992ea3 25%,
+        #9ce02e 48%,
+        #db9c26 720%,
+        #FEA47F 100%
+    );
+    background-size: 100%;
+    margin-bottom: 5rem;
+    font-size: 2.5rem;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+.services__container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
