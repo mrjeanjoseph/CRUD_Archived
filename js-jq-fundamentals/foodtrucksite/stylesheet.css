@@ -126,10 +126,9 @@ body{
 }
 #home .controls{
     position: absolute;
+    bottom: 14%; left: 45%;
     /* transform: translateX(-50%); */
     display: flex;
-    background: #f5f6fa;
-    bottom: 14%;
 }
 #home .controls .dots{
     height: 2rem;
@@ -141,7 +140,6 @@ body{
 #home .controls .dots:hover{
     background: #f5f6fa;
 }
-
 .fa-times{
     transform: rotate(-180deg);
     /* transform: skew(-180deg); */
@@ -149,7 +147,10 @@ body{
 }
 
 /* Make UI responsive */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+    html{
+        font-size: 50%;
+    }
     #header .fa-drumstick-bite{
         display: block;
     }
@@ -179,5 +180,11 @@ body{
     }
     #header .nav-toggle{
         left: 0;
+    }
+    #home .controls{
+        position: absolute;
+        bottom: 14%; left: 35%;
+        /* transform: translateX(-50%); */
+        display: flex;
     }
 }
