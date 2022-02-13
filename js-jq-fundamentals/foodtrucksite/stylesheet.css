@@ -94,6 +94,7 @@ body {
 
 #home .content button,
 #about .content button,
+#dish .box-container .box button,
 #special .card-container .card button{
     outline: none;
     border: none;
@@ -114,6 +115,7 @@ body {
 
 #home .content button::before,
 #about .content button::before,
+#dish .box-container .box button::before,
 #special .card-container .card button::before {
     content: '';
     position: absolute;
@@ -128,6 +130,7 @@ body {
 
 #home .content button:hover::before,
 #about .content button:hover::before,
+#dish .box-container .box button:hover::before,
 #special .card-container .card button:hover::before {
     width: 100%;
     color: #f5f6fa;
@@ -193,6 +196,7 @@ body {
 }
 
 #special .heading h1,
+#dish .heading h1,
 #about .heading h1{
     /*@mixin heading notes*/
     font-size: 4rem;
@@ -202,6 +206,7 @@ body {
 }
 
 #special .heading span,
+#dish .heading span,
 #about .heading span{
     color: #fbc531;
 }
@@ -265,6 +270,59 @@ body {
     
 }
 
+/* dish section */
+#dish{
+    min-height: 100vh;
+    width: 100vw;
+}
+#dish .box-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 1rem auto;
+    width: 90%;
+}
+#dish .box-container .box{
+    height: 20rem;
+    width: 30rem;
+    border-radius: 1rem;
+    margin: 2rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 .5rem #333;
+}
+#dish .box-container .box img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+#dish .box-container .box .info{
+    position: absolute;
+    top: 0;left: 0;
+    height: 100%;
+    width: 100%;
+    background: 51, 51, 52, .6;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    color: #f5f6fa;
+    transform: scale(0);
+}
+#dish .box-container .box h3{
+    font-size: 3rem;
+}
+#dish .box-container .box p{
+    font-size: 1.3rem;
+    border-bottom: .2rem solid #fbc531;
+    border-top: .2rem solid #fbc531;
+    margin: 1rem 2rem;
+}
+#dish .box-container .box:hover .nav-toggle{
+    transform: scale(1);
+}
 
 .fa-times {
     transform: rotate(-180deg);
