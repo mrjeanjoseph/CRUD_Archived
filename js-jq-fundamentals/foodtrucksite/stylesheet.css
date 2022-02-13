@@ -197,6 +197,7 @@ body {
 
 #special .heading h1,
 #dish .heading h1,
+#contact .heading h1,
 #about .heading h1{
     /*@mixin heading notes*/
     font-size: 4rem;
@@ -207,6 +208,7 @@ body {
 
 #special .heading span,
 #dish .heading span,
+#contact .heading span,
 #about .heading span{
     color: #fbc531;
 }
@@ -281,7 +283,7 @@ body {
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 1rem auto;
-    width: 90%;
+    width: 70%;
 }
 #dish .box-container .box{
     height: 20rem;
@@ -302,7 +304,7 @@ body {
     top: 0;left: 0;
     height: 100%;
     width: 100%;
-    background: 51, 51, 52, .6;
+    background: #485460;
     text-align: center;
     display: flex;
     align-items: center;
@@ -320,8 +322,33 @@ body {
     border-top: .2rem solid #fbc531;
     margin: 1rem 2rem;
 }
-#dish .box-container .box:hover .nav-toggle{
+#dish .box-container .box:hover .info{
     transform: scale(1);
+}
+
+/* contact us section */
+#contact{
+    min-height: 100vh;
+    width:100vw;
+    background:url('https://tandoortimes.in/wp-content/uploads/2021/04/Tangdi-kebab-1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#contact .heading h1,
+#contact .heading span{
+    color: #fbc531;
+    font-weight: bolder;
+}
+#contact form{
+    background: #f5f6fa;
+    padding-top: 2rem;
+    margin: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 3rem #485460;
+}
+#contact form .inputBox{
+    position: relative;
+    text-align: center;
 }
 
 .fa-times {
