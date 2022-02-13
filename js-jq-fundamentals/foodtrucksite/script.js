@@ -23,4 +23,11 @@ $(document).ready(function(){
         $('.vid2').css('display', 'none');
         $('.vid3').css('display', 'block');
     });
+    $(window).on('scroll load', function(){
+        if($(window).scrollTop() > 10){
+            $('#header').addClass('header-active');
+        }else{
+            $('#header').removeClass('header-active')
+        }
+    });
 })
