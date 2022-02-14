@@ -36,7 +36,8 @@ body {
     display: none;
 }
 
-#header .logo {
+#header .logo,
+#footer .brand .logo {
     height: 5rem;
     text-transform: uppercase;
     /*Made mod here */
@@ -95,7 +96,8 @@ body {
 #home .content button,
 #about .content button,
 #dish .box-container .box button,
-#special .card-container .card button{
+#special .card-container .card button,
+#contact form input[type="submit"]{
     outline: none;
     border: none;
     border-radius: 5rem;
@@ -116,7 +118,8 @@ body {
 #home .content button::before,
 #about .content button::before,
 #dish .box-container .box button::before,
-#special .card-container .card button::before {
+#special .card-container .card button::before,
+#contact form input[type='submit']::before {
     content: '';
     position: absolute;
     top: 0;
@@ -131,7 +134,8 @@ body {
 #home .content button:hover::before,
 #about .content button:hover::before,
 #dish .box-container .box button:hover::before,
-#special .card-container .card button:hover::before {
+#special .card-container .card button:hover::before,
+#contact form input[type='submit']:hover::before {
     width: 100%;
     color: #f5f6fa;
 }
@@ -350,7 +354,44 @@ body {
     position: relative;
     text-align: center;
 }
-
+#contact form .inputBox input,
+#contact form .inputBox textarea{
+    outline: none;
+    border: .2rem solid #485460;
+    border-radius: .2rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
+    background: none;
+    height: 4rem;
+    width: 90%;
+    font-size: 2rem;
+}
+#contact form .inputBox input:focus ~h3,
+#contact form .inputBox textarea:focus ~h3{
+    font-size: 1.6;
+    left:6%;
+    top:-.5rem;
+    color:red;
+}
+#contact form .inputBox textarea{
+    padding: 1rem;
+    resize: none;
+    height: 20rem;
+}
+#contact form .inputBox h3{
+    position: absolute;
+    top:3rem; left: 7%;
+}
+#contact form input[type='submit']{
+    margin-bottom: 2rem;
+    margin-left: 4%;
+    background: #485460;
+    color: #f5f6fa;
+}
+#contact form input[type='submit']:hover{
+    color: #485460;
+    background: #fbc531;
+}
 .fa-times {
     transform: rotate(-180deg);
     /* transform: skew(-180deg); */
