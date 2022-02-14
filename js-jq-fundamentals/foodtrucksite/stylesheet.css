@@ -97,7 +97,8 @@ body {
 #about .content button,
 #dish .box-container .box button,
 #special .card-container .card button,
-#contact form input[type="submit"]{
+#contact form input[type="submit"],
+#footer input[type="submit"]{
     outline: none;
     border: none;
     border-radius: 5rem;
@@ -119,7 +120,8 @@ body {
 #about .content button::before,
 #dish .box-container .box button::before,
 #special .card-container .card button::before,
-#contact form input[type='submit']::before {
+#contact form input[type='submit']::before,
+#footer input[type="submit"]::before {
     content: '';
     position: absolute;
     top: 0;
@@ -135,7 +137,8 @@ body {
 #about .content button:hover::before,
 #dish .box-container .box button:hover::before,
 #special .card-container .card button:hover::before,
-#contact form input[type='submit']:hover::before {
+#contact form input[type='submit']:hover::before,
+#footer input[type="submit"]:hover::before{
     width: 100%;
     color: #f5f6fa;
 }
@@ -371,7 +374,7 @@ body {
     font-size: 1.6;
     left:6%;
     top:-.5rem;
-    color:red;
+    /* color:red; */
 }
 #contact form .inputBox textarea{
     padding: 1rem;
@@ -392,6 +395,74 @@ body {
     color: #485460;
     background: #fbc531;
 }
+#footer{
+    background: #485460;
+}
+#footer h1{
+    font-size: 2rem;
+    color: #f5f6fa;
+    margin: 0;
+    padding: 2rem 0;
+    text-align: center;
+}
+#footer h1 span{
+    color: #fbc531;
+}
+#footer .brand{
+    text-align: center;
+    margin-top: 2rem;
+}
+#footer .brand .logo i{
+     height: 4rem; /* Look into that */
+}
+#footer .brand .icons a{
+    font-size: 2rem;
+    margin: 2rem 1rem;
+    color: #f5f6fa;
+}
+#footer .brand .icons:hover a{
+    color: #fbc531;
+}
+#footer .footer-links{
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    margin: 1rem 0;
+}
+#footer .footer-links h3{
+    font-size: 2.2rem;
+    color: #fbc531;
+}
+#footer .footer-links a{
+    font-size: 1.7rem;
+    color: #f5f6fa;
+}
+#footer h2{
+    font-size: 2rem;
+    margin: 2rem 0;
+    color: #f5f6fa;
+}
+#footer input[type="text"]{
+    border: .2rem solid #f5f6fa;
+    outline: none;
+    background: none;
+    height: 4rem;
+    width: 22rem;
+    padding: 0 1rem;
+    font-size: 1.3rem;
+    color: #f5f6fa;
+}
+#footer input[type="submit"]{
+    margin: 1rem 0;
+    margin-left: 4%;
+    background: #f5f6fa;
+    color: #485460;
+}
+#footer input[type="submit"]:hover{
+    background: #fbc531;
+    color: #f5f6fa;
+}
+
 .fa-times {
     transform: rotate(-180deg);
     /* transform: skew(-180deg); */
