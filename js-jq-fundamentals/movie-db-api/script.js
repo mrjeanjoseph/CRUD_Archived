@@ -17,3 +17,36 @@ const date = document.querySelector('#date');
 const img = document.querySelector('#card-img');
 const description = document.querySelector('#description');
 const body = document.querySelector('#body');
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    handleEvents();
+});
+
+function handleEvents() {
+    // console.log("Test - "+ window.navigator.onLine);
+    if (window.navigator.onLine) {
+        searchResult.style.display = "block";
+        searchPage.style.display = "none";
+
+        const title = search.value;
+        if(title){
+            searchTitle.innerText = title;
+            showMovies();
+            search.value = "";
+        } else {
+            searchTitle.innerText = "No Title";
+            searchPage.style.display = "none";
+            offlinePage.style.display = "flex";
+            message.innerHTML = "Type something to search";
+        }
+    } else {
+        searchPage.style.display = "none";
+        offlinePage.style.display = "flex";
+    }
+}
+
+function showMovies(){
+
+}
