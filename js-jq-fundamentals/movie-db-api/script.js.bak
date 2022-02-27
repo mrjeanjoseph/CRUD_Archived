@@ -1,5 +1,5 @@
 
-
+//const API_KEY = `1399a42e0ae4d3ec65b144fbd8d30c11`;
 const SEARCH_API = `https://api.themoviedb.org/3/movie/550?api_key=${API_KEY}`;
 //const SEARCH_API = `https://api.themoviedb.org/3/search/movie?&api_key=${ API_KEY }&query=`;
 const IMG_PATH = "http://image.tmbd.org/t/p/w500";
