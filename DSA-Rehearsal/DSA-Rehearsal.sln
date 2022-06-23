@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterChecking", "Charac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionCalculator", "ConversionCalculator\ConversionCalculator.csproj", "{A41B5FC6-4F56-48B1-9684-9DDD546C5A0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerEfficiency", "WorkerEfficiency\WorkerEfficiency.csproj", "{526F9D88-3148-4900-BFF0-10BE5B27C718}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{A41B5FC6-4F56-48B1-9684-9DDD546C5A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A41B5FC6-4F56-48B1-9684-9DDD546C5A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A41B5FC6-4F56-48B1-9684-9DDD546C5A0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{526F9D88-3148-4900-BFF0-10BE5B27C718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{526F9D88-3148-4900-BFF0-10BE5B27C718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{526F9D88-3148-4900-BFF0-10BE5B27C718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{526F9D88-3148-4900-BFF0-10BE5B27C718}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

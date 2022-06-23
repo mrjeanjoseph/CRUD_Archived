@@ -18,8 +18,10 @@ namespace ConversionCalculator
                 "\tM -> convert from mile to kilometer.\n"+
                 "\tP -> convert from pound to kilogram.\n");
 
-            choice = Convert.ToChar(Console.ReadLine().ToLower());
+            choice = Convert.ToChar(Console.ReadLine().ToUpper());
+
             switch (choice)
+                //this needs to be reworked
             {
                 case 'I':
                     centimeter = value / 0.3937;
