@@ -1,3 +1,4 @@
 # Random projects
 
-Random projects found online for practice purposes focusing on JavaScript, jQuery and Node.js
+Random projects, Data Structures and Algorithm for reference
+C#, JS, jQuery and Node.js
