@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\dev-trunk\\workspace\\DSA-Rehearsal\\MainConsoleUI\\MainConsoleUI.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\dev-trunk\\workspace\\project-trainings\\CRUD_AllDay\\DSA-Rehearsal\\MainConsoleUI\\MainConsoleUI.csproj",
       "projectName": "MainConsoleUI",
-      "projectPath": "C:\\Users\\admin\\dev-trunk\\workspace\\DSA-Rehearsal\\MainConsoleUI\\MainConsoleUI.csproj",
+      "projectPath": "C:\\Users\\admin\\dev-trunk\\workspace\\project-trainings\\CRUD_AllDay\\DSA-Rehearsal\\MainConsoleUI\\MainConsoleUI.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\dev-trunk\\workspace\\DSA-Rehearsal\\MainConsoleUI\\obj\\",
+      "outputPath": "C:\\Users\\admin\\dev-trunk\\workspace\\project-trainings\\CRUD_AllDay\\DSA-Rehearsal\\MainConsoleUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
