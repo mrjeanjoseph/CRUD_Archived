@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.WebSockets;
 
 namespace MainConsoleUI
 {
@@ -11,8 +12,8 @@ namespace MainConsoleUI
                 
                 try
                 {
-                    IdentityMatrix();
-
+                    Iteration();
+                    //IdentityMatrix();
                     //LeapYear();
                 }
                 catch (Exception e)
@@ -25,8 +26,29 @@ namespace MainConsoleUI
 
         }
 
+        public static void Iteration()
+        {
+            //Write a program using a for loop that prints the following series.
+            //1 2 4 8 16 21 64 128 …nth iteration.
+            int value;
+            double result;
+            Console.WriteLine("Enter some value");
+
+            value = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Here are the iteration: ");
+
+            for(int x = 0; x <= value; x++)
+            {
+                result = Math.Pow(2, x);
+                Console.Write(result);
+                Console.Write(" ");
+            }
+            Console.ReadKey();
+        }
         public static void IdentityMatrix()
         {
+            //Write a program that prints an identity matrix using a for loop,
+            //in other words takes a value n from the user and shows the identity table of size n * n.
             int size;
             Console.WriteLine("Enter the size of the identity matrix");
             size = Convert.ToInt32(Console.ReadLine());
@@ -50,7 +72,7 @@ namespace MainConsoleUI
             Console.ReadLine();
         }
 
-        static void LeapYear()
+        public static void LeapYear()
         {
             //Instruction:
             //Write a program using conditional operators to determine whether a year entered through the keyboard is a leap year or not.
