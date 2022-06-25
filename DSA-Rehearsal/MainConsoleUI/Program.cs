@@ -12,7 +12,8 @@ namespace MainConsoleUI
                 
                 try
                 {
-                    Iteration();
+                    PrintOutput();
+                    //Iteration();
                     //IdentityMatrix();
                     //LeapYear();
                 }
@@ -26,6 +27,24 @@ namespace MainConsoleUI
 
         }
 
+        public static void PrintOutput()
+        {
+            int value;
+            Console.WriteLine("Enter a value: ");
+
+            value = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\n");
+
+            for(int x = 0; x <= value; x++)
+            {
+                for(int y = 1; y <= x; y++)
+                {
+                    Console.Write(x);
+                }
+                Console.Write(" ");
+            }
+            Console.ReadLine();
+        }
         public static void Iteration()
         {
             //Write a program using a for loop that prints the following series.
@@ -45,6 +64,7 @@ namespace MainConsoleUI
             }
             Console.ReadKey();
         }
+
         public static void IdentityMatrix()
         {
             //Write a program that prints an identity matrix using a for loop,
