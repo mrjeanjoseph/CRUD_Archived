@@ -27,8 +27,12 @@ namespace MainConsoleUI
 
         }
 
+
+
         public static void PrintOutput()
         {
+            //Write a program using a loop that prints the following output.
+            //1 2 2 3 3 3 4 4 4 4 5 5 5 5 5 6 6 6 6 6 6. . .nth iteration.
             int value;
             Console.WriteLine("Enter a value: ");
 
@@ -45,6 +49,7 @@ namespace MainConsoleUI
             }
             Console.ReadLine();
         }
+
         public static void Iteration()
         {
             //Write a program using a for loop that prints the following series.
