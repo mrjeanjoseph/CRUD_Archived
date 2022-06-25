@@ -12,7 +12,8 @@ namespace MainConsoleUI
                 
                 try
                 {
-                    PrintOutput();
+                    PrintASCIIValues();
+                    //PrintOutput();
                     //Iteration();
                     //IdentityMatrix();
                     //LeapYear();
@@ -27,7 +28,23 @@ namespace MainConsoleUI
 
         }
 
+        public static void PrintASCIIValues()
+        {
+            //Write a program to print all the ASCII values and their equivalent characters using a while loop.
+            //The ASCII values vary from 0 to 255.
+            char ch;
+            int x = 0;
+            while (x <= 255)
+            {
+                Console.Write(x);
+                Console.Write(" ");
 
+                ch = (char)x;
+                Console.WriteLine(ch);
+                x++;
+            }
+            Console.ReadLine();
+        }
 
         public static void PrintOutput()
         {
