@@ -32,9 +32,10 @@ namespace MainConsoleUI
         {
             int[] array = new int[10];
             int count = 0, i, j, k = 2;
+            Console.WriteLine("Enter up to 10 values:");
             for (i = 0; i < 10; i++)
             {
-                Console.WriteLine("Enter the " + (i+1) + "st value: ");
+                Console.Write(i+1+": ");
                 array[i] = Convert.ToInt32(Console.ReadLine());
             }
             for (j = 0; j < 10; j++)
@@ -48,11 +49,11 @@ namespace MainConsoleUI
                 }
             to: if (k == array[count])
                 {
-                    Console.WriteLine("Entered value: " + array[count] + "is prime number");
+                    Console.WriteLine("Entered value: " + array[count] + " is prime number");
                 }
                 if (array[count] == 0 || array[count] == 1)
                 {
-                    Console.WriteLine("Entered value : " + array[count] + "is not prime number");
+                    Console.WriteLine("Entered value : " + array[count] + " is not prime number");
                 }
                 count++;
             }
