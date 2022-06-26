@@ -11,7 +11,8 @@ namespace MainConsoleUI
             {
                 try
                 {
-                    CountPrintExecution();
+                    SortASCOrder();
+                    //CountPrintExecution();
                     //ShowPrimeNumbers();
                     //DuplicateCount();
                     //PrintASCIIValues();
@@ -29,31 +30,82 @@ namespace MainConsoleUI
         }
 
 
+        public static void SortASCOrder()
+        {
+            int num, temp;
+            string nth = "";
+            Console.Write("How many numerical values to sort? ");
+            num = Convert.ToInt32(Console.ReadLine());
+            int[] array = new int[num];
+
+            for (int x = 0; x < num; x++)
+            {
+                if (x+1 == 1)
+                {
+                    nth = "First";
+                    Console.Write($"Enter the {nth} value: ");
+                }
+                if (x+1 == 2)
+                {
+                    nth = "Second";
+                    Console.Write($"Enter the {nth} value: ");
+                }
+                if (x+1 >= 3)
+                {
+                    nth = "th";
+                    Console.Write($"Enter the {x}{nth} value: ");
+                }
+
+                array[x] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            for (int x = 0; x < num; x++)
+            {
+                for (int y = 0; y < num - 1; y++)
+                {
+                    if (array[y] > array[y + 1])
+                    {
+                        temp = array[y];
+                        array[y] = array[y + 1];
+                        array[y + 1] = temp;
+                    }
+                }
+            }
+
+            Console.WriteLine("In ASC order..,");
+            for (int x = 0; x < num; x++)
+            {
+                Console.WriteLine(array[x]);
+            }
+
+        }
+
         public static void CountPrintExecution()
         {
             int x, y, z, count = 0;
-            for(x = 0; x <= 3; x++)
+            for (x = 0; x <= 3; x++)
             {
-                
-                for(y = 0; y <= 3; y++)
+
+                for (y = 0; y <= 3; y++)
                 {
-                    
+
                     for (z = 0; z <= 3; z++)
                     {
-                        
+
                         if (x == 3 && y == 3 && z == 3)
                         {
                             break;
                         }
                         else
                         {
+                            //This needs to be reworked
                             count++;
-                            Console.WriteLine("X "+x+"Y "+y+"Z "+z);
+                            Console.WriteLine("X " + x + "Y " + y + "Z " + z);
                         }
                     }
                 }
             }
-            Console.WriteLine("In this program, writeline will print "+count+" times.");
+            Console.WriteLine("In this program, writeline will print " + count + " times.");
         }
 
         public static void ShowPrimeNumbers()
@@ -63,7 +115,7 @@ namespace MainConsoleUI
             Console.WriteLine("Enter up to 10 values:");
             for (i = 0; i < 10; i++)
             {
-                Console.Write(i+1+": ");
+                Console.Write(i + 1 + ": ");
                 array[i] = Convert.ToInt32(Console.ReadLine());
             }
             for (j = 0; j < 10; j++)
