@@ -11,7 +11,8 @@ namespace MainConsoleUI
             {
                 try
                 {
-                    ShowPrimeNumbers();
+                    CountPrintExecution();
+                    //ShowPrimeNumbers();
                     //DuplicateCount();
                     //PrintASCIIValues();
                     //PrintOutput();
@@ -27,6 +28,33 @@ namespace MainConsoleUI
             }
         }
 
+
+        public static void CountPrintExecution()
+        {
+            int x, y, z, count = 0;
+            for(x = 0; x <= 3; x++)
+            {
+                
+                for(y = 0; y <= 3; y++)
+                {
+                    
+                    for (z = 0; z <= 3; z++)
+                    {
+                        
+                        if (x == 3 && y == 3 && z == 3)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            count++;
+                            Console.WriteLine("X "+x+"Y "+y+"Z "+z);
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("In this program, writeline will print "+count+" times.");
+        }
 
         public static void ShowPrimeNumbers()
         {
