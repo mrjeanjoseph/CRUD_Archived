@@ -8,11 +8,11 @@ namespace MainConsoleUI
         static void Main(string[] args)
         {
             while (true)
-            {
-                
+            {                
                 try
                 {
-                    PrintASCIIValues();
+                    DuplicateCount();
+                    //PrintASCIIValues();
                     //PrintOutput();
                     //Iteration();
                     //IdentityMatrix();
@@ -24,10 +24,31 @@ namespace MainConsoleUI
                 }
                 Console.ReadLine();
             }
-
-
         }
 
+
+        public static void DuplicateCount()
+        {
+            int space = 30;
+            int num = 1;
+            for(int x = 1; x < 5; x++)
+            {
+                for(int y = 1; y <= space; y++)
+                {
+                    Console.Write(" ");
+                }
+                space = space - 2;
+                for(int z = 1; z <= x; z++)
+                {
+                    Console.Write(num);
+                    Console.Write(" ");
+                    num++;
+                }
+                Console.WriteLine("\n");
+            }
+            Console.ReadLine();
+        }
+        
         public static void PrintASCIIValues()
         {
             //Write a program to print all the ASCII values and their equivalent characters using a while loop.
@@ -35,6 +56,7 @@ namespace MainConsoleUI
             char ch;
             int x = 0;
             while (x <= 255)
+                //can be done using do while loop.
             {
                 Console.Write(x);
                 Console.Write(" ");
