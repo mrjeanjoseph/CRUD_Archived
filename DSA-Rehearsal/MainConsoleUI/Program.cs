@@ -8,10 +8,11 @@ namespace MainConsoleUI
         static void Main(string[] args)
         {
             while (true)
-            {                
+            {
                 try
                 {
-                    DuplicateCount();
+                    ShowPrimeNumbers();
+                    //DuplicateCount();
                     //PrintASCIIValues();
                     //PrintOutput();
                     //Iteration();
@@ -27,18 +28,48 @@ namespace MainConsoleUI
         }
 
 
+        public static void ShowPrimeNumbers()
+        {
+            int[] array = new int[10];
+            int count = 0, i, j, k = 2;
+            for (i = 0; i < 10; i++)
+            {
+                Console.WriteLine("Enter the " + (i+1) + "st value: ");
+                array[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            for (j = 0; j < 10; j++)
+            {
+                for (k = 2; j < array[count]; k++)
+                {
+                    if (array[count] % k == 0)
+                    {
+                        goto to;
+                    }
+                }
+            to: if (k == array[count])
+                {
+                    Console.WriteLine("Entered value: " + array[count] + "is prime number");
+                }
+                if (array[count] == 0 || array[count] == 1)
+                {
+                    Console.WriteLine("Entered value : " + array[count] + "is not prime number");
+                }
+                count++;
+            }
+        }
+
         public static void DuplicateCount()
         {
-            int space = 30;
+            int space = 7;
             int num = 1;
-            for(int x = 1; x < 5; x++)
+            for (int x = 1; x < 5; x++)
             {
-                for(int y = 1; y <= space; y++)
+                for (int y = 1; y <= space; y++)
                 {
                     Console.Write(" ");
                 }
                 space = space - 2;
-                for(int z = 1; z <= x; z++)
+                for (int z = 1; z <= x; z++)
                 {
                     Console.Write(num);
                     Console.Write(" ");
@@ -48,7 +79,7 @@ namespace MainConsoleUI
             }
             Console.ReadLine();
         }
-        
+
         public static void PrintASCIIValues()
         {
             //Write a program to print all the ASCII values and their equivalent characters using a while loop.
@@ -56,7 +87,7 @@ namespace MainConsoleUI
             char ch;
             int x = 0;
             while (x <= 255)
-                //can be done using do while loop.
+            //can be done using do while loop.
             {
                 Console.Write(x);
                 Console.Write(" ");
@@ -78,9 +109,9 @@ namespace MainConsoleUI
             value = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("\n");
 
-            for(int x = 0; x <= value; x++)
+            for (int x = 0; x <= value; x++)
             {
-                for(int y = 1; y <= x; y++)
+                for (int y = 1; y <= x; y++)
                 {
                     Console.Write(x);
                 }
@@ -100,7 +131,7 @@ namespace MainConsoleUI
             value = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Here are the iteration: ");
 
-            for(int x = 0; x <= value; x++)
+            for (int x = 0; x <= value; x++)
             {
                 result = Math.Pow(2, x);
                 Console.Write(result);
@@ -118,11 +149,11 @@ namespace MainConsoleUI
             size = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Identity Matrix");
-            for(int i = 0; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
-                for(int j = 0; j < size; j++)
+                for (int j = 0; j < size; j++)
                 {
-                    if(i == j)
+                    if (i == j)
                     {
                         Console.Write(1);
                     }
