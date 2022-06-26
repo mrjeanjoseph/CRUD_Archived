@@ -32,6 +32,7 @@ namespace MainConsoleUI
 
         public static void SortASCOrder()
         {
+            //Instruction: Takes nth values from user and then sorts them in ascending order.
             int num, temp;
             string nth = "";
             Console.Write("How many numerical values to sort? ");
