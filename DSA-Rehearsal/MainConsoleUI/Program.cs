@@ -6,17 +6,18 @@ namespace MainConsoleUI {
         static void Main(string[] args) {
             while (true) {
                 try {
-                    Fibonacci();
-                    //BinarySearch();
-
+                    PrintTriangleOne();
                 } catch (Exception e) {
                     Console.WriteLine("Jean found an error: \n" + e.Message);
                 } finally {
                     Console.WriteLine("\nProgram will terminate");
+                    Console.ReadLine();
                 }
             }
 
             #region Challenges
+            //Fibonacci();
+            //BinarySearch();
             //BubbleSorting();
             //SortASCOrder();
             //CountPrintExecution();
@@ -28,6 +29,21 @@ namespace MainConsoleUI {
             //IdentityMatrix();
             //LeapYear();
             #endregion
+        }
+
+        public static void PrintTriangleOne() {
+            for(int x = 0; x < 4; x++) {
+                for(int y = 0; y <= x; y++) {
+                    Console.Write("*");
+                }
+                Console.WriteLine("\n");
+            }
+            for(int x = 0; x <= 2; x++) {
+                for(int y = 3; y > x; y--) {
+                    Console.Write("*");
+                }
+                Console.WriteLine("\n");
+            }
         }
 
         public static void Fibonacci() {
@@ -324,7 +340,4 @@ namespace MainConsoleUI {
             Console.WriteLine(response);
         }
     }
-
-
-
 }
