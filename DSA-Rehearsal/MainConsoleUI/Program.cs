@@ -6,12 +6,14 @@ namespace MainConsoleUI {
         static void Main(string[] args) {
             while (true) {
                 try {
-                    BinarySearch();
+                    Fibonacci();
+                    //BinarySearch();
 
                 } catch (Exception e) {
                     Console.WriteLine("Jean found an error: \n" + e.Message);
+                } finally {
+                    Console.WriteLine("\nProgram will terminate");
                 }
-                Console.ReadLine();
             }
 
             #region Challenges
@@ -28,34 +30,57 @@ namespace MainConsoleUI {
             #endregion
         }
 
+        public static void Fibonacci() {
+            int num, next, first = 0, second = 1;
+            Console.WriteLine("Enter the number of terms of fibonacci series you want to convert: ");
+            num = Convert.ToInt32(Console.ReadLine());
+            for (int x = 0; x < num; x++) {
+                if (x <= 1) next = x;
+                else {
+                    next = first + second;
+                    first = second;
+                    second = next;
+                }
+                Console.Write(next);
+                Console.Write(" ");
+            }
+        }
+
         public static void BinarySearch() {
+            //takes n values in an array and then search for a value in the array using a binary search algorithm.
             int num, temp, first = 0, last, mid, found, count = 1;
 
             Console.WriteLine("Enter the numbers you want to enter: ");
             num = Convert.ToInt32(Console.ReadLine());
-            int[] array = new int[num];
-            for(int x = 0; x < num; x++) {
-                Console.WriteLine("Enter " + count + " value");
-                array[x] = Convert.ToInt32(Console.ReadLine());
-                count++;
 
+            int[] array = new int[num];
+            for (int x = 0; x < num; x++) {
+                Console.WriteLine("Enter value " + count);
+                array[x] = Convert.ToInt32(Console.ReadLine());
+
+                count++;
             }
 
             for (int x = 0; x < num; x++) {
-                for (int y = 0; y < num; y++) { 
-                    if(array[y] > array[y + 1]) {
+                for (int y = 0; y < num - 1; y++) {
+                    if (array[y] > array[y + 1]) {
+
                         temp = array[y];
                         array[y] = array[y + 1];
                         array[y + 1] = temp;
+
                     }
                 }
             }
 
             Console.WriteLine("Enter the number you want to search for: ");
             found = Convert.ToInt32(Console.ReadLine());
+
             last = num - 1;
             mid = (first + last) / 2;
-            while(first <= last) {
+
+            //There's a bug here, find it
+            while (first <= last) {
                 if (array[mid] < found) first = mid + 1;
                 else if (array[mid] == found) {
                     Console.WriteLine(found + " found at location " + mid);
@@ -63,7 +88,8 @@ namespace MainConsoleUI {
                 } else last = mid - 1;
                 mid = (first + last) / 2;
             }
-            if (first > last) Console.WriteLine("Not Found: " +found+" is not present in the list");
+
+            if (first > last) Console.WriteLine("Not Found: " + found + " is not present in the list");
         }
 
         public static void BubbleSorting() {
@@ -92,7 +118,7 @@ namespace MainConsoleUI {
 
             Console.Clear();
             Console.WriteLine("In Ascending order using bubble sort: ");
-            for(int i = 0; i < num; i++) {
+            for (int i = 0; i < num; i++) {
                 Console.WriteLine(array[i]);
             }
         }
