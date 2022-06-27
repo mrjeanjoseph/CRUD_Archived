@@ -7,24 +7,29 @@ namespace MainConsoleUI {
             while (true) {
                 try {
                     BubbleSorting();
-                    //SortASCOrder();
-                    //CountPrintExecution();
-                    //ShowPrimeNumbers();
-                    //DuplicateCount();
-                    //PrintASCIIValues();
-                    //PrintOutput();
-                    //Iteration();
-                    //IdentityMatrix();
-                    //LeapYear();
+
                 } catch (Exception e) {
                     Console.WriteLine("Jean found an error: \n" + e.Message);
                 }
                 Console.ReadLine();
             }
+
+            #region Challenges
+            //SortASCOrder();
+            //CountPrintExecution();
+            //ShowPrimeNumbers();
+            //DuplicateCount();
+            //PrintASCIIValues();
+            //PrintOutput();
+            //Iteration();
+            //IdentityMatrix();
+            //LeapYear();
+            #endregion
         }
 
 
         public static void BubbleSorting() {
+            //Takes n values from the user and sorts
             int num, temp;
 
             Console.WriteLine("Enter the numbers you want to enter: ");
@@ -37,8 +42,9 @@ namespace MainConsoleUI {
             }
 
             for (int i = 0; i < num; i++) {
+                //loop here first before sorting
                 for (int j = 0; j < num - 1; j++) {
-                    if (array[i] == array[j + 1]) {
+                    if (array[j] > array[j + 1]) {
                         temp = array[j];
                         array[j] = array[j + 1];
                         array[j + 1] = temp;
