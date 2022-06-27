@@ -31,6 +31,7 @@ namespace MainConsoleUI {
         }
 
         public static void Fibonacci() {
+            //Write a program that prints the Fibonacci series using a loop.
             int num, next, first = 0, second = 1;
             Console.WriteLine("Enter the number of terms of fibonacci series you want to convert: ");
             num = Convert.ToInt32(Console.ReadLine());
