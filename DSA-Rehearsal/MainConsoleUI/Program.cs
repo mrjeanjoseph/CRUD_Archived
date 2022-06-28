@@ -4,16 +4,19 @@ using System.Net.WebSockets;
 namespace MainConsoleUI {
     class Program {
         static void Main(string[] args) {
+            Console.Title = "DSA Tutorials";
 
 
             while (true) {
                 try {
 
-                    FlippingNumbers();
+                    MultiplyThreeValues();
+                    //FlippingNumbers();
                     //PrintTriangleOne();
                 } catch (Exception e) {
 
                     Console.WriteLine("Jean found an error: \n" + e.Message);
+
                 } finally {
 
                     Console.WriteLine("\nPress any key to continue. \n\tProgram will restart.");
@@ -37,6 +40,23 @@ namespace MainConsoleUI {
             //IdentityMatrix();
             //LeapYear();
             #endregion
+
+        }
+
+        public static void MultiplyThreeValues() {
+            int firstNum, secondNum, thirdNum, result;
+
+            Console.WriteLine("Enter the first Number: ");
+            firstNum = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the second Number: ");
+            secondNum = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the third Number: ");
+            thirdNum = int.Parse(Console.ReadLine());
+
+            result = firstNum * secondNum * thirdNum;
+            Console.WriteLine("The result is: {0}", result);
 
         }
 
