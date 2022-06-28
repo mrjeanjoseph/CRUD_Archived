@@ -4,15 +4,23 @@ using System.Net.WebSockets;
 namespace MainConsoleUI {
     class Program {
         static void Main(string[] args) {
+
+
             while (true) {
                 try {
-                    PrintTriangleOne();
+
+                    FlippingNumbers();
+                    //PrintTriangleOne();
                 } catch (Exception e) {
+
                     Console.WriteLine("Jean found an error: \n" + e.Message);
                 } finally {
-                    Console.WriteLine("\nProgram will terminate");
+
+                    Console.WriteLine("\nPress any key to continue. \n\tProgram will restart.");
                     Console.ReadLine();
+                    Console.Clear();
                 }
+
             }
 
             #region Challenges
@@ -29,17 +37,37 @@ namespace MainConsoleUI {
             //IdentityMatrix();
             //LeapYear();
             #endregion
+
+        }
+
+        public static void FlippingNumbers() {
+            int number1, number2, temp;
+
+            Console.WriteLine("Enter the first number: ");
+            number1 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the second number: ");
+            number2 = int.Parse(Console.ReadLine());
+
+            temp = number1;
+            number1 = number2;
+            number2 = temp;
+
+            Console.WriteLine("After swapping: ");
+            Console.WriteLine("First Number: " + number1);
+            Console.WriteLine("Second Number: " + number2);
         }
 
         public static void PrintTriangleOne() {
-            for(int x = 0; x < 4; x++) {
-                for(int y = 0; y <= x; y++) {
+            //Use a for loop to print a triangle on the screen.
+            for (int x = 0; x < 4; x++) {
+                for (int y = 0; y <= x; y++) {
                     Console.Write("*");
                 }
                 Console.WriteLine("\n");
             }
-            for(int x = 0; x <= 2; x++) {
-                for(int y = 3; y > x; y--) {
+            for (int x = 0; x <= 2; x++) {
+                for (int y = 3; y > x; y--) {
                     Console.Write("*");
                 }
                 Console.WriteLine("\n");
