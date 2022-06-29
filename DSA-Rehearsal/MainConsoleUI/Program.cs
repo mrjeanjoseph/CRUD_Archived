@@ -4,13 +4,11 @@ using System.Net.WebSockets;
 namespace MainConsoleUI {
     class Program {
         static void Main(string[] args) {
-            Console.Title = "DSA Tutorials";
-
-
             while (true) {
                 try {
 
-                    MultiplyThreeValues();
+                    MultipleOperation();
+                    //MultiplyThreeValues();
                     //FlippingNumbers();
                     //PrintTriangleOne();
                 } catch (Exception e) {
@@ -43,7 +41,36 @@ namespace MainConsoleUI {
 
         }
 
+
+        public static void MultipleOperation() {
+            Console.Title = "DSA Tutorials";
+            int firstNum, secondNum, result;
+
+            Console.WriteLine("Enter First Number: ");
+            firstNum = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter second Number: ");
+            secondNum = int.Parse(Console.ReadLine());
+
+            result = firstNum + secondNum;
+            Console.WriteLine($"{firstNum} plus {secondNum} = " + result);
+
+            result = firstNum - secondNum;
+            Console.WriteLine($"{firstNum} minus {secondNum} = " + result);
+
+            result = firstNum * secondNum;
+            Console.WriteLine($"{firstNum} multiply by {secondNum} = " + result);
+
+            result = firstNum / secondNum;
+            Console.WriteLine($"{firstNum} divide {secondNum} = " + result);
+
+            result = firstNum % secondNum;
+            Console.WriteLine($" The remainder of {firstNum} % {secondNum} = " + result);
+        }
+
         public static void MultiplyThreeValues() {
+            Console.Title = "DSA Tutorials";
+
             int firstNum, secondNum, thirdNum, result;
 
             Console.WriteLine("Enter the first Number: ");
