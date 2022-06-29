@@ -9,8 +9,8 @@ namespace MainConsoleUI {
 
             while (true) {
                 try {
-
-                    MultiplicationTable();
+                    GetTheAverage();
+                    //MultiplicationTable();
                     //MultipleOperation();
 
                 } catch (Exception e) {
@@ -44,6 +44,27 @@ namespace MainConsoleUI {
             //LeapYear();
             #endregion
 
+        }
+
+        public static void GetTheAverage() {
+            //Write a C# Sharp program that takes four numbers as input to calculate and print the average.
+            double firstNum, secondNum, thirdNum, fourthNum;
+            double result;
+
+            Console.WriteLine("Enter the first number: ");
+            firstNum = double.Parse(Console.ReadLine());
+            
+            Console.WriteLine("Enter the second number: ");
+            secondNum = double.Parse(Console.ReadLine());
+            
+            Console.WriteLine("Enter the third number: ");
+            thirdNum = double.Parse(Console.ReadLine());
+            
+            Console.WriteLine("Enter the fourth number: ");
+            fourthNum = double.Parse(Console.ReadLine());
+
+            result = ((firstNum + secondNum + thirdNum + fourthNum) / 4);
+            Console.WriteLine($"The average of {firstNum} + {secondNum} + {thirdNum} + {fourthNum} = {result}");
         }
 
         public static void MultiplicationTable() {
