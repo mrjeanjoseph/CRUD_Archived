@@ -4,13 +4,15 @@ using System.Net.WebSockets;
 namespace MainConsoleUI {
     class Program {
         static void Main(string[] args) {
+
+            Console.Title = "DSA Tutorials";
+
             while (true) {
                 try {
 
-                    MultipleOperation();
-                    //MultiplyThreeValues();
-                    //FlippingNumbers();
-                    //PrintTriangleOne();
+                    MultiplicationTable();
+                    //MultipleOperation();
+
                 } catch (Exception e) {
 
                     Console.WriteLine("Jean found an error: \n" + e.Message);
@@ -25,6 +27,9 @@ namespace MainConsoleUI {
             }
 
             #region Challenges
+            //MultiplyThreeValues();
+            //FlippingNumbers();
+            //PrintTriangleOne();
             //Fibonacci();
             //BinarySearch();
             //BubbleSorting();
@@ -41,9 +46,18 @@ namespace MainConsoleUI {
 
         }
 
+        public static void MultiplicationTable() {
+            //Write a C# Sharp program that takes a number as input and print its multiplication table
+            int num;
+            Console.WriteLine("Enter a number to be multiplied");
+            num = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i < 4; i++) {
+                Console.WriteLine($"{num} multiply by {i} = " + num * i);
+            }
+        }
 
         public static void MultipleOperation() {
-            Console.Title = "DSA Tutorials";
             int firstNum, secondNum, result;
 
             Console.WriteLine("Enter First Number: ");
