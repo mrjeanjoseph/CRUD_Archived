@@ -8,7 +8,7 @@ namespace BasicDSAChallenges {
 
             while (true) {
                 try {
-                    Console.WriteLine("MyCodes".Remove(0,1));
+                    Console.WriteLine(reverseString("Louna"));
                     //remove_char("w3resource", 1);
                     //CelsiusConversion();
                     //DisplayFourTimes();
@@ -36,6 +36,11 @@ namespace BasicDSAChallenges {
             //FlippingNumbers();
             #endregion
 
+        }
+
+        public static string reverseString(string s) {
+            return s.Length > 1
+                ? s.Substring(s.Length - 1) + s.Substring(1, s.Length - 2) + s.Substring(0, 1) : s;
         }
 
         public static void remove_char(string str, int n) {
