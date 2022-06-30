@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\dev-trunk\\workspace\\project-trainings\\CRUD_AllDay\\DSA-Rehearsal\\MainConsoleUI\\MainConsoleUI.csproj",
-      "projectName": "MainConsoleUI",
-      "projectPath": "C:\\Users\\admin\\dev-trunk\\workspace\\project-trainings\\CRUD_AllDay\\DSA-Rehearsal\\MainConsoleUI\\MainConsoleUI.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\dev-trunk\\workspace\\project-trainings\\CRUD_AllDay\\DSA-Rehearsal\\MainConsoleUI\\DSAExercises.csproj",
+      "projectName": "DSAExercises",
+      "projectPath": "C:\\Users\\admin\\dev-trunk\\workspace\\project-trainings\\CRUD_AllDay\\DSA-Rehearsal\\MainConsoleUI\\DSAExercises.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\admin\\dev-trunk\\workspace\\project-trainings\\CRUD_AllDay\\DSA-Rehearsal\\MainConsoleUI\\obj\\",
       "projectStyle": "PackageReference",
