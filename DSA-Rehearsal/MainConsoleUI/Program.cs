@@ -4,14 +4,13 @@ using System.Net.WebSockets;
 namespace MainConsoleUI {
     class Program {
         static void Main(string[] args) {
-
             Console.Title = "DSA Tutorials";
 
             while (true) {
                 try {
 
-                    ComplexCalcOne();
-
+                    CheckAge();
+                    //ComplexCalcOne();
                     //GetTheAverage();
                     //MultiplicationTable();
                     //MultipleOperation();
@@ -49,6 +48,17 @@ namespace MainConsoleUI {
 
         }
 
+        public static void CheckAge() {
+            //Write a C# Sharp program that takes an age (for example 20) as input and prints something as "You look older than 20".
+            int getAge;
+            Console.WriteLine("Enter your age: ");
+            getAge = int.Parse(Console.ReadLine());
+            if(getAge >= 20)
+                Console.WriteLine("You are age appropriate: ");
+            else
+                Console.WriteLine("Age not appropriate - Please vacate the premise!");
+        }
+
         public static void ComplexCalcOne() {
             //Write a C# Sharp program to that takes three numbers(x,y,z) as input and output (x+y)*z and x*y + y*z.
             int x, y, z, result1, result2;
@@ -65,7 +75,6 @@ namespace MainConsoleUI {
             result2 = (x * y) + (y * z);
             Console.WriteLine($"({x}+{y})*{z} = " + result1);
             Console.WriteLine($"({x}*{y}) + ({y}*{z}) = " + result2);
-
 
         }
 
