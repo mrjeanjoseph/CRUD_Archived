@@ -8,7 +8,8 @@ namespace BasicDSAChallenges {
 
             while (true) {
                 try {
-                    Console.WriteLine(reverseString("Louna"));
+                    reverseString2("Holy Macaroni");
+                    //Console.WriteLine(reverseString("Louna"));
                     //remove_char("w3resource", 1);
                     //CelsiusConversion();
                     //DisplayFourTimes();
@@ -39,8 +40,13 @@ namespace BasicDSAChallenges {
         }
 
         public static string reverseString(string s) {
-            return s.Length > 1
-                ? s.Substring(s.Length - 1) + s.Substring(1, s.Length - 2) + s.Substring(0, 1) : s;
+            //return s.Length > 1
+                //? s.Substring(s.Length - 1) + s.Substring(1, s.Length - 2) + s.Substring(0, 1) : s;
+
+            if(s.Length > 1) 
+               return s.Substring(s.Length - 1) + s.Substring(1, s.Length - 2) + s.Substring(0, 1);
+            else
+                return s;
         }
 
         public static void remove_char(string str, int n) {
