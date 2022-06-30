@@ -9,7 +9,10 @@ namespace MainConsoleUI {
 
             while (true) {
                 try {
-                    GetTheAverage();
+
+                    ComplexCalcOne();
+
+                    //GetTheAverage();
                     //MultiplicationTable();
                     //MultipleOperation();
 
@@ -46,6 +49,26 @@ namespace MainConsoleUI {
 
         }
 
+        public static void ComplexCalcOne() {
+            //Write a C# Sharp program to that takes three numbers(x,y,z) as input and output (x+y)*z and x*y + y*z.
+            int x, y, z, result1, result2;
+            Console.WriteLine("Enter first Number: ");
+            x = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter first Number: ");
+            y = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter first Number: ");
+            z = int.Parse(Console.ReadLine());
+
+            result1 = (x + y) * z;
+            result2 = (x * y) + (y * z);
+            Console.WriteLine($"({x}+{y})*{z} = " + result1);
+            Console.WriteLine($"({x}*{y}) + ({y}*{z}) = " + result2);
+
+
+        }
+
         public static void GetTheAverage() {
             //Write a C# Sharp program that takes four numbers as input to calculate and print the average.
             double firstNum, secondNum, thirdNum, fourthNum;
@@ -53,13 +76,13 @@ namespace MainConsoleUI {
 
             Console.WriteLine("Enter the first number: ");
             firstNum = double.Parse(Console.ReadLine());
-            
+
             Console.WriteLine("Enter the second number: ");
             secondNum = double.Parse(Console.ReadLine());
-            
+
             Console.WriteLine("Enter the third number: ");
             thirdNum = double.Parse(Console.ReadLine());
-            
+
             Console.WriteLine("Enter the fourth number: ");
             fourthNum = double.Parse(Console.ReadLine());
 
