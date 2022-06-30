@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace BasicDSAChallenges {
     class Program {
@@ -7,7 +8,10 @@ namespace BasicDSAChallenges {
 
             while (true) {
                 try {
-
+                    Console.WriteLine("MyCodes".Remove(0,1));
+                    //remove_char("w3resource", 1);
+                    //CelsiusConversion();
+                    //DisplayFourTimes();
 
                 } catch (Exception e) {
 
@@ -34,13 +38,37 @@ namespace BasicDSAChallenges {
 
         }
 
+        public static void remove_char(string str, int n) {
+            //15. Write a C# program remove specified a character from a non-empty string using index of a character.
+            Console.WriteLine(str.Remove(n, 1));
+        }
+
+        public static void CelsiusConversion() {
+            Console.WriteLine("Enter a numerical value: ");
+            int celsius = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Kelvin = {0}", celsius + 273);
+            Console.WriteLine("Farenheit = {0}", celsius * 18 / 10 + 32);
+        }
+        
+        public static void DisplayFourTimes() {
+            int d;
+            Console.WriteLine("Enter a digit: ");
+            d = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"{d} {d} {d} {d}");
+            Console.WriteLine($"{d}{d}{d}{d}");
+            Console.WriteLine($"{d} {d} {d} {d}");
+            Console.WriteLine($"{d}{d}{d}{d}");
+        }
+
         public static void CheckAge() {
             //Write a C# Sharp program that takes an age (for example 20) as input and prints something as "You look older than 20".
             int getAge;
             Console.WriteLine("Enter your age: ");
             getAge = int.Parse(Console.ReadLine());
 
-            Console.WriteLine($"At {getAge}, you look older than 20.");
+            Console.WriteLine($"At {getAge}, you look younger than 20.");
         }
 
         public static void ComplexCalcOne() {
