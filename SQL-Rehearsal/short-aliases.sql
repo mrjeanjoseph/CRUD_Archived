@@ -26,3 +26,10 @@ FROM Customers c
 LEFT JOIN 
 	Cars as v ON v.CustomerID = c.CustomerID
 ORDER BY [Customer Name]
+
+
+SELECT CarsID, Model, TotalCost
+FROM Cars
+ORDER BY TotalCost DESC
+OFFSET 0 ROWS
+FETCH FIRST 6 ROWS ONLY
