@@ -26,17 +26,24 @@ namespace BasicDSAChallenges {
 
         public static void runProgram() {
 
-            Console.WriteLine(ReturnTrueIf20(5,15));
-            Console.WriteLine(ReturnTrueIf20(20,15));
-            Console.WriteLine(ReturnTrueIf20(10,15));
+            Console.WriteLine(Within20or100(122));
+
+            //Console.WriteLine(ReturnTrueIf20(5,15));
             //Console.WriteLine(ReturnDoubleAbsValues(10,7));           
             //Console.WriteLine(TripleSum(6,3));
             //Console.WriteLine(TripleSum(5,5));
 
         }
 
+        public static bool Within20or100(int x) {
+            //Check if an given integer is within 20 of 100 or 200
+            if (Math.Abs(x - 100) <= 20 || Math.Abs(x - 200) <= 20)
+                return true;
+            return false;
+            
+        }
         public static bool ReturnTrueIf20(int x, int y) {
-            //Write a C# program to check the sum of the two given integers and return true if one of the integer is 20 or if their sum is 20.
+            //Check the sum of the two given integers and return true if one of the integer is 20 or if their sum is 20.
             return x == 20 || y == 20 || (x + y == 20);
         }
 
