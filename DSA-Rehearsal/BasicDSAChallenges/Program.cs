@@ -26,13 +26,29 @@ namespace BasicDSAChallenges {
 
         public static void runProgram() {
 
-            Console.WriteLine(Within20or100(122));
-
+            FindLongestWord();
+            //Console.WriteLine(Within20or100(221));
             //Console.WriteLine(ReturnTrueIf20(5,15));
             //Console.WriteLine(ReturnDoubleAbsValues(10,7));           
             //Console.WriteLine(TripleSum(6,3));
             //Console.WriteLine(TripleSum(5,5));
 
+        }
+
+        public static void FindLongestWord() {
+            //Find the longest word in a string
+            string str = "finding the longest word in a complicated string.";
+
+            string[] words = str.Split(new[] {" "}, StringSplitOptions.None);
+            string word = "";
+            int counter = 0;
+            foreach(string s in words) {
+                if(s.Length > counter) {
+                    word = s;
+                    counter = s.Length;
+                }
+            }
+            Console.WriteLine(word);
         }
 
         public static bool Within20or100(int x) {
@@ -48,7 +64,7 @@ namespace BasicDSAChallenges {
         }
 
         public static int ReturnDoubleAbsValues(int x, int y) {
-            //Write a C# program to get the absolute value of the difference between two given numbers. Return double the absolute value of the difference if the first number is greater than second number.
+            //Get the absolute value of the difference between two given numbers. Return double the absolute value of the difference if the first number is greater than second number.
             if(x > y)
                 return (x - y) * 2;
             else
@@ -57,6 +73,7 @@ namespace BasicDSAChallenges {
         }
 
         public static int TripleSum(int x, int y) {
+            //Compute the sum of two given integers, if two values are equal then return the triple of their sum
             if (x == y)
                 return (x + y) * 3;
             else
