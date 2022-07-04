@@ -33,9 +33,20 @@ namespace BasicDSAChallenges {
             //Console.WriteLine(TripleSum(6,3));
             //Console.WriteLine(TripleSum(5,5));
             //PrintOddNumbers();
+            //ComputeFirst500PrimeNumbers();
 
-            ComputeFirst500PrimeNumbers();
+            SumOfItsDigits(56);
 
+        }
+
+        private static void SumOfItsDigits(int d) {
+            //compute the sum of the digits of an integer.
+            int sum = 0;
+            while(d != 0) {
+                sum += d % 10;
+                d/= 10;
+            }
+            Console.WriteLine($"The sum of the digits is: {sum}");
         }
 
         private static void ComputeFirst500PrimeNumbers() {
