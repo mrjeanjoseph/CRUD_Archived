@@ -32,9 +32,37 @@ namespace BasicDSAChallenges {
             //Console.WriteLine(ReturnDoubleAbsValues(10,7));           
             //Console.WriteLine(TripleSum(6,3));
             //Console.WriteLine(TripleSum(5,5));
+            //PrintOddNumbers();
 
-            PrintOddNumbers();
+            ComputeFirst500PrimeNumbers();
 
+        }
+
+        private static void ComputeFirst500PrimeNumbers() {
+            //Compute the sum of the first 500 prime numbers.
+            long sum = 0;
+            int ctr = 0, n = 2;
+            while (ctr < 500) {
+                if (isPrime(n)) {
+                    sum += n;
+                    ctr++;
+                }
+                n++;
+            }
+            Console.WriteLine(sum.ToString());
+        }
+
+        private static bool isPrime(int n) {
+            //Checking if value is prime
+            int x = (int)Math.Floor(Math.Sqrt(n));
+
+            if (n == 1) return false;
+            if(n == 2) return true;
+
+            for(int i = 2; i <= x; i++) {
+                if(n% i == 0) return false;
+            }
+            return true;
         }
 
         private static void PrintOddNumbers() {
