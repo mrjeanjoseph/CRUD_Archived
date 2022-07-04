@@ -8,9 +8,7 @@ namespace BasicDSAChallenges {
 
             while (true) {
                 try {
-
-                    Console.WriteLine(TripleSum(6,3));
-                    Console.WriteLine(TripleSum(5,5));
+                    runProgram();
 
                 } catch (Exception e) {
 
@@ -26,12 +24,29 @@ namespace BasicDSAChallenges {
 
         }
 
+        public static void runProgram() {
+
+            Console.WriteLine(ReturnDoubleAbsValues(10,7));           
+            //Console.WriteLine(TripleSum(6,3));
+            //Console.WriteLine(TripleSum(5,5));
+
+        }
+
+        public static int ReturnDoubleAbsValues(int x, int y) {
+            // Write a C# program to get the absolute value of the difference between two given numbers. Return double the absolute value of the difference if the first number is greater than second number.
+            if(x > y)
+                return (x - y) * 2;
+            else
+                return (x - y);
+
+        }
+
         public static int TripleSum(int x, int y) {
             if (x == y)
                 return (x + y) * 3;
             else
                 return (x + y);
-            
+
         }
     }
 }
