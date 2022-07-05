@@ -67,3 +67,12 @@ ORDER BY
 	END, Bonus;
 
 --CASE in ORDER BY clause to sort
+SELECT * FROM Sales.SalesReason;
+SELECT * FROM Sales.SalesPersonQuotaHistory;
+
+SELECT BusinessEntityID, QuotaDate, ModifiedDate
+FROM Sales.SalesPersonQuotaHistory
+ORDER BY CASE
+			WHEN COALESCE(QuotaDate, '1950-01-01') = COALESCE(ModifiedDate, '1950-01-01') THEN QuotaDate
+			ELSE ModifiedDate
+		END;
