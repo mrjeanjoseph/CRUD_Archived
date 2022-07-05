@@ -1,5 +1,5 @@
 --CH11: LIKE Operator
-
+/*
 SELECT * FROM dbo.AWBuildVersion;
 SELECT * FROM dbo.DatabaseLog;
 SELECT * FROM dbo.ErrorLog;
@@ -36,3 +36,10 @@ SELECT * FROM PERSON.[Person]
 SELECT *
 FROM PERSON.[Person]
 WHERE FirstName LIKE '[A-B]%';
+
+*/
+--Match by range or set
+SELECT * FROM production.brands;
+SELECT * 
+FROM production.categories
+WHERE category_name LIKE '[mrc]%'
