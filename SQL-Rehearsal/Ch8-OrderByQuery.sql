@@ -23,4 +23,15 @@ ORDER BY VendorID DESC
 --Customize sorting order
 SELECT * FROM Sales.Store;
 SELECT * FROM Sales.SpecialOfferProduct;
-SELECT * FROM Sales.CountryRegionCurrency;
+SELECT * 
+FROM Sales.CountryRegionCurrency 
+ORDER BY CASE CurrencyCode
+			WHEN 'MUR' THEN 1
+			WHEN 'BND' THEN 2
+			ELSE 3
+			END;
+
+SELECT CountryRegionCode 
+FROM Sales.CountryRegionCurrency 
+WHERE CurrencyCode LIKE 'H%'
+
