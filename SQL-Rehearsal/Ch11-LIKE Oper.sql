@@ -24,3 +24,15 @@ FROM HumanResources.Employee
 WHERE NationalIDNumber LIKE '__c%'; --If char exit in 3rd index, this will find it.
 
 --Single Character match
+SELECT * FROM HumanResources.EmployeeDepartmentHistory;
+SELECT * FROM HumanResources.EmployeePayHistory;
+SELECT * FROM HumanResources.JobCandidate;
+SELECT * FROM HumanResources.[Shift];
+SELECT * FROM Person.[Address];
+
+--Search for Range of Characters
+SELECT * FROM PERSON.[Person]
+
+SELECT *
+FROM PERSON.[Person]
+WHERE FirstName LIKE '[A-B]%';
