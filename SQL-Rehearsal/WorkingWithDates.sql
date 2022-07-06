@@ -12,7 +12,15 @@ PRINT @GetCurrentDate
 --Formatting Date/Time
 DECLARE @CurrentDate DATETIME
 SET @CurrentDate=GETDATE()
-SELECT CONVERT(VARCHAR, @CurrentDate, 1)
-AS[MM/DD/YY]
+SELECT CONVERT(VARCHAR, @CurrentDate, 111)
+AS[Date/Time]
 
+--Adding dates to Cars table
+ALTER TABLE cars
+ADD ShippingDate DATE NOT NULL DEFAULT GetDate(),
+	DeliveryDate DATE NULL
 
+SELECT * FROM Cars;
+
+ALTER TABLE cars
+DROP COLUMN SalesDate;
