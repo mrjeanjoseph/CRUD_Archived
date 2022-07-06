@@ -1,0 +1,18 @@
+
+SELECT SYSDATETIME() as [SYSDATETIME]
+SELECT SYSDATETIMEOffset() as [SYSDATETIMEOffset]
+SELECT GETUTCDATE() as [GETUTCDATE]
+SELECT GETDATE() as [GETDATE]
+
+--This will print current date
+DECLARE @GetCurrentDate DATETIME
+SET @GetCurrentDate=GETDATE()
+PRINT @GetCurrentDate
+
+--Formatting Date/Time
+DECLARE @CurrentDate DATETIME
+SET @CurrentDate=GETDATE()
+SELECT CONVERT(VARCHAR, @CurrentDate, 1)
+AS[MM/DD/YY]
+
+
