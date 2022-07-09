@@ -26,3 +26,27 @@ SELECT BusinessEntityID, JobTitle, SickLeaveHours,
 		PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY SickLeaveHours)
 			OVER(PARTITION BY JobTitle) [Percentile Continuous]
 FROM HumanResources.Employee;
+
+--First Value
+SELECT * FROM Sales.SalesTaxRate;
+
+SELECT StateProvinceID, [Name], TaxRate,
+	FIRST_VALUE(StateProvinceID)
+	OVER(ORDER BY TaxRate DESC) [First Value]
+FROM Sales.SalesTaxRate;
+
+--Last Value
+SELECT * FROM Sales.SalesTerritoryHistory;
+
+SELECT TerritoryID, [StartDate], BusinessEntityID,
+	LAST_VALUE(BusinessEntityID)
+	OVER(ORDER BY TerritoryID) [Last Value]
+FROM Sales.SalesTerritoryHistory;
+
+--Percent_Rank and CUME_DIST
+SELECT * FROM HumanResources.Employee;
+
+SELECT BusinessEntityID, JobTitle, SickLeaveHours,
+	PERCENT_RANK() OVER(PARTITION BY JobTitle ORDER BY SickLeaveHours DESC) [Percent Rank],
+	CUME_DIST() OVER(PARTITION BY JobTitle ORDER BY SickLeaveHours DESC) [Cumulative Distribution]
+FROM HumanResources.Employee
