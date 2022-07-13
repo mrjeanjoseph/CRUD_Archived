@@ -32,14 +32,14 @@ I use C#/.NET, HTML/CSS/JS, and SQL to help you make decision. 🕺🏽
 ### 📫 How to reach me
 
 <div display="flex">
-  <a href="https://www.linkedin.com/in/codewithbernard/">
+  <a href="https://www.linkedin.com/in/fjeanjoseph/">
     <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
   </a>
-  <a href="https://twitter.com/CodeWithBernard">
+  <a href="https://twitter.com/mrjeanjoseph">
     <img src="https://img.shields.io/badge/codewithbernard-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white" alt="Twitter"/>
   </a>
-  <a href="https://medium.com/@bernardbad">
-    <img src="https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white" alt="Medium"/>
+  <a href="https://www.hackerrank.com/fjeanjoseph">
+    <img src="https://img.shields.io/badge/Hackerrank-12100E?style=for-the-badge&logo=hackerrank&logoColor=white" alt="Hackerrank"/>
   </a>
 </div>
 
