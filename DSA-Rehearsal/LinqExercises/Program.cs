@@ -33,7 +33,7 @@ namespace LinqExercises {
                 //Console.WriteLine("{0}, {1} {2}", student.LastName, student.FirstName, student.Scores[0]);
 
             }
-            
+
             var Query2 =
                 from student in students
                 group student by student.LastName[0];
@@ -43,6 +43,31 @@ namespace LinqExercises {
                 foreach (Student student in studentGroup) {
                     Console.WriteLine("   {0}, {1}",
                               student.LastName, student.FirstName);
+                }
+            }
+
+            var Query3 =
+                from student in students
+                group student by student.LastName[0];
+
+            foreach (var groupOfStudents in Query3) {
+                Console.WriteLine(groupOfStudents.Key);
+                foreach (var student in groupOfStudents) {
+                    Console.WriteLine("   {0}, {1}",
+                        student.LastName, student.FirstName);
+                }
+            }
+
+            var Query4 =
+                from student in students
+                group student by student.LastName[0] into studentGroup
+                orderby studentGroup.Key
+                select studentGroup;
+
+            foreach(var bunchStuds in Query4) {
+                Console.WriteLine(bunchStuds.Key);
+                foreach(var studs in bunchStuds) {
+                    Console.WriteLine("{0}, {1}", studs.LastName, studs.FirstName);
                 }
             }
 
