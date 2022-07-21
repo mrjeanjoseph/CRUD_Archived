@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.2.32616.157
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSAExercises", "MainConsoleUI\DSAExercises.csproj", "{7F5DE11E-400D-4C3B-AB6A-A0DB684724DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicDSAChallenges", "BasicDSAChallenges\BasicDSAChallenges.csproj", "{FFAA3DDC-5485-409C-B0E4-C2E5D2399E33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicDSAChallenges", "BasicDSAChallenges\BasicDSAChallenges.csproj", "{FFAA3DDC-5485-409C-B0E4-C2E5D2399E33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqExercises", "LinqExercises\LinqExercises.csproj", "{0CBBF848-2E80-4FA2-9422-A3861C84B502}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FFAA3DDC-5485-409C-B0E4-C2E5D2399E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFAA3DDC-5485-409C-B0E4-C2E5D2399E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFAA3DDC-5485-409C-B0E4-C2E5D2399E33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CBBF848-2E80-4FA2-9422-A3861C84B502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CBBF848-2E80-4FA2-9422-A3861C84B502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CBBF848-2E80-4FA2-9422-A3861C84B502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CBBF848-2E80-4FA2-9422-A3861C84B502}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
