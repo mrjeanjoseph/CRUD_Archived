@@ -2,8 +2,8 @@
 
 namespace LinqExercises {
     public class Student {
-        public string First { get; set; }
-        public string Last { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public int ID { get; set; }
         public List<int> Scores;
 
