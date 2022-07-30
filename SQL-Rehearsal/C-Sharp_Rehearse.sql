@@ -1,6 +1,10 @@
 use [SampleDB]
 GO
 
+SELECT @@VERSION
+
+
+
 CREATE SCHEMA SCHEMA_TESTING1
 
 CREATE TABLE TEST_TABLE (IDNO  SMALLINT NOT NULL,
@@ -52,6 +56,9 @@ BEGIN
 	END
 GO
 
+EXEC [SCHEMA_TESTING1].[uspEmployeeInfo];
+
+
 --Create Employee Location
 SET ANSI_NULLS ON
 GO
@@ -66,3 +73,20 @@ BEGIN
    UPDATE employee SET locationID=@locationID WHERE id=@employeeID;
 END
 GO
+
+
+--Verify the owner of the db
+SELECT suser_sname(owner_sid)
+FROM sys.databases
+WHERE name = 'SampleDB'
+
+--Parameterless SP
+CREATE PROCEDURE GetAllPersonalDetails
+	AS
+	BEGIN
+	SET NOCOUNT ON;
+
+	SELECT * FROM SCHEMA_TESTING1.employee
+END;
+
+EXEC GetAllPersonalDetails
