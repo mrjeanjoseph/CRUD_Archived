@@ -20,6 +20,7 @@ namespace ConsoleDB_Rehearse {
                 using (SqlConnection conn = new SqlConnection(connString)) {
                     string spName = @"[SCHEMA_TESTING1].[uspEmployeeInfo]";
 
+
                     SqlCommand cmd = new SqlCommand(spName, conn);
 
                     SqlParameter param1 = new SqlParameter();
