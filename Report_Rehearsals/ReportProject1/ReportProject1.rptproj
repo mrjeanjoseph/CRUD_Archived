@@ -8,11 +8,11 @@
     <OverwriteDataSources>False</OverwriteDataSources>
     <TargetServerVersion>SSRS2016</TargetServerVersion>
     <Platform>Win32</Platform>
-    <TargetReportFolder>ReportProject1</TargetReportFolder>
+    <TargetReportFolder>All Reports</TargetReportFolder>
     <TargetDatasetFolder>Datasets</TargetDatasetFolder>
     <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
     <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
-    <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+    <TargetServerURL>http://crud/ReportServer2019/Rehearsals</TargetServerURL>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'DebugLocal' ">
     <FullPath>DebugLocal</FullPath>
@@ -53,6 +53,7 @@
     <DataSource Include="DS_Main.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="DropDownListParam.rdl" />
     <Report Include="Report1.rdl" />
     <Report Include="Report2.rdl" />
     <Report Include="SalesReviewByTotal.rdl" />
