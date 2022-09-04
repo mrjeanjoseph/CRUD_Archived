@@ -189,6 +189,7 @@ namespace FileHandling {
 
                 File.Delete(fileOne);
             }
+
             Console.WriteLine("\n\nCreating a file, then copying the file");
             Console.WriteLine("------------------------------------------");
 
@@ -208,8 +209,9 @@ namespace FileHandling {
             }
 
             //working on getting the folder path for source and target
-            string sourceFolder = "folderpath";
-            string targetFolder = "folderpath";
+            string sourceFolder = @"~Assets";
+            string targetFolder = @"~Assets";
+
             string sourceFile = Path.Combine(sourceFolder, fileOne);
             string targetFile = Path.Combine(targetFolder, fileTwo);
 
