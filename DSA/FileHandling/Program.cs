@@ -299,5 +299,80 @@ namespace FileHandling {
 
             Console.WriteLine();
         }
+
+        public static void ReadingSpecificLinesFromFile(string fileName) {
+            string[] ArrLines;
+            int n, i, l;
+
+            Console.Write("\n\n Read a specific line from a file  :\n");
+            Console.Write("----------------------------------------\n");
+
+            if (File.Exists(fileName)) {
+                File.Delete(fileName);
+            }
+            Console.Write(" Input number of lines to write in the file  :");
+
+            n = Convert.ToInt32(Console.ReadLine());
+            ArrLines = new string[n];
+            Console.Write(" Input {0} strings below :\n", n);
+
+            for (i = 0; i < n; i++) {
+                Console.Write(" Input line {0} : ", i + 1);
+                ArrLines[i] = Console.ReadLine();
+            }
+
+            File.WriteAllLines(fileName, ArrLines);
+
+            Console.Write("\n Input which line you want to display  :");
+            l = Convert.ToInt32(Console.ReadLine());
+
+            if (l >= 1 && l <= n) {
+                Console.Write("\n The content of the line {0} of the file {1} is : \n", l, fileName);
+                if (File.Exists(fileName)) {
+                    string[] lines = File.ReadAllLines(fileName);
+                    Console.WriteLine(" {0}", lines[l - 1]);
+                }
+            } else {
+                Console.WriteLine(" Please input the correct line no.");
+            }
+        }
+
+        public static void ReadAndCountNumberOfLinesInFile(string fileName) {
+            int count;
+            try {
+                // Delete the file if it exists.
+                if (File.Exists(fileName)) {
+                    File.Delete(fileName);
+                }
+
+                Console.Write("\n\n Count the number of lines in a file :\n");
+                Console.Write("------------------------------------------\n");
+                // Create the file.
+                using (StreamWriter writer = File.CreateText(fileName)) {
+                    writer.WriteLine("Test line 1 has been added");
+                    writer.WriteLine("Test line 2 has been added");
+                    writer.WriteLine("Test line 3 has been added");
+                    writer.WriteLine("Test line 4 has been added");
+                    writer.WriteLine("Test line 5 has been added");
+                    writer.WriteLine("Test line 6 has been added");
+                }
+
+                using (StreamReader reader = File.OpenText(fileName)) {
+                    string data = "";
+                    count = 0;
+                    Console.WriteLine($"Here is the content of the file {fileName}: ");
+                    while ((data = reader.ReadLine()) != null) {
+                        Console.WriteLine(data);
+                        count++;
+                    }
+                    Console.WriteLine("");
+                }
+
+                Console.Write($"\tThe number of lines in  the file {fileName} is : {count} \n\n");
+
+            } catch (Exception MyExcep) {
+                Console.WriteLine(MyExcep.ToString());
+            }
+        }
     }
 }
