@@ -6,7 +6,7 @@ namespace FileHandling {
         static void Main(string[] args) {
 
             string fileName = @"crudtmpfile.txt";
-            WriteTextArrToFile(fileName);
+            AppendTextToFile(fileName); 
 
 
             Console.WriteLine();
@@ -176,6 +176,60 @@ namespace FileHandling {
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message.ToString());
             }
+        }
+
+        public static void CreateCopyFiles(string fileName) {
+            
+            string fileOne = @"fileOne.txt";
+            string fileTwo = @"fileTwo.txt";
+
+            Console.WriteLine(@"In the process of creating a new file.");
+            if (File.Exists(fileOne)) {
+                Console.WriteLine("Existing same name files will be deleted and a new one recreated.");
+
+                File.Delete(fileOne);
+            }
+            Console.WriteLine("\n\nCreating a file, then copying the file");
+            Console.WriteLine("------------------------------------------");
+
+            using(StreamWriter writer = File.CreateText(fileOne)) {
+                writer.WriteLine("I am now created file number one");
+                writer.WriteLine("These are all original content");
+                writer.WriteLine("I am good at what I do and I am the master of my code");
+            }
+
+            using (StreamReader reader = File.OpenText(fileOne)) {
+                string data = "";
+                Console.WriteLine($"Here are the content inside of file {fileOne}:");
+                while ((data = reader.ReadLine()) != null) {
+                    Console.WriteLine(data);
+                }
+                Console.WriteLine("");
+            }
+
+            //working on getting the folder path for source and target
+            string sourceFolder = "folderpath";
+            string targetFolder = "folderpath";
+            string sourceFile = Path.Combine(sourceFolder, fileOne);
+            string targetFile = Path.Combine(targetFolder, fileTwo);
+
+            if (Directory.Exists(targetFolder))
+                Directory.CreateDirectory(targetFolder);
+
+            File.Copy(sourceFile, targetFile, true);
+            File.Copy(sourceFile, targetFile, true);
+
+            Console.WriteLine($"The file {fileOne} successfully copied to the same {fileTwo}");
+
+            using (StreamReader reader = File.OpenText(fileOne)) {
+                string data = "";
+                Console.WriteLine($"Here is the content of the file inside of {fileOne}");
+                while ((data = reader.ReadLine()) != null) {
+                    Console.WriteLine(data);
+                }
+                Console.WriteLine("");
+            }
+
         }
     }
 }
