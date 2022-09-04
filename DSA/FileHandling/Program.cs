@@ -6,10 +6,9 @@ namespace FileHandling {
         static void Main(string[] args) {
 
             string fileName = @"crudtmpfile.txt";
-            AppendTextToFile(fileName); 
+            ReadLastLineInFile(fileName);
 
-
-            Console.WriteLine();
+            Console.ReadLine();
         }
 
         public static void CreateCrudFiles(string fileName) {
@@ -232,6 +231,73 @@ namespace FileHandling {
                 Console.WriteLine("");
             }
 
+        }
+
+        public static void ReadFirstLineInFile(string fileName) {
+            try {
+                // Delete the file if it exists.
+                if (File.Exists(fileName)) {
+                    File.Delete(fileName);
+                }
+                Console.Write("\n\n Read the first line from a file  :\n");
+                Console.Write("---------------------------------------\n");
+                // Create the file.
+                using (StreamWriter fileStr = File.CreateText(fileName)) {
+                    fileStr.WriteLine(" test line 1");
+                    fileStr.WriteLine(" test line 2");
+                    fileStr.WriteLine(" Test line 3");
+                }
+                using (StreamReader sr = File.OpenText(fileName)) {
+                    string s = "";
+                    Console.WriteLine(" Here is the content of the file mytest.txt : ");
+                    while ((s = sr.ReadLine()) != null) {
+                        Console.WriteLine(s);
+                    }
+                    Console.WriteLine("");
+                }
+
+                Console.Write("\n The content of the first line of the file is :\n");
+                if (File.Exists(fileName)) {
+                    string[] lines = File.ReadAllLines(fileName);
+                    Console.Write(lines[0]);
+                }
+                Console.WriteLine();
+            } catch (Exception MyExcep) {
+                Console.WriteLine(MyExcep.ToString());
+            }
+        }
+
+        public static void ReadLastLineInFile(string fileName) {
+
+            string[] ArrLines;
+            int n, i;
+
+            Console.Write("\n\n Create and read the last line of a file  :\n");
+            Console.Write("-----------------------------------------------\n");
+
+            if (File.Exists(fileName)) {
+                File.Delete(fileName);
+            }
+
+            Console.Write(" Input number of lines to write in the file  :");
+            n = Convert.ToInt32(Console.ReadLine());
+            ArrLines = new string[n];
+            Console.Write(" Input {0} strings below :\n", n);
+
+            for (i = 0; i < n; i++) {
+                Console.Write(" Input line {0} : ", i + 1);
+                ArrLines[i] = Console.ReadLine();
+            }
+
+            File.WriteAllLines(fileName, ArrLines);
+
+            Console.Write("\n The content of the last line of the file {0} is  :\n", fileName);
+            if (File.Exists(fileName)) {
+                string[] lines = File.ReadAllLines(fileName);
+                Console.WriteLine(" {0}", lines[n - 1]);
+            }
+
+            Console.WriteLine();
         }
     }
 }
