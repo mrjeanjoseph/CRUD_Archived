@@ -6,7 +6,7 @@ namespace FileHandling {
         static void Main(string[] args) {
 
             string fileName = @"crudtmpfile.txt";
-            ReCreateCrudFiles(fileName);
+            CreateFileAndContent(fileName);
 
 
             Console.WriteLine();
@@ -47,7 +47,7 @@ namespace FileHandling {
             try {
                 Console.WriteLine(@"In the process of creating a new file.");
                 if (File.Exists(fileName)) {
-                    Console.WriteLine("Existing same name files will be deleted.");
+                    Console.WriteLine("Existing same name files will be deleted and a new one recreated.");
 
                     File.Delete(fileName);
                 }
@@ -57,6 +57,32 @@ namespace FileHandling {
             } catch(Exception ex) {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        public static void CreateFileAndContent(string fileName) {
+            
+            try {
+                Console.WriteLine($"Checking if file {fileName} already exist");
+                if (File.Exists(fileName)) {
+                    Console.WriteLine($"File {fileName} is being deleted.");
+                }
+
+                using (StreamWriter writer = File.CreateText(fileName)) {
+                    Console.WriteLine("A new file created and content added");
+
+                    writer.WriteLine("Hello C# and .Net Core");
+                    writer.WriteLine("Content is being added everytime the project is ran");
+                    writer.WriteLine("Learning new technologies and framework everyday");
+                    writer.WriteLine("Then I crud all day, everyday");
+                }
+
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message.ToString());
+            }
+        }
+
+        public static void ReadFileContent(string fileName) {
+
         }
     }
 }
