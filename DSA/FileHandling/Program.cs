@@ -131,7 +131,51 @@ namespace FileHandling {
                 Console.WriteLine("");
             }
         }
+
+        public static void AppendTextToFile(string fileName) {
+            try {
+                Console.WriteLine(@"In the process of creating a new file.");
+                if (File.Exists(fileName)) {
+                    Console.WriteLine("Existing same name files will be deleted and a new one recreated.");
+
+                    File.Delete(fileName);
+                }
+
+                //Maybe the above code needs to go
+                Console.WriteLine("\n\nAppending text to an existing file:\n");
+                Console.WriteLine("-----------------------------------------");
+
+                using (StreamWriter writer = File.CreateText(fileName)) {
+                    writer.WriteLine("I am appending new lines to this text");
+                    writer.WriteLine("This is the first content and it looks good");
+                    writer.WriteLine("This is the second content and it looks even better");
+                }
+
+                using (StreamReader reader = File.OpenText(fileName)) {
+                    string data = "";
+                    Console.WriteLine($"Here are the content of the file {fileName}");
+                    while ((data = reader.ReadLine()) != null) {
+                        Console.WriteLine(data);
+                    }
+                    Console.WriteLine("");
+                }
+
+                using (StreamWriter file = new StreamWriter(fileName, true)) {
+                    file.WriteLine("This is the line appended at the last line.");
+                }
+
+                using(StreamReader file = File.OpenText(fileName)) {
+                    string data = "";
+                    Console.WriteLine($"Here is the content of the file after appending the text: ");
+                    while((data = file.ReadLine()) != null) {
+                        Console.WriteLine(data);
+                    }
+                    Console.WriteLine("");
+                }
+
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message.ToString());
+            }
+        }
     }
-
-
 }
