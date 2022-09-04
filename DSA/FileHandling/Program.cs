@@ -6,7 +6,7 @@ namespace FileHandling {
         static void Main(string[] args) {
 
             string fileName = @"crudtmpfile.txt";
-            CreateFileAndContent(fileName);
+            WriteTextArrToFile(fileName);
 
 
             Console.WriteLine();
@@ -65,6 +65,7 @@ namespace FileHandling {
                 Console.WriteLine($"Checking if file {fileName} already exist");
                 if (File.Exists(fileName)) {
                     Console.WriteLine($"File {fileName} is being deleted.");
+                    File.Delete(fileName);
                 }
 
                 using (StreamWriter writer = File.CreateText(fileName)) {
@@ -83,6 +84,54 @@ namespace FileHandling {
 
         public static void ReadFileContent(string fileName) {
 
+            try {
+                CreateFileAndContent(fileName);
+                using (StreamReader reader = File.OpenText(fileName)) {
+                    string r = "";
+                    Console.WriteLine($"Here are the content from the {fileName} file:\n");
+                    while((r = reader.ReadLine()) != null) {
+                        Console.WriteLine($"\t {r}");
+                    }
+                    Console.WriteLine("");
+                }
+
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message.ToString());
+                
+            }
+        }
+
+        public static void WriteTextArrToFile(string fileName) {
+            string[] Lines;
+            int numLines, z;
+
+            Console.WriteLine($"Checking if file {fileName} already exist");
+            if (File.Exists(fileName)) {
+                Console.WriteLine($"File {fileName} is being deleted.");
+
+                File.Delete(fileName);
+            }
+            Console.WriteLine("How many lines do you want to write in the file?");
+            numLines = Convert.ToInt32(Console.ReadLine());
+            Lines = new string[numLines];
+            Console.WriteLine($"Input {numLines} strings below");
+
+            for(z = 0; z < numLines; z++) {
+                Console.WriteLine($"Input {numLines} {z + 1}");
+                Lines[z] = Console.ReadLine();
+            }
+            File.WriteAllLines(fileName, Lines);
+
+            using (StreamReader reader = File.OpenText(fileName)) {
+                string r = "";
+                Console.WriteLine($"Here are the content from the {fileName} file:\n");
+                while ((r = reader.ReadLine()) != null) {
+                    Console.WriteLine($"\t {r}");
+                }
+                Console.WriteLine("");
+            }
         }
     }
+
+
 }
