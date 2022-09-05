@@ -5,7 +5,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            DateStringRepresentation();
+            CalculateLeapYear2();
             Console.ReadLine();
         }
 
@@ -177,6 +177,81 @@ namespace DateTimeReheasals {
             long ft = date1.ToFileTime();
             DateTime date2 = DateTime.FromFileTime(ft);
             Console.WriteLine("{0} -> {1}", date1, date2);
+        }
+
+        public static void DetermineObjectTypes() {
+            
+            object[] values = {
+                (int) 24,
+                (long) 10653,
+                (byte) 24,
+                (sbyte) -5,
+                26.3,
+                "string"
+            };
+                         
+            foreach (var value in values) {
+                Type t = value.GetType();
+                if (t.Equals(typeof(byte)))
+                    Console.WriteLine("{0} is an unsigned byte.", value);
+                else if (t.Equals(typeof(sbyte)))
+                    Console.WriteLine("{0} is a signed byte.", value);
+                else if (t.Equals(typeof(int)))
+                    Console.WriteLine("{0} is a 32-bit integer.", value);
+                else if (t.Equals(typeof(long)))
+                    Console.WriteLine("{0} is a 32-bit integer.", value);
+                else if (t.Equals(typeof(double)))
+                    Console.WriteLine("{0} is a double-precision floating point.", value);
+                else
+                    Console.WriteLine("'{0}' is another data type.", value);
+            }
+        }
+
+        public static void FindLeapYear() {
+            int firstYear = 1995;
+            int secondYear = 2022;
+
+            for (int year = firstYear; year <= secondYear; year++) {
+                if (DateTime.IsLeapYear(year)) {
+                    Console.WriteLine("{0} is a leap year.", year);
+                    DateTime leapDay = new DateTime(year, 2, 29);
+                    DateTime nextYear = leapDay.AddYears(1);
+                    Console.WriteLine("   One year from {0} is {1}.",
+                                      leapDay.ToString("d"),
+                                      nextYear.ToString("d"));
+                }
+            }
+        }
+
+        public static void CalculateLeapYear() {
+            Console.WriteLine("Enter Year : ");
+
+            int Year = int.Parse(Console.ReadLine());
+
+            if (((Year % 4 == 0) && (Year % 100 != 0)) || (Year % 400 == 0))
+                Console.WriteLine("{0} is a Leap Year.", Year);
+            else
+                Console.WriteLine("{0} is not a Leap Year.", Year);
+
+        }
+
+        public static void CalculateLeapYear2() {
+            int i = 0;
+            int[] arr = new int[5];
+
+            Console.WriteLine("Enter years : ");
+            for (i = 0; i < arr.Length; i++) {
+                Console.Write("Year[" + (i + 1) + "]: ");
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("List of leap years : ");
+            for (i = 0; i < arr.Length; i++) {
+                if ((arr[i] % 4 == 0) && (arr[i] % 100 != 0))
+                    Console.Write(arr[i] + " ");
+                else if ((arr[i] % 4 == 0) && (arr[i] % 100 == 0) && (arr[i] % 400 == 0))
+                    Console.Write(arr[i] + " ");
+            }
         }
     }
 }
