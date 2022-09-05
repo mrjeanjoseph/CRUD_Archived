@@ -5,7 +5,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            ComparingTwoDates();
+            ComparePastDateAndFutureDates();
             Console.ReadLine();
         }
 
@@ -78,6 +78,27 @@ namespace DateTimeReheasals {
 
             Console.WriteLine($"{dateOne.ToString("M")} {relationship} {dateTwo.ToString("M")}");
         }
-        
+
+        public static void ComparePastDateAndFutureDates() {
+            DateTime thisDate = DateTime.Today;
+            DateTime thisDateNextYear, thisDateLastYear;
+
+            //  add/substract 1 year
+            thisDateNextYear = thisDate.AddYears(1);
+            thisDateLastYear = thisDate.AddYears(-1);
+
+            DateCompare comparison;
+            // Compare today to last year
+            comparison = (DateCompare)thisDate.CompareTo(thisDateLastYear);
+            Console.WriteLine("{0}: {1:d} is {2} than {3:d}",
+                              (int)comparison, thisDate, comparison.ToString().ToLower(),
+                              thisDateLastYear);
+
+            // Compare today to next year
+            comparison = (DateCompare)thisDate.CompareTo(thisDateNextYear);
+            Console.WriteLine("{0}: {1:d} is {2} than {3:d}",
+                              (int)comparison, thisDate, comparison.ToString().ToLower(),
+                              thisDateNextYear);
+        }
     }
 }
