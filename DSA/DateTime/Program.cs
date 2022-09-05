@@ -6,7 +6,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            CurrentDateTimeObjectToLongTime();
+            PrintNamesOfAllMonth();
             Console.ReadLine();
         }
 
@@ -357,6 +357,98 @@ namespace DateTimeReheasals {
             }
         }
 
+        public static void CultureSpecificFormat() {
+            string dateString;
+            CultureInfo culture;
+            DateTimeStyles styles;
+            DateTime dateResult;
 
+            // Parse a date and time with no styles.
+            dateString = "05/06/2016 10:00 AM";
+            culture = CultureInfo.CreateSpecificCulture("de-DE");
+            styles = DateTimeStyles.None;
+            if (DateTime.TryParse(dateString, culture, styles, out dateResult))
+                Console.WriteLine("{0} converted to {1} {2}.", dateString, dateResult, dateResult.Kind);
+            else
+                Console.WriteLine("Unable to convert {0} to a date and time.", dateString);
+                                  
+
+            // Parse the same date and time with the AssumeLocal style.
+            styles = DateTimeStyles.AssumeLocal;
+            if (DateTime.TryParse(dateString, culture, styles, out dateResult))
+                Console.WriteLine("{0} converted to {1} {2}.", dateString, dateResult, dateResult.Kind);
+            else
+                Console.WriteLine("Unable to convert {0} to a date and time.", dateString);
+
+            // Parse a date and time that is assumed to be local.
+            // This time is five hours behind UTC. The local system's time zone is 
+            // eight hours behind UTC.
+            dateString = "2016/05/06T10:00:00-5:00";
+            styles = DateTimeStyles.AssumeLocal;
+            if (DateTime.TryParse(dateString, culture, styles, out dateResult))
+                Console.WriteLine("{0} converted to {1} {2}.", dateString, dateResult, dateResult.Kind);
+            else
+                Console.WriteLine("Unable to convert {0} to a date and time.", dateString);
+
+            // Attempt to convert a string in improper ISO 8601 format.
+            dateString = "05/06/2016T10:00:00-5:00";
+            if (DateTime.TryParse(dateString, culture, styles, out dateResult))
+                Console.WriteLine("{0} converted to {1} {2}.", dateString, dateResult, dateResult.Kind);
+            else
+                Console.WriteLine("Unable to convert {0} to a date and time.", dateString);
+
+            // Assume a date and time string formatted for the fr-BE culture is the local 
+            // time and convert it to UTC.
+            dateString = "2015-05-06 10:00";
+            culture = CultureInfo.CreateSpecificCulture("fr-BE");
+            styles = DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeLocal;
+            if (DateTime.TryParse(dateString, culture, styles, out dateResult))
+                Console.WriteLine("{0} converted to {1} {2}.", dateString, dateResult, dateResult.Kind);
+            else
+                Console.WriteLine("Unable to convert {0} to a date and time.", dateString);
+        }
+
+        public static void YesterdayAndTomorrow() {
+            Console.Write("\n\n Compute what day will be Tomorrow :\n");
+            Console.Write("----------------------------------------\n");
+            Console.WriteLine(" Today is : {0}", DateTime.Today.ToString("MM/dd/yyyy"));
+            DateTime dt = ModifyDates(1);
+            Console.WriteLine(" Tomorrow will be : {0} \n", dt.ToString("MM/dd/yyyy"));
+
+            dt = ModifyDates(-1);
+            Console.WriteLine(" Yesterday was : {0} \n", dt.ToString("MM/dd/yyyy"));
+        }
+        static DateTime ModifyDates(int x) {
+            return DateTime.Today.AddDays(x);
+        }
+    
+        public static void GetDaysForAGivenMonth() {
+            int mn, yr;
+
+            Console.Write("\n\n Find  the number of days in a given month for a year :\n");
+            Console.Write("-----------------------------------------------------------\n");
+            Console.Write("Enter a numeric month number: ");
+            mn = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the year: ");
+            yr = Convert.ToInt32(Console.ReadLine());
+            DateTimeFormatInfo dinfo = new DateTimeFormatInfo();
+            string mnum = dinfo.GetMonthName(mn);
+            int nodays = DateTime.DaysInMonth(yr, mn);
+            Console.WriteLine("The number of days in the month {0} is : {1} \n", mnum, nodays);
+        }
+
+        public static void PrintNamesOfAllMonth() {
+            Console.Write("\n\n Display the name of the first three letters of month of a year :\n");
+            Console.Write("---------------------------------------------------------------------\n");
+            DateTime now = DateTime.Now;
+            Console.WriteLine(" The date of Today : {0}", now.ToString("MM/dd/yyyy"));
+            Console.WriteLine(" The twelve months are :");
+            for (int i = 0; i < 12; i++) {
+                Console.WriteLine(" {0}", now.ToString("MMM"));
+                Console.WriteLine(" {0}", now.ToString("MMMM"));
+                now = now.AddMonths(1);
+            }
+            Console.WriteLine();
+        }
     }
 }
