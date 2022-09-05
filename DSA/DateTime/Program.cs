@@ -5,7 +5,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            ComparePastDateAndFutureDates();
+            CompareCurrentAndGivenDates();
             Console.ReadLine();
         }
 
@@ -99,6 +99,26 @@ namespace DateTimeReheasals {
             Console.WriteLine("{0}: {1:d} is {2} than {3:d}",
                               (int)comparison, thisDate, comparison.ToString().ToLower(),
                               thisDateNextYear);
+        }
+
+        public static void CompareCurrentAndGivenDates() {
+            DateTime futureDate = new DateTime(DateTime.Today.Year, 9, 5);
+            int compareValue;
+
+            try {
+                compareValue = futureDate.CompareTo(DateTime.Today);
+            } catch (ArgumentException) {
+                Console.WriteLine("Value is not a DateTime");
+                return;
+            }
+
+            if (compareValue < 0)
+                Console.WriteLine("{0:d} is in the past.", futureDate);
+            else if (compareValue == 0)
+                Console.WriteLine("{0:d} is today!", futureDate);
+            else // compareValue > 0
+                Console.WriteLine("{0:d} has not come yet.", futureDate);
+        
         }
     }
 }
