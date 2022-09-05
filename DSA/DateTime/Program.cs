@@ -6,7 +6,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            GetDaysForAGivenMonth();
+            PrintNamesOfAllMonth();
             Console.ReadLine();
         }
 
@@ -435,6 +435,20 @@ namespace DateTimeReheasals {
             string mnum = dinfo.GetMonthName(mn);
             int nodays = DateTime.DaysInMonth(yr, mn);
             Console.WriteLine("The number of days in the month {0} is : {1} \n", mnum, nodays);
+        }
+
+        public static void PrintNamesOfAllMonth() {
+            Console.Write("\n\n Display the name of the first three letters of month of a year :\n");
+            Console.Write("---------------------------------------------------------------------\n");
+            DateTime now = DateTime.Now;
+            Console.WriteLine(" The date of Today : {0}", now.ToString("MM/dd/yyyy"));
+            Console.WriteLine(" The twelve months are :");
+            for (int i = 0; i < 12; i++) {
+                Console.WriteLine(" {0}", now.ToString("MMM"));
+                Console.WriteLine(" {0}", now.ToString("MMMM"));
+                now = now.AddMonths(1);
+            }
+            Console.WriteLine();
         }
     }
 }
