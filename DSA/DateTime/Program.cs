@@ -5,7 +5,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            DateStringRepresentation();
+            FindLeapYear();
             Console.ReadLine();
         }
 
@@ -177,6 +177,50 @@ namespace DateTimeReheasals {
             long ft = date1.ToFileTime();
             DateTime date2 = DateTime.FromFileTime(ft);
             Console.WriteLine("{0} -> {1}", date1, date2);
+        }
+
+        public static void DetermineObjectTypes() {
+            
+            object[] values = {
+                (int) 24,
+                (long) 10653,
+                (byte) 24,
+                (sbyte) -5,
+                26.3,
+                "string"
+            };
+                         
+            foreach (var value in values) {
+                Type t = value.GetType();
+                if (t.Equals(typeof(byte)))
+                    Console.WriteLine("{0} is an unsigned byte.", value);
+                else if (t.Equals(typeof(sbyte)))
+                    Console.WriteLine("{0} is a signed byte.", value);
+                else if (t.Equals(typeof(int)))
+                    Console.WriteLine("{0} is a 32-bit integer.", value);
+                else if (t.Equals(typeof(long)))
+                    Console.WriteLine("{0} is a 32-bit integer.", value);
+                else if (t.Equals(typeof(double)))
+                    Console.WriteLine("{0} is a double-precision floating point.", value);
+                else
+                    Console.WriteLine("'{0}' is another data type.", value);
+            }
+        }
+
+        public static void FindLeapYear() {
+            int firstYear = 1995;
+            int secondYear = 2022;
+
+            for (int year = firstYear; year <= secondYear; year++) {
+                if (DateTime.IsLeapYear(year)) {
+                    Console.WriteLine("{0} is a leap year.", year);
+                    DateTime leapDay = new DateTime(year, 2, 29);
+                    DateTime nextYear = leapDay.AddYears(1);
+                    Console.WriteLine("   One year from {0} is {1}.",
+                                      leapDay.ToString("d"),
+                                      nextYear.ToString("d"));
+                }
+            }
         }
     }
 }
