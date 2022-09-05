@@ -5,7 +5,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            FindLeapYear();
+            CalculateLeapYear2();
             Console.ReadLine();
         }
 
@@ -220,6 +220,37 @@ namespace DateTimeReheasals {
                                       leapDay.ToString("d"),
                                       nextYear.ToString("d"));
                 }
+            }
+        }
+
+        public static void CalculateLeapYear() {
+            Console.WriteLine("Enter Year : ");
+
+            int Year = int.Parse(Console.ReadLine());
+
+            if (((Year % 4 == 0) && (Year % 100 != 0)) || (Year % 400 == 0))
+                Console.WriteLine("{0} is a Leap Year.", Year);
+            else
+                Console.WriteLine("{0} is not a Leap Year.", Year);
+
+        }
+
+        public static void CalculateLeapYear2() {
+            int i = 0;
+            int[] arr = new int[5];
+
+            Console.WriteLine("Enter years : ");
+            for (i = 0; i < arr.Length; i++) {
+                Console.Write("Year[" + (i + 1) + "]: ");
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("List of leap years : ");
+            for (i = 0; i < arr.Length; i++) {
+                if ((arr[i] % 4 == 0) && (arr[i] % 100 != 0))
+                    Console.Write(arr[i] + " ");
+                else if ((arr[i] % 4 == 0) && (arr[i] % 100 == 0) && (arr[i] % 400 == 0))
+                    Console.Write(arr[i] + " ");
             }
         }
     }
