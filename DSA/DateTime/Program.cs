@@ -5,7 +5,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            CompareCurrentAndGivenDates();
+            DateTimeStringRepresentation();
             Console.ReadLine();
         }
 
@@ -119,6 +119,43 @@ namespace DateTimeReheasals {
             else // compareValue > 0
                 Console.WriteLine("{0:d} has not come yet.", futureDate);
         
+        }
+
+        public static void CompareDateTimeObjects() {
+
+            DateTime one = DateTime.UtcNow;
+            DateTime two = DateTime.Now;
+            DateTime three = one;
+
+            bool result = one.Equals(two);
+            Console.WriteLine("The result of comparing DateTime object one and two is: {0}.", result);
+
+            result = one.Equals(three);
+            Console.WriteLine("The result of comparing DateTime object one and three is: {0}.", result);
+        }
+
+        public static void DateTimeStringRepresentation() {
+            string[] formats = {"M/d/yyyy h:mm:ss tt", "M/d/yyyy h:mm tt",
+                         "MM/dd/yyyy hh:mm:ss", "M/d/yyyy h:mm:ss",
+                         "M/d/yyyy hh:mm tt", "M/d/yyyy hh tt",
+                         "M/d/yyyy h:mm", "M/d/yyyy h:mm",
+                         "MM/dd/yyyy hh:mm", "M/dd/yyyy hh:mm"};
+
+            string[] dateStrings = {"8/1/2022 6:32 PM", "01/01/2022 6:32:05 PM",
+                              "2/19/2020 6:32:00", "12/08/2019 06:32",
+                              "08/06/2019 06:32:00 PM", "05/11/2018 06:32:00"};
+
+            DateTime dateValue;
+
+            foreach (string dateString in dateStrings) {
+                if (DateTime.TryParseExact(dateString, formats,
+                                           new CultureInfo("zh-CN"),
+                                           DateTimeStyles.None,
+                                           out dateValue))
+                    Console.WriteLine("Converted '{0}' to {1}.", dateString, dateValue);
+                else
+                    Console.WriteLine("Unable to convert '{0}' to a date.", dateString);
+            }
         }
     }
 }
