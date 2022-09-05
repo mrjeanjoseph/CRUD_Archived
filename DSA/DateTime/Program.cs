@@ -5,7 +5,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            PastAndFutureDates();
+            ComparingTwoDates();
             Console.ReadLine();
         }
 
@@ -60,6 +60,23 @@ namespace DateTimeReheasals {
                 Console.WriteLine($"{result1} year (s) ago:\t\t {result2}");
             }
 
+        }
+
+        public static void ComparingTwoDates() {
+            DateTime dateOne = new DateTime(2022, 9, 4);
+            DateTime dateTwo = new DateTime(2022, 10, 19);
+
+            int result = DateTime.Compare(dateOne, dateTwo);
+            string relationship;
+
+            if (result > 0)
+                relationship = "is earlier than";
+            else if (result == 0)
+                relationship = "is the same date/time as";
+            else
+                relationship = "is later than";
+
+            Console.WriteLine($"{dateOne.ToString("M")} {relationship} {dateTwo.ToString("M")}");
         }
         
     }
