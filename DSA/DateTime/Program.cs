@@ -5,7 +5,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            DisplayUTCNowDates();
+            Display15DatesPerMonth();
             Console.ReadLine();
         }
 
@@ -13,7 +13,7 @@ namespace DateTimeReheasals {
             DateTime localDate = DateTime.Now;
             DateTime utcDate = DateTime.UtcNow;
             String[] cultureNames = { "en-US", "en-GB", "fr-FR",
-                                "de-DE", "ru-RU" };
+                                "de-DE", "ru-RU", "ht-HT" };
 
             foreach (var cultureName in cultureNames) {
                 var culture = new CultureInfo(cultureName);
@@ -40,6 +40,12 @@ namespace DateTimeReheasals {
 
             Console.WriteLine(dateOnly.ToString("g"));
             Console.WriteLine(dateOnly.ToString("MM/dd/yyyy HH:mm"));
+        }
+
+        public static void Display15DatesPerMonth() {
+            var dates = new DateTime(2022,9,4);
+            for(int z = 0; z <= 15; z++)
+                Console.WriteLine(dates.AddMonths(z).ToString("d"));
         }
 
         
