@@ -5,7 +5,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            DateTimeStringRepresentation();
+            DateStringRepresentation();
             Console.ReadLine();
         }
 
@@ -156,6 +156,27 @@ namespace DateTimeReheasals {
                 else
                     Console.WriteLine("Unable to convert '{0}' to a date.", dateString);
             }
+        }
+
+        public static void DateStringRepresentation() {
+            DateTime july28 = new DateTime(2009, 7, 28, 5, 23, 15, 16);
+
+            //string[] july28Formats = july28.GetDateTimeFormats();
+            string[] july28Formats = july28.GetDateTimeFormats('d');
+
+            // Print out july28 in all DateTime formats using the default culture.
+            foreach (string format in july28Formats) {
+                Console.WriteLine(format);
+            }
+        }
+
+        public static void DatesFallWithinRange() {
+            DateTime date1 = new DateTime(2016, 3, 14, 2, 30, 00);
+            Console.WriteLine("Invalid Time: {0}",
+                              TimeZoneInfo.Local.IsInvalidTime(date1));
+            long ft = date1.ToFileTime();
+            DateTime date2 = DateTime.FromFileTime(ft);
+            Console.WriteLine("{0} -> {1}", date1, date2);
         }
     }
 }
