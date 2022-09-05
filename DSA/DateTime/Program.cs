@@ -5,7 +5,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            Display15DatesPerMonth();
+            PastAndFutureDates();
             Console.ReadLine();
         }
 
@@ -48,6 +48,19 @@ namespace DateTimeReheasals {
                 Console.WriteLine(dates.AddMonths(z).ToString("d"));
         }
 
+        public static void PastAndFutureDates() {
+            DateTime baseDate = new DateTime(2022, 9, 4);
+            Console.WriteLine($"Base Date:\t\t {baseDate:d}");
+            Console.WriteLine("============================");
+
+            for (int z = 0; z >= -15; z--) {
+                //Console.WriteLine("{0,2} year(s) ago:\t\t {1:d}", Math.Abs(z), baseDate.AddYears(z));
+                string result1 = Math.Abs(z).ToString("d");
+                string result2 = baseDate.AddYears(z).ToString("d");
+                Console.WriteLine($"{result1} year (s) ago:\t\t {result2}");
+            }
+
+        }
         
     }
 }
