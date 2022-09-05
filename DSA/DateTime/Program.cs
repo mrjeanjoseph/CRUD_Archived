@@ -5,7 +5,7 @@ namespace DateTimeReheasals {
     class Program {
         static void Main(string[] args) {
 
-            CalculateLeapYear2();
+            DiffBetweenTwoDates();
             Console.ReadLine();
         }
 
@@ -43,8 +43,8 @@ namespace DateTimeReheasals {
         }
 
         public static void Display15DatesPerMonth() {
-            var dates = new DateTime(2022,9,4);
-            for(int z = 0; z <= 15; z++)
+            var dates = new DateTime(2022, 9, 4);
+            for (int z = 0; z <= 15; z++)
                 Console.WriteLine(dates.AddMonths(z).ToString("d"));
         }
 
@@ -118,7 +118,7 @@ namespace DateTimeReheasals {
                 Console.WriteLine("{0:d} is today!", futureDate);
             else // compareValue > 0
                 Console.WriteLine("{0:d} has not come yet.", futureDate);
-        
+
         }
 
         public static void CompareDateTimeObjects() {
@@ -180,7 +180,7 @@ namespace DateTimeReheasals {
         }
 
         public static void DetermineObjectTypes() {
-            
+
             object[] values = {
                 (int) 24,
                 (long) 10653,
@@ -189,7 +189,7 @@ namespace DateTimeReheasals {
                 26.3,
                 "string"
             };
-                         
+
             foreach (var value in values) {
                 Type t = value.GetType();
                 if (t.Equals(typeof(byte)))
@@ -252,6 +252,19 @@ namespace DateTimeReheasals {
                 else if ((arr[i] % 4 == 0) && (arr[i] % 100 == 0) && (arr[i] % 400 == 0))
                     Console.Write(arr[i] + " ");
             }
+        }
+
+        public static void DiffBetweenTwoDates() {
+
+            //establish DateTimes
+            DateTime start = new DateTime(2022, 9, 5);
+            DateTime end = new DateTime(2022, 10, 19);
+
+            //create TimeSpan object
+            TimeSpan difference = end - start;
+
+            //Extract days, write to Console.
+            Console.WriteLine("Difference in days: " + difference.Days);
         }
     }
 }
