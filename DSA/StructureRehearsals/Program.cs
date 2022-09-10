@@ -5,8 +5,47 @@ namespace StructureRehearsals {
     class Program {
         static void Main(string[] args) {
 
-            ExerciseSix();
+            ExerciseEight();
             Console.ReadLine();
+        }
+
+        public static void ExerciseEight() {
+            int QtyOfBooks = 2;
+            ExerciseEight_Books[] booksAdded = new ExerciseEight_Books[QtyOfBooks];
+            int w, x, y = QtyOfBooks, z = 1;
+
+            Console.WriteLine("Insert the information of two books :");
+            Console.WriteLine("-------------------------------------");
+
+            for(x = 0; x < y; x++) {
+                Console.WriteLine("Information for book {0}:", z);
+
+                Console.WriteLine("Enter book name:");
+                booksAdded[x].bookTitle = Console.ReadLine();
+
+                Console.WriteLine("Enter book author name:");
+                booksAdded[x].bookAuthor = Console.ReadLine();
+                z++;
+                Console.Clear();
+            }
+            Console.WriteLine("Here's a list of books you requested:");
+            for(w = 0; w < y; w++) {
+                Console.WriteLine("\t{0}: {1}, by {2}", w + 1, booksAdded[w].bookTitle, booksAdded[w].bookAuthor);
+            }
+        }
+
+        public static void ExerciseSeven() {
+            Console.WriteLine("Structure declares using default and parameterized constructors :");
+            Console.WriteLine("-----------------------------------------------------------------");
+
+            ExerciseSevenNewStruct myStruct1 = new ExerciseSevenNewStruct();
+            ExerciseSevenNewStruct myStruct2 = new ExerciseSevenNewStruct(65, 91);
+
+            Console.WriteLine("myStruct1: ");
+            Console.WriteLine("valueOne = {0}, valueTwo = {1}", myStruct1.valueOne, myStruct1.valueTwo);
+
+            Console.WriteLine("myStruct2: ");
+            Console.WriteLine("valueOne = {0}, valueTwo = {1}", myStruct2.valueOne, myStruct2.valueTwo);
         }
 
         public static void ExerciseSix() {
