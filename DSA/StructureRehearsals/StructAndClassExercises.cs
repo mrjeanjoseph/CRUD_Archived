@@ -1,5 +1,5 @@
 ﻿namespace StructureRehearsals {
-    struct ExerciseOneStruct {
+    struct StructAndClassExercises {
         public int x;
         public int y;
     }
@@ -39,5 +39,16 @@
 
     class ExerciseFiveNewStruct {
         public int structID;
+    }
+
+    struct ExerciseSixNewStruct {
+        private int someNum;
+        public int AnotherNum {
+            get { return someNum; }
+            set { if (value < 50) someNum = value; }
+        }
+        public void ExerciseSixMethod() {
+            System.Console.WriteLine("The stored value is: {0}", someNum);
+        }
     }
 }

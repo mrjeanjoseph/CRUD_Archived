@@ -5,8 +5,20 @@ namespace StructureRehearsals {
     class Program {
         static void Main(string[] args) {
 
-            ExerciseFive();
+            ExerciseSix();
             Console.ReadLine();
+        }
+
+        public static void ExerciseSix() {
+            Console.WriteLine("Declares a structure with a property, a method, and a private field :");
+            Console.WriteLine("---------------------------------------------------------------------");
+
+            //ExerciseSixNewStruct exeSixInstance = new ExerciseSixNewStruct();
+            //exeSixInstance.AnotherNum = 45;
+            ExerciseSixNewStruct exeSixInstance = new ExerciseSixNewStruct {
+                AnotherNum = 145
+            };
+            exeSixInstance.ExerciseSixMethod();
         }
 
         public static void ExerciseFive() {
@@ -27,7 +39,6 @@ namespace StructureRehearsals {
         public static void ExerciseFiveTrackStruct(ExerciseFiveNewStruct exStruct) {
             exStruct.structID = 25;
         }
-
 
         public static void ExerciseFiveTrackClass(ExerciseFiveNewClass exClass) {
             exClass.classID = 38;
@@ -100,7 +111,7 @@ namespace StructureRehearsals {
             Console.WriteLine("Declaring a simple struct: ");
             Console.WriteLine("===========================");
 
-            ExerciseOneStruct exstruct = new ExerciseOneStruct();
+            StructAndClassExercises exstruct = new StructAndClassExercises();
             exstruct.x = 71;
             exstruct.y = 29;
             int xytotal = exstruct.x + exstruct.y;
