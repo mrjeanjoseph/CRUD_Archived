@@ -32,4 +32,12 @@
         public int x;
         public int y;
     }
+
+    class ExerciseFiveNewClass {
+        public int classID;
+    }
+
+    class ExerciseFiveNewStruct {
+        public int structID;
+    }
 }

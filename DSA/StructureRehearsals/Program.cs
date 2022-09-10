@@ -5,8 +5,32 @@ namespace StructureRehearsals {
     class Program {
         static void Main(string[] args) {
 
-            ExerciseFour();
+            ExerciseFive();
             Console.ReadLine();
+        }
+
+        public static void ExerciseFive() {
+            Console.WriteLine("When a structure and a class instance is passed to a method :");
+            Console.WriteLine("-------------------------------------------------------------");
+
+            ExerciseFiveNewStruct efns = new ExerciseFiveNewStruct();
+            ExerciseFiveNewClass efnc = new ExerciseFiveNewClass();
+            efns.structID = 125;
+            efnc.classID = 138;
+            ExerciseFiveTrackStruct(efns);
+            ExerciseFiveTrackClass(efnc);
+
+            Console.WriteLine("efns.structID = {0}", efns.structID);
+            Console.WriteLine("efnc.classID = {0}", efnc.classID);
+        }
+
+        public static void ExerciseFiveTrackStruct(ExerciseFiveNewStruct exStruct) {
+            exStruct.structID = 25;
+        }
+
+
+        public static void ExerciseFiveTrackClass(ExerciseFiveNewClass exClass) {
+            exClass.classID = 38;
         }
 
         public static void ExerciseFour() {
