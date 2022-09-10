@@ -5,8 +5,22 @@ namespace StructureRehearsals {
     class Program {
         static void Main(string[] args) {
 
-            ExerciseSix();
+            ExerciseSeven();
             Console.ReadLine();
+        }
+
+        public static void ExerciseSeven() {
+            Console.WriteLine("Structure declares using default and parameterized constructors :");
+            Console.WriteLine("-----------------------------------------------------------------");
+
+            ExerciseSevenNewStruct myStruct1 = new ExerciseSevenNewStruct();
+            ExerciseSevenNewStruct myStruct2 = new ExerciseSevenNewStruct(65, 91);
+
+            Console.WriteLine("myStruct1: ");
+            Console.WriteLine("valueOne = {0}, valueTwo = {1}", myStruct1.valueOne, myStruct1.valueTwo);
+
+            Console.WriteLine("myStruct2: ");
+            Console.WriteLine("valueOne = {0}, valueTwo = {1}", myStruct2.valueOne, myStruct2.valueTwo);
         }
 
         public static void ExerciseSix() {

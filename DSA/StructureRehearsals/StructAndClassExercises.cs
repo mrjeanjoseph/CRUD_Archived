@@ -51,4 +51,12 @@
             System.Console.WriteLine("The stored value is: {0}", someNum);
         }
     }
+
+    public struct ExerciseSevenNewStruct {
+        public int valueOne, valueTwo;
+        public ExerciseSevenNewStruct(int value1, int value2) {
+            valueOne = value1;
+            valueTwo = value2;
+        }
+    }
 }
