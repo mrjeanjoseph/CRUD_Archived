@@ -22,4 +22,14 @@
             public int Year;
         }
     }
+
+    class ExerciseFourNewClass {
+        public int x;
+        public int y;
+    }
+
+    struct ExerciseFourNewStruct {
+        public int x;
+        public int y;
+    }
 }
