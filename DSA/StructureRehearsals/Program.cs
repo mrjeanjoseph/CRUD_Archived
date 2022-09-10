@@ -10,9 +10,9 @@ namespace StructureRehearsals {
         }
 
         public static void ExerciseEight() {
-            int QtyOfBooks = 5;
+            int QtyOfBooks = 2;
             ExerciseEight_Books[] booksAdded = new ExerciseEight_Books[QtyOfBooks];
-            int w, x, y = 2, z = 1;
+            int w, x, y = QtyOfBooks, z = 1;
 
             Console.WriteLine("Insert the information of two books :");
             Console.WriteLine("-------------------------------------");
@@ -26,10 +26,11 @@ namespace StructureRehearsals {
                 Console.WriteLine("Enter book author name:");
                 booksAdded[x].bookAuthor = Console.ReadLine();
                 z++;
-                Console.WriteLine();
+                Console.Clear();
             }
+            Console.WriteLine("Here's a list of books you requested:");
             for(w = 0; w < y; w++) {
-                Console.WriteLine("{0}: Title = {1},  Author = {2}", w + 1, booksAdded[w].bookTitle, booksAdded[w].bookAuthor);
+                Console.WriteLine("\t{0}: {1}, by {2}", w + 1, booksAdded[w].bookTitle, booksAdded[w].bookAuthor);
             }
         }
 
