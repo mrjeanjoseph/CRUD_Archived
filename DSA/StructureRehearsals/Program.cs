@@ -5,8 +5,32 @@ namespace StructureRehearsals {
     class Program {
         static void Main(string[] args) {
 
-            ExerciseSeven();
+            ExerciseEight();
             Console.ReadLine();
+        }
+
+        public static void ExerciseEight() {
+            int QtyOfBooks = 5;
+            ExerciseEight_Books[] booksAdded = new ExerciseEight_Books[QtyOfBooks];
+            int w, x, y = 2, z = 1;
+
+            Console.WriteLine("Insert the information of two books :");
+            Console.WriteLine("-------------------------------------");
+
+            for(x = 0; x < y; x++) {
+                Console.WriteLine("Information for book {0}:", z);
+
+                Console.WriteLine("Enter book name:");
+                booksAdded[x].bookTitle = Console.ReadLine();
+
+                Console.WriteLine("Enter book author name:");
+                booksAdded[x].bookAuthor = Console.ReadLine();
+                z++;
+                Console.WriteLine();
+            }
+            for(w = 0; w < y; w++) {
+                Console.WriteLine("{0}: Title = {1},  Author = {2}", w + 1, booksAdded[w].bookTitle, booksAdded[w].bookAuthor);
+            }
         }
 
         public static void ExerciseSeven() {

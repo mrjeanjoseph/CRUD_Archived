@@ -59,4 +59,9 @@
             valueTwo = value2;
         }
     }
+
+    struct ExerciseEight_Books {
+        public string bookTitle;
+        public string bookAuthor;
+    }
 }
