@@ -5,8 +5,67 @@ namespace StructureRehearsals {
     class Program {
         static void Main(string[] args) {
 
-            ExerciseThree();
+            ExerciseSix();
             Console.ReadLine();
+        }
+
+        public static void ExerciseSix() {
+            Console.WriteLine("Declares a structure with a property, a method, and a private field :");
+            Console.WriteLine("---------------------------------------------------------------------");
+
+            //ExerciseSixNewStruct exeSixInstance = new ExerciseSixNewStruct();
+            //exeSixInstance.AnotherNum = 45;
+            ExerciseSixNewStruct exeSixInstance = new ExerciseSixNewStruct {
+                AnotherNum = 145
+            };
+            exeSixInstance.ExerciseSixMethod();
+        }
+
+        public static void ExerciseFive() {
+            Console.WriteLine("When a structure and a class instance is passed to a method :");
+            Console.WriteLine("-------------------------------------------------------------");
+
+            ExerciseFiveNewStruct efns = new ExerciseFiveNewStruct();
+            ExerciseFiveNewClass efnc = new ExerciseFiveNewClass();
+            efns.structID = 125;
+            efnc.classID = 138;
+            ExerciseFiveTrackStruct(efns);
+            ExerciseFiveTrackClass(efnc);
+
+            Console.WriteLine("efns.structID = {0}", efns.structID);
+            Console.WriteLine("efnc.classID = {0}", efnc.classID);
+        }
+
+        public static void ExerciseFiveTrackStruct(ExerciseFiveNewStruct exStruct) {
+            exStruct.structID = 25;
+        }
+
+        public static void ExerciseFiveTrackClass(ExerciseFiveNewClass exClass) {
+            exClass.classID = 38;
+        }
+
+        public static void ExerciseFour() {
+            Console.WriteLine("Creating a structure and assigning a value then call it :");
+            Console.WriteLine("---------------------------------------------------------");
+            ExerciseFourNewClass classCal1 = new ExerciseFourNewClass();
+            classCal1.x = 150;
+            classCal1.y = 150;
+
+            ExerciseFourNewClass classCal2 = classCal1;
+            classCal2.x = 2020;
+            classCal2.y = 1985;
+            Console.WriteLine("Assign in Class:       x:{0},   y:{1}", classCal2.x, classCal2.y);
+
+
+            Console.WriteLine("---------------------------------------------------------");
+            ExerciseFourNewStruct structCal1 = new ExerciseFourNewStruct();
+            structCal1.x = 250;
+            structCal1.y = 250;
+
+            ExerciseFourNewStruct structCal2 = structCal1;
+            structCal2.x = 150000;
+            structCal2.y = 950000;
+            Console.WriteLine("Assign in Struct:       x:{0},   y:{1}", structCal2.x, structCal2.y);
         }
 
         public static void ExerciseThree() {
@@ -52,7 +111,7 @@ namespace StructureRehearsals {
             Console.WriteLine("Declaring a simple struct: ");
             Console.WriteLine("===========================");
 
-            ExerciseOneStruct exstruct = new ExerciseOneStruct();
+            StructAndClassExercises exstruct = new StructAndClassExercises();
             exstruct.x = 71;
             exstruct.y = 29;
             int xytotal = exstruct.x + exstruct.y;
