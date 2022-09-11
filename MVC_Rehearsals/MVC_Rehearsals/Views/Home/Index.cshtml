@@ -7,9 +7,9 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            <th>@Html.DisplayNameFor(m => m.Title)</th>
             <th>@Html.DisplayNameFor(m => m.FirstName)</th>
             <th>@Html.DisplayNameFor(m => m.LastName)</th>
-            <th>@Html.DisplayNameFor(m => m.Title)</th>
             <th>@Html.DisplayNameFor(m => m.BirthDate)</th>
             <th>@Html.DisplayNameFor(m => m.HireDate)</th>
         </tr>
@@ -17,13 +17,13 @@
     <tbody>
         @foreach (var emp in Model) {
             <tr>
+                <td>@emp.Title</td>
                 <td>@emp.FirstName</td>
                 <td>@emp.LastName</td>
-                <td>@emp.Title</td>
-                <td>@emp.BirthDate</td>
+                <td>@emp.BirthDate.ToShortDateString()</td>
                 <td>
                     @if (emp.HireDate != null) {
-                        @emp.HireDate
+                        @emp.HireDate.ToShortDateString()
                     }
                 </td>
             </tr>
