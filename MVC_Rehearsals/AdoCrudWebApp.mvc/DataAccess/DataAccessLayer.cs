@@ -9,14 +9,14 @@ namespace AdoCrudWebApp.mvc.DataAccess {
     public class DataAccessLayer {
         public string InsertData(Customer objcust) {
             SqlConnection con = null;
-            string result = "";
+            string result;
 
             try {
-                con = new SqlConnection(ConfigurationManager.ConnectionStrings["mycon"].ToString());
-                SqlCommand cmd = new SqlCommand("Usp_InsertUpdateDelete_Customer", con);
-
+                con = new SqlConnection(ConfigurationManager.ConnectionStrings["crud"].ToString());
+                SqlCommand cmd = new SqlCommand("[Rehearsals].InsertUpdateDelete_Customer", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CustomerID", 0);
+
+                //cmd.Parameters.AddWithValue("@CustomerID", 2);
                 cmd.Parameters.AddWithValue("@Name", objcust.Name);
                 cmd.Parameters.AddWithValue("@Address", objcust.Address);
                 cmd.Parameters.AddWithValue("@Mobileno", objcust.Mobileno);
@@ -28,7 +28,7 @@ namespace AdoCrudWebApp.mvc.DataAccess {
                 result = cmd.ExecuteScalar().ToString();
                 return result;
 
-            } catch {
+            } catch  {
                 return result = "";
 
             } finally {
@@ -42,8 +42,8 @@ namespace AdoCrudWebApp.mvc.DataAccess {
             string result = "";
 
             try {
-                con = new SqlConnection(ConfigurationManager.ConnectionStrings["mycon"].ToString());
-                SqlCommand cmd = new SqlCommand("Usp_InsertUpdateDelete_Customer", con);
+                con = new SqlConnection(ConfigurationManager.ConnectionStrings["crud"].ToString());
+                SqlCommand cmd = new SqlCommand("[Rehearsals].InsertUpdateDelete_Customer", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@CustomerID", objcust.CustomerID);
@@ -65,7 +65,6 @@ namespace AdoCrudWebApp.mvc.DataAccess {
                 con.Close();
 
             }
-
         }
 
         public List<Customer> Selectalldata() {
@@ -74,11 +73,11 @@ namespace AdoCrudWebApp.mvc.DataAccess {
             List<Customer> custlist = null;
 
             try {
-                con = new SqlConnection(ConfigurationManager.ConnectionStrings["mycon"].ToString());
-                SqlCommand cmd = new SqlCommand("Usp_InsertUpdateDelete_Customer", con);
+                con = new SqlConnection(ConfigurationManager.ConnectionStrings["crud"].ToString());
+                SqlCommand cmd = new SqlCommand("[Rehearsals].InsertUpdateDelete_Customer", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@CustomerID", null);
+                //cmd.Parameters.AddWithValue("@CustomerID", null);
                 cmd.Parameters.AddWithValue("@Name", null);
                 cmd.Parameters.AddWithValue("@Address", null);
                 cmd.Parameters.AddWithValue("@Mobileno", null);
@@ -95,7 +94,7 @@ namespace AdoCrudWebApp.mvc.DataAccess {
 
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++) {
                     Customer cobj = new Customer {
-                        CustomerID = Convert.ToInt32(ds.Tables[0].Rows[i]["CustomerID"].ToString()),
+                        //CustomerID = Convert.ToInt32(ds.Tables[0].Rows[i]["CustomerID"].ToString()),
                         Name = ds.Tables[0].Rows[i]["Name"].ToString(),
                         Address = ds.Tables[0].Rows[i]["Address"].ToString(),
                         Mobileno = ds.Tables[0].Rows[i]["Mobileno"].ToString(),
@@ -123,8 +122,8 @@ namespace AdoCrudWebApp.mvc.DataAccess {
             Customer cobj = null;
 
             try {
-                con = new SqlConnection(ConfigurationManager.ConnectionStrings["mycon"].ToString());
-                SqlCommand cmd = new SqlCommand("Usp_InsertUpdateDelete_Customer", con);
+                con = new SqlConnection(ConfigurationManager.ConnectionStrings["crud"].ToString());
+                SqlCommand cmd = new SqlCommand("[Rehearsals].InsertUpdateDelete_Customer", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@CustomerID", CustomerID);
@@ -167,8 +166,8 @@ namespace AdoCrudWebApp.mvc.DataAccess {
             string result = "";
 
             try {
-                con = new SqlConnection(ConfigurationManager.ConnectionStrings["mycon"].ToString());
-                SqlCommand cmd = new SqlCommand("Usp_InsertUpdateDelete_Customer", con);
+                con = new SqlConnection(ConfigurationManager.ConnectionStrings["crud"].ToString());
+                SqlCommand cmd = new SqlCommand("[Rehearsals].InsertUpdateDelete_Customer", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@CustomerID", objcust.CustomerID);
@@ -190,8 +189,6 @@ namespace AdoCrudWebApp.mvc.DataAccess {
                 con.Close();
 
             }
-
         }
-
     }
 }
