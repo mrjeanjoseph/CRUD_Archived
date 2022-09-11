@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32802.440
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Rehearsals", "MVC_Rehearsals\MVC_Rehearsals.csproj", "{125485D9-EF52-443D-9B2F-AAA955F0EC47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehearseADO.mvc", "RehearseADO.mvc\RehearseADO.mvc.csproj", "{F186052B-1BBA-4586-B748-2C9EB332A47C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoCrudWebApp.mvc", "AdoCrudWebApp.mvc\AdoCrudWebApp.mvc.csproj", "{F8B89DC3-4245-4E80-8801-C43D25C5CA7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{125485D9-EF52-443D-9B2F-AAA955F0EC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{125485D9-EF52-443D-9B2F-AAA955F0EC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{125485D9-EF52-443D-9B2F-AAA955F0EC47}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F186052B-1BBA-4586-B748-2C9EB332A47C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F186052B-1BBA-4586-B748-2C9EB332A47C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F186052B-1BBA-4586-B748-2C9EB332A47C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F186052B-1BBA-4586-B748-2C9EB332A47C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8B89DC3-4245-4E80-8801-C43D25C5CA7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8B89DC3-4245-4E80-8801-C43D25C5CA7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8B89DC3-4245-4E80-8801-C43D25C5CA7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8B89DC3-4245-4E80-8801-C43D25C5CA7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
