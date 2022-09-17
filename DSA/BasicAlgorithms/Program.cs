@@ -6,10 +6,16 @@ namespace BasicAlgorithms {
 
             //Console.WriteLine(ComputeSumAndTrippleSum(15,15));
             //Console.WriteLine(ComputeAbsoluteDiffirence(15));
-            Console.WriteLine(CheckTwoValueIfTrue(25,5));
-            Console.WriteLine(CheckTwoValueIfTrue(30,5));
-            Console.WriteLine(CheckTwoValueIfTrue(25,15));
+            //Console.WriteLine(CheckTwoValueIfTrue(25,15));
+            Console.WriteLine(CheckSpecificString("I love thee", "if"));
             Console.ReadLine();
+        }
+
+        static string CheckSpecificString(string givenString, string checkedString) {
+            //Check if part of a string exist at the beginning. Return the string if exist, add the missing strings if does not exists.
+            if(givenString.Length > 2 && givenString.Substring(0,2).Equals(checkedString))
+                return givenString;
+            return $"{checkedString} {givenString}";
         }
 
         static bool CheckTwoValueIfTrue(int a, int b) {
