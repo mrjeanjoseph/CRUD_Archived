@@ -4,18 +4,38 @@ namespace BasicAlgorithms {
     class Program {
         static void Main(string[] args) {
 
+            Console.WriteLine(CreateNewStringWithFourCopies("DreamBox"));
+            Console.WriteLine(CreateNewStringWithFourCopies("Al Pine"));
+            Console.WriteLine(CreateNewStringWithFourCopies("Linux"));
+
+            #region prior
             //Console.WriteLine(ComputeSumAndTrippleSum(15,15));
             //Console.WriteLine(ComputeAbsoluteDiffirence(15));
             //Console.WriteLine(CheckTwoValueIfTrue(25,15));
             //Console.WriteLine(CheckSpecificString("I love thee", "if"));
-            Console.WriteLine(ExchangeFirstLastCharacters("DreamBox"));
+            //Console.WriteLine(ExchangeFirstLastCharacters("DreamBox"));
+            #endregion Prior
             Console.ReadLine();
+        }
+
+        static string CreateNewStringWithFourCopies(string myStr) {
+            //create a new string which is 4 copies of the 2 front characters of a given string.If the given string length is less than 2 return the original string
+            //return myStr.Length < 2 ? myStr : myStr.Substring(0, 2) + myStr.Substring(0, 2) + myStr.Substring(0, 2) + myStr.Substring(0, 2);
+            string result = myStr;
+            if(myStr.Length < 2) return result;
+            //return myStr.Substring(0, 2) + myStr.Substring(0, 2) + myStr.Substring(0, 2) + myStr.Substring(0, 2);
+
+            result = "";
+            for (int i = 0; i < 4; i++) {
+                result += myStr.Substring(0, 2);
+            }
+            return result;
         }
 
         public static string ExchangeFirstLastCharacters(string myStr) {
             // Exchange the first and last characters in a given string and return the new string.
-            //return myStr.Length > 1 ? myStr.Substring(myStr.Length - 1) + myStr.Substring(1, myStr.Length - 2) + myStr.Substring(0,1) : myStr;
 
+            //return myStr.Length > 1 ? myStr.Substring(myStr.Length - 1) + myStr.Substring(1, myStr.Length - 2) + myStr.Substring(0,1) : myStr;
             if (myStr.Length > 1)
                 return myStr.Substring(myStr.Length - 1) + myStr.Substring(1, myStr.Length - 2) + myStr.Substring(0, 1);
             else
@@ -47,6 +67,7 @@ namespace BasicAlgorithms {
                 return x + y;
             }
         }
+
         static int ComputeAbsoluteDiffirence(int num) {
             //get the absolute difference between num and 51. If n is greater than 51 return quad the absolute difference.
             const int x = 51;
