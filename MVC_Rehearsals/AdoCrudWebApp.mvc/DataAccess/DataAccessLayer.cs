@@ -1,9 +1,9 @@
-﻿using AdoCrudWebApp.mvc.Models;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System;
 using System.Data;
+using System.Configuration;
 using System.Data.SqlClient;
+using AdoCrudWebApp.mvc.Models;
+using System.Collections.Generic;
 
 namespace AdoCrudWebApp.mvc.DataAccess {
     public class DataAccessLayer {
@@ -16,7 +16,7 @@ namespace AdoCrudWebApp.mvc.DataAccess {
                 SqlCommand cmd = new SqlCommand("[Rehearsals].InsertUpdateDelete_Customer", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                //cmd.Parameters.AddWithValue("@CustomerID", 2);
+                cmd.Parameters.AddWithValue("@CustomerID", 1);
                 cmd.Parameters.AddWithValue("@Name", objcust.Name);
                 cmd.Parameters.AddWithValue("@Address", objcust.Address);
                 cmd.Parameters.AddWithValue("@Mobileno", objcust.Mobileno);

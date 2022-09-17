@@ -12,8 +12,11 @@ BEGIN
 	IF (@Query = 1)
 		BEGIN
 			INSERT INTO [Rehearsals].[Customer] ([CustomerID],[NAME], [Address], [Mobileno], [Birthdate], [EmailID])
-				VALUES (@CustomerID,@Name,@Address,@Mobileno,@Birthdate,@EmailID)
+				VALUES (@CustomerID, @Name,@Address,@Mobileno,@Birthdate,@EmailID)
+			IF (@@ROWCOUNT > 0)
+			BEGIN
 				SELECT 'Insert'
+			END
 		END
 
 	IF (@Query = 2)

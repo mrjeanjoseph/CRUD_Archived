@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AssetSolutions", "AssetSolu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DateTimeReheasals", "DateTime\DateTimeReheasals.csproj", "{D25C58CA-4599-42DB-9DC7-5348B08C0A74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructureRehearsals", "StructureRehearsals\StructureRehearsals.csproj", "{267C530B-AA1A-4728-AEA4-8C9AB5DC6DBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StructureRehearsals", "StructureRehearsals\StructureRehearsals.csproj", "{267C530B-AA1A-4728-AEA4-8C9AB5DC6DBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSA.Main", "DSA.Main\DSA.Main.csproj", "{35C328E8-D9AB-4FF6-87B4-DC9962133E81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{267C530B-AA1A-4728-AEA4-8C9AB5DC6DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{267C530B-AA1A-4728-AEA4-8C9AB5DC6DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{267C530B-AA1A-4728-AEA4-8C9AB5DC6DBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35C328E8-D9AB-4FF6-87B4-DC9962133E81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C328E8-D9AB-4FF6-87B4-DC9962133E81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C328E8-D9AB-4FF6-87B4-DC9962133E81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C328E8-D9AB-4FF6-87B4-DC9962133E81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
