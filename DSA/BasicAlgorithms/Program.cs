@@ -4,11 +4,12 @@ namespace BasicAlgorithms {
     class Program {
         static void Main(string[] args) {
 
-            Console.WriteLine(CreateNewStringWithFourCopies("DreamBox"));
-            Console.WriteLine(CreateNewStringWithFourCopies("Al Pine"));
-            Console.WriteLine(CreateNewStringWithFourCopies("Linux"));
+            //Console.WriteLine(CreateNewStringWithFourCopies("Linux"));
+
+            Console.WriteLine(NewStringLastCharAddToFrontAndBack("SoHappy")); 
 
             #region prior
+            //Console.WriteLine(CreateNewStringWithFourCopies("Linux"));
             //Console.WriteLine(ComputeSumAndTrippleSum(15,15));
             //Console.WriteLine(ComputeAbsoluteDiffirence(15));
             //Console.WriteLine(CheckTwoValueIfTrue(25,15));
@@ -16,6 +17,13 @@ namespace BasicAlgorithms {
             //Console.WriteLine(ExchangeFirstLastCharacters("DreamBox"));
             #endregion Prior
             Console.ReadLine();
+        }
+
+        static string NewStringLastCharAddToFrontAndBack(string myStr) {
+            //create a new string with the last char added at the front and back of a given string of length 1 or more.
+
+            string lastStr = myStr.Substring(myStr.Length - 1);
+            return $"{lastStr}{myStr}{lastStr}";
         }
 
         static string CreateNewStringWithFourCopies(string myStr) {
