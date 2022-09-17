@@ -6,9 +6,13 @@ namespace BasicAlgorithms {
 
             //Console.WriteLine(CreateNewStringWithFourCopies("Linux"));
 
-            Console.WriteLine(NewStringLastCharAddToFrontAndBack("SoHappy")); 
+            Console.WriteLine(MultipleOfThreeOrSeven(39));
+            Console.WriteLine(MultipleOfThreeOrSeven(21));
+            Console.WriteLine(MultipleOfThreeOrSeven(11));
+
 
             #region prior
+            //Console.WriteLine(NewStringLastCharAddToFrontAndBack("SoHappy"));
             //Console.WriteLine(CreateNewStringWithFourCopies("Linux"));
             //Console.WriteLine(ComputeSumAndTrippleSum(15,15));
             //Console.WriteLine(ComputeAbsoluteDiffirence(15));
@@ -17,6 +21,16 @@ namespace BasicAlgorithms {
             //Console.WriteLine(ExchangeFirstLastCharacters("DreamBox"));
             #endregion Prior
             Console.ReadLine();
+        }
+
+        static bool MultipleOfThreeOrSeven(int myInt) {
+            //check whether a given positive number is a multiple of 3 or a multiple of 7
+            //return myInt % 3 == 0 || myInt % 7 == 0;
+
+            if(myInt % 3 == 0 || myInt % 7 == 0) {
+                return true;
+            }
+            return false;
         }
 
         static string NewStringLastCharAddToFrontAndBack(string myStr) {
