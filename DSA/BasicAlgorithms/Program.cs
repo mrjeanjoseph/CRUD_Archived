@@ -5,9 +5,20 @@ namespace BasicAlgorithms {
         static void Main(string[] args) {
 
             //Console.WriteLine(ComputeSumAndTrippleSum(15,15));
-            Console.WriteLine(ComputeAbsoluteDiffirence(15));
-            Console.WriteLine(ComputeAbsoluteDiffirence(75));
+            //Console.WriteLine(ComputeAbsoluteDiffirence(15));
+            Console.WriteLine(CheckTwoValueIfTrue(25,5));
+            Console.WriteLine(CheckTwoValueIfTrue(30,5));
+            Console.WriteLine(CheckTwoValueIfTrue(25,15));
             Console.ReadLine();
+        }
+
+        static bool CheckTwoValueIfTrue(int a, int b) {
+            //Check two given integers, and return true if one of them is 30 or if their sum is 30.
+            //return a == 30 || b == 30 || (a + b == 30);
+            if(a == 30) return true;
+            if(b == 30) return true;
+            if (a + b == 30) return true;
+            else return false;
         }
 
         static int ComputeSumAndTrippleSum(int x, int y) {
