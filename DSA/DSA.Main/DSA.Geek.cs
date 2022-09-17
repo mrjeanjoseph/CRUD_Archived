@@ -53,15 +53,15 @@ namespace DSA.Main {
         }
 
         // Main Method
-        public static void Main() {
+        //public void NotMainYet() {
 
-            // Create a new Geeks object.
-            Geeks g1 = new Geeks("June", 2018);
+        //    // Create a new Geeks object.
+        //    Geeks g1 = new Geeks("June", 2018);
 
-            // here is g1 details is copied to g2.
-            Geeks g2 = new Geeks(g1);
+        //    // here is g1 details is copied to g2.
+        //    Geeks g2 = new Geeks(g1);
 
-            Console.WriteLine(g2.Details);
-        }
+        //    Console.WriteLine(g2.Details);
+        //}
     }
 }
