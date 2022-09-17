@@ -4,7 +4,9 @@ namespace BasicAlgorithms {
     class Program {
         static void Main(string[] args) {
 
-            Console.WriteLine(ComputeSumAndTrippleSum(15,15));
+            //Console.WriteLine(ComputeSumAndTrippleSum(15,15));
+            Console.WriteLine(ComputeAbsoluteDiffirence(15));
+            Console.WriteLine(ComputeAbsoluteDiffirence(75));
             Console.ReadLine();
         }
 
@@ -15,6 +17,16 @@ namespace BasicAlgorithms {
                 return (x + y) * 3;
             } else {
                 return x + y;
+            }
+        }
+        static int ComputeAbsoluteDiffirence(int num) {
+            //get the absolute difference between num and 51. If n is greater than 51 return quad the absolute difference.
+            const int x = 51;
+            const int q = 4;
+            if (x > num) {
+                return (x - num) * q;
+            } else {
+                return x - num;
             }
         }
     }
