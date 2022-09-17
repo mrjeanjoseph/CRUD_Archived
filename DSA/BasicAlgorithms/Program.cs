@@ -7,8 +7,19 @@ namespace BasicAlgorithms {
             //Console.WriteLine(ComputeSumAndTrippleSum(15,15));
             //Console.WriteLine(ComputeAbsoluteDiffirence(15));
             //Console.WriteLine(CheckTwoValueIfTrue(25,15));
-            Console.WriteLine(CheckSpecificString("I love thee", "if"));
+            //Console.WriteLine(CheckSpecificString("I love thee", "if"));
+            Console.WriteLine(ExchangeFirstLastCharacters("DreamBox"));
             Console.ReadLine();
+        }
+
+        public static string ExchangeFirstLastCharacters(string myStr) {
+            // Exchange the first and last characters in a given string and return the new string.
+            //return myStr.Length > 1 ? myStr.Substring(myStr.Length - 1) + myStr.Substring(1, myStr.Length - 2) + myStr.Substring(0,1) : myStr;
+
+            if (myStr.Length > 1)
+                return myStr.Substring(myStr.Length - 1) + myStr.Substring(1, myStr.Length - 2) + myStr.Substring(0, 1);
+            else
+                return myStr;
         }
 
         static string CheckSpecificString(string givenString, string checkedString) {
