@@ -3,24 +3,24 @@
 namespace BasicAlgorithms {
     class Program {
         static void Main(string[] args) {
-
-            //Console.WriteLine(CreateNewStringWithFourCopies("Linux"));
-
-            Console.WriteLine(MultipleOfThreeOrSeven(39));
-            Console.WriteLine(MultipleOfThreeOrSeven(21));
-            Console.WriteLine(MultipleOfThreeOrSeven(11));
-
-
-            #region prior
-            //Console.WriteLine(NewStringLastCharAddToFrontAndBack("SoHappy"));
-            //Console.WriteLine(CreateNewStringWithFourCopies("Linux"));
-            //Console.WriteLine(ComputeSumAndTrippleSum(15,15));
-            //Console.WriteLine(ComputeAbsoluteDiffirence(15));
-            //Console.WriteLine(CheckTwoValueIfTrue(25,15));
-            //Console.WriteLine(CheckSpecificString("I love thee", "if"));
-            //Console.WriteLine(ExchangeFirstLastCharacters("DreamBox"));
-            #endregion Prior
             Console.ReadLine();
+        }
+
+        static string ReturnAListOfNumArray(int arrQty) {
+            int[] n = new int[arrQty]; /* n is an array of 10 integers */
+            int i, j;
+            string result="";
+
+            /* initialize elements of array n */
+            for (i = 0; i < arrQty; i++) {
+                n[i] = i + 100;
+            }
+
+            /* output each array element's value */
+            for (j = 0; j < n.Length; j++) {
+                result += $"Element[{j}] = {n[j]}\n";
+            }
+            return result;
         }
 
         static bool MultipleOfThreeOrSeven(int myInt) {
