@@ -3,19 +3,41 @@
 namespace BasicAlgorithms {
     class Program {
         static void Main(string[] args) {
-
-            Console.WriteLine(CreateNewStringWithFourCopies("DreamBox"));
-            Console.WriteLine(CreateNewStringWithFourCopies("Al Pine"));
-            Console.WriteLine(CreateNewStringWithFourCopies("Linux"));
-
-            #region prior
-            //Console.WriteLine(ComputeSumAndTrippleSum(15,15));
-            //Console.WriteLine(ComputeAbsoluteDiffirence(15));
-            //Console.WriteLine(CheckTwoValueIfTrue(25,15));
-            //Console.WriteLine(CheckSpecificString("I love thee", "if"));
-            //Console.WriteLine(ExchangeFirstLastCharacters("DreamBox"));
-            #endregion Prior
             Console.ReadLine();
+        }
+
+        static string ReturnAListOfNumArray(int arrQty) {
+            int[] n = new int[arrQty]; /* n is an array of 10 integers */
+            int i, j;
+            string result="";
+
+            /* initialize elements of array n */
+            for (i = 0; i < arrQty; i++) {
+                n[i] = i + 100;
+            }
+
+            /* output each array element's value */
+            for (j = 0; j < n.Length; j++) {
+                result += $"Element[{j}] = {n[j]}\n";
+            }
+            return result;
+        }
+
+        static bool MultipleOfThreeOrSeven(int myInt) {
+            //check whether a given positive number is a multiple of 3 or a multiple of 7
+            //return myInt % 3 == 0 || myInt % 7 == 0;
+
+            if(myInt % 3 == 0 || myInt % 7 == 0) {
+                return true;
+            }
+            return false;
+        }
+
+        static string NewStringLastCharAddToFrontAndBack(string myStr) {
+            //create a new string with the last char added at the front and back of a given string of length 1 or more.
+
+            string lastStr = myStr.Substring(myStr.Length - 1);
+            return $"{lastStr}{myStr}{lastStr}";
         }
 
         static string CreateNewStringWithFourCopies(string myStr) {
