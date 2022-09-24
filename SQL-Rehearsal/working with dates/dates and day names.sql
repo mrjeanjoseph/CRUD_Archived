@@ -8,10 +8,10 @@ SELECT DATENAME(WEEKDAY, DATEADD(DD, -(DAY(GETDATE())), DATEADD(MM, 1, GETDATE()
 DECLARE @myDate DATETIME = '10/21/2022';
 SELECT DATENAME(WEEKDAY, @myDate)
 
---Get today's Date name ie. MONDAY, TUESDAY
+--Get today's Date name ie. Monday, Tuesday
 SELECT DATENAME(W, GETDATE())
 SELECT DATENAME(WEEKDAY, GETDATE())
 
---Get today's Date name ie. MONDAY, TUESDAY
+--Get today's Date name ie. January, October
 SELECT DATENAME(M, GETDATE())
 SELECT DATENAME(MONTH, GETDATE())
