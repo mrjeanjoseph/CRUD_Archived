@@ -1,4 +1,4 @@
---Run this sp with no parameter
+--Run this sp with no parameter to generate random data into table
 --EXEC [EXE].[GenerateRandomDummyData]
 
 ALTER PROCEDURE [EXE].[GenerateRandomDummyData]
