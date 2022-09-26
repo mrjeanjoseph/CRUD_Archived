@@ -3,7 +3,25 @@
 namespace BasicAlgorithms {
     class Program {
         static void Main(string[] args) {
+            Console.WriteLine(TemperatureCheckLessOrGreaterThan(-5,105));
             Console.ReadLine();
+        }
+
+        static bool TemperatureCheckLessOrGreaterThan(int userInput1, int userInput2) {
+            if (userInput1 < 0 && userInput2 > 100)
+                return true;
+
+            return false;
+        }
+
+        static string ThreeNewStringFrontAndBack(string strInput) {
+            //Create new string taking the first 3 chars of a given string and return it with the 3 chars added at both the front and back.
+            if (strInput.Length < 3)
+                return "Not yet implemented";
+            else {
+                string front = strInput.Substring(0, 3);
+                return front + strInput + front;
+            }
         }
 
         static string ReturnAListOfNumArray(int arrQty) {
