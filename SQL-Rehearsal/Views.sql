@@ -2,7 +2,6 @@
 USE [AdventureWorks2019]
 GO
 
-
 --Simple Views
 SELECT * FROM HumanResources.Employee;
 
