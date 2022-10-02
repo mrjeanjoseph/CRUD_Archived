@@ -5,12 +5,6 @@ using System.Linq;
 namespace BasicAlgorithms {
     class Program {
         static void Main(string[] args) {
-            Console.WriteLine(Math.Max(100,200));
-
-            List<int> list = new List<int>() { 5, -1, 4, 9, -7, 8 };
-
-            Console.WriteLine("Maximum element " + list.Max());
-            Console.WriteLine("Minimum element " + list.Min());
 
             Console.ReadLine();
         }
