@@ -5,9 +5,11 @@ namespace BasicAlgorithms.Deux {
     class Program {
         static void Main(string[] args) {
 
-            Console.WriteLine(CalculateSquareRoot(81));
             Console.ReadLine();
+
             /*
+            Console.WriteLine(ListAllPrimeValues(125));
+            Console.WriteLine(CalculateSquareRoot(81));
             string[] arr_strings = { "Where", "Who", "What", "Whatever" };
             Console.WriteLine($"{string.Join(", ", arr_strings)}");
             Console.WriteLine(GetLongestArrayOfStrings(arr_strings));
@@ -89,7 +91,7 @@ namespace BasicAlgorithms.Deux {
             Console.WriteLine();
         }
         public static bool IsPrime(uint n) {
-            //Calculate all prime values
+            //Calculating whether a number passing through is prime or not.
             if (n <= 1) { return false; }
 
             int ctr = 0;
@@ -100,6 +102,13 @@ namespace BasicAlgorithms.Deux {
                 }
             }
             return true;
+        }
+        public static int ListAllPrimeValues(int n) {
+            //Get next prime number of a given number. If the given number is a prime number, return the number.
+            for (int i = 2; i < n; i++) {
+                if (n % i == 0) { n++; i = 2; }
+            }
+            return n;
         }
     }
 }
