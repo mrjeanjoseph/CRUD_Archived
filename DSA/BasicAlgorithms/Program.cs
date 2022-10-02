@@ -1,9 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BasicAlgorithms {
     class Program {
         static void Main(string[] args) {
+            Console.WriteLine(Math.Max(100,200));
+
+            List<int> list = new List<int>() { 5, -1, 4, 9, -7, 8 };
+
+            Console.WriteLine("Maximum element " + list.Max());
+            Console.WriteLine("Minimum element " + list.Min());
+
             Console.ReadLine();
+        }
+
+        static string CheckWhetherStringsAppearAtIndex(string userInput) {
+            if (userInput.Substring(1, 2).Equals("yt"))
+                return userInput.Remove(1, 2);
+
+            return userInput;
+        }
+
+        static bool CheckWhetherTwoIntegersAreWithinRange(int valueOne, int valueTwo) {
+            if (valueOne >= 100 && valueOne <= 200)
+                return true;
+
+            return false;
+        }
+
+        static bool TemperatureCheckLessOrGreaterThan(int userInput1, int userInput2) {
+            if (userInput1 < 0 && userInput2 > 100)
+                return true;
+
+            return false;
+        }
+
+        static string ThreeNewStringFrontAndBack(string strInput) {
+            //Create new string taking the first 3 chars of a given string and return it with the 3 chars added at both the front and back.
+            if (strInput.Length < 3)
+                return "Not yet implemented";
+            else {
+                string front = strInput.Substring(0, 3);
+                return front + strInput + front;
+            }
         }
 
         static string ReturnAListOfNumArray(int arrQty) {
