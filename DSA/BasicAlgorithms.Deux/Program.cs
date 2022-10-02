@@ -4,11 +4,47 @@ using System.Collections.Generic;
 namespace BasicAlgorithms.Deux {
     class Program {
         static void Main(string[] args) {
-            ListAllPrimeInDescendingOrder();
+
+            Console.WriteLine(CalculateSquareRoot(81));
             Console.ReadLine();
+            /*
+            string[] arr_strings = { "Where", "Who", "What", "Whatever" };
+            Console.WriteLine($"{string.Join(", ", arr_strings)}");
+            Console.WriteLine(GetLongestArrayOfStrings(arr_strings));
+            
+            ListAllPrimeInDescendingOrder();*/
+        }
+
+        public static int CalculateSquareRoot(double num) {
+            int sq = 1;
+            while (sq < num / sq) {
+                sq++;
+            }
+            if (sq > num / sq) return sq - 1;
+            return sq;
+        }
+
+        public static string GetLongestArrayOfStrings(string[] arr_strings) {
+            //Finds the longest common prefix from an array of strings.
+            if (arr_strings.Length == 0 || Array.IndexOf(arr_strings, "") != -1)
+                return "";
+            string result = arr_strings[0];
+            int i = result.Length;
+            foreach (string word in arr_strings) {
+                int j = 0;
+                foreach (char c in word) {
+                    if (j >= i || result[j] != c)
+                        break;
+                    j += 1;
+                }
+                i = Math.Min(i, j);
+            }
+            return result.Substring(0, i);
         }
 
         static void ListAllPrimeInDescendingOrder() {
+            //Create and display a list of all prime numbers in ascending order
+            Console.WriteLine("Displaying a list of prime numbers in ascending order");
             uint z = 0; int nc;
             var p = new uint[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             var nxt = new uint[128];
@@ -30,7 +66,7 @@ namespace BasicAlgorithms.Deux {
             Console.WriteLine("\n{0} descending primes found", z);
         }
         static void ListAllPrimeInAscendingOrder() {
-            //Create and display all prime numbers in strictly ascending decimal digit order
+            //Create and display a list of all prime numbers in ascending order
             Console.WriteLine("Displaying a list of prime numbers in ascending order");
             var Q = new Queue<uint>();
             var prime_nums = new List<uint>();
