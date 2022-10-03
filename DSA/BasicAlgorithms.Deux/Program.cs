@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BasicAlgorithms.Deux {
     class Program {
         static void Main(string[] args) {
-
-            Console.ReadLine();
-
+             
             /*
             Console.WriteLine(ListAllPrimeValues(125));
             Console.WriteLine(CalculateSquareRoot(81));
@@ -14,7 +13,25 @@ namespace BasicAlgorithms.Deux {
             Console.WriteLine($"{string.Join(", ", arr_strings)}");
             Console.WriteLine(GetLongestArrayOfStrings(arr_strings));
             
-            ListAllPrimeInDescendingOrder();*/
+            ListAllPrimeInDescendingOrder();
+            */
+            int[] listOfNum = { -4, -3, -2, 0, 3, 5, 6, 2, 6 };
+            Console.WriteLine(GetPositiveOrNegative(listOfNum));
+            Console.ReadLine();
+        }
+
+        public static string GetPositiveOrNegative(int[] nums) {
+            //Count positive and negative numbers in a given array of integers
+            var pos = nums.Where(n => n > 0);
+            var neg = nums.Where(n => n < 0);
+
+            string result = "Original Array elements:\n";            
+            foreach (var item in nums) {
+                result += $"{item}, ";
+            }
+            
+            return $"{result.TrimEnd(',')}\nNumber of positive numbers: {pos.Count()}" +
+                $"\nNumber of negative numbers: {neg.Count()}";
         }
 
         public static int CalculateSquareRoot(double num) {
