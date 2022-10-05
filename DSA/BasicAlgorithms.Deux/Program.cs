@@ -5,21 +5,31 @@ using System.Linq;
 namespace BasicAlgorithms.Deux {
     class Program {
         static void Main(string[] args) {
-             
             /*
             Console.WriteLine(ListAllPrimeValues(125));
             Console.WriteLine(CalculateSquareRoot(81));
             string[] arr_strings = { "Where", "Who", "What", "Whatever" };
             Console.WriteLine($"{string.Join(", ", arr_strings)}");
-            Console.WriteLine(GetLongestArrayOfStrings(arr_strings));
-            
+            Console.WriteLine(GetLongestArrayOfStrings(arr_strings));            
             ListAllPrimeInDescendingOrder();
-            */
             int[] listOfNum = { -4, -3, -2, 0, 3, 5, 6, 2, 6 };
             Console.WriteLine(GetPositiveOrNegative(listOfNum));
+            Console.WriteLine(CountLettersAndDigitsOfString("dsfkaso230samdm2423sa"));
+
+            */
+
+
             Console.ReadLine();
         }
 
+        public static string CountLettersAndDigitsOfString(string givenStr) {
+            int letterCounts = givenStr.Count(char.IsLetter);
+            int digitCounts = givenStr.Count(char.IsDigit);
+            int letterOrDigitCounts = givenStr.Count(char.IsLetterOrDigit);
+            return $"Letters: {letterCounts}\n" +
+                $"Digits: {digitCounts}\n" +
+                $"Let/Dig: {letterOrDigitCounts}";
+        }
         public static string GetPositiveOrNegative(int[] nums) {
             //Count positive and negative numbers in a given array of integers
             var pos = nums.Where(n => n > 0);
@@ -33,7 +43,6 @@ namespace BasicAlgorithms.Deux {
             return $"{result.TrimEnd(',')}\nNumber of positive numbers: {pos.Count()}" +
                 $"\nNumber of negative numbers: {neg.Count()}";
         }
-
         public static int CalculateSquareRoot(double num) {
             int sq = 1;
             while (sq < num / sq) {
@@ -42,7 +51,6 @@ namespace BasicAlgorithms.Deux {
             if (sq > num / sq) return sq - 1;
             return sq;
         }
-
         public static string GetLongestArrayOfStrings(string[] arr_strings) {
             //Finds the longest common prefix from an array of strings.
             if (arr_strings.Length == 0 || Array.IndexOf(arr_strings, "") != -1)
@@ -60,7 +68,6 @@ namespace BasicAlgorithms.Deux {
             }
             return result.Substring(0, i);
         }
-
         static void ListAllPrimeInDescendingOrder() {
             //Create and display a list of all prime numbers in ascending order
             Console.WriteLine("Displaying a list of prime numbers in ascending order");
