@@ -15,13 +15,25 @@ namespace BasicAlgorithms.Deux {
             int[] listOfNum = { -4, -3, -2, 0, 3, 5, 6, 2, 6 };
             Console.WriteLine(GetPositiveOrNegative(listOfNum));
             Console.WriteLine(CountLettersAndDigitsOfString("dsfkaso230samdm2423sa"));
+            Console.WriteLine(IndexNumberOfLowercaseLetters("Which that you do most"));
 
             */
-
 
             Console.ReadLine();
         }
 
+        public static string IndexNumberOfLowercaseLetters(string inputStr) {
+            //Index number of all lower case letters in a given string
+            string result;
+            int[] convertStr = inputStr.Select((x, i) => i).Where(i => char.IsLower(inputStr[i])).ToArray();
+
+            result = $"Original string: {inputStr}";
+            result += "\nIndices of all lower case letters of the said string:\n";
+            foreach (var item in convertStr) {
+                result += $"{item}, ".TrimEnd(',');
+            }
+            return result;
+        }
         public static string CountLettersAndDigitsOfString(string givenStr) {
             int letterCounts = givenStr.Count(char.IsLetter);
             int digitCounts = givenStr.Count(char.IsDigit);
