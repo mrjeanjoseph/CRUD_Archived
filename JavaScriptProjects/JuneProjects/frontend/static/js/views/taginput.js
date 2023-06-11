@@ -35,8 +35,9 @@ export default class extends AbstractView {
     };    
 };
 
+
 const ul = document.querySelector("ul");
-const input = document.querySelector("ul input");
+const input = ul.querySelector("input");
 const countTags = document.querySelector(".inputTag-details span");
 
 let maxNumTags = 10;
@@ -50,7 +51,7 @@ function numTagTracker() {
 
 function createTag() {
     //remove all li tags before adding so there will be no duplicate tags
-    document.querySelectorAll("ul li").forEach(li => li.remove());
+    ul.querySelectorAll("li").forEach(li => li.remove());
     tags.slice().reverse().forEach(tag => {
         let liTag = `<li>${tag} <i class="uil uil-multiply" onclick="removeTag(this, '${tag}')"></i></li>`;
         ul.insertAdjacentHTML("afterbegin", liTag); //inserting or adding li inside ul tag

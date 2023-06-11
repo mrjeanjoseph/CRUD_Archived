@@ -9,12 +9,12 @@ export default class extends AbstractView {
     async getHtml() {
         console.log(this.params.id);
         return `
-        <h1>Welcome to view post page</h1>
-        <p>
-            Lorem ipsum dolor posts sit amet consectetur adipisicing elit.
-        </p>
-        <p>
-            <a href="/" data-link>Home</a>.
-        </p>
-    `};
+            <h1>Welcome to view post page</h1>
+            <p>
+                Lorem ipsum dolor posts sit amet consectetur adipisicing elit.
+            </p>
+            <p>
+                <a href="/" data-link>Home</a>.
+            </p>`
+        };
 };
