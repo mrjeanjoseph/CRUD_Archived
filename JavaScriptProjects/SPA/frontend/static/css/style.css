@@ -35,3 +35,8 @@ body {
 a{
     color:#009579;
 }
+
+.header{
+    background: rgb(130, 130, 233);
+    border: 1px solid rgb(117, 117, 167);
+}

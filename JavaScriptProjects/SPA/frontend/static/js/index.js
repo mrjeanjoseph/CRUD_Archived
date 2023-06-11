@@ -14,11 +14,6 @@ const getParams = match => {
     }));
 }
 
-// setTimeout(function(){
-//     window.location.reload(1);
-//  }, 9000);
-
-
 const navigateTo = url => {
     history.pushState(null, null, url);
     router();
@@ -47,7 +42,7 @@ const router = async () => {
     if (!match) {
         match = {
             route: routes[0],
-            isMatch: true
+            result: [location.pathname]
         };
     }
 
@@ -68,4 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     router();
+
+    
 })
