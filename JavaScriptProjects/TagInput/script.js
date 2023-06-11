@@ -1,6 +1,6 @@
 const ul = document.querySelector("ul");
-const input = ul.querySelector("input");
-const countTags = document.querySelector(".details span");
+const input = document.querySelector("ul input");
+const countTags = document.querySelector(".inputTag-details span");
 
 let maxNumTags = 10;
 let tags = [];

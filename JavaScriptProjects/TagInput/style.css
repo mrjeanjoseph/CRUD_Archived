@@ -7,7 +7,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+.inputTag {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,33 +15,33 @@ body {
     background: #5372f0;
 }
 
-.wrapper {
+.inputTag-wrapper {
     width: 500px;
     background: #fff;
     border-radius: 10px;
     padding: 20px 25px 20px;
 }
 
-.wrapper :where(.title, li, li i, .details) {
+.inputTag-wrapper :where(.inputTag-title, li, li i, .inputTag-details) {
     display: flex;
     align-items: center;
 }
 
-.wrapper .title img {
+.inputTag-wrapper .inputTag-title img {
     max-width: 25px;
 }
 
-.wrapper .title h2 {
+.inputTag-wrapper .inputTag-title h2 {
     font-size: 25px;
     font-weight: 600;
     margin-left: 8px;
 }
 
-.wrapper .content p {
+.inputTag-wrapper .inputTag-content p {
     font-size: 15px;
 }
 
-.content ul {
+.inputTag-content ul {
     display: flex;
     flex-wrap: wrap;
     padding: 7px;
@@ -50,7 +50,7 @@ body {
     border: 1px solid #a6a6a6;
 }
 
-.content ul li{
+.inputTag-content ul li{
     list-style: none;
     margin: 4px 3px;
     border-radius: 5px;
@@ -59,7 +59,7 @@ body {
     border: 1px solid #e3d1e1;
 }
 
-.content ul li i{
+.inputTag-content ul li i{
     height: 20px;
     width: 20px;
     cursor: pointer;
@@ -71,7 +71,7 @@ body {
     justify-content: center;
 }
 
-.content ul input {
+.inputTag-content ul input {
     flex: 1;
     border: none;
     outline: none;
@@ -79,11 +79,11 @@ body {
     font-size: 16px;
 }
 
-.wrapper .details {
+.inputTag-wrapper .inputTag-details {
     justify-content: space-between;
 }
 
-.details button {
+.inputTag-details button {
     border: none;
     outline: none;
     color: #fff;

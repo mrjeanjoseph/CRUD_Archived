@@ -2,6 +2,7 @@ import Dashboard from "./views/Dashboard.js";
 import Posts from "./views/Posts.js";
 import Settings from "./views/settings.js";
 import PostView from "./views/PostView.js";
+import TagInput from "./views/taginput.js";
 
 const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
@@ -24,6 +25,7 @@ const router = async () => {
     const routes = [
         { path: "/", view: Dashboard },
         { path: "/posts", view: Posts },
+        { path: "/taginput", view: TagInput },
         { path: "/posts/:id", view: PostView },
         { path: "/settings", view: Settings },
     ];
@@ -35,6 +37,7 @@ const router = async () => {
             result: location.pathname.match(pathToRegex(route.path))
         };
     });
+
     //Getting that one true match
     let match = potentialMatches.find(pm => pm.result !== null);
 
@@ -45,11 +48,8 @@ const router = async () => {
             result: [location.pathname]
         };
     }
-
     const view = new match.route.view(getParams(match));
-
     document.querySelector("#app").innerHTML = await view.getHtml();
-    //match.route.view();
 };
 
 window.addEventListener("popstate", router);
@@ -62,7 +62,5 @@ document.addEventListener("DOMContentLoaded", () => {
             navigateTo(e.target.href);
         }
     });
-    router();
-
-    
+    router();    
 })
