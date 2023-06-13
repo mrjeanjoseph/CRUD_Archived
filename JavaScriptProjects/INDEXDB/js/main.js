@@ -1,6 +1,15 @@
 import productdb, { bulkcreate, getData, createDynamicElement, } from './Module.js';
 
-window.onload = table;
+window.onload = () => {
+    textID(userid);
+    table();
+}
+
+function textID(textboxid) {
+    getData(db.products, data => {
+        textboxid.value = data.id + 1 ||  1;
+    });
+}
 
 let db = productdb("Productdb", {
     products: `++id, name, seller, price`
@@ -16,7 +25,10 @@ const price = document.getElementById("price");
 const btncreate = document.getElementById("btn-create");
 const btnread = document.getElementById("btn-read");
 const btnupdate = document.getElementById("btn-update");
-const btndelete = document.getElementById("btn-delete");
+const btndeleteAll = document.getElementById("btn-delete");
+
+//init notfound
+const notfound = document.querySelector("#notfound");
 
 //insert values using create button
 btncreate.onclick = (event) => {
@@ -37,6 +49,9 @@ btncreate.onclick = (event) => {
         userid.value = data.id + 1 || 1;// adding 1 b/c we read existing data but need next value. the or 1 is if there's no data in the database. without it it will return nn
     });
     table();
+
+    let insertmsg = document.querySelector(".insertmsg");
+    getMsg(flag, insertmsg);
 }
 
 //Create event on btn read button
@@ -59,13 +74,14 @@ btnupdate.onclick = () => {
 }
 
 //Delete all records
-btndelete.onclick = () => {
+btndeleteAll.onclick = () => {
     db.delete();
     db = productdb("Productdb", {
         products: `++id, name, seller, price`
     });
     db.open();
     table();
+    textID(userid);
 }
 
 function table () {
@@ -111,6 +127,8 @@ function table () {
                     })
                 })
             })
+        } else {
+            notfound.textContent = "No Record Found in the Database...!";
         }
     })
 
@@ -131,4 +149,15 @@ function deleteBtn(event) {
     let id = parseInt(event.target.dataset.id);
     db.products.delete(id);
     table();
+}
+
+function getMsg(flag, element) {
+    if(flag) {
+        element.className += "movedown";
+        setTimeout(() => {
+            element.classList.forEach(classname => {
+                classname == "movedown" ? undefined : element.classList.remove("movedown");
+            })
+        }, 4000);
+    }
 }
