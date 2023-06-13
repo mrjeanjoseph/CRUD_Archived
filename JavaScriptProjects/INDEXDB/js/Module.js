@@ -35,6 +35,34 @@ const empty = object => {
     return flag;
 }
 
+//Fetch qty of data from db
+const getData = (dbtable, fn) => {
+    let index = 0;
+    let obj = {};
+
+    dbtable.count((count) => {
+        if(count) {
+            dbtable.each(table => {
+                obj = sortObject(table);
+                
+            })
+        }
+    })
+}
+
+//sort object
+const sortObject = dataObj => {
+    let objSorted = {};
+
+    objSorted = {
+        id: dataObj.id,
+        name: dataObj.name,
+        seller: dataObj.seller,
+        price: dataObj.price
+    }
+    return objSorted;
+}
+
 export default productdb;
 export {
     bulkcreate,

@@ -23,5 +23,14 @@ btncreate.onclick = (event) => {
         seller: seller.value,
         price: price.value,
     })
-    console.log(flag);
+    //console.log(flag);
+
+    //empty input field on create
+    // proname.value = "";
+    // seller.value = "";
+    // price.value = "";
+    
+    proname.value = seller.value = price.value = "";//much simpler logic
+    getData();
 }
+
