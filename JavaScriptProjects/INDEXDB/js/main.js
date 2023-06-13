@@ -44,12 +44,12 @@ btncreate.onclick = (event) => {
     // seller.value = "";
     // price.value = "";
 
-    proname.value = seller.value = price.value = "";//much simpler logic
     getData(db.products, (data) => {
         userid.value = data.id + 1 || 1;// adding 1 b/c we read existing data but need next value. the or 1 is if there's no data in the database. without it it will return nn
     });   
 
     let insertmsg = document.querySelector(".insertmsg");
+    insertmsg.textContent = 'Data Inserted Successfully...!';
     getMsg(flag, insertmsg);
     table();
 }
@@ -66,9 +66,13 @@ btnupdate.onclick = () => {
             seller: seller.value,
             price: price.value
         }).then((updated) => {
-            let get = updated ? 'Data Updated' : `Could not update data`;
+            //let get = updated ? 'Data Updated' : `Could not update data`;
+            let get = updated ? true: false;
             table();
-            console.log(get);
+            let updatemsg = document.querySelector(".updatemsg");
+            updatemsg.textContent = 'Data Updated Successfull...!'
+            getMsg(get,updatemsg);
+            
         })
     }
 }
@@ -82,9 +86,14 @@ btndeleteAll.onclick = () => {
     db.open();
     table();
     textID(userid);
+        
+    let deletemsg = document.querySelector(".deletemsg");
+    deletemsg.textContent = 'All data deleted Successfull...!'
+    getMsg(true, deletemsg);
 }
 
 function table() {
+    proname.value = seller.value = price.value = "";//much simpler logic
 
     //This is one way to create dynamic tables in javascript - don't do that
     /*const tablebody = document.getElementById("tbody");
@@ -149,6 +158,9 @@ function deleteBtn(event) {
     let id = parseInt(event.target.dataset.id);
     db.products.delete(id);
     table();
+    let deletemsg = document.querySelector(".deletemsg");
+    deletemsg.textContent = 'Data Deleted Successfull...!'
+    getMsg(true, deletemsg);
 }
 
 function getMsg(flag, element) {

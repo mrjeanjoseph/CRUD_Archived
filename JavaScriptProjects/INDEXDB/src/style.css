@@ -28,10 +28,11 @@ table .btndelete {
 .deletemsg {
     position: absolute;
     top: -50px;
+    margin: auto;
 }
 
 .movedown {
-    animation: slideup 3.5s ease;
+    animation: slideup 4.5s ease;
 }
 
 @keyframes slideup {
