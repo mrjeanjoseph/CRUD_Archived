@@ -7,7 +7,7 @@ window.onload = () => {
 
 function textID(textboxid) {
     getData(db.products, data => {
-        textboxid.value = data.id + 1 ||  1;
+        textboxid.value = data.id + 1 || 1;
     });
 }
 
@@ -43,15 +43,15 @@ btncreate.onclick = (event) => {
     // proname.value = "";
     // seller.value = "";
     // price.value = "";
-    
+
     proname.value = seller.value = price.value = "";//much simpler logic
     getData(db.products, (data) => {
         userid.value = data.id + 1 || 1;// adding 1 b/c we read existing data but need next value. the or 1 is if there's no data in the database. without it it will return nn
-    });
-    table();
+    });   
 
     let insertmsg = document.querySelector(".insertmsg");
     getMsg(flag, insertmsg);
+    table();
 }
 
 //Create event on btn read button
@@ -60,7 +60,7 @@ btnread.onclick = table;
 //Update event on btn update button
 btnupdate.onclick = () => {
     const id = parseInt(userid.value || 0);
-    if(id) {
+    if (id) {
         db.products.update(id, {
             name: proname.value,
             seller: seller.value,
@@ -84,7 +84,7 @@ btndeleteAll.onclick = () => {
     textID(userid);
 }
 
-function table () {
+function table() {
 
     //This is one way to create dynamic tables in javascript - don't do that
     /*const tablebody = document.getElementById("tbody");
@@ -100,29 +100,29 @@ function table () {
 
     const tbody = document.getElementById("tbody");
 
-    while(tbody.hasChildNodes()) {
+    while (tbody.hasChildNodes()) {
         tbody.removeChild(tbody.firstChild);
     }
-    
+
     getData(db.products, (data) => {
-        if(data) {
+        if (data) {
             createDynamicElement("tr", tbody, tr => {
                 for (const value in data) {
-                    createDynamicElement("td", tr, td=>{
+                    createDynamicElement("td", tr, td => {
                         td.textContent = data.price === data[value] ? `$${data[value]}` : data[value];
                     })
                 }
                 createDynamicElement("td", tr, td => {
-                    createDynamicElement("i", td, i =>{
+                    createDynamicElement("i", td, i => {
                         i.className += "fas fa-edit btnedit";
-                        i.setAttribute('data-id',data.id)
+                        i.setAttribute('data-id', data.id)
                         i.onclick = editBtn;
                     })
-                })                
+                })
                 createDynamicElement("td", tr, td => {
-                    createDynamicElement("i", td, i =>{
+                    createDynamicElement("i", td, i => {
                         i.className += "fas fa-trash-alt btndelete";
-                        i.setAttribute('data-id',data.id)
+                        i.setAttribute('data-id', data.id)
                         i.onclick = deleteBtn;
                     })
                 })
@@ -136,7 +136,7 @@ function table () {
 
 function editBtn(event) {
     let id = parseInt(event.target.dataset.id);
-    
+
     db.products.get(id, data => {
         userid.value = data.id || 0;
         proname.value = data.name || "";
@@ -152,8 +152,8 @@ function deleteBtn(event) {
 }
 
 function getMsg(flag, element) {
-    if(flag) {
-        element.className += "movedown";
+    if (flag) {
+        element.className += " movedown";
         setTimeout(() => {
             element.classList.forEach(classname => {
                 classname == "movedown" ? undefined : element.classList.remove("movedown");

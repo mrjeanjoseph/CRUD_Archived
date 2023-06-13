@@ -22,16 +22,16 @@ table .btndelete {
 }
 
 
-/* messages */
+/* messages*/
 .insertmsg,
 .updatemsg,
 .deletemsg {
     position: absolute;
-    top: -40px;
+    top: -50px;
 }
 
 .movedown {
-    animation: slideup 2.5s ease;
+    animation: slideup 3.5s ease;
 }
 
 @keyframes slideup {
