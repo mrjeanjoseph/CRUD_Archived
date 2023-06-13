@@ -12,7 +12,7 @@ const productdb = (dbname, table) => {
 //insert function 
 const bulkcreate = (dbtable, data) => {
     let flag = empty(data);
-    if(flag) {
+    if (flag) {
         dbtable.bulkAdd([data]);
         console.log("Data inserted successfully...!");
     } else {
@@ -25,8 +25,8 @@ const bulkcreate = (dbtable, data) => {
 const empty = object => {
     let flag = false;
 
-    for(const value in object) {
-        if(object[value] != "" && object.hasOwnProperty(value)){
+    for (const value in object) {
+        if (object[value] != "" && object.hasOwnProperty(value)) {
             flag = true;
         } else {
             flag = false;
@@ -41,11 +41,13 @@ const getData = (dbtable, fn) => {
     let obj = {};
 
     dbtable.count((count) => {
-        if(count) {
+        if (count) {
             dbtable.each(table => {
                 obj = sortObject(table);
-                
+                fn(obj, index++);
             })
+        } else {
+            fn(0);
         }
     })
 }
@@ -63,7 +65,16 @@ const sortObject = dataObj => {
     return objSorted;
 }
 
+// Creating dynamic element
+const createDynamicElement = (tagName, appendTo, fn) => {
+    const element = document.createElement(tagName);
+    if (appendTo) appendTo.appendChild(element);
+    if (fn) fn(element);
+}
+
 export default productdb;
 export {
     bulkcreate,
+    getData,
+    createDynamicElement,
 }

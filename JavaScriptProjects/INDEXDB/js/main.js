@@ -1,4 +1,6 @@
-import productdb, { bulkcreate, } from './Module.js';
+import productdb, { bulkcreate, getData, createDynamicElement, } from './Module.js';
+
+window.onload = table;
 
 let db = productdb("Productdb", {
     products: `++id, name, seller, price`
@@ -31,6 +33,102 @@ btncreate.onclick = (event) => {
     // price.value = "";
     
     proname.value = seller.value = price.value = "";//much simpler logic
-    getData();
+    getData(db.products, (data) => {
+        userid.value = data.id + 1 || 1;// adding 1 b/c we read existing data but need next value. the or 1 is if there's no data in the database. without it it will return nn
+    });
+    table();
 }
 
+//Create event on btn read button
+btnread.onclick = table;
+
+//Update event on btn update button
+btnupdate.onclick = () => {
+    const id = parseInt(userid.value || 0);
+    if(id) {
+        db.products.update(id, {
+            name: proname.value,
+            seller: seller.value,
+            price: price.value
+        }).then((updated) => {
+            let get = updated ? 'Data Updated' : `Could not update data`;
+            table();
+            console.log(get);
+        })
+    }
+}
+
+//Delete all records
+btndelete.onclick = () => {
+    db.delete();
+    db = productdb("Productdb", {
+        products: `++id, name, seller, price`
+    });
+    db.open();
+    table();
+}
+
+function table () {
+
+    //This is one way to create dynamic tables in javascript - don't do that
+    /*const tablebody = document.getElementById("tbody");
+    let tabledata = document.createElement("td");
+    tablebody.appendChild(tabledata);
+    console.log(tablebody);*/
+
+    //With fewer lines of code, we can create dynamic element 
+    /*const tbody = document.getElementById("tbody");
+    createDynamicElement("td", tbody, (td) => {
+        console.log(tbody);
+    })*/
+
+    const tbody = document.getElementById("tbody");
+
+    while(tbody.hasChildNodes()) {
+        tbody.removeChild(tbody.firstChild);
+    }
+    
+    getData(db.products, (data) => {
+        if(data) {
+            createDynamicElement("tr", tbody, tr => {
+                for (const value in data) {
+                    createDynamicElement("td", tr, td=>{
+                        td.textContent = data.price === data[value] ? `$${data[value]}` : data[value];
+                    })
+                }
+                createDynamicElement("td", tr, td => {
+                    createDynamicElement("i", td, i =>{
+                        i.className += "fas fa-edit btnedit";
+                        i.setAttribute('data-id',data.id)
+                        i.onclick = editBtn;
+                    })
+                })                
+                createDynamicElement("td", tr, td => {
+                    createDynamicElement("i", td, i =>{
+                        i.className += "fas fa-trash-alt btndelete";
+                        i.setAttribute('data-id',data.id)
+                        i.onclick = deleteBtn;
+                    })
+                })
+            })
+        }
+    })
+
+}
+
+function editBtn(event) {
+    let id = parseInt(event.target.dataset.id);
+    
+    db.products.get(id, data => {
+        userid.value = data.id || 0;
+        proname.value = data.name || "";
+        seller.value = data.seller || "";
+        price.value = data.price || "";
+    })
+}
+
+function deleteBtn(event) {
+    let id = parseInt(event.target.dataset.id);
+    db.products.delete(id);
+    table();
+}
