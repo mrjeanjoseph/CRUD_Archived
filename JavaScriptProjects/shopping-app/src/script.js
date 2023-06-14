@@ -14,12 +14,19 @@ const populateItemsDiv = async () => {
 
     itemsDiv.innerHTML = allItems.map(item => `
     <div class="item ${item.isPurchased && 'purchased'}">
-        <label><input type="checkbox" class="checkbox" ${item.isPurchased && 'checked'}> </label>
+        <label>
+            <input 
+                type="checkbox" 
+                class="checkbox"
+                onchange="toggleItemStatus(event, ${item.id})"
+                ${item.isPurchased && 'checked'}
+            >
+        </label>
         <div class="itemInfo">
             <p>${item.name}</p>
             <p>$${item.price} X ${item.quantity}</p>
         </div>
-        <button class="deleteButton">X</button>
+        <button class="deleteButton" onclick="removeItem(${item.id})">X</button>
     </div>
     `).join("");
 
@@ -45,5 +52,14 @@ itemForm.onsubmit = async (event) => {
     })
     await populateItemsDiv();
     itemForm.reset();
+}
 
+const toggleItemStatus = async (event, id) => {
+    await db.items.update(id, {isPurchased: !! event.target.checked });
+    await populateItemsDiv();
+}
+
+const removeItem = async (id) => {
+    await db.items.delete(id);
+    await populateItemsDiv();
 }
