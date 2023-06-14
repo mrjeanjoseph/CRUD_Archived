@@ -1,13 +1,35 @@
 //Initializing Dexie
 
 const db = new Dexie('ShoppingApp');
-db.version(1).stores( {items: '++id, name, price, isPurchased'});
+db.version(1).stores({ items: '++id, name, price, isPurchased' });
 
 //Accessing the DOM
 const itemForm = document.querySelector("#itemForm");
 const itemsDiv = document.querySelector("#itemsDiv");
 const totalPriceDiv = document.querySelector("#totalPriceDiv");
 
+//Generate and Populate items
+const populateItemsDiv = async () => {
+    const allItems = await db.items.reverse().toArray();
+
+    itemsDiv.innerHTML = allItems.map(item => `
+    <div class="item ${item.isPurchased && 'purchased'}">
+        <label><input type="checkbox" class="checkbox" ${item.isPurchased && 'checked'}> </label>
+        <div class="itemInfo">
+            <p>${item.name}</p>
+            <p>$${item.price} X ${item.quantity}</p>
+        </div>
+        <button class="deleteButton">X</button>
+    </div>
+    `).join("");
+
+    const arrayOfPrices = allItems.map(item => item.price * item.quantity);
+    const totalPrice = arrayOfPrices.reduce((a, b) => a + b, 0);
+
+    totalPriceDiv.innerText = `Total Price: $${totalPrice}`;
+}
+
+window.onload = populateItemsDiv();
 
 itemForm.onsubmit = async (event) => {
     event.preventDefault();
@@ -21,6 +43,7 @@ itemForm.onsubmit = async (event) => {
         quantity,
         price
     })
+    await populateItemsDiv();
     itemForm.reset();
 
 }

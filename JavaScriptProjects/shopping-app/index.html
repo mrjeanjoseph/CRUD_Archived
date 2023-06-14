@@ -17,34 +17,16 @@
     </nav>
 
     <div class="container">
-        <form id="itemForm">
-            <label for=""> Name of Item:<input type="text" id="nameInput" required></label>
-            <label for=""> Quantity:<input type="number" id="quantityInput" value=1></label>
-            <label for=""> Price:<input type="number" id="priceInput" value=0></label>
+        <form id="itemForm" autocomplete="off">
+            <label> Name of Item:<input type="text" id="nameInput" required></label>
+            <label> Quantity:<input type="number" id="quantityInput" value=1></label>
+            <label> Price:<input type="number" id="priceInput" value=0></label>
             <button type="submit" id="addItemButton">Add Item</button>
         </form>
     </div>
 
-    <div id="itemsDiv">
-        <div class="item">
-            <label><input type="checkbox" class="checkbox" checked> </label>
-            <div class="itemInfo">
-                <p>Fruit Juice</p>
-                <p>$5 X 3</p>
-            </div>
-            <button class="deleteButton">X</button>
-        </div>
-
-        <div class="item purchased">
-            <label><input type="checkbox" class="checkbox" checked> </label>
-            <div class="itemInfo">
-                <p>Fruit Juice</p>
-                <p>$5 X 3</p>
-            </div>
-            <button class="deleteButton">X</button>
-        </div>
-        <div id="totalPriceDiv">Total Price:</div>
-    </div>
+    <div id="itemsDiv"></div>
+    <div id="totalPriceDiv"></div>
 
 
     <script src="./src/script.js"></script>
