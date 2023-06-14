@@ -1,4 +1,4 @@
 # Random projects
 
-Random projects, Data Structures and Algorithm projects for reference
+Random projects and DSAs for reference
 C#/NET Core, JS, jQuery and Node.js
