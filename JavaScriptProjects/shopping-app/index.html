@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping App</title>
+    <link rel="icon" href="./asset/icon1.png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <nav>
+        <p>My List</p>
+    </nav>
+
+    <div class="container">
+        <form id="itemForm">
+            <label for=""> Name of Item:<input type="text" id="nameInput" required></label>
+            <label for=""> Quantity:<input type="number" id="quantityInput" value=1></label>
+            <label for=""> Price:<input type="number" id="priceInput" value=0></label>
+            <button type="submit" id="addItemButton">Add Item</button>
+        </form>
+    </div>
+
+    <div id="itemsDiv">
+        <div class="item">
+            <label><input type="checkbox" class="checkbox" checked> </label>
+            <div class="itemInfo">
+                <p>Fruit Juice</p>
+                <p>$5 X 3</p>
+            </div>
+            <button class="deleteButton">X</button>
+        </div>
+        <div id="totalPriceDiv">Total Price:</div>
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
