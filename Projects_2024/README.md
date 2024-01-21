@@ -1,6 +1,6 @@
 # Objectives
 
-Projs created within the 2020 calendar year
+Projects and exercises created within the 2024 calendar year
 
 Markup : 	*Student Enrollment Form using ASP.Net Framework
 			*Hotel Application using ASP.NET using Dapper
